@@ -1,3 +1,6 @@
+# Created by https://www.gitignore.io/api/rails
+
+### Rails ###
 *.rbc
 capybara-*.html
 .rspec
@@ -42,3 +45,7 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# End of https://www.gitignore.io/api/rails
+
+/node_modules
