@@ -1,0 +1,4 @@
+default_options = "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin ROW_FORMAT=DYNAMIC"
+Dir[File.expand_path('schemafiles/*.schemafile', __dir__)].each do |f|
+  eval File.read f
+end
