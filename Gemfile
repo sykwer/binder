@@ -39,6 +39,10 @@ group :development, :test do
 end
 
 group :development do
+  # Better error page for Rack apps
+  gem 'better_errors'
+  # To use advanced features of better_errors
+  gem 'binding_of_caller'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
