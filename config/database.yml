@@ -11,7 +11,10 @@
 #
 default: &default
   adapter: mysql2
-  encoding: utf8
+  encoding: utf8mb4
+  collation: utf8mb4_bin
+  charset: utf8mb4
+  reconnect: false
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
@@ -19,14 +22,14 @@ default: &default
 
 development:
   <<: *default
-  database: rails-boilerplate_development
+  database: pirlo_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails-boilerplate_test
+  database: pirlo_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +52,6 @@ test:
 #
 production:
   <<: *default
-  database: rails-boilerplate_production
-  username: rails-boilerplate
-  password: <%= ENV['RAILS-BOILERPLATE_DATABASE_PASSWORD'] %>
+  database: pirlo_production
+  username: pirlo
+  password: <%= ENV['PIRLO_DATABASE_PASSWORD'] %>
