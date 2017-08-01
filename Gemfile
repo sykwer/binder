@@ -44,6 +44,9 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+
+  # Testing framework for rails
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
