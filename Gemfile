@@ -47,6 +47,7 @@ group :development, :test do
 
   # Testing framework for rails
   gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl'
 end
 
 group :development do
