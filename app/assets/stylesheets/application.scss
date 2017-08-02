@@ -18,3 +18,14 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+// base style files
+@import "base/colors";
+@import "base/fonts";
+@import "base/sizes";
+@import "base/mixins";
+@import "base/common";
+
+// Customs styles
+@import "partials/*";
+@import "pages/*";
