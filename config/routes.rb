@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   root to: 'pages#top'
   get 'login', to: 'sessions#new'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 end
