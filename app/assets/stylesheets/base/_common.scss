@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+body {
+  color: $text_color;
+  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
