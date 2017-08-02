@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  devise :rememberable, :trackable, :omniauthable, :timeoutable
+  devise :rememberable, :trackable, :timeoutable, :omniauthable, :omniauth_providers => [:facebook]
 end
