@@ -6,6 +6,8 @@ create_table "users", force: :cascade, options: default_options do |t|
     t.datetime :last_sign_in_at
     t.string   :current_sign_in_ip
     t.string   :last_sign_in_ip
+    t.string   :provider
+    t.string   :uid
 
     add_index :users, :email,                unique: true
 end
