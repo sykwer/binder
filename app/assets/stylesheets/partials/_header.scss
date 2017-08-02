@@ -18,4 +18,16 @@
       margin-left: 10px;
     }
   }
+
+  .profile-window {
+    margin-right: 20px;
+    float: right;
+
+    img {
+      width: $logo_width;
+      height: $logo_height;
+      border-radius: $logo_height / 2;
+      border: 1px solid white;
+    }
+  }
 }
