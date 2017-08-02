@@ -1,0 +1,2 @@
+create_table "users", force: :cascade, options: default_options do |t|
+end
