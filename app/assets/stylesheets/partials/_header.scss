@@ -1,5 +1,21 @@
 .header {
   width: 100%;
   height: $header_height;
+  padding: ($header_height - $logo_height) / 2;
   background-color: $fresh_green;
+
+  .logo {
+    margin: 0;
+    float: left;
+
+    img {
+      width: $logo_width;
+      height: $logo_height;
+    }
+
+    span {
+      color: white;
+      margin-left: 10px;
+    }
+  }
 }
