@@ -14,6 +14,8 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'ridgepole'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+# Use dotenv for all environemnts
+gem 'dotenv-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
