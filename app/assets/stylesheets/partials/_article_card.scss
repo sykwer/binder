@@ -110,6 +110,11 @@
 
     .footer-right {
       float: right;
+
+      .article-menu {
+        font-size: 25px;
+        color: $gray56;
+      }
     }
   }
 }
