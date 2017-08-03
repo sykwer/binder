@@ -1,6 +1,6 @@
 .article-card {
   background: $article_card_background_color;
-  padding: $article-card-padding;
+  padding: $article_card_padding;
 
   .header-wrapper {
 
@@ -8,9 +8,9 @@
       float: left;
 
       img {
-        width: $profile-image-radius * 2;
-        height: $profile-image-radius * 2;
-        border-radius: $profile-image-radius;
+        width: $profile_image_radius * 2;
+        height: $profile_image_radius * 2;
+        border-radius: $profile_image_radius;
       }
     }
 
