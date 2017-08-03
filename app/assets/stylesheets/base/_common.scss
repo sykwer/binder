@@ -12,3 +12,10 @@ a:link, a:visited, a:hover, a:active {
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+// class to clear float
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
