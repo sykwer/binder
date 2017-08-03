@@ -87,9 +87,25 @@
   }
 
   .footer-wrapper {
+    margin-top: 20px;
 
     .footer-left {
       float: left;
+
+      .like-heart {
+        display: inline-block;
+        font-size: 20px;
+        color: $fresh_green;
+        opacity: 0.8;
+      }
+
+      .like-count {
+        display: inline-block;
+        margin-left: 3px;
+        vertical-align: 4px;
+        font-size: 17px;
+        color: $gray56;
+      }
     }
 
     .footer-right {
