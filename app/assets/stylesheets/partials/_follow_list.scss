@@ -1,6 +1,13 @@
 .follow-list {
   height: 400px;
 
+  .follow-list-header {
+
+    h2 {
+      color: $black_gray;
+    }
+  }
+
   .follow-list-main {
 
     table tr td {
@@ -14,6 +21,14 @@
         height: $profile_image_radius * 2;
         border-radius: $profile_image_radius;
       }
+    }
+  }
+
+  .follow-list-footer {
+    margin-top: 15px;
+
+    span a {
+      color: $fresh_green;
     }
   }
 }
