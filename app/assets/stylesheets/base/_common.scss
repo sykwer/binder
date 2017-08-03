@@ -19,3 +19,10 @@ a:link, a:visited, a:hover, a:active {
   display: block;
   clear: both;
 }
+
+// Cut oneline text over flow and add ellipsis
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
