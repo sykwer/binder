@@ -1,10 +1,17 @@
 .article-card {
-  background: $article_card_background_color
+  background: $article_card_background_color;
+  padding: $article-card-padding;
 
   .header-wrapper {
 
     .header-image {
       float: left;
+
+      img {
+        width: $profile-image-radius * 2;
+        height: $profile-image-radius * 2;
+        border-radius: $profile-image-radius;
+      }
     }
 
     .header-text {
