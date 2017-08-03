@@ -1,8 +1,9 @@
-.follow-list {
+.recommend-list {
+  margin-top: 20px;
   border: 1px solid $gray91;
   padding: 15px;
 
-  .follow-list-header {
+  .recommend-list-header {
 
     span {
       margin: 0;
@@ -12,7 +13,7 @@
     }
   }
 
-  .follow-list-main {
+  .recommend-list-main {
 
     table tr td {
       padding: 10px 10px 0 0;
@@ -28,7 +29,7 @@
     }
   }
 
-  .follow-list-footer {
+  .recommend-list-footer {
     margin-top: 15px;
 
     span a {
