@@ -1,10 +1,15 @@
 .recommend-list {
-  margin-top: 40px;
+  margin-top: 20px;
+  border: 1px solid $gray91;
+  padding: 15px;
 
   .recommend-list-header {
 
-    h2 {
+    span {
+      margin: 0;
       color: $black_gray;
+      font-size: 25px;
+      opacity: 0.9;
     }
   }
 

@@ -1,9 +1,14 @@
 .follow-list {
+  border: 1px solid $gray91;
+  padding: 15px;
 
   .follow-list-header {
 
-    h2 {
+    span {
+      margin: 0;
       color: $black_gray;
+      font-size: 25px;
+      opacity: 0.9;
     }
   }
 
