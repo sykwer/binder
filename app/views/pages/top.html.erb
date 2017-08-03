@@ -2,9 +2,33 @@
   <div class="row">
 
     <div class="col-md-3">
+      <div class="follow-list">
+        <div class="follow-list-header">
+          <h2>Follow</h2>
+        </div>
+        <div class="follow-list-main">
+          <!-- FIXME: Profile images are boilerplates -->
+          <table>
+            <tr>
+              <% 5.times do %>
+                <td><%= link_to(image_tag(current_user.image_url), "#", class: "profile-image") %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <% 5.times do %>
+                <td><%= link_to(image_tag(current_user.image_url), "#", class: "profile-image") %></td>
+              <% end %>
+            </tr>
+          </table>
+        </div>
+        <div class="follow-list-footer">
+          <span><%= link_to "More..", "#" %></span>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-6">
+      <%= render 'shared/article_card' %>
       <%= render 'shared/article_card' %>
     </div>
 
