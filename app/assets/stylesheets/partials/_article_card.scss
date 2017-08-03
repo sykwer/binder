@@ -16,6 +16,11 @@
 
     .header-text {
       float: left;
+      margin-left: 10px;
+
+      .header-profile-name {
+        color: $fresh_green;
+      }
     }
   }
 
