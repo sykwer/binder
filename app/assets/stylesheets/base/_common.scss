@@ -12,3 +12,17 @@ a:link, a:visited, a:hover, a:active {
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+// class to clear float
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+// Cut oneline text over flow and add ellipsis
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

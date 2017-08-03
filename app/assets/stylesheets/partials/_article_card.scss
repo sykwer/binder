@@ -1,0 +1,120 @@
+.article-card {
+  background: $article_card_background_color;
+  padding: $article_card_padding;
+  margin-bottom: $article_card_margin;
+  border: 1px solid $gray91;
+  box-shadow: 6px 6px 10px -5px rgba(0, 0, 0, 0.08);
+
+  .header-wrapper {
+
+    .header-image {
+      float: left;
+
+      img {
+        width: $profile_image_radius * 2;
+        height: $profile_image_radius * 2;
+        border-radius: $profile_image_radius;
+      }
+    }
+
+    .header-text {
+      float: left;
+      margin-left: 10px;
+
+      .header-profile-name {
+        color: $fresh_green;
+      }
+
+      .header-datetime {
+        color: $gray56;
+      }
+    }
+  }
+
+  .main-wrapper {
+    margin-top: 20px;
+
+    .main-left {
+      float: left;
+      width: 25%;
+
+      .main-book {
+        box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .main-bookinfo {
+        margin-top: 13px;
+        color: $black_gray;
+
+        .book-name {
+          font-size: 15px;
+        }
+
+        .book-author {
+          font-size: 8px;
+          width: 80%;
+          margin-top: 3px;
+        }
+      }
+    }
+
+    .main-right {
+      float: left;
+      width: 71%; // FIXME: wanna calucurate
+      margin-left: 20px;
+
+      .main-book-review {
+        font-size: 18px;
+        font-weight: 100;
+        letter-spacing: 1px;
+        color: $black_gray;
+        opacity: 0.8;
+      }
+
+      .book-review-below  {
+        margin-top: 8px;
+
+        a {
+          color: $fresh_green;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  .footer-wrapper {
+    margin-top: 20px;
+
+    .footer-left {
+      float: left;
+
+      .like-heart {
+        display: inline-block;
+        font-size: 20px;
+        color: $fresh_green;
+        opacity: 0.8;
+      }
+
+      .like-count {
+        display: inline-block;
+        margin-left: 3px;
+        vertical-align: 4px;
+        font-size: 17px;
+        color: $gray56;
+      }
+    }
+
+    .footer-right {
+      float: right;
+
+      .article-menu {
+        font-size: 25px;
+        color: $gray56;
+      }
+    }
+  }
+}
