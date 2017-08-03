@@ -1,0 +1,13 @@
+.ad-space {
+  height: 600px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: 1px solid $light_gray;
+
+  .ad-space-header {
+    font-size: 10px;
+    color: $gray56;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+}
