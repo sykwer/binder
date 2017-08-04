@@ -6,6 +6,13 @@
       </h1>
     </div>
     <div class="header-right">
+      <nav class="header-menu">
+        <ul>
+          <li class="menu-item icon"><i class="fa fa-cog" aria-hidden="true"></i></li>
+          <li class="menu-item icon"><i class="fa fa-bell-o" aria-hidden="true"></i></li>
+          <li class="menu-item profile-window"><%= link_to image_tag(current_user.image_url), '#' %></li>
+        </ul>
+      </nav>
     </div>
   </div>
 </header>
