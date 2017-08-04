@@ -19,6 +19,16 @@
           height: $logo_height;
         }
       }
+
+      .wording {
+        display: inline-block;
+        margin: 10px 0 0 20px;
+        height: 20px;
+        padding-left: 15px;
+        border-left: 0.5px solid white;
+        color: white;
+        opacity: 0.5;
+      }
     }
 
     .header-upper-right {
