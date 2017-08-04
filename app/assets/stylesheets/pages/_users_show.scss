@@ -1,0 +1,116 @@
+.mypage {
+
+  .mypage-upper {
+    width: 100%;
+
+    .profile {
+      margin: 30px auto;
+      width: 600px;
+
+      .profile-main {
+
+        .profile-main-left {
+          float: left;
+
+          h2 {
+            color: $black_gray;
+          }
+
+          p {
+            color: $gray56;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+          }
+
+          .profile-sub-wrapper {
+            margin-top: 20px;
+
+            .follows {
+              float: left;
+
+              .following {
+                display: inline-block;
+                color: $gray56;
+                opacity: 0.9;
+
+                .num {
+                  font-weight: bold;
+                }
+              }
+
+              .follower {
+                display: inline-block;
+                margin-left: 8px;
+                color: $gray56;
+                opacity: 0.9;
+
+                .num {
+                  font-weight: bold;
+                }
+              }
+            }
+
+            .sns-buttons {
+              float: left;
+              margin-left: 30px;
+              color: $gray56;
+              font-size: 18px;
+
+              .twitter-button {
+                display: inline-block;
+              }
+
+              .facebook-button {
+                display: inline-block;
+                margin-left: 5px;
+              }
+            }
+          }
+        }
+
+        .profile-main-right {
+          float: right;
+
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+          }
+        }
+      }
+
+      .edit-button {
+        margin-top: 20px;
+
+        button {
+          border: 1.2px solid $gray56;
+          color: $gray56;
+          opacity: 0.7;
+          border-radius: 15px;
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+
+  .mypage-lower {
+    width: 100%;
+    padding: 30px;
+    background: $background_gray;
+    border-top: 1px solid $gray91;
+
+    .book-list {
+      width: 780px;
+      margin: 0 auto;
+
+      table tr td {
+        padding: 15px;
+
+        img {
+          height: 200px;
+          box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+}

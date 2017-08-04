@@ -1,0 +1,39 @@
+<div class="mypage">
+  <div class="mypage-upper">
+    <div class="profile">
+      <div class="profile-main clearfix">
+        <div class="profile-main-left">
+          <h2><%= current_user.name %></h2>
+          <p>Software Engineer. Here, I’ll write about technical things.</p>
+          <div class="profile-sub-wrapper clearfix">
+            <div class="follows">
+              <span class="following"><span class="num">150</span> Following</span>
+              <span class="follower"><span class="num">75</span> Follower</span>
+            </div>
+            <div class="sns-buttons">
+              <span class="twitter-button"><i class="fa fa-twitter" aria-hidden="true"></i></span>
+              <span class="facebook-button"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="profile-main-right">
+          <%= image_tag(current_user.image_url) %>
+        </div>
+      </div>
+      <div class="edit-button">
+        <button>Edit</button>
+      </div>
+    </div>
+  </div>
+  <div class="mypage-lower">
+    <div class="book-list">
+      <table>
+        <tr>
+          <% 5.times do %>
+            <td><%= link_to(image_tag("https://images-fe.ssl-images-amazon.com/images/I/51%2ByD4vDr6L.jpg"), "#") %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
