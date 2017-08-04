@@ -4,26 +4,40 @@
   padding: 10px 150px;
   background-color: $fresh_green;
 
-  .logo {
-    margin: 0;
-    float: left;
-    opacity: 0.7;
+  .header-upper {
 
-    img {
-      width: $logo_width;
-      height: $logo_height;
+    .header-upper-left {
+      float: left;
+
+      .logo {
+        margin: 0;
+        float: left;
+        opacity: 0.7;
+
+        img {
+          width: $logo_width;
+          height: $logo_height;
+        }
+      }
+    }
+
+    .header-upper-right {
+      float: right;
+
+      .header-menu {
+
+        .profile-window {
+
+          img {
+            width: $profile_image_radius * 2;
+            height: $profile_image_radius * 2;
+            border-radius: $profile_image_radius;
+          }
+        }
+      }
     }
   }
 
-  .profile-window {
-    margin-right: 20px;
-    float: right;
-
-    img {
-      width: $logo_width;
-      height: $logo_height;
-      border-radius: $logo_height / 2;
-      border: 1px solid white;
-    }
+  .header-lower {
   }
 }
