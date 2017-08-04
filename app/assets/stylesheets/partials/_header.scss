@@ -1,59 +1,80 @@
 .header {
   width: 100%;
   height: $header_height;
-  padding: $header_padding;
+  padding: 10px 150px;
   background-color: $fresh_green;
 
-  .logo {
-    margin: 0;
-    float: left;
+  .header-upper {
 
-    img {
-      width: $logo_width;
-      height: $logo_height;
+    .header-upper-left {
+      float: left;
+
+      .logo {
+        margin: 0;
+        float: left;
+        opacity: 0.7;
+
+        img {
+          width: $logo_width;
+          height: $logo_height;
+        }
+      }
+
+      .wording {
+        display: inline-block;
+        margin: 10px 0 0 20px;
+        height: 20px;
+        padding-left: 15px;
+        border-left: 0.5px solid white;
+        color: white;
+        opacity: 0.5;
+      }
     }
 
-    span {
-      color: white;
-      margin-left: 10px;
+    .header-upper-right {
+      float: right;
+
+      .header-menu {
+
+        .menu-item {
+          display: inline-block;
+          margin-left: 20px;
+          vertical-align: middle;
+        }
+
+        .icon {
+          font-size: 20px;
+          color: white;
+          opacity: 0.7;
+        }
+
+        .profile-window img {
+          width: 30px;
+          height: 30px;
+          border-radius: 15px;
+        }
+      }
     }
   }
 
-  .search-box {
-    font-size: 0;
-    margin: (($header_height - ($header_padding * 2) - $search_box_height) / 2) 50px;
-    float: left;
+  .header-lower {
+    margin-top: 8px;
 
-    > * {
-      font-size: 1.5rem;
+    ul {
+      padding: 0;
     }
 
-    .search-input {
-      width: $search_input_width;
-      height: $search_box_height;
-      border: none;
-      border-radius: 3px 0 0 3px;
-    }
+    .nav-item {
+      display: inline-block;
+      margin: 0 20px 0 0;
 
-    .search-button {
-      font-family: FontAwesome;
-      width: $search_button_width;
-      height: $search_box_height;
-      border: none;
-      border-radius: 0 0 3px 3px;
-      cursor: pointer;
-    }
-  }
-
-  .profile-window {
-    margin-right: 20px;
-    float: right;
-
-    img {
-      width: $logo_width;
-      height: $logo_height;
-      border-radius: $logo_height / 2;
-      border: 1px solid white;
+      a {
+        display: inline-block;
+        font-size: 15px;
+        letter-spacing: 1px;
+        color: white;
+        opacity: 0.7;
+      }
     }
   }
 }

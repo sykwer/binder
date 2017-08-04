@@ -1,15 +1,29 @@
 <header class="header">
-  <h1 class="logo">
-    <%= link_to image_tag('book_logo.png'), root_path %>
-    <span>DailyBook</span>
-  </h1>
-
-  <div class="profile-window">
-    <%= link_to image_tag(current_user.image_url), '#' %>
+  <div class="header-upper clearfix">
+    <div class="header-upper-left">
+      <h1 class="logo">
+        <%= link_to image_tag('book_logo.png'), root_path %>
+      </h1>
+      <p class="wording">Log your reading records. Browse friends' reading records. </p>
+    </div>
+    <div class="header-upper-right">
+      <nav class="header-menu">
+        <ul>
+          <li class="menu-item icon"><i class="fa fa-cog" aria-hidden="true"></i></li>
+          <li class="menu-item icon"><i class="fa fa-bell-o" aria-hidden="true"></i></li>
+          <li class="menu-item profile-window"><%= link_to image_tag(current_user.image_url), '#' %></li>
+        </ul>
+      </nav>
+    </div>
   </div>
-
-  <form class="search-box">
-    <input class="search-input" type="text" name="search" placeholder="ユーザーを検索">
-    <input class="search-button" type="submit" value="&#xf002;">
-  </form>
+  <div class="header-lower">
+    <nav class="global-nav">
+      <ul>
+        <li class="nav-item"><%= link_to "TOP", root_path %></li>
+        <li class="nav-item"><%= link_to "Following", "#" %></li>
+        <li class="nav-item"><%= link_to "Follower", "#" %></li>
+        <li class="nav-item"><%= link_to "Find User", "#" %></li>
+      </ul>
+    </nav>
+  </div>
 </header>
