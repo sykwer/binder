@@ -19,6 +19,12 @@
     }
   }
 
+  /*
+   * <form class="search-box">
+   *   <input class="search-input" type="text" name="search" placeholder="ユーザーを検索">
+   *   <input class="search-button" type="submit" value="&#xf002;">
+   * </form>
+   */
   .search-box {
     font-size: 0;
     margin: (($header_height - ($header_padding * 2) - $search_box_height) / 2) 50px;
