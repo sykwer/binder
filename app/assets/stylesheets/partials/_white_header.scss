@@ -32,6 +32,11 @@
           vertical-align: middle;
         }
 
+        .write-record a {
+          color: $fresh_green;
+          opacity: 0.8;
+        }
+
         .icon {
           font-size: 20px;
           color: $gray56;
