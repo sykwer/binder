@@ -1,10 +1,13 @@
 <div class="mypage">
   <div class="mypage-upper">
     <div class="profile">
-      <div class="profile-main">
+      <div class="profile-main clearfix">
         <div class="profile-main-left">
-          <div class="profile-main-right">
-          </div>
+          <h2><%= current_user.name %></h2>
+          <p>Software Engineer. Here, I’ll write about technical things.</p>
+        </div>
+        <div class="profile-main-right">
+          <%= image_tag(current_user.image_url) %>
         </div>
       </div>
       <div class="profile-sub">

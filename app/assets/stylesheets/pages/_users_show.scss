@@ -2,7 +2,28 @@
 
   .mypage-upper {
     width: 100%;
-    height: 400px; // FIXME: temporary
+
+    .profile {
+      margin: 30px auto;
+      width: 600px;
+
+      .profile-main {
+
+        .profile-main-left {
+          float: left;
+        }
+
+        .profile-main-right {
+          float: right;
+
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+          }
+        }
+      }
+    }
   }
 
   .mypage-lower {
