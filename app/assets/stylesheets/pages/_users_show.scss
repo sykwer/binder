@@ -12,14 +12,58 @@
         .profile-main-left {
           float: left;
 
+          h2 {
+            color: $black_gray;
+          }
+
+          p {
+            color: $gray56;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+          }
+
           .profile-sub-wrapper {
+            margin-top: 20px;
 
             .follows {
               float: left;
+
+              .following {
+                display: inline-block;
+                color: $gray56;
+                opacity: 0.9;
+
+                .num {
+                  font-weight: bold;
+                }
+              }
+
+              .follower {
+                display: inline-block;
+                margin-left: 8px;
+                color: $gray56;
+                opacity: 0.9;
+
+                .num {
+                  font-weight: bold;
+                }
+              }
             }
 
             .sns-buttons {
               float: left;
+              margin-left: 30px;
+              color: $gray56;
+              font-size: 18px;
+
+              .twitter-button {
+                display: inline-block;
+              }
+
+              .facebook-button {
+                display: inline-block;
+                margin-left: 5px;
+              }
             }
           }
         }
