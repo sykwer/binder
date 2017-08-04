@@ -15,37 +15,6 @@
     }
   }
 
-  /*
-   * <form class="search-box">
-   *   <input class="search-input" type="text" name="search" placeholder="ユーザーを検索">
-   *   <input class="search-button" type="submit" value="&#xf002;">
-   * </form>
-   */
-
-  .search-box {
-    font-size: 0;
-
-    > * {
-      font-size: 1.5rem;
-    }
-
-    .search-input {
-      width: $search_input_width;
-      height: $search_box_height;
-      border: none;
-      border-radius: 3px 0 0 3px;
-    }
-
-    .search-button {
-      font-family: FontAwesome;
-      width: $search_button_width;
-      height: $search_box_height;
-      border: none;
-      border-radius: 0 0 3px 3px;
-      cursor: pointer;
-    }
-  }
-
   .profile-window {
     margin-right: 20px;
     float: right;
