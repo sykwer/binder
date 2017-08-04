@@ -1,0 +1,14 @@
+.mypage {
+
+  .mypage-upper {
+    width: 100%;
+    height: 400px; // FIXME: temporary
+  }
+
+  .mypage-lower {
+    width: 100%;
+    height: 400px; // FIXME: temporary
+    background: $background_gray;
+    border-top: 1px solid $gray91;
+  }
+}
