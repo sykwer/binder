@@ -1,4 +1,4 @@
-<header class="header">
+<header class="green-header">
   <div class="header-upper clearfix">
     <div class="header-upper-left">
       <h1 class="logo">
@@ -9,6 +9,7 @@
     <div class="header-upper-right">
       <nav class="header-menu">
         <ul>
+          <li class="menu-item write-record"><%= link_to "Write a Record", "#" %></li>
           <li class="menu-item icon"><i class="fa fa-cog" aria-hidden="true"></i></li>
           <li class="menu-item icon"><i class="fa fa-bell-o" aria-hidden="true"></i></li>
           <li class="menu-item profile-window"><%= link_to image_tag(current_user.image_url), '#' %></li>
