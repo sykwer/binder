@@ -11,6 +11,17 @@
 
         .profile-main-left {
           float: left;
+
+          .profile-sub-wrapper {
+
+            .follows {
+              float: left;
+            }
+
+            .sns-buttons {
+              float: left;
+            }
+          }
         }
 
         .profile-main-right {
