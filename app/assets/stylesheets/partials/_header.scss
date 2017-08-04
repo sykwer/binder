@@ -1,21 +1,17 @@
 .header {
   width: 100%;
   height: $header_height;
-  padding: $header_padding;
+  padding: 10px 150px;
   background-color: $fresh_green;
 
   .logo {
     margin: 0;
     float: left;
+    opacity: 0.7;
 
     img {
       width: $logo_width;
       height: $logo_height;
-    }
-
-    span {
-      color: white;
-      margin-left: 10px;
     }
   }
 
@@ -25,10 +21,9 @@
    *   <input class="search-button" type="submit" value="&#xf002;">
    * </form>
    */
+
   .search-box {
     font-size: 0;
-    margin: (($header_height - ($header_padding * 2) - $search_box_height) / 2) 50px;
-    float: left;
 
     > * {
       font-size: 1.5rem;
