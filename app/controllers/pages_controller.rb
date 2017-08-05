@@ -7,4 +7,8 @@ class PagesController < ApplicationController
   # FIXME: Temporary method
   def profile
   end
+
+  # FIXME: Temporary method
+  def editor
+  end
 end
