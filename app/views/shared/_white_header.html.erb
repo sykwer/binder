@@ -1,0 +1,19 @@
+<header class="white-header">
+  <div class="header-wrapper clearfix">
+    <div class="header-left">
+      <h1 class="logo">
+        <%= link_to image_tag("gray_book_logo.png"), root_path %>
+      </h1>
+    </div>
+    <div class="header-right">
+      <nav class="header-menu">
+        <ul>
+          <li class="menu-item write-record"><%= link_to "Write a Record", "#" %></li>
+          <li class="menu-item icon"><i class="fa fa-cog" aria-hidden="true"></i></li>
+          <li class="menu-item icon"><i class="fa fa-bell-o" aria-hidden="true"></i></li>
+          <li class="menu-item profile-window"><%= link_to image_tag(current_user.image_url), '#' %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
