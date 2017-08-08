@@ -1,0 +1,13 @@
+create_table "posts", force: :cascade, options: default_options do |t|
+  t.integer    :user_id,            null: false
+  t.string     :content_draft,      null: false, default: ""
+  t.string     :content,            null: false, default: ""
+  t.string     :asin,               null: false, default: ""
+  t.string     :book_image_url,     null: false, default: ""
+  t.string     :book_name,          null: false, default: ""
+  t.string     :book_author,        null: false, default: ""
+  t.string     :book_author,        null: false, default: ""
+  t.string     :affiliate_link,     null: false, default: ""
+  t.datetime   :first_published_at
+  t.timestamps                      null: false
+end
