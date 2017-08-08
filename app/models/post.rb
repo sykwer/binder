@@ -1,10 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
 
-  width_options presence: true do
+  with_options presence: true do
     validates :content_draft
     validates :content
-    vaildates :asin
+    validates :asin
     validates :book_image_url
     validates :book_name
     validates :book_author
