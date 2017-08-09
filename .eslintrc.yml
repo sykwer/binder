@@ -11,8 +11,12 @@ parserOptions:
     experimentalObjectRestSpread: true
     jsx: true
   sourceType: module
+
 plugins:
+  - import
+  - jsx-a11y
   - react
+
 rules:
   indent:
     - error
