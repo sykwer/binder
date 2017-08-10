@@ -1,4 +1,5 @@
 {
   "application.js": "http://0.0.0.0:8080/packs/application.js",
-  "hello_react.js": "http://0.0.0.0:8080/packs/hello_react.js"
+  "hello_react.js": "http://0.0.0.0:8080/packs/hello_react.js",
+  "post_editor_app.js": "http://0.0.0.0:8080/packs/post_editor_app.js"
 }
