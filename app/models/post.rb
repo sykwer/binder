@@ -10,4 +10,8 @@ class Post < ApplicationRecord
     validates :book_author
     validates :affiliate_link
   end
+
+  before_create do
+    self.uuid = SecureRandom.uuid
+  end
 end
