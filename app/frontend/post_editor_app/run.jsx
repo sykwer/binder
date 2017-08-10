@@ -1,10 +1,12 @@
 import React from "react"
 import { render } from "react-dom"
 
+import Root from "./components/Root"
+
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
     render(
-      <p>hello react</p>,
+      <Root />,
       document.getElementById("post-editor-app"),
     )
   })
