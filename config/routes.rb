@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'profile', to: 'pages#profile'  # FIXME: Temporary routing. This should be users/:user_id
   get 'editor', to: 'pages#editor' # FIXME: Temporary routing.
 
+  resources :posts, only: [:create, :edit], param: :uuid
+
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
 
   devise_scope :user do
