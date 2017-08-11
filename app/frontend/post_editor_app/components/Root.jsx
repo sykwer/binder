@@ -4,7 +4,11 @@ import { Provider } from "react-redux"
 
 import rootReducer from "../store/reducers"
 
-const store = createStore(rootReducer)
+const initialState = {}
+const store = createStore(
+  rootReducer,
+  initialState,
+)
 
 const Root = () => (
   <Provider store={store}>

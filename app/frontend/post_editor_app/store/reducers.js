@@ -1,6 +1,6 @@
 import { combineReducers } from "redux"
 
-const bookNameInput = (state, action) => {
+const bookNameInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_BOOK_NAME_INPUT":
       return action.text
@@ -9,7 +9,7 @@ const bookNameInput = (state, action) => {
   }
 }
 
-const authorInput = (state, action) => {
+const authorInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_AUTHOR_INPUT":
       return action.text
@@ -18,7 +18,7 @@ const authorInput = (state, action) => {
   }
 }
 
-const publisherInput = (state, action) => {
+const publisherInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_PUBLISHER_INPUT":
       return action.text
@@ -27,7 +27,7 @@ const publisherInput = (state, action) => {
   }
 }
 
-const bookList = (state, action) => {
+const bookList = (state = [], action) => {
   switch (action.type) {
     case "UPDATE_BOOK_LIST":
       return action.books
@@ -36,7 +36,7 @@ const bookList = (state, action) => {
   }
 }
 
-const selectedBookAsin = (state, action) => {
+const selectedBookAsin = (state = "", action) => {
   switch (action.type) {
     case "SELECT_BOOK":
       return action.bookAsin
@@ -45,7 +45,7 @@ const selectedBookAsin = (state, action) => {
   }
 }
 
-const postContent = (state, action) => {
+const postContent = (state = "", action) => {
   switch (action.type) {
     case "UPDATE_POST_CONTENT":
       return action.text
@@ -54,7 +54,7 @@ const postContent = (state, action) => {
   }
 }
 
-const contentSaveState = (state, action) => {
+const contentSaveState = (state = "INITIAL", action) => {
   switch (action.type) {
     case "UPDATE_POST_CONTENT":
       return "IS_NOT_SAVED"
@@ -67,7 +67,7 @@ const contentSaveState = (state, action) => {
   }
 }
 
-const bookSearchState = (state, action) => {
+const bookSearchState = (state = "EMPTY", action) => {
   switch (action.type) {
     case "CHANGE_BOOK_NAME_INPUT":
     case "CHANGE_AUTHOR_INPUT":
