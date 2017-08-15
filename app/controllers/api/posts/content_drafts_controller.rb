@@ -2,7 +2,7 @@ class Api::Posts::ContentDraftsController < Api::ApplicationController
   before_action :set_post, only: %i(update)
 
   def update
-    @post.content_draft = params.permit(:content_draft)
+    @post.content_draft = params[:content_draft]
     if @post.save
       head :ok
     else
@@ -15,6 +15,6 @@ class Api::Posts::ContentDraftsController < Api::ApplicationController
   end
 
   def set_post
-    @post = Post.find(param[:post_id])
+    @post = Post.find(params[:post_id])
   end
 end

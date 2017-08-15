@@ -15,7 +15,10 @@ const run = () => {
 
     const sagaMiddleware = createSagaMiddleware()
 
-    const initialState = { uuid: data.uuid }
+    const initialState = {
+      uuid: data.uuid,
+      postContent: data.content,
+    }
     const store = createStore(
       rootReducer,
       initialState,
