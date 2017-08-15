@@ -36,7 +36,12 @@ button {
   appearance: none;
 }
 
-// Rest list mark
+// Reset list mark
 * {
   list-style-type: none;
+}
+
+// Reset contenteditable style
+[contenteditable]:focus {
+    outline: 0px solid transparent;
 }
