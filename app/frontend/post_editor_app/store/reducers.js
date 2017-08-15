@@ -82,6 +82,11 @@ const bookSearchState = (state = "EMPTY", action) => {
   }
 }
 
+// eslint-disable-next-line
+const uuid = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   bookNameInput,
   authorInput,
@@ -91,6 +96,7 @@ const rootReducer = combineReducers({
   postContent,
   contentSaveState,
   bookSearchState,
+  uuid,
 })
 
 export default rootReducer
