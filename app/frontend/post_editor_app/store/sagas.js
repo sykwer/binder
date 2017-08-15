@@ -4,7 +4,7 @@ import { takeLatest, call, put, select } from "redux-saga/effects"
 import { requestSaveContentDraft } from "./services"
 
 function* postContentSaveFlow(action) {
-  yield call(delay(1000))
+  yield call(delay, 1000)
 
   const state = yield select()
   yield put({ type: "START_SAVING_POST_CONTENT" })
