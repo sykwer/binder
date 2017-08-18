@@ -3,5 +3,10 @@
   data: {
     uuid: @post.uuid,
     content: @post.content_draft,
+    date: @post.published? ? format_date(@post.published_at) : format_date(Time.zone.now),
+    user: {
+      name: current_user.name,
+      image: current_user.image_url,
+    },
   }.to_json do %>
 <% end %>

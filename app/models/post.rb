@@ -8,4 +8,8 @@ class Post < ApplicationRecord
   def to_param
     uuid
   end
+
+  def published?
+    first_published_at.present?
+  end
 end

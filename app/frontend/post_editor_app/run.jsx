@@ -18,6 +18,11 @@ const run = () => {
     const initialState = {
       uuid: data.uuid,
       postContent: data.content,
+      date: data.date,
+      user: {
+        name: data.user.name,
+        image: data.user.image,
+      },
     }
     const store = createStore(
       rootReducer,
