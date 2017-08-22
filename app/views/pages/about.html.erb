@@ -1,0 +1,60 @@
+<div class="about-page">
+  <div class="about-head">
+    <%= image_tag "about_page_book.jpg" %>
+    <h2 class="service-description">
+    最高の読書ログ体験。<br>
+    友人との共有。<br>
+    読書好きのあなたに。
+    </h2>
+  </div>
+  <div class="about-body">
+    <div class="body-one clearfix">
+      <div class="body-one-left">
+        <h3 class="body-one-title">日々の読書を記録</h3>
+        <p class="body-one-desc">
+        非常に使いやすいエディタで、読書ログを編集することができます。
+        本の感想、自分自身の意見、本との出会いなど読書ログを通じて
+        自己表現する作業を力強くサポートします。
+        </p>
+      </div>
+      <div class="body-one-right">
+        <%= image_tag "post_editor.png" %>
+      </div>
+    </div>
+    <div class="body-two clearfix">
+      <div class="body-two-left">
+        <%= image_tag "mypage.png" %>
+      </div>
+      <div class="body-two-right">
+        <h3 class="body-two-title">本棚で自分を表現</h3>
+        <p class="body-two-desc">
+        マイページで自分の読書ログの一覧を公開することができます。
+        自分の読書歴を見返したり、自分の興味を本棚で表現することができます。
+        フォローしている友人の興味を知る一端にもなります。
+        </p>
+      </div>
+    </div>
+    <div class="body-three clearfix">
+      <div class="body-three-left">
+        <h3 class="body-three-title">本との新しい出会い方</h3>
+        <p class="body-three-desc">
+        友人が日々どんな本を読んでいるのか気になりませんか。
+        DailyBookではフォローしているユーザーの読書ログをタイムラインで
+        閲覧することができます。
+        次に読む本との出会いの場になるかもしれません。
+        </p>
+      </div>
+      <div class="body-three-right">
+        <%= image_tag "timeline.png" %>
+      </div>
+    </div>
+    <div class="body-foot">
+      <div class="lead-to-toppage">
+        <h3>最高の読書ログ体験を始めよう</h3>
+        <%= link_to root_path do %>
+          <button class="button">Start reading</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
