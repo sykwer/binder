@@ -2,7 +2,7 @@
 # the maximum value specified for Puma. Default is set to 5 threads for minimum
 # and maximum; this matches the default thread size of Active Record.
 #
-threads 0, 16
+threads 0, ENV.fetch("RAILS_MAX_THREADS") { 5 }
 
 if ["staging", "production"].include?(ENV["RAILS_ENV"])
   bind "unix:///var/www/dailybook/shared/tmp/sockets/puma.sock"
