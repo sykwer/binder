@@ -80,7 +80,7 @@ group :development do
   # Deployment
   gem "capistrano", "~> 3.9"
   gem 'capistrano-rails', '~> 1.3'
-  gem "capistrano-puma"
+  gem "capistrano3-puma"
   gem "capistrano-yarn"
 end
 
