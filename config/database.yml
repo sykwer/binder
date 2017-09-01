@@ -54,4 +54,5 @@ production:
   <<: *default
   database: dailybook_production
   username: sykwer
-  password: <%= ENV['DAILYBOOK_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DAILYBOOK_PROD_DB_PASSWORD'] %>
+  host: dailybook-prod-db.cbr33z07eabr.ap-northeast-1.rds.amazonaws.com
