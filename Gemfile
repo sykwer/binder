@@ -77,6 +77,11 @@ group :development do
   # Code metric tools
   gem 'rails_best_practices', require: false
   gem 'rubocop', require: false
+  # Deployment
+  gem "capistrano", "~> 3.9"
+  gem 'capistrano-rails', '~> 1.3'
+  gem "capistrano3-puma"
+  gem "capistrano-yarn"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

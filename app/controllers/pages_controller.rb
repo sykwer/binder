@@ -11,4 +11,7 @@ class PagesController < ApplicationController
   # FIXME: Temporary method
   def editor
   end
+
+  def about
+  end
 end
