@@ -29,7 +29,7 @@ const publisherInput = (state = "", action) => {
 
 const bookList = (state = [], action) => {
   switch (action.type) {
-    case "UPDATE_BOOK_LIST":
+    case "RECEIVE_BOOK_LIST":
       return action.books
     default:
       return state
