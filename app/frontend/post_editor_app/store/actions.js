@@ -46,6 +46,10 @@ export const receiveBookList = books => ({
   books,
 })
 
+export const receiveEmpty = () => ({
+  type: "RECEIVE_EMPTY",
+})
+
 export const startSavingPostContent = text => ({
   type: "START_SAVING_POST_CONTENT",
   text,

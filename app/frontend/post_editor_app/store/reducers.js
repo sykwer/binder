@@ -77,6 +77,8 @@ const bookSearchState = (state = "EMPTY", action) => {
       return "IS_FETCHING"
     case "RECEIVE_BOOK_LIST":
       return "IS_FETCHED"
+    case "RECEIVE_EMPTY":
+      return "IS_FETCHED_EMPTY"
     case "NOTIFY_BOOK_SEARCH_INPUT_EMPTY":
       return "EMPTY"
     default:

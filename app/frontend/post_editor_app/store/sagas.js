@@ -28,7 +28,12 @@ function* fetchBookListFlow() {
     state.authorInput,
     state.publisherInput,
   )
-  yield put({ type: "RECEIVE_BOOK_LIST", books })
+
+  if (typeof books !== "undefined") {
+    yield put({ type: "RECEIVE_BOOK_LIST", books })
+  } else {
+    yield put({ type: "RECEIVE_EMPTY" })
+  }
 }
 
 function* searchBookListFlow() {
