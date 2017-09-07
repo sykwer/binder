@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Grid } from "react-virtualized"
 
-const BookList = ({ bookList }) => {
+const BookList = ({ bookList, handleOnClickBook }) => {
   const cellRenderer = ({ rowIndex, columnIndex, key, style }) => {
     // Workaround: Custom style in valid place
     Object.assign(style, { margin: 15 })
@@ -21,10 +21,25 @@ const BookList = ({ bookList }) => {
 
     const bookName = book.volumeInfo.title
     const imageURL = book.volumeInfo.imageLinks.thumbnail
+    const bookId = book.id
+
+    const onClick = () => {
+      handleOnClickBook(bookId)
+    }
 
     return (
-      <div key={key} style={style} >
-        <img src={imageURL} alt={bookName} style={{ width: 130, height: 130 * 1.6 }} />
+      <div
+        key={key}
+        style={style}
+        role="button"
+        onClick={onClick}
+        tabIndex={(rowIndex * 2) + columnIndex}
+      >
+        <img
+          src={imageURL}
+          alt={bookName}
+          style={{ width: 130, height: 130 * 1.6 }}
+        />
       </div>
     )
   }
@@ -54,6 +69,7 @@ const BookList = ({ bookList }) => {
 BookList.propTypes = {
   // eslint-disable-next-line
   bookList: PropTypes.array.isRequired,
+  handleOnClickBook: PropTypes.func.isRequired,
 }
 
 export default BookList

@@ -1,5 +1,6 @@
 import { connect } from "react-redux"
 
+import { selectBook } from "../store/actions"
 import BookList from "./BookList"
 
 const mapStateToProps = (state) => {
@@ -15,8 +16,13 @@ const mapStateToProps = (state) => {
   return { bookList: gridArr }
 }
 
+const mapDispatchToProps = dispatch => ({
+  handleOnClickBook: bookAsin => dispatch(selectBook(bookAsin)),
+})
+
 const BookListContainer = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(BookList)
 
 export default BookListContainer
