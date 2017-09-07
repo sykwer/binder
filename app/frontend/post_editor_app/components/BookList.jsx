@@ -20,13 +20,7 @@ const BookList = ({ bookList }) => {
     }
 
     const bookName = book.volumeInfo.title
-
-    let imageURL
-    if (typeof book.volumeInfo.imageLinks !== "undefined") {
-      imageURL = book.volumeInfo.imageLinks.smallThumbnail
-    } else {
-      imageURL = "http://via.placeholder.com/130x208"
-    }
+    const imageURL = book.volumeInfo.imageLinks.thumbnail
 
     return (
       <div key={key} style={style} >
