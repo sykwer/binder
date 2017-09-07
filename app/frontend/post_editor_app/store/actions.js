@@ -13,6 +13,10 @@ export const changePublisherInput = text => ({
   text,
 })
 
+export const notifyBookSearchInputEmpty = () => ({
+  type: "NOTIFY_BOOK_SEARCH_INPUT_EMPTY",
+})
+
 export const updateBookList = books => ({
   type: "UPDATE_BOOK_LIST",
   books,

@@ -1,5 +1,5 @@
 import { delay } from "redux-saga"
-import { takeLatest, call, put, select } from "redux-saga/effects"
+import { takeLatest, call, put, select, fork, take, cancel } from "redux-saga/effects"
 
 import { requestSaveContentDraft, requestBookList } from "./services"
 
@@ -17,7 +17,7 @@ function* postContentSaveFlow(action) {
   }
 }
 
-function* searchBookListFlow() {
+function* fetchBookListFlow() {
   yield call(delay, 1000)
 
   const state = yield select()
@@ -31,13 +31,30 @@ function* searchBookListFlow() {
   yield put({ type: "RECEIVE_BOOK_LIST", books })
 }
 
+function* searchBookListFlow() {
+  let lastTask
+  let state
+
+  while (true) {
+    yield take(["CHANGE_BOOK_NAME_INPUT", "CHANGE_AUTHOR_INPUT", "CHANGE_PUBLISHER_INPUT"])
+
+    if (lastTask) {
+      yield cancel(lastTask)
+    }
+
+    state = yield select()
+
+    if (state.bookNameInput || state.authorInput || state.publisherInput) {
+      lastTask = yield fork(fetchBookListFlow)
+    } else {
+      yield put({ type: "NOTIFY_BOOK_SEARCH_INPUT_EMPTY" })
+    }
+  }
+}
+
 function* rootSaga() {
   yield takeLatest("UPDATE_POST_CONTENT", postContentSaveFlow)
-  yield takeLatest([
-    "CHANGE_BOOK_NAME_INPUT",
-    "CHANGE_AUTHOR_INPUT",
-    "CHANGE_PUBLISHER_INPUT",
-  ], searchBookListFlow)
+  yield fork(searchBookListFlow)
 }
 
 export default rootSaga
