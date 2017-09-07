@@ -21,7 +21,7 @@ export const requestBookList = (bookName, author, publisher) => {
   if (publisher) {
     params.push(`inpublisher:${publisher}`)
   }
-  const url = `${baseURL}?key=${key}&q=${params.join("+")}`
+  const url = `${baseURL}?key=${key}&maxResults=40&q=${params.join("+")}`
 
   return axios.get(url).then(res => res.data.items)
 }

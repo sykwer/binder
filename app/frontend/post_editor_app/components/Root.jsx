@@ -3,11 +3,13 @@ import React from "react"
 import PostContentContainer from "./PostContentContainer"
 import BookInfoInputContainer from "./BookInfoInputContainer"
 import PostMetaInfo from "./PostMetaInfo"
+import BookListContainer from "./BookListContainer"
 
 const Root = () => (
   <div className="post-editor-component clearfix">
     <div className="book-selector-component">
       <BookInfoInputContainer />
+      <BookListContainer />
     </div>
     <div className="post-preview-component">
       <PostMetaInfo />
