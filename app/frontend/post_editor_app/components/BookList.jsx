@@ -4,7 +4,6 @@ import { Grid } from "react-virtualized"
 
 const BookList = ({ bookList }) => {
   const cellRenderer = ({ rowIndex, columnIndex, key, style }) => {
-    console.log(bookList[rowIndex][columnIndex].volumeInfo.title, [rowIndex, columnIndex])
     const book = bookList[rowIndex][columnIndex]
     const bookName = book.volumeInfo.title
 
@@ -12,7 +11,7 @@ const BookList = ({ bookList }) => {
     if (typeof book.volumeInfo.imageLinks !== "undefined") {
       imageURL = book.volumeInfo.imageLinks.smallThumbnail
     } else {
-      imageURL = "http://via.placeholder.com/140x224"
+      imageURL = "http://via.placeholder.com/130x208"
     }
 
     Object.assign(style, { margin: 15 })
