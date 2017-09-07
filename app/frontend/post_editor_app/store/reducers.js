@@ -31,6 +31,8 @@ const bookList = (state = [], action) => {
   switch (action.type) {
     case "RECEIVE_BOOK_LIST":
       return action.books
+    case "NOTIFY_BOOK_SEARCH_INPUT_EMPTY":
+      return []
     default:
       return state
   }
