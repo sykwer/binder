@@ -4,7 +4,21 @@ import { Grid } from "react-virtualized"
 
 const BookList = ({ bookList }) => {
   const cellRenderer = ({ rowIndex, columnIndex, key, style }) => {
+    // Workaround: Custom style in valid place
+    Object.assign(style, { margin: 15 })
+
     const book = bookList[rowIndex][columnIndex]
+
+    // Workaround: Research how should we do when the number of books is odd number
+    if (typeof book === "undefined") {
+      Object.assign(style, { opacity: 0 })
+      return (
+        <div key={key} style={style}>
+          <img src="http://via.placeholder.com/130x208" alt="blank" />
+        </div>
+      )
+    }
+
     const bookName = book.volumeInfo.title
 
     let imageURL
@@ -13,8 +27,6 @@ const BookList = ({ bookList }) => {
     } else {
       imageURL = "http://via.placeholder.com/130x208"
     }
-
-    Object.assign(style, { margin: 15 })
 
     return (
       <div key={key} style={style} >
