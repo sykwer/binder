@@ -8,12 +8,36 @@ const mapStateToProps = (state) => {
     typeof book.volumeInfo.imageLinks !== "undefined"
   ))
   const gridArr = []
-
   while (bookList.length) {
     gridArr.push(bookList.splice(0, 2))
   }
 
-  return { bookList: gridArr }
+  let listBoxWord
+  let isListEmpty
+  switch (state.bookSearchState) {
+    case "EMPTY":
+      listBoxWord = "Type in search critearia."
+      isListEmpty = true
+      break
+    case "IS_TYPING":
+    case "IS_FETCHING":
+      listBoxWord = "Searching.."
+      isListEmpty = true
+      break
+    case "IS_FETCHED_EMPTY":
+      listBoxWord = "Not found."
+      isListEmpty = true
+      break
+    default:
+      listBoxWord = ""
+      isListEmpty = false
+  }
+
+  return {
+    bookList: gridArr,
+    listBoxWord,
+    isListEmpty,
+  }
 }
 
 const mapDispatchToProps = dispatch => ({

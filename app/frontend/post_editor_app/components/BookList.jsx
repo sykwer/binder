@@ -2,7 +2,20 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Grid } from "react-virtualized"
 
-const BookList = ({ bookList, handleOnClickBook }) => {
+const BookList = ({
+  bookList,
+  listBoxWord,
+  isListEmpty,
+  handleOnClickBook,
+}) => {
+  if (isListEmpty) {
+    return (
+      <div className="booklist-window">
+        <span className="list-box-word">{listBoxWord}</span>
+      </div>
+    )
+  }
+
   const cellRenderer = ({ rowIndex, columnIndex, key, style }) => {
     // Workaround: Custom style in valid place
     Object.assign(style, { margin: 15 })
@@ -72,6 +85,8 @@ const BookList = ({ bookList, handleOnClickBook }) => {
 BookList.propTypes = {
   // eslint-disable-next-line
   bookList: PropTypes.array.isRequired,
+  listBoxWord: PropTypes.string.isRequired,
+  isListEmpty: PropTypes.bool.isRequired,
   handleOnClickBook: PropTypes.func.isRequired,
 }
 
