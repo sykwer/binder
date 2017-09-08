@@ -57,9 +57,15 @@ function* searchBookListFlow() {
   }
 }
 
+function* afterSelectBookFlow() {
+  yield call(delay, 0.1)
+  yield put({ type: "NOTIFY_BOOK_SEARCH_INPUT_EMPTY" })
+}
+
 function* rootSaga() {
   yield takeLatest("UPDATE_POST_CONTENT", postContentSaveFlow)
   yield fork(searchBookListFlow)
+  yield takeLatest("SELECT_BOOK", afterSelectBookFlow)
 }
 
 export default rootSaga

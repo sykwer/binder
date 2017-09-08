@@ -4,6 +4,8 @@ const bookNameInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_BOOK_NAME_INPUT":
       return action.text
+    case "SELECT_BOOK":
+      return ""
     default:
       return state
   }
@@ -13,6 +15,8 @@ const authorInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_AUTHOR_INPUT":
       return action.text
+    case "SELECT_BOOK":
+      return ""
     default:
       return state
   }
@@ -22,6 +26,8 @@ const publisherInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_PUBLISHER_INPUT":
       return action.text
+    case "SELECT_BOOK":
+      return ""
     default:
       return state
   }
