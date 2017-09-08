@@ -4,10 +4,11 @@ import { takeLatest, call, put, select, fork, take, cancel } from "redux-saga/ef
 import { requestSaveContentDraft, requestBookList, requestSaveSelectedBook } from "./services"
 
 function* postContentSaveFlow(action) {
-  yield call(delay, 1000)
+  yield call(delay, 1500)
+  yield put({ type: "START_SAVING_POST_CONTENT" })
+  yield call(delay, 1500)
 
   const state = yield select()
-  yield put({ type: "START_SAVING_POST_CONTENT" })
   const isSuccess = yield call(requestSaveContentDraft, state.uuid, action.text)
 
   if (isSuccess) {
