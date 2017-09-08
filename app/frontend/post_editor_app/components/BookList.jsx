@@ -24,7 +24,7 @@ const BookList = ({ bookList, handleOnClickBook }) => {
     const bookTitle = book.volumeInfo.title
     // FIXME: deal with multiple authors
     const author = book.volumeInfo.authors ? book.volumeInfo.authors[0] : ""
-    const publisher = book.volumeInfo.publisher
+    const publisher = book.volumeInfo.publisher ? book.volumeInfo.publisher : ""
 
     const onClick = () => {
       handleOnClickBook(bookId, bookTitle, author, publisher, imageURL)
