@@ -30,17 +30,9 @@ cpnt.defaultProps = {
 }
 
 const mapStateToProps = (state) => {
-  let imageURL
-  let title
-  let author
-  if (!state.selectedBookAsin) {
-    imageURL = "http://via.placeholder.com/142x212"
-  } else {
-    const bk = state.bookList.find(book => book.id === state.selectedBookAsin)
-    imageURL = bk.volumeInfo.imageLinks.thumbnail
-    title = bk.volumeInfo.title
-    author = bk.volumeInfo.authors[0] // FIXME: Deal with multiple authors
-  }
+  const imageURL = state.selectedBookAsin ? state.selectedBookImage : "http://via.placeholder.com/142x212"
+  const title = state.selectedBookTitle
+  const author = state.selectedBookAuthor
 
   return { imageURL, title, author }
 }

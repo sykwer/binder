@@ -17,7 +17,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  handleOnClickBook: bookAsin => dispatch(selectBook(bookAsin)),
+  handleOnClickBook: (bookAsin, title, author, publisher, image) => (
+    dispatch(selectBook(bookAsin, title, author, publisher, image))
+  ),
 })
 
 const BookListContainer = connect(

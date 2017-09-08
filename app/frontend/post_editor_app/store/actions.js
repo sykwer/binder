@@ -22,9 +22,13 @@ export const updateBookList = books => ({
   books,
 })
 
-export const selectBook = bookAsin => ({
+export const selectBook = (bookAsin, title, author, publisher, image) => ({
   type: "SELECT_BOOK",
   bookAsin,
+  title,
+  author,
+  publisher,
+  image,
 })
 
 export const updatePostContent = text => ({

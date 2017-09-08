@@ -19,12 +19,15 @@ const BookList = ({ bookList, handleOnClickBook }) => {
       )
     }
 
-    const bookName = book.volumeInfo.title
     const imageURL = book.volumeInfo.imageLinks.thumbnail
     const bookId = book.id
+    const bookTitle = book.volumeInfo.title
+    // FIXME: deal with multiple authors
+    const author = book.volumeInfo.authors ? book.volumeInfo.authors[0] : ""
+    const publisher = book.volumeInfo.publisher
 
     const onClick = () => {
-      handleOnClickBook(bookId)
+      handleOnClickBook(bookId, bookTitle, author, publisher, imageURL)
     }
 
     return (
@@ -37,7 +40,7 @@ const BookList = ({ bookList, handleOnClickBook }) => {
       >
         <img
           src={imageURL}
-          alt={bookName}
+          alt={bookTitle}
           style={{ width: 130, height: 130 * 1.6 }}
         />
       </div>

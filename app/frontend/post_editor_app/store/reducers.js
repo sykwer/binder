@@ -53,6 +53,42 @@ const selectedBookAsin = (state = "", action) => {
   }
 }
 
+const selectedBookTitle = (state = "", action) => {
+  switch (action.type) {
+    case "SELECT_BOOK":
+      return action.title
+    default:
+      return state
+  }
+}
+
+const selectedBookAuthor = (state = "", action) => {
+  switch (action.type) {
+    case "SELECT_BOOK":
+      return action.author
+    default:
+      return state
+  }
+}
+
+const selectedBookPublisher = (state = "", action) => {
+  switch (action.type) {
+    case "SELECT_BOOK":
+      return action.publisher
+    default:
+      return state
+  }
+}
+
+const selectedBookImage = (state = "", action) => {
+  switch (action.type) {
+    case "SELECT_BOOK":
+      return action.image
+    default:
+      return state
+  }
+}
+
 const postContent = (state = "", action) => {
   switch (action.type) {
     case "UPDATE_POST_CONTENT":
@@ -115,6 +151,10 @@ const rootReducer = combineReducers({
   publisherInput,
   bookList,
   selectedBookAsin,
+  selectedBookTitle,
+  selectedBookAuthor,
+  selectedBookPublisher,
+  selectedBookImage,
   postContent,
   contentSaveState,
   bookSearchState,
