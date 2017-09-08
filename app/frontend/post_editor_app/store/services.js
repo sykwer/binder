@@ -25,3 +25,21 @@ export const requestBookList = (bookName, author, publisher) => {
 
   return axios.get(url).then(res => res.data.items)
 }
+
+export const requestSaveSelectedBook = (
+  postUuid,
+  bookAsin,
+  image,
+  title,
+  author,
+  publisher,
+) => {
+  const url = `http://localhost:3000/api/posts/${postUuid}/book_info`
+  return axios.patch(url, {
+    asin: bookAsin,
+    book_image_url: image,
+    book_title: title,
+    book_author: author,
+    book_publisher: publisher,
+  }).then(res => res.status === 200)
+}

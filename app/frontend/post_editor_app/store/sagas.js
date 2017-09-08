@@ -1,7 +1,7 @@
 import { delay } from "redux-saga"
 import { takeLatest, call, put, select, fork, take, cancel } from "redux-saga/effects"
 
-import { requestSaveContentDraft, requestBookList } from "./services"
+import { requestSaveContentDraft, requestBookList, requestSaveSelectedBook } from "./services"
 
 function* postContentSaveFlow(action) {
   yield call(delay, 1000)
@@ -60,6 +60,23 @@ function* searchBookListFlow() {
 function* afterSelectBookFlow() {
   yield call(delay, 0.1)
   yield put({ type: "NOTIFY_BOOK_SEARCH_INPUT_EMPTY" })
+
+  const state = yield select()
+  const isSuccess = yield call(
+    requestSaveSelectedBook,
+    state.uuid,
+    state.selectedBookAsin,
+    state.selectedBookImage,
+    state.selectedBookTitle,
+    state.selectedBookAuthor,
+    state.selectedBookPublisher,
+  )
+
+  if (isSuccess) {
+    // handle success
+  } else {
+    // handle failure
+  }
 }
 
 function* rootSaga() {

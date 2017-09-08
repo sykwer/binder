@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :api, { format: 'json' } do
     resources :posts, only: %i() do
       resource :content_draft, controller: 'posts/content_drafts', only: %i(update)
+      resource :book_info, controller: 'posts/book_infos', only: %i(update)
     end
   end
 end

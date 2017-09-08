@@ -8,6 +8,11 @@
         id: "post-editor-app",
         data: {
           uuid: @post.uuid,
+          asin: @post.asin,
+          title: @post.book_title,
+          author: @post.book_author,
+          publisher: @post.book_publisher,
+          image: @post.book_image_url,
           content: @post.content_draft,
           date: @post.published? ? format_date(@post.published_at) : format_date(Time.zone.now),
           user: {
