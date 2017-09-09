@@ -27,12 +27,12 @@ PostContent.propTypes = {
 }
 
 window.addEventListener("load", () => {
-  const node = document.getElementById("post-content-div").childNodes[0]
+  const node = document.getElementById("post-content-div")
   const range = document.createRange()
   const selection = window.getSelection()
 
-  range.setStart(node, node.length)
-  range.collapse(true)
+  range.selectNodeContents(node)
+  range.collapse(false)
 
   selection.removeAllRanges()
   selection.addRange(range)
