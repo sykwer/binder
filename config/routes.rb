@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  get "/@:username", to: "users#show"
+
   resources :posts, only: %i(create edit), param: :uuid do
     resource :content, controller: "posts/contents", only: %i(update)
   end
