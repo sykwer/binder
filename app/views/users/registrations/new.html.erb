@@ -1,0 +1,5 @@
+<%= form_with(model: @registration, url: user_registration_path, method: :post, local: true) do |f| %>
+  <p>ユーザーネームを決めてください</p>
+  <%= f.text_field :username %>
+  <%= f.submit %>
+<% end %>
