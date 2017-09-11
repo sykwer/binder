@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   root to: 'pages#top'
   get 'profile', to: 'pages#profile'  # FIXME: Temporary routing. This should be users/:user_id
-  get 'editor', to: 'pages#editor' # FIXME: Temporary routing.
   get 'about', to: 'pages#about'
 
   resources :posts, only: %i(create edit), param: :uuid do
