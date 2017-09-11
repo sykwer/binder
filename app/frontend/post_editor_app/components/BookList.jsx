@@ -41,6 +41,15 @@ const BookList = ({
 
     const onClick = () => {
       handleOnClickBook(bookId, bookTitle, author, publisher, imageURL)
+
+      // focus caret on last of post content
+      const node = document.getElementById("post-content-div")
+      const range = document.createRange()
+      const selection = window.getSelection()
+      range.selectNodeContents(node)
+      range.collapse()
+      selection.removeAllRanges()
+      selection.addRange(range)
     }
 
     return (
