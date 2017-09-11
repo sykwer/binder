@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'editor', to: 'pages#editor' # FIXME: Temporary routing.
   get 'about', to: 'pages#about'
 
-  resources :posts, only: %i(create edit), param: :uuid
+  resources :posts, only: %i(create edit), param: :uuid do
+    resource :content, controller: "posts/contents", only: %i(update)
+  end
 
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks" }
 

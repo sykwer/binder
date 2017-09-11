@@ -14,7 +14,7 @@
           publisher: @post.book_publisher,
           image: @post.book_image_url,
           content: @post.content_draft,
-          date: @post.published? ? format_date(@post.published_at) : format_date(Time.zone.now),
+          date: @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now),
           user: {
             name: current_user.name,
             image: current_user.image_url,
