@@ -8,10 +8,6 @@ class PagesController < ApplicationController
   def profile
   end
 
-  # FIXME: Temporary method
-  def editor
-  end
-
   def about
   end
 end
