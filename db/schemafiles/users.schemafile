@@ -14,4 +14,5 @@ create_table "users", force: :cascade, options: default_options do |t|
     t.timestamps null: false
 
     add_index :users, :email,                unique: true
+    add_index :users, :username,             unique: true
 end
