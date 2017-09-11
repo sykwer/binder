@@ -2,7 +2,7 @@ class Posts::ContentsController < ApplicationController
   before_action :set_post, only: %i(update)
 
   def update
-    @post.publish_or_update_content
+    @post.publish_or_update_content!
     redirect_to root_path
   end
 
