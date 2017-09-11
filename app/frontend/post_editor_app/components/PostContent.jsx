@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const PostContent = ({ text, onChangeContent }) => {
+const PostContent = ({ onChangeContent }) => {
   let editable
 
   return (
@@ -14,26 +14,28 @@ const PostContent = ({ text, onChangeContent }) => {
           e.preventDefault()
           onChangeContent(editable.innerText)
         }}
-      >
-        { text }
-      </div>
+      />
     </div>
   )
 }
 
 PostContent.propTypes = {
-  text: PropTypes.string.isRequired,
   onChangeContent: PropTypes.func.isRequired,
 }
 
 window.addEventListener("load", () => {
   const node = document.getElementById("post-content-div")
+
+  // workaround
+  const rootNode = document.getElementById("post-editor-app")
+  const data = JSON.parse(rootNode.getAttribute("data"))
+  node.innerText = data.postContent
+
+  // For first position of caret
   const range = document.createRange()
   const selection = window.getSelection()
-
   range.selectNodeContents(node)
   range.collapse(false)
-
   selection.removeAllRanges()
   selection.addRange(range)
 })
