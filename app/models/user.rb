@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  devise :rememberable, :trackable, :timeoutable, :omniauthable, :omniauth_providers => [:facebook]
+  devise :rememberable, :trackable, :timeoutable, :registerable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :posts
 
