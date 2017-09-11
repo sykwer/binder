@@ -1,4 +1,5 @@
-create_table "posts", force: :cascade, options: default_options do |t|
+create_table "posts", id: false, force: :cascade, options: default_options do |t|
+  t.string     :uuid,               null: false,              primary_key: true
   t.integer    :user_id,            null: false
   t.string     :content_draft,      null: false, default: ""
   t.string     :content,            null: false, default: ""
