@@ -29,7 +29,7 @@ window.addEventListener("load", () => {
   // workaround
   const rootNode = document.getElementById("post-editor-app")
   const data = JSON.parse(rootNode.getAttribute("data"))
-  node.innerText = data.postContent
+  node.innerText = data.content
 
   // For first position of caret
   const range = document.createRange()

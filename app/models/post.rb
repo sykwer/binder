@@ -12,4 +12,9 @@ class Post < ApplicationRecord
   def published?
     first_published_at.present?
   end
+
+  def publish_or_update_content!
+    update!(first_published_at: Time.zone.now) unless published?
+    update!(content: content_draft)
+  end
 end
