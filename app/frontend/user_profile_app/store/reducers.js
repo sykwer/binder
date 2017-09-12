@@ -4,6 +4,8 @@ const displayedName = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_NAME":
       return action.text
+    case "CANCEL_EDIT":
+      return action.savedName
     default:
       return state
   }
@@ -13,6 +15,8 @@ const displayedBio = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_BIO":
       return action.text
+    case "CANCEL_EDIT":
+      return action.savedBio
     default:
       return state
   }
@@ -21,7 +25,7 @@ const displayedBio = (state = "", action) => {
 const savedName = (state = "", action) => {
   switch (action.type) {
     case "SAVE":
-      return action.name
+      return action.displayedName
     default:
       return state
   }
@@ -30,7 +34,7 @@ const savedName = (state = "", action) => {
 const savedBio = (state = "", action) => {
   switch (action.type) {
     case "SAVE":
-      return action.bio
+      return action.displayedBio
     default:
       return state
   }

@@ -12,11 +12,13 @@
         .profile-main-left {
           float: left;
 
-          h2 {
+          .name {
             color: $black_gray;
+            font-size: 30px;
+            margin-top: 15px;
           }
 
-          p {
+          .bio {
             color: $gray56;
             font-size: 15px;
             letter-spacing: 0.5px;

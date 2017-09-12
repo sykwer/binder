@@ -8,16 +8,18 @@ export const changeBio = text => ({
   text,
 })
 
-export const save = ({ name, bio }) => ({
+export const save = (displayedName, displayedBio) => ({
   type: "SAVE",
-  name,
-  bio,
+  displayedName,
+  displayedBio,
 })
 
 export const startEdit = () => ({
   type: "START_EDIT",
 })
 
-export const cancelEdit = () => ({
+export const cancelEdit = (savedName, savedBio) => ({
   type: "CANCEL_EDIT",
+  savedName,
+  savedBio,
 })
