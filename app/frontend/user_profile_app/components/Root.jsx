@@ -18,7 +18,7 @@ const Root = () => (
         <Image />
       </div>
     </div>
-    <div className="edit-button">
+    <div className="profile-footer">
       <Button />
     </div>
   </div>

@@ -50,11 +50,17 @@ const cpnt = ({
 
   if (isEditting) {
     return (
-      <div>
-        <button onClick={onClickSave}>
+      <div className="finish-buttons">
+        <button
+          className="save-button"
+          onClick={onClickSave}
+        >
           Save
         </button>
-        <button onClick={onClickCancel}>
+        <button
+          className="cancel-button"
+          onClick={onClickCancel}
+        >
           Cancel
         </button>
       </div>
@@ -62,7 +68,10 @@ const cpnt = ({
   }
 
   return (
-    <button onClick={onClickEdit}>
+    <button
+      className="edit-button"
+      onClick={onClickEdit}
+    >
       Edit
     </button>
   )
