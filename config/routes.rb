@@ -27,5 +27,9 @@ Rails.application.routes.draw do
       resource :content_draft, controller: 'posts/content_drafts', only: %i(update)
       resource :book_info, controller: 'posts/book_infos', only: %i(update)
     end
+
+    resources :users, only: %i() do
+      resource :profile, controller: "users/profiles", only: %i(update)
+    end
   end
 end

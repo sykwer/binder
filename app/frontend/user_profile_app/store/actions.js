@@ -4,7 +4,7 @@ export const changeName = text => ({
 })
 
 export const changeBio = text => ({
-  type: "CHAGNE_BIO",
+  type: "CHANGE_BIO",
   text,
 })
 

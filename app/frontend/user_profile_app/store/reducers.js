@@ -45,6 +45,11 @@ const image = (state = "", action) => {
   return state
 }
 
+// eslint-disable-next-line
+const id = (state = "", action) => {
+  return state
+}
+
 const appState = (state = "NOT_EDITING", action) => {
   switch (action.type) {
     case "START_EDIT":
@@ -63,6 +68,7 @@ const rootReducer = combineReducers({
   savedName,
   savedBio,
   image,
+  id,
   appState,
 })
 

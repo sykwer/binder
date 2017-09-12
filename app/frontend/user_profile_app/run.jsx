@@ -16,6 +16,7 @@ const run = () => {
     const sagaMiddleware = createSagaMiddleware()
 
     const initialState = {
+      id: data.id,
       displayedName: data.name,
       displayedBio: data.bio,
       savedName: data.name,

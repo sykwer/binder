@@ -5,6 +5,7 @@
       <%= content_tag :div,
         id: "user-profile-app",
         data: {
+          id: @user.id,
           name: @user.name,
           bio: @user.bio,
           image: @user.image_url,
