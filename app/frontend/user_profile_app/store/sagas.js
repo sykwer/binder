@@ -18,7 +18,6 @@ function* saveProfileFlow() {
   }
 }
 
-// eslint-disable-next-line
 function* rootSaga() {
   yield takeLatest("SAVE", saveProfileFlow)
 }
