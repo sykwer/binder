@@ -4,7 +4,7 @@ const ProfileSub = () => (
   <div className="profile-sub-wrapper clearfix">
     <div className="follows">
       <span className="following">
-        <span className="num">150</span>Following
+        <span className="num">150</span> Following
       </span>
       <span className="follower">
         <span className="num">75</span> Follower
