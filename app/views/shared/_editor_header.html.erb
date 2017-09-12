@@ -11,7 +11,7 @@
           <li class="menu-item publish-button"><%= link_to "Publish", post_content_path(@post), method: :patch %></li>
           <li class="menu-item icon"><i class="fa fa-cog" aria-hidden="true"></i></li>
           <li class="menu-item icon"><i class="fa fa-bell-o" aria-hidden="true"></i></li>
-          <li class="menu-item profile-window"><%= link_to image_tag(current_user.image_url), '#' %></li>
+          <li class="menu-item profile-window"><%= link_to image_tag(current_user.image_url), "/@#{current_user.username}" %></li>
         </ul>
       </nav>
     </div>
