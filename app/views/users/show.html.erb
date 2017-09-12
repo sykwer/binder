@@ -1,0 +1,20 @@
+<%= render "shared/white_header" %>
+<div class="mypage">
+  <div class="mypage-upper">
+    <% if current_user == @user %>
+      <%= content_tag :div,
+        id: "user-profile-app",
+        data: {
+          id: @user.id,
+          name: @user.name,
+          bio: @user.bio,
+          image: @user.image_url,
+        }.to_json do %>
+      <% end %>
+    <% else %>
+      <%= render "users/profile", user: @user %>
+    <% end %>
+  </div>
+  <div class="mypage-lower">
+  </div>
+</div>

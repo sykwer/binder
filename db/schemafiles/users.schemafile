@@ -2,6 +2,7 @@ create_table "users", force: :cascade, options: default_options do |t|
     t.string :email,              null: false, default: ""
     t.string :name,               null: false
     t.string :username,           null: false
+    t.string :bio,                null: false, default: ""
     t.string :image_url
     t.datetime :remember_created_at
     t.integer  :sign_in_count, default: 0, null: false
