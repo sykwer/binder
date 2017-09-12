@@ -15,7 +15,6 @@ function* saveProfileFlow() {
     // handle success
   } else {
     // handle failure
-    console.log("fail")
   }
 }
 
