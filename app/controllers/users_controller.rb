@@ -5,6 +5,8 @@ class UsersController < ApplicationController
     if @user.blank?
       render status: 404, file: "/public/404" and return
     end
+
+    @posts = Post.where(user_id: @user.id).published.order(created_at: :desc)
   end
 
   def set_user

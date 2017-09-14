@@ -17,7 +17,10 @@
   </div>
   <div class="mypage-lower">
     <%= content_tag :div,
-      id: "bookshelf-app" do %>
+      id: "bookshelf-app",
+      data: {
+        books: @posts,
+      }.to_json do %>
     <% end %>
   </div>
 </div>
