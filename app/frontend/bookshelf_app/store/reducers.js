@@ -27,6 +27,15 @@ const isAllFetched = (state = false, action) => {
   }
 }
 
+const selectedPost = (state = null, action) => {
+  switch (action.type) {
+    case "FETCHED_POST_DETAIL":
+      return action.post
+    default:
+      return state
+  }
+}
+
 // eslint-disable-next-line
 const userId = (state = null, action) => {
   return state
@@ -36,6 +45,7 @@ const rootReducer = combineReducers({
   posts,
   postsCount,
   isAllFetched,
+  selectedPost,
   userId,
 })
 

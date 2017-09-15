@@ -1,7 +1,11 @@
 import { fork, call, take, select, put } from "redux-saga/effects"
 
-import { fetchPosts } from "./services"
-import { finishFetching, notifyAllFetched } from "./actions"
+import { fetchPosts, fetchPostDetail } from "./services"
+import {
+  finishFetching,
+  notifyAllFetched,
+  fetchedPostDetail,
+} from "./actions"
 
 function* fetchPostsFlow() {
   while (true) {
@@ -26,8 +30,17 @@ function* fetchPostsFlow() {
   }
 }
 
+function* fetchPostDetailFlow() {
+  while (true) {
+    const action = yield take("START_FETCH_POST_DETAIL")
+    const post = yield call(fetchPostDetail, action.postUuid)
+    yield put(fetchedPostDetail(post))
+  }
+}
+
 function* rootSaga() {
   yield fork(fetchPostsFlow)
+  yield fork(fetchPostDetailFlow)
 }
 
 export default rootSaga

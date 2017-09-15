@@ -11,3 +11,13 @@ export const finishFetching = (postsCount, posts) => ({
 export const notifyAllFetched = () => ({
   type: "NOTIFY_ALL_FETCHED",
 })
+
+export const startFetchPostDetail = postUuid => ({
+  type: "START_FETCH_POST_DETAIL",
+  postUuid,
+})
+
+export const fetchedPostDetail = post => ({
+  type: "FETCHED_POST_DETAIL",
+  post,
+})
