@@ -1,11 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
 const tableRow = ({ rowPosts, rowCount }) => {
   const bookColumns = rowPosts.map(post => (
     <td key={post.id}>
-      <img src={post.bookImageUrl} alt={post.bookTitle} />
+      <Link to={`/posts/${post.id}`}>
+        <img src={post.bookImageUrl} alt={post.bookTitle} />
+      </Link>
     </td>
   ))
 
