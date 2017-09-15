@@ -19,7 +19,7 @@
     <%= content_tag :div,
       id: "bookshelf-app",
       data: {
-        books: @posts,
+        userId: @user.id
       }.to_json do %>
     <% end %>
   </div>

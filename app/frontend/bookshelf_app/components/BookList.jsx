@@ -2,10 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-const tableRow = ({ rowBooks, rowCount }) => {
-  const bookColumns = rowBooks.map(book => (
-    <td key={book.id}>
-      <img src={book.book_image_url} alt={book.book_title} />
+const tableRow = ({ rowPosts, rowCount }) => {
+  const bookColumns = rowPosts.map(post => (
+    <td key={post.id}>
+      <img src={post.bookImageUrl} alt={post.bookTitle} />
     </td>
   ))
 
@@ -18,17 +18,20 @@ const tableRow = ({ rowBooks, rowCount }) => {
 
 tableRow.propTypes = {
   // eslint-disable-next-line
-  rowBooks: PropTypes.array.isRequired,
+  rowPosts: PropTypes.array.isRequired,
   rowCount: PropTypes.number.isRequired,
 }
 
-const cpnt = ({ books }) => {
+const cpnt = ({ posts }) => {
+  // Workaround: postsをコピーして使わないとstateを直接いじることになる
+  // TODO: Immutableを使った方がいいケース??
+  const copyPosts = posts.slice()
   const tableRows = []
 
   let rowCount = 0
-  while (books.length) {
-    const rowBooks = books.splice(0, 5)
-    tableRows.push(tableRow({ rowBooks, rowCount }))
+  while (copyPosts.length) {
+    const rowPosts = copyPosts.splice(0, 5)
+    tableRows.push(tableRow({ rowPosts, rowCount }))
     rowCount += 1
   }
 
@@ -43,11 +46,11 @@ const cpnt = ({ books }) => {
 
 cpnt.propTypes = {
   // eslint-disable-next-line
-  books: PropTypes.array.isRequired,
+  posts: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = state => ({
-  books: state.books,
+  posts: state.posts,
 })
 
 const BookList = connect(
