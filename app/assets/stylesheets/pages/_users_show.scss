@@ -130,10 +130,14 @@
       table tr td {
         padding: 20px;
 
-        img {
+        .book-in-shelf {
           height: 200px;
           width: 150px;
           box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-in-shelf:hover {
+          opacity: 0.8;
         }
       }
     }

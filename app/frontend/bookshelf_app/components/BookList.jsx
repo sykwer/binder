@@ -12,7 +12,7 @@ const tableRow = ({ rowPosts, rowCount, handleOnClickBook }) => {
         to={`/posts/${post.id}`}
         onClick={() => { handleOnClickBook(post.id) }}
       >
-        <img src={post.bookImageUrl} alt={post.bookTitle} />
+        <img className="book-in-shelf" src={post.bookImageUrl} alt={post.bookTitle} />
       </Link>
     </td>
   ))
