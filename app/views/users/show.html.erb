@@ -1,6 +1,7 @@
 <%= render "shared/white_header" %>
 <div class="mypage">
   <div class="mypage-upper">
+
     <% if current_user == @user %>
       <%= content_tag :div,
         id: "user-profile-app",
@@ -14,6 +15,29 @@
     <% else %>
       <%= render "users/profile", user: @user %>
     <% end %>
+
+    <div class="mypage-menu">
+      <ul>
+        <li>
+          <%= link_to "Latest", "/@#{@user.username}/latest",
+            class: @menu.eql?("latest") || @menu.blank? ? "active menu-item" : "menu-item"%>
+        </li>
+        <li>
+          <%= link_to "Bookshelf", "/@#{@user.username}/bookshelf",
+            class: @menu.eql?("bookshelf") ? "active menu-item" : "menu-item" %>
+        </li>
+        <li>
+          <%= link_to "Likes", "/@#{@user.username}/likes",
+            class: @menu.eql?("likes") ? "active menu-item" : "menu-item" %>
+        </li>
+        <% if current_user == @user %>
+          <li>
+            <%= link_to "Drafts", "/@#{@user.username}/drafts",
+            class: @menu.eql?("drafts") ? "active menu-item" : "menu-item" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
   <div class="mypage-lower">
     <%= content_tag :div,
