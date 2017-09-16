@@ -16,5 +16,11 @@
     <% end %>
   </div>
   <div class="mypage-lower">
+    <%= content_tag :div,
+      id: "bookshelf-app",
+      data: {
+        userId: @user.id
+      }.to_json do %>
+    <% end %>
   </div>
 </div>
