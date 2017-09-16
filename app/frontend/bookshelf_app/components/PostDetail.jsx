@@ -17,6 +17,31 @@ const cpnt = ({
     return null
   }
 
+  window.onkeydown = (e) => {
+    const leftCode = 37
+    const rightCode = 39
+
+    if (e.keyCode === leftCode) {
+      if (!priorPostUuid) {
+        return
+      }
+
+      handleOnClickArrow(priorPostUuid)
+    }
+
+    if (e.keyCode === rightCode) {
+      if (!nextPostUuid) {
+        return
+      }
+
+      if (isNeedPostsFetch) {
+        startPostsFetch()
+      }
+
+      handleOnClickArrow(nextPostUuid)
+    }
+  }
+
   return (
     <div
       className="post-detail-component"
@@ -46,9 +71,6 @@ const cpnt = ({
           role="button"
           tabIndex="0"
           onClick={() => {
-            if (isNeedPostsFetch) {
-              startPostsFetch()
-            }
             handleOnClickArrow(priorPostUuid)
           }}
         />}
@@ -58,6 +80,15 @@ const cpnt = ({
           role="button"
           tabIndex="0"
           onClick={() => {
+            if (isNeedPostsFetch) {
+              startPostsFetch()
+            }
+            handleOnClickArrow(nextPostUuid)
+          }}
+          onKeyDown={(e) => {
+            if (e.keyCode !== 39) {
+              return
+            }
             if (isNeedPostsFetch) {
               startPostsFetch()
             }
@@ -166,7 +197,7 @@ const mapStateToProps = state => ({
   post: state.selectedPost,
   nextPostUuid: stateToSiblingPostUuid(state, 1),
   priorPostUuid: stateToSiblingPostUuid(state, -1),
-  isNeedPostsFetch: !stateToSiblingPostUuid(state, 3) || !stateToSiblingPostUuid(state, -3),
+  isNeedPostsFetch: !stateToSiblingPostUuid(state, 3),
 })
 
 const mapDispatchToProps = dispatch => ({
