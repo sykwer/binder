@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     if @user.blank?
       render status: 404, file: "/public/404" and return
     end
+
+    if !["latest", "bookshelf", "likes", "drafts"].include?(@menu) && @menu.present?
+      render status: 404, file: "/public/404" and return
+    end
   end
 
   def set_user
