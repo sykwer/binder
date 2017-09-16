@@ -16,6 +16,7 @@
   }
 
   .post-detail-card {
+    position: relative;
     width: 637px;
     min-height: 420px;
     margin: 100px auto 0;
@@ -24,6 +25,22 @@
     padding: $article_card_padding;
     margin-bottom: $article_card_margin;
     border: 1px solid $gray91;
+
+    .link-to-prior-post {
+      position: absolute;
+      top: 183px;
+      left: -37px;
+      font-size: 50px;
+      color: white;
+    }
+
+    .link-to-next-post {
+      position: absolute;
+      top: 183px;
+      right: -37px;
+      font-size: 50px;
+      color: white;
+    }
 
     .header-wrapper {
 

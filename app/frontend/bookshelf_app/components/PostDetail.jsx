@@ -31,6 +31,8 @@ const cpnt = ({ post }) => {
           e.stopPropagation()
         }}
       >
+        <i className="fa fa-angle-left link-to-prior-post" aria-hidden="true" />
+        <i className="fa fa-angle-right link-to-next-post" aria-hidden="true" />
         <div className="header-wrapper clearfix">
           <div className="header-image">
             <img src={post.userImageUrl} alt={post.userName} />
