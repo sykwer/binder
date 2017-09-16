@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
 const cpnt = ({ post }) => {
   if (!post) {
@@ -8,8 +9,28 @@ const cpnt = ({ post }) => {
   }
 
   return (
-    <div className="post-detail-component">
-      <div className="post-detail-card">
+    <div
+      className="post-detail-component"
+      role="button"
+      tabIndex="0"
+      onClick={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        const node = document.getElementById("link-to-username-page")
+        node.click()
+      }}
+    >
+      <i className="fa fa-times close-post-detail-mark" aria-hidden="true" />
+      <Link to={`/@${post.userUserName}`} id="link-to-username-page" />
+      <div
+        className="post-detail-card"
+        role="button"
+        tabIndex="0"
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+        }}
+      >
         <div className="header-wrapper clearfix">
           <div className="header-image">
             <img src={post.userImageUrl} alt={post.userName} />
@@ -76,6 +97,7 @@ cpnt.propTypes = {
     publishedAt: PropTypes.string.isRequired,
     userImageUrl: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
+    userUserName: PropTypes.string.isRequired,
   }),
 }
 

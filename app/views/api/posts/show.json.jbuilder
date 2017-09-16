@@ -9,4 +9,5 @@ json.post do
   json.publishedAt @post.first_published_at.present? ? format_date(@post.first_published_at) : format_date(Time.zone.now)
   json.userImageUrl @post.user.image_url
   json.userName @post.user.name
+  json.userUserName @post.user.username
 end

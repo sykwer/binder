@@ -7,6 +7,14 @@
   z-index: 100;
   background: rgba(0, 0, 0, 0.6);
 
+  .close-post-detail-mark {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 27px;
+  }
+
   .post-detail-card {
     width: 637px;
     min-height: 420px;
