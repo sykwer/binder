@@ -40,11 +40,22 @@
     </div>
   </div>
   <div class="mypage-lower">
-    <%= content_tag :div,
-      id: "bookshelf-app",
-      data: {
-        userId: @user.id
-      }.to_json do %>
+    <% if @menu == "latest" || @menu.blank? %>
+      <p>Latest</p>
+    <% end %>
+    <% if @menu == "bookshelf" %>
+      <%= content_tag :div,
+        id: "bookshelf-app",
+        data: {
+          userId: @user.id
+        }.to_json do %>
+      <% end %>
+    <% end %>
+    <% if @menu == "likes" %>
+      <p>Likes</p>
+    <% end %>
+    <% if @menu == "drafts" && @user == current_user %>
+      <p>Draft</p>
     <% end %>
   </div>
 </div>
