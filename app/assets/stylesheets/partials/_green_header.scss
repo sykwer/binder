@@ -1,4 +1,9 @@
 .green-header {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  transition: top 0.25s ease-in-out;
+
   width: 100%;
   height: $header_height;
   padding: 10px 150px;
@@ -82,4 +87,8 @@
       }
     }
   }
+}
+
+.header-hide {
+  top: -$header_height;
 }

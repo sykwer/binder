@@ -1,5 +1,10 @@
-.top-page-container {
+.top-page {
   width: 100%;
   padding: 20px;
-  background-color: $main_background_color;
+  margin-top: $header-height;
+
+  .posts-timeline {
+    width: 640px;
+    margin: 0 auto;
+  }
 }
