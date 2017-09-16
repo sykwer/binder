@@ -7,4 +7,6 @@ json.post do
   json.bookPublisher @post.book_publisher
   json.affiliateLink @post.affiliate_link
   json.publishedAt @post.first_published_at.present? ? format_date(@post.first_published_at) : format_date(Time.zone.now)
+  json.userImageUrl @post.user.image_url
+  json.userName @post.user.name
 end
