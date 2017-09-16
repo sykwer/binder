@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   get "/@:username", to: "users#show"
+  get "/@:username/:menu", to: "users#show"
 
   resources :posts, only: %i(create edit), param: :uuid do
     resource :content, controller: "posts/contents", only: %i(update)

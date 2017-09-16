@@ -1,6 +1,7 @@
 <%= render "shared/white_header" %>
 <div class="mypage">
   <div class="mypage-upper">
+
     <% if current_user == @user %>
       <%= content_tag :div,
         id: "user-profile-app",
@@ -14,13 +15,47 @@
     <% else %>
       <%= render "users/profile", user: @user %>
     <% end %>
+
+    <div class="mypage-menu">
+      <ul>
+        <li>
+          <%= link_to "Latest", "/@#{@user.username}/latest",
+            class: @menu.eql?("latest") || @menu.blank? ? "active menu-item" : "menu-item"%>
+        </li>
+        <li>
+          <%= link_to "Bookshelf", "/@#{@user.username}/bookshelf",
+            class: @menu.eql?("bookshelf") ? "active menu-item" : "menu-item" %>
+        </li>
+        <li>
+          <%= link_to "Likes", "/@#{@user.username}/likes",
+            class: @menu.eql?("likes") ? "active menu-item" : "menu-item" %>
+        </li>
+        <% if current_user == @user %>
+          <li>
+            <%= link_to "Drafts", "/@#{@user.username}/drafts",
+            class: @menu.eql?("drafts") ? "active menu-item" : "menu-item" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
   <div class="mypage-lower">
-    <%= content_tag :div,
-      id: "bookshelf-app",
-      data: {
-        userId: @user.id
-      }.to_json do %>
+    <% if @menu == "latest" || @menu.blank? %>
+      <p>Latest</p>
+    <% end %>
+    <% if @menu == "bookshelf" %>
+      <%= content_tag :div,
+        id: "bookshelf-app",
+        data: {
+          userId: @user.id
+        }.to_json do %>
+      <% end %>
+    <% end %>
+    <% if @menu == "likes" %>
+      <p>Likes</p>
+    <% end %>
+    <% if @menu == "drafts" && @user == current_user %>
+      <p>Draft</p>
     <% end %>
   </div>
 </div>
