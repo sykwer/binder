@@ -3,7 +3,16 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
-const cpnt = ({ post }) => {
+import { startFetchPostDetail, startFetching } from "../store/actions"
+
+const cpnt = ({
+  post,
+  nextPostUuid,
+  priorPostUuid,
+  handleOnClickArrow,
+  isNeedPostsFetch,
+  startPostsFetch,
+}) => {
   if (!post) {
     return null
   }
@@ -31,11 +40,36 @@ const cpnt = ({ post }) => {
           e.stopPropagation()
         }}
       >
-        <i className="fa fa-angle-left link-to-prior-post" aria-hidden="true" />
-        <i className="fa fa-angle-right link-to-next-post" aria-hidden="true" />
+        {priorPostUuid && <i
+          className="fa fa-angle-left link-to-prior-post"
+          aria-hidden="true"
+          role="button"
+          tabIndex="0"
+          onClick={() => {
+            if (isNeedPostsFetch) {
+              startPostsFetch()
+            }
+            handleOnClickArrow(priorPostUuid)
+          }}
+        />}
+        {nextPostUuid && <i
+          className="fa fa-angle-right link-to-next-post"
+          aria-hidden="true"
+          role="button"
+          tabIndex="0"
+          onClick={() => {
+            if (isNeedPostsFetch) {
+              startPostsFetch()
+            }
+            handleOnClickArrow(nextPostUuid)
+          }}
+        />}
         <div className="header-wrapper clearfix">
           <div className="header-image">
-            <img src={post.userImageUrl} alt={post.userName} />
+            <img
+              src={post.userImageUrl}
+              alt={post.userName}
+            />
           </div>
           <div className="header-text">
             <div className="header-profile-name">
@@ -101,18 +135,52 @@ cpnt.propTypes = {
     userName: PropTypes.string.isRequired,
     userUserName: PropTypes.string.isRequired,
   }),
+  nextPostUuid: PropTypes.string.isRequired,
+  priorPostUuid: PropTypes.string.isRequired,
+  isNeedPostsFetch: PropTypes.bool.isRequired,
+  handleOnClickArrow: PropTypes.func.isRequired,
+  startPostsFetch: PropTypes.func.isRequired,
 }
 
 cpnt.defaultProps = {
   post: null,
 }
 
+const stateToSiblingPostUuid = (state, offset) => {
+  if (!state.selectedPost) {
+    return ""
+  }
+
+  const idx = state.posts.findIndex(post => (
+    post.id === state.selectedPost.uuid
+  ))
+
+  if (!state.posts[idx + offset]) {
+    return ""
+  }
+
+  return state.posts[idx + offset].id
+}
+
 const mapStateToProps = state => ({
   post: state.selectedPost,
+  nextPostUuid: stateToSiblingPostUuid(state, 1),
+  priorPostUuid: stateToSiblingPostUuid(state, -1),
+  isNeedPostsFetch: !stateToSiblingPostUuid(state, 3) || !stateToSiblingPostUuid(state, -3),
+})
+
+const mapDispatchToProps = dispatch => ({
+  handleOnClickArrow: (postUuid) => {
+    dispatch(startFetchPostDetail(postUuid))
+  },
+  startPostsFetch: () => {
+    dispatch(startFetching())
+  },
 })
 
 const PostDetail = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(cpnt)
 
 export default PostDetail
