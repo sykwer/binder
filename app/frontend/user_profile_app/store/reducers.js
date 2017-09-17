@@ -50,6 +50,16 @@ const id = (state = "", action) => {
   return state
 }
 
+// eslint-disable-next-line
+const followings = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const followers = (state = null, action) => {
+  return state
+}
+
 const appState = (state = "NOT_EDITING", action) => {
   switch (action.type) {
     case "START_EDIT":
@@ -69,6 +79,8 @@ const rootReducer = combineReducers({
   savedBio,
   image,
   id,
+  followers,
+  followings,
   appState,
 })
 

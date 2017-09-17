@@ -10,6 +10,8 @@
           name: @user.name,
           bio: @user.bio,
           image: @user.image_url,
+          followings: @user.followings_count,
+          followers: @user.followers_count,
         }.to_json do %>
       <% end %>
     <% else %>

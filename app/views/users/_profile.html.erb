@@ -5,8 +5,8 @@
       <div class="bio"><%= user.bio %></div>
       <div class="profile-sub-wrapper clearfix">
         <div class="follows">
-          <span class="following"><span class="num">150</span> Following</span>
-          <span class="follower"><span class="num">75</span> Follower</span>
+          <span class="following"><span class="num"><%= user.followings_count %></span> Following</span>
+          <span class="follower"><span class="num"><%= user.followers_count %></span> Follower</span>
         </div>
         <div class="sns-buttons">
           <span class="twitter-button"><i class="fa fa-twitter" aria-hidden="true"></i></span>
