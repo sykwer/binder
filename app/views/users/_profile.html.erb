@@ -3,16 +3,9 @@
     <div class="profile-main-left">
       <div class="name"><%= user.name %></div>
       <div class="bio"><%= user.bio %></div>
-      <div class="profile-sub-wrapper clearfix">
-        <div class="follows">
-          <span class="following"><span class="num"><%= user.followings_count %></span> Following</span>
-          <span class="follower"><span class="num"><%= user.followers_count %></span> Follower</span>
-        </div>
-        <div class="sns-buttons">
-          <span class="twitter-button"><i class="fa fa-twitter" aria-hidden="true"></i></span>
-          <span class="facebook-button"><i class="fa fa-facebook" aria-hidden="true"></i></span>
-        </div>
-      </div>
+      <%= content_tag :div,
+        id: "userpage-follow-app" do %>
+      <% end %>
     </div>
     <div class="profile-main-right">
       <%= image_tag(user.image_url) %>
