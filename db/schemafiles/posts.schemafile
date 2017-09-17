@@ -12,6 +12,6 @@ create_table "posts", id: false, force: :cascade, options: default_options do |t
   t.datetime   :first_published_at
   t.timestamps                      null: false
 
-  add_index :posts, :uuid, unique: true
-  add_index :posts, :user_id
+  t.index ["uuid"], name: "index_posts_on_uuid", unique: true, using: :btree
+  t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
 end

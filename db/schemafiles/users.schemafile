@@ -17,6 +17,7 @@ create_table "users", force: :cascade, options: default_options do |t|
 
   t.timestamps null: false
 
-  add_index :users, :email, unique: true
-  add_index :users, :username, unique: true
+  t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+  t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
+  t.index ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 end
