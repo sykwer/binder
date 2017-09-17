@@ -1,4 +1,4 @@
 class Follow < ApplicationRecord
-  belongs_to :source, class_name: "User"
-  belongs_to :destination, class_name: "User"
+  belongs_to :source, class_name: "User", counter_cache: :followings_count
+  belongs_to :destination, class_name: "User", counter_cache: :followers_count
 end
