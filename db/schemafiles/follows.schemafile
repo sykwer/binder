@@ -1,0 +1,9 @@
+create_table "follows", force: :cascade, options: default_options do |t|
+  t.integer :source_id,      null: false
+  t.integer :destination_id, null: false
+  t.timestamps               null: false
+
+  t.index ["source_id"], name: "index_follows_on_source_id", using: :btree
+  t.index ["destination_id"], name: "index_follows_on_destination_id", using: :btree
+  t.index ["source_id", "destination_id"], name: "index_follows_on_source_id_and_destination_id", unique: true, using: :btree
+end

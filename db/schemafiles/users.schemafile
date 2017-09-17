@@ -1,19 +1,22 @@
 create_table "users", force: :cascade, options: default_options do |t|
-    t.string :email,              null: false, default: ""
-    t.string :name,               null: false
-    t.string :username,           null: false
-    t.string :bio,                null: false, default: ""
-    t.string :image_url
-    t.datetime :remember_created_at
-    t.integer  :sign_in_count, default: 0, null: false
-    t.datetime :current_sign_in_at
-    t.datetime :last_sign_in_at
-    t.string   :current_sign_in_ip
-    t.string   :last_sign_in_ip
-    t.string   :provider
-    t.string   :uid
-    t.timestamps null: false
+  t.string   :email,               null: false, default: ""
+  t.string   :name,                null: false
+  t.string   :username,            null: false
+  t.string   :bio,                 null: false, default: ""
+  t.string   :image_url
+  t.integer  :followings_count,    null: false, default: 0
+  t.integer  :followers_count,     null: false, default: 0
+  t.datetime :remember_created_at
+  t.integer  :sign_in_count,       null: false, default: 0
+  t.datetime :current_sign_in_at
+  t.datetime :last_sign_in_at
+  t.string   :current_sign_in_ip
+  t.string   :last_sign_in_ip
+  t.string   :provider
+  t.string   :uid
 
-    add_index :users, :email,                unique: true
-    add_index :users, :username,             unique: true
+  t.timestamps null: false
+
+  add_index :users, :email, unique: true
+  add_index :users, :username, unique: true
 end
