@@ -1,5 +1,5 @@
 create_table "posts", id: false, force: :cascade, options: default_options do |t|
-  t.string     :uuid,               null: false,              primary_key: true
+  t.string     :uuid,               null: false
   t.integer    :user_id,            null: false
   t.string     :content_draft,      null: false, default: ""
   t.string     :content,            null: false, default: ""
@@ -11,4 +11,7 @@ create_table "posts", id: false, force: :cascade, options: default_options do |t
   t.string     :affiliate_link,     null: false, default: ""
   t.datetime   :first_published_at
   t.timestamps                      null: false
+
+  add_index :posts, :uuid, unique: true
+  add_index :posts, :user_id
 end

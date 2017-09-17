@@ -16,7 +16,7 @@ class Api::Posts::BookInfosController < Api::ApplicationController
   end
 
   def set_post
-    @post = Post.find(params[:post_id])
+    @post = Post.find(params[:post_uuid])
   end
 
   def book_info_params
