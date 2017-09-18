@@ -11,22 +11,13 @@ const cpnt = ({
   handleOnClickUnfollow,
 }) => {
   if (isFollowing) {
-    let button
-
     return (
       <button
         className="following-button"
-        ref={(node) => { button = node }}
         disabled={isDisabled}
         onClick={(e) => {
           e.preventDefault()
           handleOnClickUnfollow()
-        }}
-        onMouseOver={() => {
-          button.innerText = "Unfollow"
-        }}
-        onMouseOut={() => {
-          button.innerText = "Following"
         }}
       >
         Following
