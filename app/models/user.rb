@@ -4,6 +4,12 @@ class User < ApplicationRecord
 
   has_many :posts
 
+  has_many :active_relationships, class_name: "Follow", foreign_key: "source_id", dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :destination
+
+  has_many :passive_relationships, class_name: "Follow", foreign_key: "destination_id", dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :source
+
   # To know structure of auth, see https://github.com/mkdynamic/omniauth-facebook#auth-hash
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -11,5 +17,9 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.image_url = auth.info.image
     end
+  end
+
+  def follows?(user)
+    followings.where(id: user.id).exists?
   end
 end

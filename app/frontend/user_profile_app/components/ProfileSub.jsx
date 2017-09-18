@@ -1,13 +1,15 @@
 import React from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
 
-const ProfileSub = () => (
+const cpnt = ({ followings, followers }) => (
   <div className="profile-sub-wrapper clearfix">
     <div className="follows">
       <span className="following">
-        <span className="num">150</span> Following
+        <span className="num">{followings}</span> Following
       </span>
       <span className="follower">
-        <span className="num">75</span> Follower
+        <span className="num">{followers}</span> Follower
       </span>
     </div>
     <div className="sns-buttons">
@@ -20,5 +22,19 @@ const ProfileSub = () => (
     </div>
   </div>
 )
+
+cpnt.propTypes = {
+  followings: PropTypes.number.isRequired,
+  followers: PropTypes.number.isRequired,
+}
+
+const mapStateToProps = state => ({
+  followings: state.followings,
+  followers: state.followers,
+})
+
+const ProfileSub = connect(
+  mapStateToProps,
+)(cpnt)
 
 export default ProfileSub

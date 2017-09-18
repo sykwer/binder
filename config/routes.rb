@@ -33,5 +33,8 @@ Rails.application.routes.draw do
       resource :profile, controller: "users/profiles", only: %i(update)
       resources :posts, controller: "users/posts", only: %i(index)
     end
+
+    resources :follows, only: %i(create)
+    delete 'follows', to: "follows#destroy"
   end
 end

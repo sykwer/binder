@@ -4,27 +4,23 @@ import { createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
 import createSagaMiddleware from "redux-saga"
 
+import Root from "./components/Root"
 import rootReducer from "./store/reducers"
 import rootSaga from "./store/sagas"
-import Root from "./components/Root"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
-    const node = document.getElementById("user-profile-app")
+    const node = document.getElementById("userpage-follow-app")
     const data = JSON.parse(node.getAttribute("data"))
 
-    const sagaMiddleware = createSagaMiddleware()
-
     const initialState = {
-      id: data.id,
-      displayedName: data.name,
-      displayedBio: data.bio,
-      savedName: data.name,
-      savedBio: data.bio,
-      image: data.image,
       followings: data.followings,
       followers: data.followers,
+      buttonState: data.isFollowing ? "FOLLOWING" : "FOLLOW",
+      opponentUserId: data.opponentUserId,
     }
+
+    const sagaMiddleware = createSagaMiddleware()
 
     const store = createStore(
       rootReducer,

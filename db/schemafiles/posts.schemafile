@@ -1,5 +1,5 @@
 create_table "posts", id: false, force: :cascade, options: default_options do |t|
-  t.string     :uuid,               null: false,              primary_key: true
+  t.string     :uuid,               null: false
   t.integer    :user_id,            null: false
   t.string     :content_draft,      null: false, default: ""
   t.string     :content,            null: false, default: ""
@@ -11,4 +11,7 @@ create_table "posts", id: false, force: :cascade, options: default_options do |t
   t.string     :affiliate_link,     null: false, default: ""
   t.datetime   :first_published_at
   t.timestamps                      null: false
+
+  t.index ["uuid"], name: "index_posts_on_uuid", unique: true, using: :btree
+  t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
 end

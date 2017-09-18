@@ -5,6 +5,8 @@ class Post < ApplicationRecord
     self.uuid = SecureRandom.uuid
   end
 
+  self.primary_key = "uuid"
+
   scope :published, lambda { where.not(first_published_at: nil) }
 
   def to_param
