@@ -4,10 +4,6 @@ class PagesController < ApplicationController
   def top
   end
 
-  # FIXME: Temporary method
-  def profile
-  end
-
   def about
   end
 end
