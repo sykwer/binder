@@ -18,4 +18,8 @@ class User < ApplicationRecord
       user.image_url = auth.info.image
     end
   end
+
+  def follows?(user)
+    followings.where(id: user.id).exists?
+  end
 end
