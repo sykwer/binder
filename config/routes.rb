@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'pages#top'
-
-  get 'profile', to: 'pages#profile'  # FIXME: Temporary routing. This should be users/:user_id
   get 'about', to: 'pages#about'
 
   devise_for :users, controllers: {
