@@ -1,16 +1,31 @@
 import React from "react"
 import { render } from "react-dom"
-import { createStore } from "redux"
+import { createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
+import createSagaMiddleware from "redux-saga"
 
 import rootReducer from "./store/reducers"
+import rootSaga from "./store/sagas"
 import Root from "./components/Root"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const node = document.getElementById("timeline-app")
+    const data = JSON.parse(node.getAttribute("data"))
 
-    const store = createStore(rootReducer)
+    const initialState = {
+      userId: data.userId,
+    }
+
+    const sagaMiddleware = createSagaMiddleware()
+
+    const store = createStore(
+      rootReducer,
+      initialState,
+      applyMiddleware(sagaMiddleware),
+    )
+
+    sagaMiddleware.run(rootSaga)
 
     render(
       <Provider store={store}>

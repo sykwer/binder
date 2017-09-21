@@ -1,9 +1,11 @@
 <%= render "shared/green_header" %>
 <div id="top-page-body" class="top-page">
   <div class="posts-timeline">
-    <%= render 'shared/article_card' %>
     <%= content_tag :div,
-      id: "timeline-app" do %>
+      id: "timeline-app",
+      data: {
+        userId: current_user.id,
+      }.to_json do %>
     <% end %>
   </div>
 </div>

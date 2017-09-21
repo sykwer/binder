@@ -14,6 +14,6 @@ class Api::Users::TimelinesController < Api::ApplicationController
   end
 
   def page
-    params[:page] || 0
+    params[:page].to_i || 0
   end
 end
