@@ -1,0 +1,55 @@
+<%= render "shared/gray_header" %>
+
+<div class="posts-show">
+  <div class="article-card">
+    <div class="header-wrapper clearfix">
+      <div class="header-image">
+        <%= link_to(image_tag(@post.user.image_url), "/@#{@post.user.username}") %>
+      </div>
+      <div class="header-text">
+        <div class="header-profile-name">
+          <span><%= @post.user.name %></span>
+        </div>
+        <div class="header-datetime">
+          <span><%= @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now) %></span>
+        </div>
+      </div>
+    </div>
+    <div class="main-wrapper clearfix">
+      <div class="main-left">
+        <div class="main-book">
+          <%= link_to(image_tag(@post.book_image_url), @post.affiliate_link.present? ? @post.affiliate_link : "#") %>
+        </div>
+        <div class="main-bookinfo">
+          <div class="book-name overflow-ellipsis">
+            <span><%= @post.book_title %></span>
+          </div>
+          <div class="book-author overflow-ellipsis">
+            <span><%= @post.book_author %></span>
+          </div>
+        </div>
+      </div>
+      <div class="main-right">
+        <div class="main-book-review">
+          <span><%= @post.content %></span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-wrapper clearfix">
+      <div class="footer-left">
+        <span class="like-heart">
+          <i class="fa fa-heart-o" aria-hidden="true"></i>
+        </span>
+        <span class="like-count">3</span>
+      </div>
+      <div class="footer-right">
+        <span class="article-menu">
+          <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="below-article-card clearfix">
+    <%= link_to ">> See bookshelf", "/@#{@post.user.username}/bookshelf", class: "link-to-bookshelf" %>
+  </div>
+</div>
