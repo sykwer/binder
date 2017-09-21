@@ -26,7 +26,7 @@ const cpnt = ({
         return
       }
 
-      handleOnClickArrow(priorPostUuid)
+      document.getElementById("angle-left-link").click()
     }
 
     if (e.keyCode === rightCode) {
@@ -38,7 +38,7 @@ const cpnt = ({
         startPostsFetch()
       }
 
-      handleOnClickArrow(nextPostUuid)
+      document.getElementById("angle-right-link").click()
     }
   }
 
@@ -65,7 +65,8 @@ const cpnt = ({
           e.stopPropagation()
         }}
       >
-        {priorPostUuid && <i
+        {priorPostUuid && <Link to={`/posts/${priorPostUuid}`}><i
+          id="angle-left-link"
           className="fa fa-angle-left link-to-prior-post"
           aria-hidden="true"
           role="button"
@@ -73,8 +74,9 @@ const cpnt = ({
           onClick={() => {
             handleOnClickArrow(priorPostUuid)
           }}
-        />}
-        {nextPostUuid && <i
+        /></Link>}
+        {nextPostUuid && <Link to={`/posts/${nextPostUuid}`}><i
+          id="angle-right-link"
           className="fa fa-angle-right link-to-next-post"
           aria-hidden="true"
           role="button"
@@ -94,7 +96,7 @@ const cpnt = ({
             }
             handleOnClickArrow(nextPostUuid)
           }}
-        />}
+        /></Link>}
         <div className="header-wrapper clearfix">
           <div className="header-image">
             <img
