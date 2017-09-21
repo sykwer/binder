@@ -2,7 +2,9 @@
 <div id="top-page-body" class="top-page">
   <div class="posts-timeline">
     <%= render 'shared/article_card' %>
-    <%= render 'shared/article_card' %>
+    <%= content_tag :div,
+      id: "timeline-app" do %>
+    <% end %>
   </div>
 </div>
 
