@@ -55,7 +55,7 @@ const cpnt = ({
       }}
     >
       <i className="fa fa-times close-post-detail-mark" aria-hidden="true" />
-      <Link to={`/@${post.userUserName}`} id="link-to-username-page" />
+      <Link to={`/@${post.userUserName}/bookshelf`} id="link-to-username-page" />
       <div
         className="post-detail-card"
         role="button"
