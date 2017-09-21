@@ -1,12 +1,11 @@
 .top-page {
   width: 100%;
   padding: 20px;
-  margin-top: $header-height;
   min-height: 650px;
   background-color: $background_gray;
 
   .posts-timeline {
     width: 640px;
-    margin: 0 auto;
+    margin: $header_height auto 0;
   }
 }
