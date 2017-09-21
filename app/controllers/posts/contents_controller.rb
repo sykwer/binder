@@ -3,9 +3,8 @@ class Posts::ContentsController < ApplicationController
 
   def update
     @post.publish_or_update_content!
-
-    follower_ids = Follow.where(destination_id: current_user.id).pluck(:source_id)
-    PostFanoutService.new(target_user_ids: follower_ids, post_uuid: @post.uuid).fanout
+    PostFanoutService.new(target_user_ids: current_user.follower_ids,
+                          post_uuid: @post.uuid).fanout
 
     redirect_to root_path
   end
