@@ -25,31 +25,12 @@ const Root = () => (
       <Button />
     </div>
     <Route
-      path={"/@:username"}
-      render={() => {
-        const body = document.getElementsByTagName("body").item(0)
-        body.style.removeProperty("overflow")
-        body.style.removeProperty("height")
-        return <div />
-      }}
-    />
-    <Route
       path={"/@:username/followers"}
-      render={() => {
-        const body = document.getElementsByTagName("body").item(0)
-        body.style.setProperty("overflow", "hidden")
-        body.style.setProperty("height", "100%")
-        return <Followers />
-      }}
+      component={Followers}
     />
     <Route
       path={"/@:username/followings"}
-      render={() => {
-        const body = document.getElementsByTagName("body").item(0)
-        body.style.setProperty("overflow", "hidden")
-        body.style.setProperty("height", "100%")
-        return <Followings />
-      }}
+      component={Followings}
     />
   </div>
 )
