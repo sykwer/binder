@@ -18,6 +18,7 @@ const run = () => {
 
     const initialState = {
       id: data.id,
+      name: data.name,
       username: data.username,
       displayedName: data.name,
       displayedBio: data.bio,

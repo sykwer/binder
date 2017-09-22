@@ -61,6 +61,11 @@ const followers = (state = null, action) => {
 }
 
 // eslint-disable-next-line
+const name = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
 const username = (state = null, action) => {
   return state
 }
@@ -86,6 +91,7 @@ const rootReducer = combineReducers({
   id,
   followers,
   followings,
+  name,
   username,
   appState,
 })
