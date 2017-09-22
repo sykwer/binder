@@ -1,16 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
-const cpnt = ({ followings, followers }) => (
+const cpnt = ({ followings, followers, username }) => (
   <div className="profile-sub-wrapper clearfix">
     <div className="follows">
-      <span className="following">
+      <Link to={`/@${username}/followings`} className="following">
         <span className="num">{followings}</span> Following
-      </span>
-      <span className="follower">
+      </Link>
+      <Link to={`/@${username}/followers`} className="follower">
         <span className="num">{followers}</span> Follower
-      </span>
+      </Link>
     </div>
     <div className="sns-buttons">
       <span className="twitter-button">
@@ -26,11 +27,13 @@ const cpnt = ({ followings, followers }) => (
 cpnt.propTypes = {
   followings: PropTypes.number.isRequired,
   followers: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({
   followings: state.followings,
   followers: state.followers,
+  username: state.username,
 })
 
 const ProfileSub = connect(

@@ -3,6 +3,7 @@ import { render } from "react-dom"
 import { createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
 import createSagaMiddleware from "redux-saga"
+import { BrowserRouter } from "react-router-dom"
 
 import rootReducer from "./store/reducers"
 import rootSaga from "./store/sagas"
@@ -17,6 +18,7 @@ const run = () => {
 
     const initialState = {
       id: data.id,
+      username: data.username,
       displayedName: data.name,
       displayedBio: data.bio,
       savedName: data.name,
@@ -36,7 +38,9 @@ const run = () => {
 
     render(
       <Provider store={store}>
-        <Root />
+        <BrowserRouter>
+          <Root />
+        </BrowserRouter>
       </Provider>,
       node,
     )
