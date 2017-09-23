@@ -16,4 +16,68 @@
       text-align: center;
     }
   }
+
+  .followers-follows-list {
+    width: 610px;
+    margin: 50px auto 0;
+
+    .followers-follows-item {
+      margin-top: 20px;
+      width: 610px;
+
+      .item-left {
+        width: 50px;
+        float: left;
+
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+        }
+      }
+
+      .item-center {
+        width: 440px;
+        float: left;
+
+        .item-center-upper {
+
+          .profile-name {
+            font-size: 16px;
+          }
+        }
+
+        .item-center-lower {
+
+          .profile-bio {
+            color: $gray56;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+
+      .item-right {
+        width: 120px;
+        float: left;
+
+        .follow-button {
+          border: 1.2px solid $fresh_green;
+          color: $fresh_green;
+          opacity: 0.7;
+          border-radius: 15px;
+          padding: 6px 20px;
+        }
+
+        .following-button {
+          background-color: $fresh_green;
+          color: white;
+          opacity: 0.9;
+          border-radius: 15px;
+          padding: 6px 20px;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+  }
 }

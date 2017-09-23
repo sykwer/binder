@@ -55,7 +55,7 @@ export const finishFetchFollowings = (followings, page) => ({
   page,
 })
 
-export const nofityAllFollowingsFetched = () => ({
+export const notifyAllFollowingsFetched = () => ({
   type: "NOTIFY_ALL_FOLLOWINGS_FETCHED",
 })
 
