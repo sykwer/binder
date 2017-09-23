@@ -18,3 +18,14 @@ export const fetchFollowers = (userId, page) => {
     },
   }).then(res => res.data.followers)
 }
+
+export const fetchFollowings = (userId, page) => {
+  const url = `http://localhost:3000/api/users/${userId}/followings`
+  return axios(url, {
+    params: {
+      page,
+      counts: 20,
+      my_user_id: userId,
+    },
+  }).then(res => res.data.followings)
+}

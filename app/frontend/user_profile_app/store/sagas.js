@@ -1,7 +1,12 @@
 import { takeLatest, take, select, call, fork, put } from "redux-saga/effects"
 
-import { finishFetchFollowers, notifyAllFollowersFetched } from "./actions"
-import { requestSaveProfile, fetchFollowers } from "./services"
+import {
+  finishFetchFollowers,
+  finishFetchFollowings,
+  notifyAllFollowersFetched,
+  notifyAllFollowingsFetched,
+} from "./actions"
+import { requestSaveProfile, fetchFollowers, fetchFollowings } from "./services"
 
 function* saveProfileFlow() {
   const state = yield select()
@@ -24,7 +29,7 @@ function* fetchFollowersFlow() {
     yield take("START_FETCH_FOLLOWERS")
 
     const state = yield select()
-    const page = state.page == null ? 0 : state.page + 1
+    const page = state.followersPage == null ? 0 : state.followersPage + 1
     const followers = yield call(fetchFollowers, state.id, page) // userId == myUserId
 
     yield put(finishFetchFollowers(followers, page))
@@ -36,9 +41,27 @@ function* fetchFollowersFlow() {
   }
 }
 
+function* fetchFollowingsFlow() {
+  while (true) {
+    yield take("START_FETCH_FOLLOWINGS")
+
+    const state = yield select()
+    const page = state.followingsPage == null ? 0 : state.followingsPage + 1
+    const followings = yield call(fetchFollowings, state.id, page) // userId == myUserid
+
+    yield put(finishFetchFollowings(followings, page))
+
+    if (followings.length < 20) {
+      yield put(notifyAllFollowingsFetched())
+      break
+    }
+  }
+}
+
 function* rootSaga() {
   yield takeLatest("SAVE", saveProfileFlow)
   yield fork(fetchFollowersFlow)
+  yield fork(fetchFollowingsFlow)
 }
 
 export default rootSaga

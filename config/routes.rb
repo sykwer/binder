@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resource :profile, controller: "users/profiles", only: %i(update)
       resources :posts, controller: "users/posts", only: %i(index)
       resources :followers, controller: "users/followers", only: %i(index)
+      resources :followings, controller: "users/followings", only: %i(index)
       get :timeline, to: "users/timelines#index"
     end
 
