@@ -25,8 +25,8 @@ const run = () => {
       savedName: data.name,
       savedBio: data.bio,
       image: data.image,
-      followings: data.followings,
-      followers: data.followers,
+      followingsCount: data.followings,
+      followersCount: data.followers,
     }
 
     const store = createStore(

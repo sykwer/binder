@@ -51,12 +51,12 @@ const id = (state = "", action) => {
 }
 
 // eslint-disable-next-line
-const followings = (state = null, action) => {
+const followingsCount = (state = null, action) => {
   return state
 }
 
 // eslint-disable-next-line
-const followers = (state = null, action) => {
+const followersCount = (state = null, action) => {
   return state
 }
 
@@ -82,6 +82,64 @@ const appState = (state = "NOT_EDITING", action) => {
   }
 }
 
+const followers = (state = [], action) => {
+  switch (action.type) {
+    case "FINISH_FETCH_FOLLOWERS":
+      return [...state, ...action.followers]
+    case "CLOSE_FOLLOWERS_WINDOW":
+      return []
+    default:
+      return state
+  }
+}
+
+const followings = (state = [], action) => {
+  switch (action.type) {
+    case "FINISH_FETCH_FOLLOWINGS":
+      return [...state, ...action.followings]
+    case "CLOSE_FOLLOWINGS_WINDOW":
+      return []
+    default:
+      return state
+  }
+}
+
+const followersPage = (state = null, action) => {
+  switch (action.type) {
+    case "FINISH_FETCH_FOLLOWERS":
+      return action.page
+    default:
+      return state
+  }
+}
+
+const followingsPage = (state = null, action) => {
+  switch (action.type) {
+    case "FINISH_FETCH_FOLLOWINGS":
+      return action.page
+    default:
+      return state
+  }
+}
+
+const isAllFollowersFetched = (state = false, action) => {
+  switch (action.type) {
+    case "NOFITY_ALL_FOLLOWERS_FETCHED":
+      return true
+    default:
+      return state
+  }
+}
+
+const isAllFollowingsFetched = (state = false, action) => {
+  switch (action.type) {
+    case "NOTIFY_ALL_FOLLOWINGS_FETCHED":
+      return true
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   displayedName,
   displayedBio,
@@ -89,11 +147,17 @@ const rootReducer = combineReducers({
   savedBio,
   image,
   id,
-  followers,
-  followings,
+  followersCount,
+  followingsCount,
   name,
   username,
   appState,
+  followers,
+  followings,
+  followersPage,
+  followingsPage,
+  isAllFollowersFetched,
+  isAllFollowingsFetched,
 })
 
 export default rootReducer
