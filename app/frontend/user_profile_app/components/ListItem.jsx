@@ -37,7 +37,15 @@ const ListItem = ({
   }
 
   return (
-    <div className="followers-follows-item clearfix">
+    <div
+      className="followers-follows-item clearfix cancel-focus-outline"
+      role="button"
+      tabIndex="0"
+      onClick={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+      }}
+    >
       <div className="item-left">
         <img src={image} alt={name} />
       </div>
