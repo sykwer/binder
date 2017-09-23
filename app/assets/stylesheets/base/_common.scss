@@ -43,5 +43,10 @@ button {
 
 // Reset contenteditable style
 [contenteditable]:focus {
-    outline: 0px solid transparent;
+  outline: 0px solid transparent;
+}
+
+// Cancel focus outline
+.cancel-focus-outline:focus {
+  outline: 0px solid transparent;
 }

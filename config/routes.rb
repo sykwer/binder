@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
 
   get "/@:username", to: "users#show"
+  get "/@:username/followers", to: "users#show"
+  get "/@:username/followings", to: "users#show"
   get "/@:username/:menu", to: "users#show"
 
   resources :posts, only: %i(show create edit), param: :uuid do
@@ -29,6 +31,8 @@ Rails.application.routes.draw do
     resources :users, only: %i() do
       resource :profile, controller: "users/profiles", only: %i(update)
       resources :posts, controller: "users/posts", only: %i(index)
+      resources :followers, controller: "users/followers", only: %i(index)
+      resources :followings, controller: "users/followings", only: %i(index)
       get :timeline, to: "users/timelines#index"
     end
 

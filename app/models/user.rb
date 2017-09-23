@@ -23,6 +23,10 @@ class User < ApplicationRecord
     followings.where(id: user.id).exists?
   end
 
+  def followed_by?(user)
+    followers.where(id: user.id).exists?
+  end
+
   def follower_ids
     Follow.where(destination_id: id).pluck(:source_id)
   end
