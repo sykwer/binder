@@ -86,8 +86,6 @@ const followers = (state = [], action) => {
   switch (action.type) {
     case "FINISH_FETCH_FOLLOWERS":
       return [...state, ...action.followers]
-    case "CLOSE_FOLLOWERS_WINDOW":
-      return []
     default:
       return state
   }
@@ -97,8 +95,6 @@ const followings = (state = [], action) => {
   switch (action.type) {
     case "FINISH_FETCH_FOLLOWINGS":
       return [...state, ...action.followings]
-    case "CLOSE_FOLLOWINGS_WINDOW":
-      return []
     default:
       return state
   }

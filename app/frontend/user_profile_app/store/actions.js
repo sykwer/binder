@@ -40,10 +40,6 @@ export const notifyAllFollowersFetched = () => ({
   type: "NOFITY_ALL_FOLLOWERS_FETCHED",
 })
 
-export const closeFollowersWindow = () => ({
-  type: "CLOSE_FOLLOWERS_WINDOW",
-})
-
 // FollowingsApp
 export const startFetchFollowings = () => ({
   type: "START_FETCH_FOLLOWINGS",
@@ -57,8 +53,4 @@ export const finishFetchFollowings = (followings, page) => ({
 
 export const notifyAllFollowingsFetched = () => ({
   type: "NOTIFY_ALL_FOLLOWINGS_FETCHED",
-})
-
-export const closeFollowingsWindow = () => ({
-  type: "CLOSE_FOLLOWINGS_WINDOW",
 })
