@@ -29,3 +29,19 @@ export const fetchFollowings = (userId, page) => {
     },
   }).then(res => res.data.followings)
 }
+
+export const requestFollow = (destinationId) => {
+  const url = "http://localhost:3000/api/follows"
+  return axios.post(url, {
+    opponent_user_id: destinationId,
+  }).then(res => res.status === 200)
+}
+
+export const requestUnfollow = (destinationId) => {
+  const url = "http://localhost:3000/api/follows"
+  return axios.delete(url, {
+    params: {
+      opponent_user_id: destinationId,
+    },
+  }).then(res => res.status === 200)
+}

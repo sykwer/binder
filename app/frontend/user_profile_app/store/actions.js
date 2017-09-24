@@ -40,6 +40,26 @@ export const notifyAllFollowersFetched = () => ({
   type: "NOFITY_ALL_FOLLOWERS_FETCHED",
 })
 
+export const clickFollowFromFollowers = destinationId => ({
+  type: "CLICK_FOLLOW_FROM_FOLLOWERS",
+  destinationId,
+})
+
+export const succeedFollowFromFollowers = destinationId => ({
+  type: "SUCCEED_FOLLOW_FROM_FOLLOWERS",
+  destinationId,
+})
+
+export const clickUnfollowFromFollowers = destinationId => ({
+  type: "CLICK_UNFOLLOW_FROM_FOLLOWERS",
+  destinationId,
+})
+
+export const succeedUnfollowFromFollowers = destinationId => ({
+  type: "SUCCEED_UNFOLLOW_FROM_FOLLOWERS",
+  destinationId,
+})
+
 // FollowingsApp
 export const startFetchFollowings = () => ({
   type: "START_FETCH_FOLLOWINGS",
@@ -53,4 +73,24 @@ export const finishFetchFollowings = (followings, page) => ({
 
 export const notifyAllFollowingsFetched = () => ({
   type: "NOTIFY_ALL_FOLLOWINGS_FETCHED",
+})
+
+export const clickFollowFromFollowings = destinationId => ({
+  type: "CLICK_FOLLOW_FROM_FOLLOWINGS",
+  destinationId,
+})
+
+export const succeedFollowFromFollowings = destinationId => ({
+  type: "SUCCEED_FOLLOW_FROM_FOLLOWINGS",
+  destinationId,
+})
+
+export const clickUnfollowFromFollowings = destinationId => ({
+  type: "CLICK_UNFOLLOW_FROM_FOLLOWINGS",
+  destinationId,
+})
+
+export const succeedUnfollowFromFollowings = destinationId => ({
+  type: "SUCCEED_UNFOLLOW_FROM_FOLLOWINGS",
+  destinationId,
 })

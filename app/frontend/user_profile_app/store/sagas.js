@@ -5,8 +5,19 @@ import {
   finishFetchFollowings,
   notifyAllFollowersFetched,
   notifyAllFollowingsFetched,
+  succeedFollowFromFollowers,
+  succeedUnfollowFromFollowers,
+  succeedFollowFromFollowings,
+  succeedUnfollowFromFollowings,
 } from "./actions"
-import { requestSaveProfile, fetchFollowers, fetchFollowings } from "./services"
+
+import {
+  requestSaveProfile,
+  fetchFollowers,
+  fetchFollowings,
+  requestFollow,
+  requestUnfollow,
+} from "./services"
 
 function* saveProfileFlow() {
   const state = yield select()
@@ -58,10 +69,66 @@ function* fetchFollowingsFlow() {
   }
 }
 
+function* followFromFollowersListFlow() {
+  while (true) {
+    const action = yield take("CLICK_FOLLOW_FROM_FOLLOWERS")
+    const isSuccess = yield call(requestFollow, action.destinationId)
+
+    if (isSuccess) {
+      yield put(succeedFollowFromFollowers(action.destinationId))
+    } else {
+      // handle failure
+    }
+  }
+}
+
+function* unfollowFromFollowersListFlow() {
+  while (true) {
+    const action = yield take("CLICK_UNFOLLOW_FROM_FOLLOWERS")
+    const isSuccess = yield call(requestUnfollow, action.destinationId)
+
+    if (isSuccess) {
+      yield put(succeedUnfollowFromFollowers(action.destinationId))
+    } else {
+      // handle failure
+    }
+  }
+}
+
+function* followFromFollowingsListFlow() {
+  while (true) {
+    const action = yield take("CLICK_FOLLOW_FROM_FOLLOWINGS")
+    const isSuccess = yield call(requestFollow, action.destinationId)
+
+    if (isSuccess) {
+      yield put(succeedFollowFromFollowings(action.destinationId))
+    } else {
+      // handle failure
+    }
+  }
+}
+
+function* unfollowFromFollowingsListFlow() {
+  while (true) {
+    const action = yield take("CLICK_UNFOLLOW_FROM_FOLLOWINGS")
+    const isSuccess = yield call(requestUnfollow, action.destinationId)
+
+    if (isSuccess) {
+      yield put(succeedUnfollowFromFollowings(action.destinationId))
+    } else {
+      // handle failure
+    }
+  }
+}
+
 function* rootSaga() {
   yield takeLatest("SAVE", saveProfileFlow)
   yield fork(fetchFollowersFlow)
   yield fork(fetchFollowingsFlow)
+  yield fork(followFromFollowersListFlow)
+  yield fork(unfollowFromFollowersListFlow)
+  yield fork(followFromFollowingsListFlow)
+  yield fork(unfollowFromFollowingsListFlow)
 }
 
 export default rootSaga

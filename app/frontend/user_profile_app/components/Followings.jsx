@@ -3,10 +3,21 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
+import {
+  clickFollowFromFollowings,
+  clickUnfollowFromFollowings,
+} from "../store/actions"
 import ListItem from "./ListItem"
 import FollowingsBottomObserver from "./FollowingsBottomObserver"
 
-const cpnt = ({ username, name, followings }) => (
+const cpnt = ({
+  username,
+  name,
+  followings,
+  isButtonsDisabled,
+  handleOnClickFollow,
+  handleOnClickUnfollow,
+}) => (
   <div
     className="followers-follows-component"
     role="button"
@@ -28,11 +39,15 @@ const cpnt = ({ username, name, followings }) => (
       {
         followings.map(following => (
           <ListItem
+            userId={following.id}
             key={following.id}
             image={following.image}
             name={following.name}
             bio={following.bio}
             isFollowing={following.isFollowing}
+            isButtonsDisabled={isButtonsDisabled}
+            handleOnClickFollow={handleOnClickFollow}
+            handleOnClickUnfollow={handleOnClickUnfollow}
           />
         ))
       }
@@ -51,16 +66,30 @@ cpnt.propTypes = {
     bio: PropTypes.string.isRequired,
     isFollowing: PropTypes.bool.isRequired,
   })).isRequired,
+  isButtonsDisabled: PropTypes.bool.isRequired,
+  handleOnClickFollow: PropTypes.func.isRequired,
+  handleOnClickUnfollow: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   name: state.name,
   username: state.username,
   followings: state.followings,
+  isButtonsDisabled: state.isButtonsDisabled,
+})
+
+const mapDispatchToProps = dispatch => ({
+  handleOnClickFollow: (destinationId) => {
+    dispatch(clickFollowFromFollowings(destinationId))
+  },
+  handleOnClickUnfollow: (destinationId) => {
+    dispatch(clickUnfollowFromFollowings(destinationId))
+  },
 })
 
 const Followings = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(cpnt)
 
 export default Followings
