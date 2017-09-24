@@ -10,6 +10,9 @@
           followers: user.followers_count,
           isFollowing: current_user.present? && current_user.follows?(user),
           opponentUserId: user.id,
+          myUserId: current_user.present? ? current_user.id : nil,
+          username: user.username,
+          name: user.name,
         }.to_json do %>
       <% end %>
     </div>

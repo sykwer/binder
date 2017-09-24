@@ -3,6 +3,7 @@ import { render } from "react-dom"
 import { createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
 import createSagaMiddleware from "redux-saga"
+import { BrowserRouter } from "react-router-dom"
 
 import Root from "./components/Root"
 import rootReducer from "./store/reducers"
@@ -18,6 +19,9 @@ const run = () => {
       followersCount: data.followers,
       buttonState: data.isFollowing ? "FOLLOWING" : "FOLLOW",
       opponentUserId: data.opponentUserId,
+      myUserId: data.myUserId,
+      name: data.name,
+      username: data.username,
     }
 
     const sagaMiddleware = createSagaMiddleware()
@@ -32,7 +36,9 @@ const run = () => {
 
     render(
       <Provider store={store}>
-        <Root />
+        <BrowserRouter>
+          <Root />
+        </BrowserRouter>
       </Provider>,
       node,
     )
