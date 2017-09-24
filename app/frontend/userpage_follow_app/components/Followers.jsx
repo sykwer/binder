@@ -79,7 +79,7 @@ cpnt.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  myUserId: state.id,
+  myUserId: state.myUserId,
   name: state.name,
   username: state.username,
   followers: state.followers,

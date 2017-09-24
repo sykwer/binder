@@ -1,26 +1,33 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 
-const cpnt = ({ followings, followers }) => (
+const cpnt = ({ username, followingsCount, followersCount }) => (
   <div className="follows">
-    <span className="following">
-      <span className="num">{followings}</span> Following
-    </span>
-    <span className="follower">
-      <span className="num">{followers}</span> Follower
-    </span>
+    <Link to={`/@${username}/followings`}>
+      <span className="following">
+        <span className="num">{followingsCount}</span> Following
+      </span>
+    </Link>
+    <Link to={`/@${username}/followers`}>
+      <span className="follower">
+        <span className="num">{followersCount}</span> Follower
+      </span>
+    </Link>
   </div>
 )
 
 cpnt.propTypes = {
-  followings: PropTypes.number.isRequired,
-  followers: PropTypes.number.isRequired,
+  username: PropTypes.string.isRequired,
+  followingsCount: PropTypes.number.isRequired,
+  followersCount: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = state => ({
-  followings: state.followings,
-  followers: state.followers,
+  username: state.username,
+  followingsCount: state.followingsCount,
+  followersCount: state.followersCount,
 })
 
 const FollowsCount = connect(

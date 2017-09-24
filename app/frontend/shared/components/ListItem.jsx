@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const ListItem = ({
+  myUserId,
   userId,
   image,
   name,
@@ -12,10 +13,12 @@ const ListItem = ({
   handleOnClickUnfollow,
 }) => {
   let button
-  if (isFollowing) {
+  if (myUserId === userId) {
+    button = <div />
+  } else if (isFollowing) {
     button = (
       <button
-        className="following-button"
+        className="following-button-in-list"
         disabled={isButtonsDisabled}
         onClick={(e) => {
           e.preventDefault()
@@ -29,7 +32,7 @@ const ListItem = ({
   } else {
     button = (
       <button
-        className="follow-button"
+        className="follow-button-in-list"
         onClick={(e) => {
           e.preventDefault()
           e.stopPropagation()
@@ -70,6 +73,7 @@ const ListItem = ({
 }
 
 ListItem.propTypes = {
+  myUserId: PropTypes.number.isRequired,
   userId: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

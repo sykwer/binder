@@ -8,10 +8,11 @@ import {
   clickUnfollowFromFollowings,
   closeFollowingsList,
 } from "../store/actions"
-import ListItem from "./ListItem"
+import ListItem from "../../shared/components/ListItem"
 import FollowingsBottomObserver from "./FollowingsBottomObserver"
 
 const cpnt = ({
+  myUserId,
   username,
   name,
   followings,
@@ -44,6 +45,7 @@ const cpnt = ({
           <ListItem
             userId={following.id}
             key={following.id}
+            myUserId={myUserId}
             image={following.image}
             name={following.name}
             bio={following.bio}
@@ -60,6 +62,7 @@ const cpnt = ({
 )
 
 cpnt.propTypes = {
+  myUserId: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   followings: PropTypes.arrayOf(PropTypes.shape({
@@ -76,6 +79,7 @@ cpnt.propTypes = {
 }
 
 const mapStateToProps = state => ({
+  myUserId: state.id,
   name: state.name,
   username: state.username,
   followings: state.followings,
