@@ -9,6 +9,15 @@
   background-color: white;
   opacity: 0.95;
 
+  .close-list-mark {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 20px;
+    color: $gray56;
+    opacity: 0.7;
+  }
+
   .title-header {
     margin-top: 100px;
 
@@ -29,10 +38,14 @@
         width: 50px;
         float: left;
 
-        img {
+        .profile-image {
           width: 40px;
           height: 40px;
           border-radius: 20px;
+        }
+
+        .profile-image:hover {
+          opacity: 0.8;
         }
       }
 
@@ -45,6 +58,10 @@
           .profile-name {
             font-size: 16px;
           }
+
+          .profile-name:hover {
+            text-decoration: underline;
+          }
         }
 
         .item-center-lower {
@@ -53,6 +70,10 @@
             color: $gray56;
             font-size: 14px;
             letter-spacing: 0.5px;
+          }
+
+          .profile-bio:hover {
+            text-decoration: underline;
           }
         }
       }

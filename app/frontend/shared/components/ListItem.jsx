@@ -6,6 +6,7 @@ const ListItem = ({
   userId,
   image,
   name,
+  username,
   bio,
   isFollowing,
   isButtonsDisabled,
@@ -54,15 +55,42 @@ const ListItem = ({
         e.stopPropagation()
       }}
     >
-      <div className="item-left">
-        <img src={image} alt={name} />
+      <div
+        className="item-left cancel-focus-outline"
+        role="button"
+        tabIndex="0"
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          window.location.assign(`/@${username}`)
+        }}
+      >
+        <img src={image} alt={name} className="profile-image" />
       </div>
       <div className="item-center">
         <div className="item-center-upper">
-          <span className="profile-name">{name}</span>
+          <span
+            className="profile-name cancel-focus-outline"
+            role="button"
+            tabIndex="0"
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              window.location.assign(`/@${username}`)
+            }}
+          >{name}</span>
         </div>
         <div className="item-center-lower">
-          <span className="profile-bio">{bio}</span>
+          <span
+            className="profile-bio cancel-focus-outline"
+            role="button"
+            tabIndex="0"
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              window.location.assign(`/@${username}`)
+            }}
+          >{bio}</span>
         </div>
       </div>
       <div className="item-right">
@@ -76,6 +104,7 @@ ListItem.propTypes = {
   myUserId: PropTypes.number.isRequired,
   userId: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   bio: PropTypes.string.isRequired,
   isFollowing: PropTypes.bool.isRequired,

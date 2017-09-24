@@ -33,6 +33,7 @@ const cpnt = ({
       handleCloseFollowersList()
     }}
   >
+    <i className="fa fa-times close-list-mark" aria-hidden="true" />
     <Link to={`/@${username}`} id="followers-to-mypage" />
     <div className="title-header">
       <h2 className="title">
@@ -48,6 +49,7 @@ const cpnt = ({
             myUserId={myUserId}
             image={follower.image}
             name={follower.name}
+            username={follower.username}
             bio={follower.bio}
             isFollowing={follower.isFollowing}
             isButtonsDisabled={isButtonsDisabled}
