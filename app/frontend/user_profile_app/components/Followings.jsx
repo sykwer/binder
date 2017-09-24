@@ -8,7 +8,7 @@ import {
   clickUnfollowFromFollowings,
   closeFollowingsList,
 } from "../store/actions"
-import ListItem from "./ListItem"
+import ListItem from "../../shared/components/ListItem"
 import FollowingsBottomObserver from "./FollowingsBottomObserver"
 
 const cpnt = ({
