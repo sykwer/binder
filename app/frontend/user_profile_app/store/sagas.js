@@ -5,8 +5,19 @@ import {
   finishFetchFollowings,
   notifyAllFollowersFetched,
   notifyAllFollowingsFetched,
+  succeedFollowFromFollowers,
+  succeedUnfollowFromFollowers,
+  succeedFollowFromFollowings,
+  succeedUnfollowFromFollowings,
 } from "./actions"
-import { requestSaveProfile, fetchFollowers, fetchFollowings } from "./services"
+
+import {
+  requestSaveProfile,
+  fetchFollowers,
+  fetchFollowings,
+  requestFollow,
+  requestUnfollow,
+} from "./services"
 
 function* saveProfileFlow() {
   const state = yield select()
@@ -27,8 +38,12 @@ function* saveProfileFlow() {
 function* fetchFollowersFlow() {
   while (true) {
     yield take("START_FETCH_FOLLOWERS")
-
     const state = yield select()
+
+    if (state.isAllFollowersFetched) {
+      continue  // eslint-disable-line
+    }
+
     const page = state.followersPage == null ? 0 : state.followersPage + 1
     const followers = yield call(fetchFollowers, state.id, page) // userId == myUserId
 
@@ -36,7 +51,6 @@ function* fetchFollowersFlow() {
 
     if (followers.length < 20) {
       put(notifyAllFollowersFetched())
-      break
     }
   }
 }
@@ -44,8 +58,12 @@ function* fetchFollowersFlow() {
 function* fetchFollowingsFlow() {
   while (true) {
     yield take("START_FETCH_FOLLOWINGS")
-
     const state = yield select()
+
+    if (state.isAllFollowingsFetched) {
+      continue // eslint-disable-line
+    }
+
     const page = state.followingsPage == null ? 0 : state.followingsPage + 1
     const followings = yield call(fetchFollowings, state.id, page) // userId == myUserid
 
@@ -53,7 +71,58 @@ function* fetchFollowingsFlow() {
 
     if (followings.length < 20) {
       yield put(notifyAllFollowingsFetched())
-      break
+    }
+  }
+}
+
+function* followFromFollowersListFlow() {
+  while (true) {
+    const action = yield take("CLICK_FOLLOW_FROM_FOLLOWERS")
+    const isSuccess = yield call(requestFollow, action.destinationId)
+
+    if (isSuccess) {
+      yield put(succeedFollowFromFollowers(action.destinationId))
+    } else {
+      // handle failure
+    }
+  }
+}
+
+function* unfollowFromFollowersListFlow() {
+  while (true) {
+    const action = yield take("CLICK_UNFOLLOW_FROM_FOLLOWERS")
+    const isSuccess = yield call(requestUnfollow, action.destinationId)
+
+    if (isSuccess) {
+      yield put(succeedUnfollowFromFollowers(action.destinationId))
+    } else {
+      // handle failure
+    }
+  }
+}
+
+function* followFromFollowingsListFlow() {
+  while (true) {
+    const action = yield take("CLICK_FOLLOW_FROM_FOLLOWINGS")
+    const isSuccess = yield call(requestFollow, action.destinationId)
+
+    if (isSuccess) {
+      yield put(succeedFollowFromFollowings(action.destinationId))
+    } else {
+      // handle failure
+    }
+  }
+}
+
+function* unfollowFromFollowingsListFlow() {
+  while (true) {
+    const action = yield take("CLICK_UNFOLLOW_FROM_FOLLOWINGS")
+    const isSuccess = yield call(requestUnfollow, action.destinationId)
+
+    if (isSuccess) {
+      yield put(succeedUnfollowFromFollowings(action.destinationId))
+    } else {
+      // handle failure
     }
   }
 }
@@ -62,6 +131,10 @@ function* rootSaga() {
   yield takeLatest("SAVE", saveProfileFlow)
   yield fork(fetchFollowersFlow)
   yield fork(fetchFollowingsFlow)
+  yield fork(followFromFollowersListFlow)
+  yield fork(unfollowFromFollowersListFlow)
+  yield fork(followFromFollowingsListFlow)
+  yield fork(unfollowFromFollowingsListFlow)
 }
 
 export default rootSaga

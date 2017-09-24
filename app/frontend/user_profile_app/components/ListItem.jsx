@@ -2,20 +2,25 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const ListItem = ({
+  userId,
   image,
   name,
   bio,
   isFollowing,
+  isButtonsDisabled,
+  handleOnClickFollow,
+  handleOnClickUnfollow,
 }) => {
   let button
   if (isFollowing) {
     button = (
       <button
         className="following-button"
+        disabled={isButtonsDisabled}
         onClick={(e) => {
           e.preventDefault()
           e.stopPropagation()
-          // handleOnClickUnfollow(userId)
+          handleOnClickUnfollow(userId)
         }}
       >
         Following
@@ -28,7 +33,7 @@ const ListItem = ({
         onClick={(e) => {
           e.preventDefault()
           e.stopPropagation()
-          // handleOnClickFollow(userId)
+          handleOnClickFollow(userId)
         }}
       >
         Follow
@@ -65,10 +70,14 @@ const ListItem = ({
 }
 
 ListItem.propTypes = {
+  userId: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   bio: PropTypes.string.isRequired,
   isFollowing: PropTypes.bool.isRequired,
+  isButtonsDisabled: PropTypes.bool.isRequired,
+  handleOnClickFollow: PropTypes.func.isRequired,
+  handleOnClickUnfollow: PropTypes.func.isRequired,
 }
 
 export default ListItem

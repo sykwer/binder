@@ -7,6 +7,18 @@ import { startFetchFollowings } from "../store/actions"
 const cpnt = ({ handleOnIntersect }) => {
   // eslint-disable-next-line
   const onIntersect = (entries, observer) => {
+    let willFire = true
+
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        willFire = false
+      }
+    })
+
+    if (!willFire) {
+      return
+    }
+
     handleOnIntersect()
   }
 
