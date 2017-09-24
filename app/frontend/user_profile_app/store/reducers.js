@@ -50,9 +50,17 @@ const id = (state = "", action) => {
   return state
 }
 
-// eslint-disable-next-line
 const followingsCount = (state = null, action) => {
-  return state
+  switch (action.type) {
+    case "SUCCEED_FOLLOW_FROM_FOLLOWINGS":
+    case "SUCCEED_FOLLOW_FROM_FOLLOWERS":
+      return state + 1
+    case "SUCCEED_UNFOLLOW_FROM_FOLLOWINGS":
+    case "SUCCEED_UNFOLLOW_FROM_FOLLOWERS":
+      return state - 1
+    default:
+      return state
+  }
 }
 
 // eslint-disable-next-line
