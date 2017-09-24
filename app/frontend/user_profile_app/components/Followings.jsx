@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import {
   clickFollowFromFollowings,
   clickUnfollowFromFollowings,
+  closeFollowingsList,
 } from "../store/actions"
 import ListItem from "./ListItem"
 import FollowingsBottomObserver from "./FollowingsBottomObserver"
@@ -17,6 +18,7 @@ const cpnt = ({
   isButtonsDisabled,
   handleOnClickFollow,
   handleOnClickUnfollow,
+  handleCloseFollowingsList,
 }) => (
   <div
     className="followers-follows-component"
@@ -27,6 +29,7 @@ const cpnt = ({
       e.stopPropagation()
       const node = document.getElementById("followings-to-mypage")
       node.click()
+      handleCloseFollowingsList()
     }}
   >
     <Link to={`/@${username}`} id="followings-to-mypage" />
@@ -69,6 +72,7 @@ cpnt.propTypes = {
   isButtonsDisabled: PropTypes.bool.isRequired,
   handleOnClickFollow: PropTypes.func.isRequired,
   handleOnClickUnfollow: PropTypes.func.isRequired,
+  handleCloseFollowingsList: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -84,6 +88,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleOnClickUnfollow: (destinationId) => {
     dispatch(clickUnfollowFromFollowings(destinationId))
+  },
+  handleCloseFollowingsList: () => {
+    dispatch(closeFollowingsList())
   },
 })
 

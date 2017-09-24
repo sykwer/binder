@@ -60,6 +60,10 @@ export const succeedUnfollowFromFollowers = destinationId => ({
   destinationId,
 })
 
+export const closeFollowersList = () => ({
+  type: "CLOSE_FOLLOWERS_LIST",
+})
+
 // FollowingsApp
 export const startFetchFollowings = () => ({
   type: "START_FETCH_FOLLOWINGS",
@@ -93,4 +97,8 @@ export const clickUnfollowFromFollowings = destinationId => ({
 export const succeedUnfollowFromFollowings = destinationId => ({
   type: "SUCCEED_UNFOLLOW_FROM_FOLLOWINGS",
   destinationId,
+})
+
+export const closeFollowingsList = () => ({
+  type: "CLOSE_FOLLOWINGS_LIST",
 })

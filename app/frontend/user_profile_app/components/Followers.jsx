@@ -3,7 +3,11 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
 
-import { clickFollowFromFollowers, clickUnfollowFromFollowers } from "../store/actions"
+import {
+  clickFollowFromFollowers,
+  clickUnfollowFromFollowers,
+  closeFollowersList,
+} from "../store/actions"
 import ListItem from "./ListItem"
 import FollowersBottomObserver from "./FollowersBottomObserver"
 
@@ -14,6 +18,7 @@ const cpnt = ({
   isButtonsDisabled,
   handleOnClickFollow,
   handleOnClickUnfollow,
+  handleCloseFollowersList,
 }) => (
   <div
     className="followers-follows-component"
@@ -24,6 +29,7 @@ const cpnt = ({
       e.stopPropagation()
       const node = document.getElementById("followers-to-mypage")
       node.click()
+      handleCloseFollowersList()
     }}
   >
     <Link to={`/@${username}`} id="followers-to-mypage" />
@@ -66,6 +72,7 @@ cpnt.propTypes = {
   isButtonsDisabled: PropTypes.bool.isRequired,
   handleOnClickFollow: PropTypes.func.isRequired,
   handleOnClickUnfollow: PropTypes.func.isRequired,
+  handleCloseFollowersList: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -81,6 +88,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleOnClickUnfollow: (destinationId) => {
     dispatch(clickUnfollowFromFollowers(destinationId))
+  },
+  handleCloseFollowersList: () => {
+    dispatch(closeFollowersList())
   },
 })
 

@@ -110,6 +110,8 @@ const followers = (state = [], action) => {
 
         return follower
       })
+    case "CLOSE_FOLLOWERS_LIST":
+      return []
     default:
       return state
   }
@@ -135,6 +137,8 @@ const followings = (state = [], action) => {
 
         return following
       })
+    case "CLOSE_FOLLOWINGS_LIST":
+      return []
     default:
       return state
   }
@@ -144,6 +148,8 @@ const followersPage = (state = null, action) => {
   switch (action.type) {
     case "FINISH_FETCH_FOLLOWERS":
       return action.page
+    case "CLOSE_FOLLOWERS_LIST":
+      return null
     default:
       return state
   }
@@ -153,6 +159,8 @@ const followingsPage = (state = null, action) => {
   switch (action.type) {
     case "FINISH_FETCH_FOLLOWINGS":
       return action.page
+    case "CLOSE_FOLLOWINGS_LIST":
+      return null
     default:
       return state
   }
