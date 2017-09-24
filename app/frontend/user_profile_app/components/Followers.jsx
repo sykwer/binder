@@ -33,6 +33,7 @@ const cpnt = ({
       handleCloseFollowersList()
     }}
   >
+    <i className="fa fa-times close-list-mark" aria-hidden="true" />
     <Link to={`/@${username}`} id="followers-to-mypage" />
     <div className="title-header">
       <h2 className="title">
