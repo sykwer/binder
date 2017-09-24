@@ -48,6 +48,7 @@ const cpnt = ({
             myUserId={myUserId}
             image={following.image}
             name={following.name}
+            username={following.username}
             bio={following.bio}
             isFollowing={following.isFollowing}
             isButtonsDisabled={isButtonsDisabled}
