@@ -14,8 +14,8 @@ const run = () => {
     const data = JSON.parse(node.getAttribute("data"))
 
     const initialState = {
-      followings: data.followings,
-      followers: data.followers,
+      followingsCount: data.followings,
+      followersCount: data.followers,
       buttonState: data.isFollowing ? "FOLLOWING" : "FOLLOW",
       opponentUserId: data.opponentUserId,
     }

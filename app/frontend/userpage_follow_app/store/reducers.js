@@ -1,11 +1,11 @@
 import { combineReducers } from "redux"
 
 // eslint-disable-next-line
-const followings = (state = null, action) => {
+const followingsCount = (state = null, action) => {
   return state
 }
 
-const followers = (state = null, action) => {
+const followersCount = (state = null, action) => {
   switch (action.type) {
     case "SUCCEED_IN_FOLLOW":
       return state + 1
@@ -37,8 +37,8 @@ const opponentUserId = (state = null, action) => {
 }
 
 const rootReducer = combineReducers({
-  followings,
-  followers,
+  followingsCount,
+  followersCount,
   buttonState,
   opponentUserId,
 })

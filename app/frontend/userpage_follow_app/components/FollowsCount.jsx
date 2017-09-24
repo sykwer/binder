@@ -2,25 +2,25 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-const cpnt = ({ followings, followers }) => (
+const cpnt = ({ followingsCount, followersCount }) => (
   <div className="follows">
     <span className="following">
-      <span className="num">{followings}</span> Following
+      <span className="num">{followingsCount}</span> Following
     </span>
     <span className="follower">
-      <span className="num">{followers}</span> Follower
+      <span className="num">{followersCount}</span> Follower
     </span>
   </div>
 )
 
 cpnt.propTypes = {
-  followings: PropTypes.number.isRequired,
-  followers: PropTypes.number.isRequired,
+  followingsCount: PropTypes.number.isRequired,
+  followersCount: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = state => ({
-  followings: state.followings,
-  followers: state.followers,
+  followingsCount: state.followingsCount,
+  followersCount: state.followersCount,
 })
 
 const FollowsCount = connect(
