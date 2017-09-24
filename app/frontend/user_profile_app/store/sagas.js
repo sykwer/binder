@@ -38,8 +38,12 @@ function* saveProfileFlow() {
 function* fetchFollowersFlow() {
   while (true) {
     yield take("START_FETCH_FOLLOWERS")
-
     const state = yield select()
+
+    if (state.isAllFollowersFetched) {
+      continue  // eslint-disable-line
+    }
+
     const page = state.followersPage == null ? 0 : state.followersPage + 1
     const followers = yield call(fetchFollowers, state.id, page) // userId == myUserId
 
@@ -47,7 +51,6 @@ function* fetchFollowersFlow() {
 
     if (followers.length < 20) {
       put(notifyAllFollowersFetched())
-      break
     }
   }
 }
@@ -55,8 +58,12 @@ function* fetchFollowersFlow() {
 function* fetchFollowingsFlow() {
   while (true) {
     yield take("START_FETCH_FOLLOWINGS")
-
     const state = yield select()
+
+    if (state.isAllFollowingsFetched) {
+      continue // eslint-disable-line
+    }
+
     const page = state.followingsPage == null ? 0 : state.followingsPage + 1
     const followings = yield call(fetchFollowings, state.id, page) // userId == myUserid
 
@@ -64,7 +71,6 @@ function* fetchFollowingsFlow() {
 
     if (followings.length < 20) {
       yield put(notifyAllFollowingsFetched())
-      break
     }
   }
 }

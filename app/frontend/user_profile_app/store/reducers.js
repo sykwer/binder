@@ -170,6 +170,8 @@ const isAllFollowersFetched = (state = false, action) => {
   switch (action.type) {
     case "NOFITY_ALL_FOLLOWERS_FETCHED":
       return true
+    case "CLOSE_FOLLOWERS_LIST":
+      return false
     default:
       return state
   }
@@ -179,6 +181,8 @@ const isAllFollowingsFetched = (state = false, action) => {
   switch (action.type) {
     case "NOTIFY_ALL_FOLLOWINGS_FETCHED":
       return true
+    case "CLOSE_FOLLOWINGS_LIST":
+      return false
     default:
       return state
   }
