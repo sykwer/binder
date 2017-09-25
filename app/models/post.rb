@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
 
+  has_many :bookmarks, foreign_key: :post_uuid
+  has_many :bookmarking_users, through: :bookmarks, source: :user
+
   before_create do
     self.uuid = SecureRandom.uuid
   end
