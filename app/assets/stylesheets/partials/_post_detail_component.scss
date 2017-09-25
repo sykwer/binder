@@ -133,16 +133,16 @@
       .footer-left {
         float: left;
 
-        .like-heart {
+        .bookmark {
           display: inline-block;
-          font-size: 20px;
+          font-size: 25px;
           color: $fresh_green;
           opacity: 0.8;
         }
 
-        .like-count {
+        .bookmark-count {
           display: inline-block;
-          margin-left: 3px;
+          margin-left: 10px;
           vertical-align: 4px;
           font-size: 17px;
           color: $gray56;

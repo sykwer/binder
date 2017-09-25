@@ -49,10 +49,10 @@ const cpnt = ({ posts }) => {
       </div>
       <div className="footer-wrapper clearfix">
         <div className="footer-left">
-          <span className="like-heart">
-            <i className="fa fa-heart-o" aria-hidden="true" />
+          <span className="bookmark">
+            <i className="fa fa-bookmark-o" aria-hidden="true" />
           </span>
-          <span className="like-count">3</span>
+          <span className="bookmark-count">3</span>
         </div>
         <div className="footer-right">
           <span className="article-menu">

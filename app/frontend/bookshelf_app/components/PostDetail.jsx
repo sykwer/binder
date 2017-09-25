@@ -136,10 +136,10 @@ const cpnt = ({
         </div>
         <div className="footer-wrapper clearfix">
           <div className="footer-left">
-            <span className="like-heart">
-              <i className="fa fa-heart-o" aria-hidden="true" />
+            <span className="bookmark">
+              <i className="fa fa-bookmark-o" aria-hidden="true" />
             </span>
-            <span className="like-count">
+            <span className="bookmark-count">
               31
             </span>
           </div>
