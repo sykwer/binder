@@ -24,4 +24,8 @@ class Post < ApplicationRecord
     update!(first_published_at: Time.zone.now) unless published?
     update!(content: content_draft)
   end
+
+  def bookmarked_by?(user)
+    bookmarks.where(user: user).exists?
+  end
 end
