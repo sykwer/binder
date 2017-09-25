@@ -2,21 +2,36 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-const cpnt = ({ imageURL, title, author }) => (
-  <div className="main-left">
-    <div className="main-book">
-      <img src={imageURL} alt={title} />
-    </div>
-    <div className="main-bookinfo">
-      <div className="book-name overflow-ellipsis">
-        <span>{title}</span>
+const cpnt = ({ imageURL, title, author }) => {
+  let mainBook
+  if (imageURL) {
+    mainBook = (
+      <div className="main-book-shadowed">
+        <img src={imageURL} alt={title} />
       </div>
-      <div className="book-author overflow-ellipsis">
-        <span>{author}</span>
+    )
+  } else {
+    mainBook = (
+      <div className="main-book-placeholded">
+        <img src="http://via.placeholder.com/142x212" alt="placeholder" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="main-left">
+      {mainBook}
+      <div className="main-bookinfo">
+        <div className="book-name overflow-ellipsis">
+          <span>{title}</span>
+        </div>
+        <div className="book-author overflow-ellipsis">
+          <span>{author}</span>
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
+}
 
 cpnt.propTypes = {
   imageURL: PropTypes.string.isRequired,
@@ -30,7 +45,7 @@ cpnt.defaultProps = {
 }
 
 const mapStateToProps = (state) => {
-  const imageURL = state.selectedBookAsin ? state.selectedBookImage : "http://via.placeholder.com/142x212"
+  const imageURL = state.selectedBookAsin ? state.selectedBookImage : ""
   const title = state.selectedBookTitle
   const author = state.selectedBookAuthor
 
