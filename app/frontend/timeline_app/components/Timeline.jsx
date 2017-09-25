@@ -2,7 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-const cpnt = ({ posts }) => {
+import { clickBookmark, clickUnbookmark } from "../store/actions"
+
+const cpnt = ({ posts, handleOnClickBookmark, handleOnClickUnbookmark }) => {
   const postCpnts = posts.map(post => (
     <div key={post.uuid} className="article-card">
       <div className="header-wrapper clearfix">
@@ -52,11 +54,27 @@ const cpnt = ({ posts }) => {
           {
             !post.isBookmarked ? (
               <span className="bookmark">
-                <i className="fa fa-bookmark-o" aria-hidden="true" />
+                <i
+                  className="fa fa-bookmark-o"
+                  aria-hidden="true"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    handleOnClickBookmark(post.uuid)
+                  }}
+                />
               </span>
             ) : (
               <span className="bookmark">
-                <i className="fa fa-bookmark" aria-hidden="true" />
+                <i
+                  className="fa fa-bookmark"
+                  aria-hidden="true"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    handleOnClickUnbookmark(post.uuid)
+                  }}
+                />
               </span>
             )
           }
@@ -94,6 +112,8 @@ cpnt.propTypes = {
     isBookmarked: PropTypes.bool.isRequired,
     bookmarkedCount: PropTypes.number.isRequired,
   })),
+  handleOnClickBookmark: PropTypes.func.isRequired,
+  handleOnClickUnbookmark: PropTypes.func.isRequired,
 }
 
 cpnt.defaultProps = {
@@ -104,8 +124,18 @@ const mapStateToProps = state => ({
   posts: state.posts,
 })
 
+const mapDispatchToProps = dispatch => ({
+  handleOnClickBookmark: (postUuid) => {
+    dispatch(clickBookmark(postUuid))
+  },
+  handleOnClickUnbookmark: (postUuid) => {
+    dispatch(clickUnbookmark(postUuid))
+  },
+})
+
 const Timeline = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(cpnt)
 
 export default Timeline

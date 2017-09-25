@@ -26,7 +26,8 @@ Rails.application.routes.draw do
     resources :posts, only: %i(show), param: :uuid do
       resource :content_draft, controller: 'posts/content_drafts', only: %i(update)
       resource :book_info, controller: 'posts/book_infos', only: %i(update)
-      resources :bookmarks, controller: "posts/likes", only: %i(create destroy)
+      resources :bookmarks, controller: "posts/bookmarks", only: %i(create)
+      delete "bookmarks", to: "posts/bookmarks#destroy"
     end
 
     resources :users, only: %i() do

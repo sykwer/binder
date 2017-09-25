@@ -1,6 +1,5 @@
-class Api::Posts::LikesController < Api::ApplicationController
+class Api::Posts::BookmarksController < Api::ApplicationController
   before_action :set_post, only: %i(create)
-  before_action :set_user, only: %i(create)
 
   def create
     bookmark = @post.bookmarks.build(user: current_user)
