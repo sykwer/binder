@@ -136,11 +136,19 @@ const cpnt = ({
         </div>
         <div className="footer-wrapper clearfix">
           <div className="footer-left">
-            <span className="bookmark">
-              <i className="fa fa-bookmark-o" aria-hidden="true" />
-            </span>
+            {
+              post.isBookmarked ? (
+                <span className="bookmark">
+                  <i className="fa fa-bookmark" aria-hidden="true" />
+                </span>
+              ) : (
+                <span className="bookmark">
+                  <i className="fa fa-bookmark-o" aria-hidden="true" />
+                </span>
+              )
+            }
             <span className="bookmark-count">
-              31
+              {post.bookmarkedCount}
             </span>
           </div>
           <div className="footer-right">
@@ -167,6 +175,8 @@ cpnt.propTypes = {
     userImageUrl: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
     userUserName: PropTypes.string.isRequired,
+    isBookmarkded: PropTypes.bool.isRequired,
+    bookmarkedCount: PropTypes.number.isRequired,
   }),
   nextPostUuid: PropTypes.string.isRequired,
   priorPostUuid: PropTypes.string.isRequired,
