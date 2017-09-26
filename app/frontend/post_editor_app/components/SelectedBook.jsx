@@ -21,6 +21,7 @@ const cpnt = ({ imageURL, title, author }) => {
   return (
     <div className="main-left">
       {mainBook}
+      <p className="link-to-selector">{">> Select book"}</p>
       <div className="main-bookinfo">
         <div className="book-name overflow-ellipsis">
           <span>{title}</span>
