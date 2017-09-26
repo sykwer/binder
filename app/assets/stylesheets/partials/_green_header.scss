@@ -5,9 +5,8 @@
   transition: top 0.25s ease-in-out;
 
   width: 100%;
-  height: $header_height;
   padding: 10px 150px;
-  background-color: $fresh_green;
+  background-color: white;
 
   .header-upper {
 
@@ -17,22 +16,12 @@
       .logo {
         margin: 0;
         float: left;
-        opacity: 0.7;
+        opacity: 0.4;
 
         img {
           width: 40px;
-          height: 40px;
+          height: 30px;
         }
-      }
-
-      .wording {
-        display: inline-block;
-        margin: 10px 0 0 20px;
-        height: 20px;
-        padding-left: 15px;
-        border-left: 0.5px solid white;
-        color: white;
-        opacity: 0.5;
       }
     }
 
@@ -49,12 +38,12 @@
 
         .icon {
           font-size: 20px;
-          color: white;
+          color: $gray56;
           opacity: 0.7;
         }
 
         .write-record a {
-          color: white;
+          color: $fresh_green;
           opacity: 0.7;
         }
 
@@ -63,27 +52,6 @@
           height: 30px;
           border-radius: 15px;
         }
-      }
-    }
-  }
-
-  .header-lower {
-    margin-top: 8px;
-
-    ul {
-      padding: 0;
-    }
-
-    .nav-item {
-      display: inline-block;
-      margin: 0 20px 0 0;
-
-      a {
-        display: inline-block;
-        font-size: 15px;
-        letter-spacing: 1px;
-        color: white;
-        opacity: 0.7;
       }
     }
   }
