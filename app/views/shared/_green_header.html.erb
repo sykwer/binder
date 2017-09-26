@@ -2,9 +2,8 @@
   <div class="header-upper clearfix">
     <div class="header-upper-left">
       <h1 class="logo">
-        <%= link_to image_tag('book_logo.png'), root_path %>
+        <%= link_to image_tag('gray_book_logo.png'), root_path %>
       </h1>
-      <p class="wording">Log your reading records. Browse friends' reading records. </p>
     </div>
     <div class="header-upper-right">
       <nav class="header-menu">
@@ -16,15 +15,5 @@
         </ul>
       </nav>
     </div>
-  </div>
-  <div class="header-lower">
-    <nav class="global-nav">
-      <ul>
-        <li class="nav-item"><%= link_to "TOP", root_path %></li>
-        <li class="nav-item"><%= link_to "Following", "/@#{current_user.username}/followings" %></li>
-        <li class="nav-item"><%= link_to "Follower", "/@#{current_user.username}/followers" %></li>
-        <li class="nav-item"><%= link_to "Find User", "#" %></li>
-      </ul>
-    </nav>
   </div>
 </header>
