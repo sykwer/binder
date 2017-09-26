@@ -37,10 +37,14 @@
     </div>
     <div class="footer-wrapper clearfix">
       <div class="footer-left">
-        <span class="like-heart">
-          <i class="fa fa-heart-o" aria-hidden="true"></i>
-        </span>
-        <span class="like-count">3</span>
+        <%= content_tag :div,
+          id: "bookmark-button-app",
+          data: {
+            postUuid: @post.uuid,
+            isBookmarked: current_user.present? ? @post.bookmarked_by?(current_user) : false,
+            bookmarkedCount: @post.bookmarked_count,
+          }.to_json do %>
+        <% end %>
       </div>
       <div class="footer-right">
         <span class="article-menu">

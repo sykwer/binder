@@ -4,6 +4,22 @@ const posts = (state = [], action) => {
   switch (action.type) {
     case "FINISH_FETCH":
       return [...state, ...action.posts]
+    case "SUCCEED_BOOKMARK":
+      return state.map((post) => {
+        if (post.uuid === action.postUuid) {
+          return { ...post, isBookmarked: true, bookmarkedCount: post.bookmarkedCount + 1 }
+        }
+
+        return post
+      })
+    case "SUCCEED_UNBOOKMARK":
+      return state.map((post) => {
+        if (post.uuid === action.postUuid) {
+          return { ...post, isBookmarked: false, bookmarkedCount: post.bookmarkedCount - 1 }
+        }
+
+        return post
+      })
     default:
       return state
   }

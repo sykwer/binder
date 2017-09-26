@@ -1,6 +1,9 @@
 class Post < ApplicationRecord
   belongs_to :user
 
+  has_many :bookmarks, foreign_key: :post_uuid
+  has_many :bookmarking_users, through: :bookmarks, source: :user
+
   before_create do
     self.uuid = SecureRandom.uuid
   end
@@ -20,5 +23,9 @@ class Post < ApplicationRecord
   def publish_or_update_content!
     update!(first_published_at: Time.zone.now) unless published?
     update!(content: content_draft)
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.where(user: user).exists?
   end
 end

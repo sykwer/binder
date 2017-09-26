@@ -1,0 +1,9 @@
+create_table "bookmarks", force: :cascade, options: default_options do |t|
+  t.integer :user_id,   null: false
+  t.string  :post_uuid, null: false
+  t.timestamps          null: false
+
+  t.index ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
+  t.index ["post_uuid"], name: "index_bookmarks_on_post_uuid", using: :btree
+  t.index ["user_id", "post_uuid"], name: "index_bookmarks_on_user_id_and_post_uuid", unique: true, using: :btree
+end

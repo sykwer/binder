@@ -1,38 +1,14 @@
-import { fork, take, select, call, put } from "redux-saga/effects"
+import { fork, take, call, put } from "redux-saga/effects"
 
 import {
-  finishFetch,
-  notifyAllFetched,
   succeedBookmark,
   succeedUnbookmark,
 } from "./actions"
+
 import {
-  fetchPosts,
   requestBookmark,
   requestUnbookmark,
 } from "./services"
-
-function* fetchPostsFlow() {
-  while (true) {
-    yield take("START_FETCH")
-
-    const state = yield select()
-    let page
-    if (state.page == null) {
-      page = 0
-    } else {
-      page = state.page + 1
-    }
-
-    const posts = yield call(fetchPosts, state.userId, page)
-    yield put(finishFetch(page, posts))
-
-    if (posts.length < 50) {
-      yield put(notifyAllFetched())
-      break
-    }
-  }
-}
 
 function* requestBookmarkFlow() {
   while (true) {
@@ -61,7 +37,6 @@ function* requestUnbookmarkFlow() {
 }
 
 function* rootSaga() {
-  yield fork(fetchPostsFlow)
   yield fork(requestBookmarkFlow)
   yield fork(requestUnbookmarkFlow)
 }
