@@ -8,6 +8,7 @@ const PostContent = ({ onChangeContent }) => {
     <div className="post-content">
       <div
         id="post-content-div"
+        placeholder="本文"
         contentEditable
         ref={(node) => { editable = node }}
         onInput={(e) => {

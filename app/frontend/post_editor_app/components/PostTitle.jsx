@@ -13,6 +13,7 @@ const cpnt = ({ handleChangeTitle }) => {
       className="post-title"
       ref={(node) => { editable = node }}
       contentEditable
+      placeholder="タイトル"
       onInput={(e) => {
         e.preventDefault()
         handleChangeTitle(editable.innerText)
