@@ -36,6 +36,11 @@ export const updatePostContent = text => ({
   text,
 })
 
+export const updatePostTitle = text => ({
+  type: "UPDATE_POST_TITLE",
+  text,
+})
+
 export const requestBookList = (
   bookName, author, publisher,
 ) => ({
@@ -54,11 +59,26 @@ export const receiveEmpty = () => ({
   type: "RECEIVE_EMPTY",
 })
 
-export const startSavingPostContent = text => ({
+export const startSavingPostContent = () => ({
   type: "START_SAVING_POST_CONTENT",
-  text,
 })
 
 export const finishSavingPostContent = () => ({
   type: "FINISH_SAVING_POST_CONTENT",
+})
+
+export const startSavingPostTitle = () => ({
+  type: "START_SAVING_POST_TITLE",
+})
+
+export const finishSavingPostTitle = () => ({
+  type: "FINISH_SAVING_POST_TITLE",
+})
+
+export const openBookSelector = () => ({
+  type: "OPEN_BOOK_SELECTOR",
+})
+
+export const closeBookSelector = () => ({
+  type: "CLOSE_BOOK_SELECTOR",
 })

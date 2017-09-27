@@ -98,6 +98,15 @@ const postContent = (state = "", action) => {
   }
 }
 
+const postTitle = (state = "", action) => {
+  switch (action.type) {
+    case "UPDATE_POST_TITLE":
+      return action.text
+    default:
+      return state
+  }
+}
+
 const contentSaveState = (state = "INITIAL", action) => {
   switch (action.type) {
     case "UPDATE_POST_CONTENT":
@@ -105,6 +114,19 @@ const contentSaveState = (state = "INITIAL", action) => {
     case "START_SAVING_POST_CONTENT":
       return "IS_SAVING"
     case "FINISH_SAVING_POST_CONTENT":
+      return "IS_SAVED"
+    default:
+      return state
+  }
+}
+
+const titleSaveState = (state = "INITIAL", action) => {
+  switch (action.type) {
+    case "UPDATE_POST_TITLE":
+      return "IS_NOT_SAVED"
+    case "START_SAVING_POST_TITLE":
+      return "IS_SAVING"
+    case "FINISH_SAVING_POST_TITLE":
       return "IS_SAVED"
     default:
       return state
@@ -125,6 +147,18 @@ const bookSearchState = (state = "EMPTY", action) => {
       return "IS_FETCHED_EMPTY"
     case "NOTIFY_BOOK_SEARCH_INPUT_EMPTY":
       return "EMPTY"
+    default:
+      return state
+  }
+}
+
+const isBookSelectorOpen = (state = false, action) => {
+  switch (action.type) {
+    case "OPEN_BOOK_SELECTOR":
+      return true
+    case "CLOSE_BOOK_SELECTOR":
+    case "SELECT_BOOK":
+      return false
     default:
       return state
   }
@@ -156,8 +190,11 @@ const rootReducer = combineReducers({
   selectedBookPublisher,
   selectedBookImage,
   postContent,
+  postTitle,
   contentSaveState,
+  titleSaveState,
   bookSearchState,
+  isBookSelectorOpen,
   uuid,
   date,
   user,

@@ -17,10 +17,10 @@ const run = () => {
 
     const initialState = {
       uuid: data.uuid,
-      selectedBookAsin: data.asin,
-      selectedBookTitle: data.title,
-      selectedBookAuthor: data.author,
-      selectedBookPublisher: data.publisher,
+      selectedBookAsin: data.bookAsin,
+      selectedBookTitle: data.bookTitle,
+      selectedBookAuthor: data.bookAuthor,
+      selectedBookPublisher: data.bookPublisher,
       selectedBookImage: data.image,
       postContent: data.content,
       date: data.date,

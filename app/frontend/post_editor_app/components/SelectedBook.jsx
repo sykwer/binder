@@ -2,7 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-const cpnt = ({ imageURL, title, author }) => {
+import { openBookSelector } from "../store/actions"
+
+const cpnt = ({ imageURL, title, author, handleClickOpenBookSelector }) => {
   let mainBook
   if (imageURL) {
     mainBook = (
@@ -21,6 +23,23 @@ const cpnt = ({ imageURL, title, author }) => {
   return (
     <div className="main-left">
       {mainBook}
+      <span
+        className="link-to-selector"
+        role="button"
+        tabIndex="0"
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          handleClickOpenBookSelector()
+
+          window.setTimeout(() => {
+            const input = document.getElementById("book-title-input")
+            input.focus()
+          }, 300)
+        }}
+      >
+        {">> Select book"}
+      </span>
       <div className="main-bookinfo">
         <div className="book-name overflow-ellipsis">
           <span>{title}</span>
@@ -37,6 +56,7 @@ cpnt.propTypes = {
   imageURL: PropTypes.string.isRequired,
   title: PropTypes.string,
   author: PropTypes.string,
+  handleClickOpenBookSelector: PropTypes.func.isRequired,
 }
 
 cpnt.defaultProps = {
@@ -52,8 +72,15 @@ const mapStateToProps = (state) => {
   return { imageURL, title, author }
 }
 
+const mapDispatchToProps = dispatch => ({
+  handleClickOpenBookSelector: () => {
+    dispatch(openBookSelector())
+  },
+})
+
 const SelectedBook = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(cpnt)
 
 export default SelectedBook

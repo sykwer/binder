@@ -1,18 +1,21 @@
 import React from "react"
 import PropTypes from "prop-types"
+import MediumEditor from "medium-editor"
 
 const PostContent = ({ onChangeContent }) => {
   let editable
 
   return (
-    <div className="main-book-review">
+    <div className="post-content">
       <div
         id="post-content-div"
+        className="medium-editable"
+        placeholder="本文"
         contentEditable
         ref={(node) => { editable = node }}
         onInput={(e) => {
           e.preventDefault()
-          onChangeContent(editable.innerText)
+          onChangeContent(editable.innerHTML)
         }}
       />
     </div>
@@ -29,7 +32,7 @@ window.addEventListener("load", () => {
   // workaround
   const rootNode = document.getElementById("post-editor-app")
   const data = JSON.parse(rootNode.getAttribute("data"))
-  node.innerText = data.content
+  node.innerHTML = data.content
 
   // For first position of caret
   const range = document.createRange()
@@ -38,6 +41,14 @@ window.addEventListener("load", () => {
   range.collapse(false)
   selection.removeAllRanges()
   selection.addRange(range)
+
+  // eslint-disable-next-line
+  new MediumEditor(".medium-editable", {
+    targetBlank: true,
+    autoLink: true,
+    imageDragging: false,
+    placeholder: false,
+  })
 })
 
 export default PostContent
