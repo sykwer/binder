@@ -47,6 +47,7 @@ window.addEventListener("load", () => {
     targetBlank: true,
     autoLink: true,
     imageDragging: false,
+    placeholder: false,
   })
 })
 
