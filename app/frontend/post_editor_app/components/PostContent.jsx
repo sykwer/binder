@@ -13,7 +13,7 @@ const PostContent = ({ onChangeContent }) => {
         ref={(node) => { editable = node }}
         onInput={(e) => {
           e.preventDefault()
-          onChangeContent(editable.innerText)
+          onChangeContent(editable.innerHTML)
         }}
       />
     </div>
@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
   // workaround
   const rootNode = document.getElementById("post-editor-app")
   const data = JSON.parse(rootNode.getAttribute("data"))
-  node.innerText = data.content
+  node.innerHTML = data.content
 
   // For first position of caret
   const range = document.createRange()
