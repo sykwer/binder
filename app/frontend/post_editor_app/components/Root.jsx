@@ -7,6 +7,7 @@ import BookInfoInputContainer from "./BookInfoInputContainer"
 import PostMetaInfo from "./PostMetaInfo"
 import BookListContainer from "./BookListContainer"
 import SelectedBook from "./SelectedBook"
+import PostTitle from "./PostTitle"
 
 import { closeBookSelector } from "../store/actions"
 
@@ -33,6 +34,7 @@ const cpnt = ({ isBookSelectorOpen, handleClickCloseBookSelector }) => (
       <div className="main-wrapper clearfix">
         <SelectedBook />
         <div className="main-right">
+          <PostTitle />
           <PostContentContainer />
         </div>
       </div>

@@ -5,7 +5,7 @@ const PostContent = ({ onChangeContent }) => {
   let editable
 
   return (
-    <div className="main-book-review">
+    <div className="post-content">
       <div
         id="post-content-div"
         contentEditable

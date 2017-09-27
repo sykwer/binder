@@ -30,34 +30,31 @@ cpnt.propTypes = {
   saveStatus: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = (state) => {
-  let saveStatus
-  switch (state.contentSaveState) {
-    case "INITIAL":
-      saveStatus = ""
-      break
-    case "IS_NOT_SAVED":
-      saveStatus = "Unsaved"
-      break
-    case "IS_SAVING":
-      saveStatus = "Saving.."
-      break
-    case "IS_SAVED":
-      saveStatus = "Saved"
-      break
-    default:
-      saveStatus = "Error"
+const stateToSaveStatus = (state) => {
+  const content = state.contentSaveState
+  const title = state.titleSaveState
+
+  if (content === "INITIAL" && title === "INITIAL") {
+    return ""
+  } else if (content === "IS_SAVING" || title === "IS_SAVING") {
+    return "Saving.."
+  } else if (content === "IS_NOT_SAVED" || title === "IS_NOT_SAVED") {
+    return "Unsaved"
+  } else if (content === "IS_SAVED" || title === "IS_SAVED") {
+    return "Saved"
   }
 
-  return {
-    user: {
-      name: state.user.name,
-      image: state.user.image,
-    },
-    date: state.date,
-    saveStatus,
-  }
+  return "Error"
 }
+
+const mapStateToProps = state => ({
+  user: {
+    name: state.user.name,
+    image: state.user.image,
+  },
+  date: state.date,
+  saveStatus: stateToSaveStatus(state),
+})
 
 const PostMetaInfo = connect(mapStateToProps)(cpnt)
 

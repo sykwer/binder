@@ -3,6 +3,8 @@ create_table "posts", id: false, force: :cascade, options: default_options do |t
   t.integer    :user_id,            null: false
   t.string     :content_draft,      null: false, default: ""
   t.string     :content,            null: false, default: ""
+  t.string     :title_draft,        null: false, default: ""
+  t.string     :title,              null: false, default: ""
   t.string     :asin,               null: false, default: ""
   t.string     :book_image_url,     null: false, default: ""
   t.string     :book_title,         null: false, default: ""

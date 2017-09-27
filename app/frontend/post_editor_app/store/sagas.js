@@ -1,18 +1,30 @@
 import { delay } from "redux-saga"
 import { takeLatest, call, put, select, fork, take, cancel } from "redux-saga/effects"
 
-import { requestSaveContentDraft, requestBookList, requestSaveSelectedBook } from "./services"
+import {
+  requestSaveContentDraft,
+  requestBookList,
+  requestSaveSelectedBook,
+  requestSaveTitleDraft,
+} from "./services"
+
+import {
+  startSavingPostContent,
+  finishSavingPostContent,
+  startSavingPostTitle,
+  finishSavingPostTitle,
+} from "./actions"
 
 function* postContentSaveFlow(action) {
   yield call(delay, 1500)
-  yield put({ type: "START_SAVING_POST_CONTENT" })
+  yield put(startSavingPostContent())
   yield call(delay, 1500)
 
   const state = yield select()
   const isSuccess = yield call(requestSaveContentDraft, state.uuid, action.text)
 
   if (isSuccess) {
-    yield put({ type: "FINISH_SAVING_POST_CONTENT" })
+    yield put(finishSavingPostContent())
   } else {
     // handle fail here
   }
@@ -80,8 +92,24 @@ function* afterSelectBookFlow() {
   }
 }
 
+function* postTitleSaveFlow() {
+  yield call(delay, 1500)
+  yield put(startSavingPostTitle())
+  yield call(delay, 1500)
+
+  const state = yield select()
+  const isSuccess = yield call(requestSaveTitleDraft, state.uuid, state.postTitle)
+
+  if (isSuccess) {
+    yield put(finishSavingPostTitle())
+  } else {
+    // handle failure
+  }
+}
+
 function* rootSaga() {
   yield takeLatest("UPDATE_POST_CONTENT", postContentSaveFlow)
+  yield takeLatest("UPDATE_POST_TITLE", postTitleSaveFlow)
   yield fork(searchBookListFlow)
   yield takeLatest("SELECT_BOOK", afterSelectBookFlow)
 }

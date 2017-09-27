@@ -7,6 +7,13 @@ export const requestSaveContentDraft = (postUuid, text) => {
   }).then(res => res.status === 200)
 }
 
+export const requestSaveTitleDraft = (postUuid, text) => {
+  const url = `http://localhost:3000/api/posts/${postUuid}/title_draft`
+  return axios.patch(url, {
+    title_draft: text,
+  }).then(res => res.status === 200)
+}
+
 export const requestBookList = (bookName, author, publisher) => {
   const key = "AIzaSyCUb5azooicumCNsK8NAkRJ9lEZbNeWqLA"
   const baseURL = "https://www.googleapis.com/books/v1/volumes"
