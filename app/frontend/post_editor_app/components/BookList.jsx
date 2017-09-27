@@ -63,7 +63,7 @@ const BookList = ({
         <img
           src={imageURL}
           alt={bookTitle}
-          style={{ width: 130, height: 130 * 1.6 }}
+          style={{ width: 170, height: 170 * 1.6 }}
         />
       </div>
     )
@@ -84,9 +84,9 @@ const BookList = ({
       rowCount={bookList.length}
       columnCount={2}
       height={400}
-      width={320}
-      rowHeight={(130 * 1.6) + 15}
-      columnWidth={130 + 30}
+      width={400}
+      rowHeight={(170 * 1.6) + 15}
+      columnWidth={170 + 30}
     />
   )
 }

@@ -9,11 +9,20 @@ const BookInfoInput = ({
   onChangeAuthor,
   onChangePublisher,
 }) => (
-  <div className="bookinfo-input">
+  <div
+    className="bookinfo-input"
+    role="button"
+    tabIndex="0"
+    onClick={(e) => {
+      e.preventDefault()
+      e.stopPropagation()
+    }}
+  >
     <input
       type="text"
-      placeholder="BookName"
+      placeholder="Title"
       className="book-title input-item"
+      id="book-title-input"
       onChange={(e) => {
         onChangeBookName(e.target.value)
       }}

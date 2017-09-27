@@ -62,3 +62,11 @@ export const startSavingPostContent = text => ({
 export const finishSavingPostContent = () => ({
   type: "FINISH_SAVING_POST_CONTENT",
 })
+
+export const openBookSelector = () => ({
+  type: "OPEN_BOOK_SELECTOR",
+})
+
+export const closeBookSelector = () => ({
+  type: "CLOSE_BOOK_SELECTOR",
+})

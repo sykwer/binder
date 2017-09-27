@@ -130,6 +130,18 @@ const bookSearchState = (state = "EMPTY", action) => {
   }
 }
 
+const isBookSelectorOpen = (state = false, action) => {
+  switch (action.type) {
+    case "OPEN_BOOK_SELECTOR":
+      return true
+    case "CLOSE_BOOK_SELECTOR":
+    case "SELECT_BOOK":
+      return false
+    default:
+      return state
+  }
+}
+
 // eslint-disable-next-line
 const uuid = (state = null, action) => {
   return state
@@ -158,6 +170,7 @@ const rootReducer = combineReducers({
   postContent,
   contentSaveState,
   bookSearchState,
+  isBookSelectorOpen,
   uuid,
   date,
   user,
