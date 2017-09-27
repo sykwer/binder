@@ -27,5 +27,8 @@ module DailyBook
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Add path searched by sprockets to compile
+    config.assets.paths << config.root.join("node_modules")
   end
 end
