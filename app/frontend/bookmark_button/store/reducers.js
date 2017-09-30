@@ -16,21 +16,9 @@ const isBookmarked = (state = false, action) => {
   }
 }
 
-const bookmarkedCount = (state = null, action) => {
-  switch (action.type) {
-    case "SUCCEED_BOOKMARK":
-      return state + 1
-    case "SUCCEED_UNBOOKMARK":
-      return state - 1
-    default:
-      return state
-  }
-}
-
 const rootReducer = combineReducers({
   postUuid,
   isBookmarked,
-  bookmarkedCount,
 })
 
 export default rootReducer
