@@ -10,31 +10,32 @@ import rootSaga from "./store/sagas"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
-    const node = document.getElementById("bookmark-button-app")
-    const data = JSON.parse(node.getAttribute("data"))
+    const nodes = document.getElementsByClassName("bookmark-component-root-div")
+    Array.prototype.forEach.call(nodes, (node) => {
+      const data = JSON.parse(node.getAttribute("data"))
 
-    const initialState = {
-      postUuid: data.postUuid,
-      isBookmarked: data.isBookmarked,
-      bookmarkedCount: data.bookmarkedCount,
-    }
+      const initialState = {
+        postUuid: data.postUuid,
+        isBookmarked: data.isBookmarked,
+      }
 
-    const sagaMiddleware = createSagaMiddleware()
+      const sagaMiddleware = createSagaMiddleware()
 
-    const store = createStore(
-      rootReducer,
-      initialState,
-      applyMiddleware(sagaMiddleware),
-    )
+      const store = createStore(
+        rootReducer,
+        initialState,
+        applyMiddleware(sagaMiddleware),
+      )
 
-    sagaMiddleware.run(rootSaga)
+      sagaMiddleware.run(rootSaga)
 
-    render(
-      <Provider store={store}>
-        <App />
-      </Provider>,
-      node,
-    )
+      render(
+        <Provider store={store}>
+          <App />
+        </Provider>,
+        node,
+      )
+    })
   })
 }
 

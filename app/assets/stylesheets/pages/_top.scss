@@ -157,13 +157,10 @@
       }
     }
 
-    .unbookmarked-button {
+    .bookmark-button-wrapper {
       position: absolute;
       bottom: 25px;
       right: 18px;
-      font-size: 20px;
-      color: $gray56;
-      opacity: 0.7;
     }
   }
 }

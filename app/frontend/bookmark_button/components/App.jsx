@@ -7,45 +7,38 @@ import { clickBookmark, clickUnbookmark } from "../store/actions"
 const cpnt = ({
   postUuid,
   isBookmarked,
-  bookmarkedCount,
   handleClickBookmark,
   handleClickUnbookmark,
 }) => (
-  <div>
+  <div className="bookmark-button-component">
     {
       isBookmarked ? (
-        <span className="bookmark">
-          <i
-            className="fa fa-bookmark"
-            aria-hidden="true"
-            onClick={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              handleClickUnbookmark(postUuid)
-            }}
-          />
-        </span>
+        <i
+          className="fa fa-bookmark unbookmark-button"
+          aria-hidden="true"
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            handleClickUnbookmark(postUuid)
+          }}
+        />
       ) : (
-        <span className="bookmark">
-          <i
-            className="fa fa-bookmark-o"
-            aria-hidden="true"
-            onClick={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              handleClickBookmark(postUuid)
-            }}
-          />
-        </span>
+        <i
+          className="fa fa-bookmark-o bookmark-button"
+          aria-hidden="true"
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            handleClickBookmark(postUuid)
+          }}
+        />
       )
     }
-    <span className="bookmark-count">{bookmarkedCount}</span>
   </div>
 )
 
 cpnt.propTypes = {
   postUuid: PropTypes.string.isRequired,
-  bookmarkedCount: PropTypes.number.isRequired,
   isBookmarked: PropTypes.bool.isRequired,
   handleClickBookmark: PropTypes.func.isRequired,
   handleClickUnbookmark: PropTypes.func.isRequired,
@@ -53,7 +46,6 @@ cpnt.propTypes = {
 
 const mapStateToProps = state => ({
   postUuid: state.postUuid,
-  bookmarkedCount: state.bookmarkedCount,
   isBookmarked: state.isBookmarked,
 })
 
