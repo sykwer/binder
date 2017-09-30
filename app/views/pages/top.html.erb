@@ -5,74 +5,25 @@
       <h2 class="timeline-title">Timeline</h2>
     </div>
     <div class="posts-std-grid">
-      <div class="posts-std-grid-item">
-        <img src="http://books.google.com/books/content?id=Jb3GNmCzcIoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" class="book-image">
-        <div class="post-info">
-          <a class="post-title" href="#">Reduxを極めてみる</a>
-          <a class="post-content" href="#">最近Redux/Reactでwebサービスを始めたのだが、Reduxの設計概念 ReduxはUIとmodelを切り離し...</a>
-        </div>
-        <div class="profile-info clearfix">
-          <a href="/@sykwer">
-            <img class="profile-image" src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-1/p320x320/11951883_755860917873996_653383422596358156_n.jpg?oh=1d395c858ad0807c567b2721e550d010&oe=5A472B5B">
-          </a>
-          <div class="profile-right">
-            <a class="profile-name" href="/@sykwer">Takahiro Ishikawa</a>
-            <p class="post-published-at">Feb 3</p>
+      <% @posts_in_timeline.each do |post| %>
+        <div class="posts-std-grid-item">
+          <%= image_tag post.book_image_url, class: "book-image", alt: post.book_title %>
+          <div class="post-info">
+            <%= link_to post.title, post_path(post), class: "post-title" %>
+            <%= link_to post.content, post_path(post), class: "post-content" %>
           </div>
-        </div>
-        <i class="fa fa-bookmark-o unbookmarked-button"></i>
-      </div>
-      <div class="posts-std-grid-item">
-        <img src="http://books.google.com/books/content?id=6JIsjgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" class="book-image">
-        <div class="post-info">
-          <a class="post-title" href="#">いかにして思考はコード化されるのかを考えてみる</a>
-          <a class="post-content" href="#">最近Redux/Reactでwebサービスを始めたのだが、抽象的な理解を深めたかったのでこの書をとった。...</a>
-        </div>
-        <div class="profile-info clearfix">
-          <a href="/@sykwer">
-            <img class="profile-image" src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-1/p320x320/11951883_755860917873996_653383422596358156_n.jpg?oh=1d395c858ad0807c567b2721e550d010&oe=5A472B5B">
-          </a>
-          <div class="profile-right">
-            <a class="profile-name" href="/@sykwer">Takahiro Ishikawa</a>
-            <p class="post-published-at">Feb 3</p>
+          <div class="profile-info clearfix">
+            <%= link_to "/@#{post.user.username}" do %>
+              <%= image_tag post.user.image_url, class: "profile-image" %>
+            <% end %>
+            <div class="profile-right">
+              <%= link_to post.user.name, "/@#{post.user.username}", class: "profile-name" %>
+              <p class="post-published-at"><%= format_date(post.first_published_at) %></p>
+            </div>
           </div>
+          <i class="fa fa-bookmark-o unbookmarked-button"></i>
         </div>
-        <i class="fa fa-bookmark-o unbookmarked-button"></i>
-      </div>
-      <div class="posts-std-grid-item">
-        <img src="http://books.google.com/books/content?id=83Q4DAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" class="book-image">
-        <div class="post-info">
-          <a class="post-title" href="#">いかにして思考はコード化されるのかを考えてみる</a>
-          <a class="post-content" href="#">最近Redux/Reactでwebサービスを始めたのだが、抽象的な理解を深めたかったのでこの書をとった。...</a>
-        </div>
-        <div class="profile-info clearfix">
-          <a href="/@sykwer">
-            <img class="profile-image" src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-1/p320x320/11951883_755860917873996_653383422596358156_n.jpg?oh=1d395c858ad0807c567b2721e550d010&oe=5A472B5B">
-          </a>
-          <div class="profile-right">
-            <a class="profile-name" href="/@sykwer">Takahiro Ishikawa</a>
-            <p class="post-published-at">Feb 3</p>
-          </div>
-        </div>
-        <i class="fa fa-bookmark-o unbookmarked-button"></i>
-      </div>
-      <div class="posts-std-grid-item">
-        <img src="http://books.google.com/books/content?id=DpcRZ7umsooC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" class="book-image">
-        <div class="post-info">
-          <a class="post-title" href="#">精神異常</a>
-          <a class="post-content" href="#">最近Redux/Reactでwebサービスを始めたのだが、抽象的な理解を深めたかったのでこの書をとった。...</a>
-        </div>
-        <div class="profile-info clearfix">
-          <a href="/@sykwer">
-            <img class="profile-image" src="https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-1/p320x320/11951883_755860917873996_653383422596358156_n.jpg?oh=1d395c858ad0807c567b2721e550d010&oe=5A472B5B">
-          </a>
-          <div class="profile-right">
-            <a class="profile-name" href="/@sykwer">Takahiro Ishikawa</a>
-            <p class="post-published-at">Feb 3</p>
-          </div>
-        </div>
-        <i class="fa fa-bookmark-o unbookmarked-button"></i>
-      </div>
+      <% end %>
     </div>
   </div>
   <div class="people-you-may-know-wrapper">
