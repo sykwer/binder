@@ -10,7 +10,7 @@
           <%= image_tag post.book_image_url, class: "book-image", alt: post.book_title %>
           <div class="post-info">
             <%= link_to post.title, post_path(post), class: "post-title" %>
-            <%= link_to post.content, post_path(post), class: "post-content" %>
+            <%= link_to strip_tags(post.content), post_path(post), class: "post-content" %>
           </div>
           <div class="profile-info clearfix">
             <%= link_to "/@#{post.user.username}" do %>

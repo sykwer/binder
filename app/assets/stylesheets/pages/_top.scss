@@ -94,18 +94,32 @@
       margin-left: calc((250px / 1.6) + 20px);
 
       .post-title {
-        display: block;
         font-size: 20px;
+        line-height: 1.5;
+        max-height: calc(20px * 1.5 * 2);
         font-weight: bold;
         color: black;
+
+        // for multiple lines ellipsis (only for webkit)
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
       }
 
       .post-content {
-        display: block;
         margin-top: 10px;
         font-size: 15px;
+        line-height: 1.6;
+        max-height: calc(15px * 1.6 * 3);
         letter-spacing: 1px;
         color: $gray56;
+
+        // for multiple lines ellipsis (only for webkit)
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
       }
     }
 
