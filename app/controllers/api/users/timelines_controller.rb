@@ -1,8 +1,10 @@
 class Api::Users::TimelinesController < Api::ApplicationController
   before_action :set_user
 
+  COUNT_PER_PAGE = 50
+
   def index
-    t = Timeline.new(user: @user)
+    t = Timeline.new(user: @user, count_per_page: COUNT_PER_PAGE)
     post_uuids = page.eql?(0) ? t.fetch_head! : t.fetch(page: page)
     posts = Post.where(uuid: post_uuids)
 
