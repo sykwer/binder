@@ -23,6 +23,7 @@ class Post < ApplicationRecord
   def publish_or_update_content!
     update!(first_published_at: Time.zone.now) unless published?
     update!(content: content_draft)
+    update!(title: title_draft)
   end
 
   def bookmarked_by?(user)
