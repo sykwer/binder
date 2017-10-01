@@ -22,12 +22,8 @@
     <div class="mypage-menu">
       <ul>
         <li>
-          <%= link_to "Latest", "/@#{@user.username}/latest",
-            class: @menu.eql?("latest") || @menu.blank? ? "active menu-item" : "menu-item"%>
-        </li>
-        <li>
           <%= link_to "Bookshelf", "/@#{@user.username}/bookshelf",
-            class: @menu.eql?("bookshelf") ? "active menu-item" : "menu-item" %>
+            class: @menu.eql?("bookshelf") || @menu.blank? ? "active menu-item" : "menu-item" %>
         </li>
         <li>
           <%= link_to "Likes", "/@#{@user.username}/likes",
@@ -43,10 +39,7 @@
     </div>
   </div>
   <div class="mypage-lower">
-    <% if @menu == "latest" || @menu.blank? %>
-      <p>Latest</p>
-    <% end %>
-    <% if @menu == "bookshelf" %>
+    <% if @menu == "bookshelf" || @menu.blank? %>
       <%= content_tag :div,
         id: "bookshelf-app",
         data: {
