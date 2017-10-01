@@ -135,10 +135,24 @@ const cpnt = ({
             </div>
           </div>
           <div className="main-right">
-            <div className="main-book-review">
-              <span>{post.content}</span>
+            <h2 className="post-title">
+              {post.title}
+            </h2>
+            <p className="post-content">
+              {post.content.replace(/<[^>]*>/g, "")}
+            </p>
+            <div className="book-review-below">
+              <a
+                href={`/posts/${post.uuid}`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  window.location.assign(`/posts/${post.uuid}`)
+                }}
+              >
+                Read more...
+              </a>
             </div>
-            <div className="book-review-below" />
           </div>
         </div>
         <div className="footer-wrapper clearfix">
