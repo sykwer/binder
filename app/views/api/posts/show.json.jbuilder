@@ -1,5 +1,6 @@
 json.post do
   json.uuid @post.uuid
+  json.title @post.title
   json.content @post.content
   json.bookImageUrl @post.book_image_url
   json.bookTitle @post.book_title

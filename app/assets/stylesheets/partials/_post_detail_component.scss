@@ -106,14 +106,35 @@
         width: 424px;
         margin-left: 20px;
 
-        .main-book-review {
-          font-size: 18px;
-          font-weight: 100;
+        .post-title {
+          margin: 0;
+          color: black;
+          font-weight: bold;
           letter-spacing: 1px;
+          font-size: 25px;
           line-height: 1.5;
-          color: $black_gray;
-          opacity: 0.8;
-          word-wrap: break-word;
+          max-height: calc(25px * 2.5 * 2);
+
+          // for multiple lines ellipsis (only for webkit)
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+
+        .post-content {
+          margin-top: 15px;
+          letter-spacing: 1px;
+          color: $gray56;
+          font-size: 18px;
+          line-height: 1.7;
+          max-height: calc(18px * 1.7 * 5);
+
+          // for multiple lines ellipsis (only for webkit)
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 5;
         }
 
         .book-review-below  {
