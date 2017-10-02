@@ -48,7 +48,9 @@
       <% end %>
     <% end %>
     <% if @menu == "likes" %>
-      <p>Likes</p>
+      <%= content_tag :div,
+        id: "bookmark-tab-app" do %>
+      <% end %>
     <% end %>
     <% if @menu == "drafts" && @user == current_user %>
       <p>Draft</p>
