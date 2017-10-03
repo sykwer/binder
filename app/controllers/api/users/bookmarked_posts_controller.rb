@@ -6,8 +6,8 @@ class Api::Users::BookmarkedPostsController < Api::ApplicationController
   def index
     @posts = Post.bookmarked_by(@user)
 
-    if params[:oldest_unixtime].present?
-      @posts = @posts.where("bookmarks.created_at < ?", Time.zone.at(params[:oldest_unixtime].to_i))
+    if params[:until].present?
+      @posts = @posts.where("bookmarks.created_at < ?", Time.zone.at(params[:until].to_i))
     end
 
     @posts = @posts.order("bookmarks.created_at DESC").limit(POSTS_COUNT_PER_PAGE)

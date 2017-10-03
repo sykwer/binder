@@ -14,7 +14,7 @@ export const fetchPosts = (oldestUnixTime, userId) => {
   const url = `http://localhost:3000/api/users/${userId}/bookmarked_posts`
   return axios.get(url, {
     params: {
-      oldest_unixtime: oldestUnixTime,
+      until: oldestUnixTime,
     },
   }).then(res => [res.data.posts, res.data.oldestUnixTime])
 }
