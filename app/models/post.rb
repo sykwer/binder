@@ -11,6 +11,7 @@ class Post < ApplicationRecord
   self.primary_key = "uuid"
 
   scope :published, lambda { where.not(first_published_at: nil) }
+  scope :bookmarked_by, lambda { |user| joins(:bookmarks).where("bookmarks.user_id = ?", user.id) }
 
   def to_param
     uuid
