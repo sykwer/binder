@@ -41,7 +41,7 @@ function* unbookmarkFlow() {
 
 function* fetchPostsFlow() {
   while (true) {
-    yield take("FETCH_POSTS")
+    yield take("START_FETCH_POSTS")
     const state = yield select()
 
     const [posts, oldestUnixTime] = yield call(

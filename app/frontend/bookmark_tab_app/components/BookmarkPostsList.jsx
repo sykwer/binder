@@ -10,7 +10,10 @@ const cpnt = ({
   handleClickUnbookmark, // eslint-disable-line
 }) => {
   const bookmarkedPosts = posts.map(post => (
-    <div className="bookmarked-posts-list-item">
+    <div
+      key={post.uuid}
+      className="bookmarked-posts-list-item"
+    >
       <div className="item-header clearfix">
         <img
           className="profile-image"
