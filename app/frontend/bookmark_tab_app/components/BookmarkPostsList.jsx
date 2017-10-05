@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
+import renderHTML from "react-render-html"
 
 import { clickBookmark, clickUnbookmark } from "../store/actions"
 
@@ -22,19 +23,19 @@ const cpnt = ({
         />
         <div className="item-header-right">
           <p className="profile-name">{post.userName}</p>
-          <p className="published-name">{post.publishedAt}</p>
+          <p className="published-date">{post.publishedAt}</p>
         </div>
       </div>
       <h2 className="post-title">{post.title}</h2>
-      <div className="item-body">
+      <div className="item-body clearfix">
         <img
           className="book-image"
           src={post.bookImageUrl}
           alt={post.bookTitle}
         />
-        <p className="post-content">
-          {post.content}
-        </p>
+        <div className="post-content">
+          {renderHTML(post.content)}
+        </div>
       </div>
     </div>
   ))
