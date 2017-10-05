@@ -105,6 +105,10 @@
         line-height: 1.8;
         color: $black_gray;
         opacity: 0.8;
+
+        p {
+          margin: 0;
+        }
       }
     }
   }

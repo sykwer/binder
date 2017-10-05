@@ -48,7 +48,12 @@
       <% end %>
     <% end %>
     <% if @menu == "likes" %>
-      <p>Likes</p>
+      <%= content_tag :div,
+        id: "bookmark-tab-app",
+        data: {
+          userId: @user.id,
+        }.to_json do %>
+      <% end %>
     <% end %>
     <% if @menu == "drafts" && @user == current_user %>
       <p>Draft</p>

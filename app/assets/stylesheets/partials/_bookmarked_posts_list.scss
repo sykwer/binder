@@ -1,0 +1,78 @@
+.bookmarked-posts-list {
+  width: 700px;
+  margin: 0 auto;
+
+  .bookmarked-posts-list-item {
+    width: 700px;
+    margin: 0 auto 20px;
+    background-color: white;
+    border: 1px solid $gray91;
+    padding: 30px;
+
+    .item-header {
+
+      .profile-image {
+        display: block;
+        float: left;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+      }
+
+      .item-header-right {
+        float: left;
+        margin-left: 10px;
+
+        .profile-name {
+          margin: 0;
+          color: $fresh_green;
+        }
+
+        .published-date {
+          margin: 0;
+          color: $gray56;
+        }
+      }
+    }
+
+    .post-title {
+      color: black;
+      font-weight: bold;
+    }
+
+    .item-body {
+      margin-top: 20px;
+
+      .book-image {
+        display: block;
+        float: left;
+        width: 120px;
+        opacity: 0.9;
+      }
+
+      .book-image:hover {
+        opacity: 1;
+      }
+
+      .post-content {
+        float: left;
+        width: 480px;
+        margin-left: 30px;
+        color: $gray56;
+        font-size: 17px;
+        line-height: 1.8;
+        max-height: calc(17px * 1.8 * 9);
+        overflow: hidden;
+        letter-spacing: 1px;
+
+        p {
+          margin: 0;
+        }
+
+        blockquote {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+}
