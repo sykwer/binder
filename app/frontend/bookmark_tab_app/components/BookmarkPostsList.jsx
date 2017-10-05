@@ -34,7 +34,7 @@ const cpnt = ({
           alt={post.bookTitle}
         />
         <div className="post-content">
-          {renderHTML(post.content)}
+          {renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}
         </div>
       </div>
     </div>

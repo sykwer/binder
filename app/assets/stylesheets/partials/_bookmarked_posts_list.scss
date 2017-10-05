@@ -6,6 +6,7 @@
     width: 700px;
     margin: 0 auto 20px;
     background-color: white;
+    border: 1px solid $gray91;
     padding: 30px;
 
     .item-header {
@@ -46,13 +47,31 @@
         display: block;
         float: left;
         width: 120px;
+        opacity: 0.9;
+      }
+
+      .book-image:hover {
+        opacity: 1;
       }
 
       .post-content {
         float: left;
-        width: 490px;
+        width: 480px;
         margin-left: 30px;
         color: $gray56;
+        font-size: 17px;
+        line-height: 1.8;
+        max-height: calc(17px * 1.8 * 9);
+        overflow: hidden;
+        letter-spacing: 1px;
+
+        p {
+          margin: 0;
+        }
+
+        blockquote {
+          margin-bottom: 0px;
+        }
       }
     }
   }
