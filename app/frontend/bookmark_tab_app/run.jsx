@@ -6,6 +6,7 @@ import createSagaMiddleware from "redux-saga"
 
 import rootSaga from "./store/sagas"
 import rootReducer from "./store/reducers"
+import Root from "./components/Root"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
@@ -28,7 +29,7 @@ const run = () => {
 
     render(
       <Provider store={store}>
-        <p>Boot BookmarkTabApp from here</p>
+        <Root />
       </Provider>,
       node,
     )
