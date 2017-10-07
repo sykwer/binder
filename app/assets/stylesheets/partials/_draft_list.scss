@@ -22,12 +22,55 @@
         padding-left: 2px;
       }
 
-      .draft-menu-down {
+      .menu-wrapper {
+        position: relative;
         float: left;
-        color: $gray56;
-        opacity: 0.7;
-        font-size: 17px;
         margin-left: 15px;
+
+        .draft-menu-down {
+          color: $gray56;
+          opacity: 0.7;
+          font-size: 17px;
+        }
+
+        .draft-menu {
+          display: none;
+          position: absolute;
+          top: 27px;
+          left: -46px;
+          width: 110px;
+          height: 75px;
+          border: 1px solid $gray91;
+          border-radius: 4px;
+          background-color: white;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .draft-menu:before {
+          position: absolute;
+          content: "";
+          bottom: 73px;
+          left: 50%;
+          margin-left: -10px;
+          width: 0;
+          height: 0;
+          border-bottom: 10px solid $gray91;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+        }
+
+        .draft-menu:after {
+          position: absolute;
+          content: "";
+          bottom: 72px;
+          left: 50%;
+          margin-left: -10px;
+          width: 0;
+          height: 0;
+          border-bottom: 10px solid white;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+        }
       }
     }
   }
