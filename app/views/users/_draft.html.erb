@@ -1,0 +1,52 @@
+<div class="draft-list">
+  <% @draft_posts.each do |post| %>
+    <div class="draft-list-item">
+      <h2 class="post-title"><%= post.title_draft.present? ? post.title_draft : "タイトル未設定" %></h2>
+      <div class="item-footer clearfix">
+        <p class="last-edited">Last edited <%= format_date(post.updated_at) %></p>
+        <div class="menu-wrapper">
+          <i class="fa fa-chevron-down draft-menu-down" aria-hidden="true"></i>
+          <div class="draft-menu">
+            <%= link_to "Edit", edit_post_path(post), class: "edit-button" %>
+            <p class="delete-button">Delete</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+function displayMenu(e) {
+  e.stopPropagation();
+  var menu = e.target.nextElementSibling;
+  menu.setAttribute("style", "display: block;");
+}
+
+function hideMenu(e) {
+  var nodes = document.getElementsByClassName("draft-menu");
+  for (var i = 0; i < nodes.length; i++) {
+    var node = nodes[i];
+    node.setAttribute("style", "display: none;");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  var nodes = document.getElementsByClassName("draft-menu-down");
+
+  for (var i = 0; i < nodes.length; i++) {
+    var node = nodes[i];
+    node.addEventListener("click", displayMenu, false);
+  }
+
+  document.body.addEventListener("click", hideMenu, false);
+
+  var nodes = document.getElementsByClassName("draft-menu");
+  for (var i = 0; i < nodes.length; i++) {
+    var node = nodes[i];
+    node.addEventListener("click", function(e) {
+      e.stopPropagation();
+    }, false);
+  }
+}, false);
+</script>
