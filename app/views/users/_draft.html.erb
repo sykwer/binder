@@ -8,7 +8,7 @@
           <i class="fa fa-chevron-down draft-menu-down" aria-hidden="true"></i>
           <div class="draft-menu">
             <%= link_to "Edit", edit_post_path(post), class: "edit-button" %>
-            <p class="delete-button">Delete</p>
+            <%= button_to "Delete", post_path(post), method: :delete, class: "delete-button" %>
           </div>
         </div>
       </div>
