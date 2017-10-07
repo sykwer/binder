@@ -62,22 +62,38 @@
         }
       }
     }
-  }
 
-  .bookinfo-wrapper {
-    margin-top: 20px;
+    .post-tags {
+      position: absolute;
+      left: 0;
+      bottom: 0;
 
-    .book-image {
-      width: 100px;
-      box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
-
-      img {
-        width: 100%;
+      .tag-item {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 3px;
+        border: 1px solid $gray91;
       }
     }
   }
 
+  .post-tags {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    .tag-item-button {
+      display: inline-block;
+      margin-right: 5px;
+      padding: 5px;
+      border: 1px solid $gray91;
+      color: $gray56;
+      border-radius: 7px;
+    }
+  }
+
   .post-content {
+    margin-top: 30px;
     font-size: 17px;
     letter-spacing: 1px;
     line-height: 2;
