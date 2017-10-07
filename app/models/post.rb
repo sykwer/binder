@@ -12,6 +12,7 @@ class Post < ApplicationRecord
 
   scope :published, lambda { where.not(first_published_at: nil) }
   scope :bookmarked_by, lambda { |user| joins(:bookmarks).where("bookmarks.user_id = ?", user.id) }
+  scope :not_published, lambda { where(first_published_at: nil) }
 
   def to_param
     uuid

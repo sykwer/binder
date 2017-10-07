@@ -56,7 +56,17 @@
       <% end %>
     <% end %>
     <% if @menu == "drafts" && @user == current_user %>
-      <p>Draft</p>
+      <div class="draft-list">
+        <% @draft_posts.each do |post| %>
+          <div class="draft-list-item">
+            <h2 class="post-title"><%= post.title_draft.present? ? post.title_draft : "タイトル未設定" %></h2>
+            <div class="item-footer clearfix">
+              <p class="last-edited">Last edited <%= format_date(post.updated_at) %></p>
+              <i class="fa fa-chevron-down draft-menu-down" aria-hidden="true"></i>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
