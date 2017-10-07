@@ -1,118 +1,101 @@
 .posts-show {
-  width: 950px;
+  width: 700px;
   margin: 100px auto 0;
 
-  .header-wrapper {
+  .post-title {
+    margin-top: 30px;
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: $post_title_color;
+  }
 
-    .header-image {
+  .meta-data-wrapper {
+    position: relative;
+    margin-top: 40px;
+    height: 120px;
+
+    .profile-image {
       float: left;
 
       img {
-        width: $profile_image_radius * 2;
-        height: $profile_image_radius * 2;
-        border-radius: $profile_image_radius;
+        width: 35px * 2;
+        height: 35px * 2;
+        border-radius: 35px;
       }
     }
 
-    .header-text {
+    .meta-data-right {
       float: left;
-      margin-left: 10px;
+      margin-left: 12px;
 
-      .header-profile-name {
-        color: $fresh_green;
-      }
-
-      .header-datetime {
-        color: $gray56;
-      }
-    }
-
-    .save-status {
-      position: absolute;
-      top: -74px;
-      left: 64px;
-      color: $gray56;
-      opacity: 0.7;
-      font-size: 16px;
-    }
-  }
-
-  .main-wrapper {
-    margin-top: 40px;
-
-    .main-left {
-      float: left;
-      width: 150px;
-
-      .main-book-shadowed {
-        box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
-
-        img {
-          width: 100%;
-        }
-      }
-
-      .main-book-placeholded {
-
-        img {
-          width: 100%;
-          opacity: 0.4;
-        }
-      }
-
-      .link-to-selector {
-          display: block;
-          margin-top: 10px;
-          letter-spacing: 0.5px;
-          color: $fresh_green;
-        }
-
-        .link-to-selector:hover {
-          text-decoration: underline;
-          cursor: pointer;
-        }
-
-      .main-bookinfo {
-        margin-top: 13px;
-        color: $black_gray;
-
-        .book-name {
-          font-size: 15px;
-        }
-
-        .book-author {
-          font-size: 8px;
-          width: 80%;
-          margin-top: 3px;
-        }
-      }
-    }
-
-    .main-right {
-      float: left;
-      width: 700px;
-      margin-left: 50px;
-
-      .post-title {
-        font-size: 35px;
-        font-weight: bold;
-        letter-spacing: 1px;
+      .profile-name {
         color: $post_title_color;
       }
 
-      .post-content {
-        margin-top: 40px;
-        font-size: 18px;
-        font-weight: lighter;
-        letter-spacing: 1px;
-        line-height: 1.8;
-        color: $post_content_color;
+      .profile-bio {
+        margin-top: 3px;
+        font-size: 12px;
+        color: $gray56;
         opacity: 0.8;
+      }
 
-        p {
-          margin: 0;
+      .published-at {
+        margin-top: 5px;
+        font-size: 12px;
+        color: $gray56;
+        opacity: 0.7;
+      }
+    }
+
+    .bookinfo {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+
+      .book-image {
+        height: 120px;
+        box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
+
+        img {
+          height: 100%;
         }
       }
+    }
+  }
+
+  .bookinfo-wrapper {
+    margin-top: 20px;
+
+    .book-image {
+      width: 100px;
+      box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .post-content {
+    font-size: 17px;
+    letter-spacing: 1px;
+    line-height: 2;
+    color: $post_content_color;
+    opacity: 0.9;
+
+    p {
+      margin: 0;
+    }
+
+    b {
+      color: $post_title_color;
+    }
+
+    h3 {
+      font-size: 25px;
+      font-weight: bold;
+      color: $post_title_color;
     }
   }
 }

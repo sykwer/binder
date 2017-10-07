@@ -1,39 +1,30 @@
 <%= render "shared/green_header" %>
 <div class="posts-show">
-  <div class="header-wrapper clearfix">
-    <div class="header-image">
-      <%= link_to(image_tag(@post.user.image_url), "/@#{@post.user.username}") %>
+  <h2 class="post-title">
+    <%= @post.title %>
+  </h2>
+  <div class="meta-data-wrapper clearfix">
+    <div class="profile-image">
+      <%=  link_to(image_tag(@post.user.image_url), "/@#{@post.user.username}") %>
     </div>
-    <div class="header-text">
-      <div class="header-profile-name">
+    <div class="meta-data-right">
+      <div class="profile-name">
         <span><%= @post.user.name %></span>
       </div>
-      <div class="header-datetime">
+      <div class="profile-bio">
+        <span><%= @post.user.bio %></span>
+      </div>
+      <div class="published-at">
         <span><%= @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now) %></span>
       </div>
     </div>
-  </div>
-  <div class="main-wrapper clearfix">
-    <div class="main-left">
-      <div class="main-book-shadowed">
+    <div class="bookinfo">
+      <div class="book-image">
         <%= link_to(image_tag(@post.book_image_url), @post.affiliate_link.present? ? @post.affiliate_link : "#") %>
       </div>
-      <div class="main-bookinfo">
-        <div class="book-name overflow-ellipsis">
-          <span><%= @post.book_title %></span>
-        </div>
-        <div class="book-author overflow-ellipsis">
-          <span><%= @post.book_author %></span>
-        </div>
-      </div>
     </div>
-    <div class="main-right">
-      <div class="post-title">
-        <span><%= @post.title_draft %></span>
-      </div>
-      <div class="post-content">
-        <span><%= @post.content.html_safe %></span>
-      </div>
-    </div>
+  </div>
+  <div class="post-content">
+    <%= @post.content.html_safe %>
   </div>
 </div>
