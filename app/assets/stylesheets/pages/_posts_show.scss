@@ -2,26 +2,68 @@
   width: 700px;
   margin: 100px auto 0;
 
+  @media (min-width: $medium-plus-one) {
+    width: 700px;
+  }
+
+  @media (max-width: $medium) {
+    width: 90%;
+  }
+
   .post-title {
     margin-top: 30px;
     font-size: 35px;
+    line-height: 1.4;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 1.1px;
     color: $post_title_color;
+
+    @media (min-width: $medium-plus-one) {
+      font-size: 35px;
+    }
+
+    @media (max-width: $medium) and (min-width: $small-plus-one) {
+      font-size: 30px;
+    }
+
+    @media (max-width: $small) {
+      font-size: 23px;
+    }
   }
 
   .meta-data-wrapper {
     position: relative;
     margin-top: 40px;
-    height: 120px;
+
+    @media (min-width: $medium-plus-one) {
+      height: 120px;
+    }
+
+    @media (max-width: $medium) and (min-width: $small-plus-one) {
+      height: 110px;
+    }
+
+    @media (max-width: $small) {
+      height: 100px;
+    }
+
 
     .profile-image {
       float: left;
 
       img {
-        width: 35px * 2;
-        height: 35px * 2;
-        border-radius: 35px;
+
+        @media (min-width: $medium-plus-one) {
+          width: calc(35px * 2);
+          height: calc(35px * 2);
+          border-radius: 35px;
+        }
+
+        @media (max-width: $medium) {
+          width: calc(25px * 2);
+          height: calc(25px * 2);
+          border-radius: 25px;
+        }
       }
     }
 
@@ -29,22 +71,70 @@
       float: left;
       margin-left: 12px;
 
+      @media (min-width: $medium-plus-one) {
+        width: calc(90% - 70px - 85px);
+      }
+
+      @media (max-width: $medium) and (min-width: $small-plus-one) {
+        width: calc(90% - 70px - 75px);
+      }
+
+      @media (max-width: $small) {
+        width: calc(90% - 50px - 70px);
+      }
+
       .profile-name {
         color: $post_title_color;
+
+        @media (min-width: $medium-plus-one) {
+          font-size: 15px;
+        }
+
+        @media (max-width: $medium) and (min-width: $small-plus-one) {
+          font-size: 14px;
+        }
+
+        @media (max-width: $small) {
+          font-size: 12px;
+        }
       }
 
       .profile-bio {
         margin-top: 3px;
-        font-size: 12px;
         color: $gray56;
         opacity: 0.8;
+
+        @media (min-width: $medium-plus-one) {
+          font-size: 12px;
+        }
+
+        @media (max-width: $medium) and (min-width: $small-plus-one) {
+          font-size: 11px;
+        }
+
+        @media (max-width: $small) {
+          font-size: 9px;
+        }
       }
 
       .published-at {
-        margin-top: 5px;
-        font-size: 12px;
         color: $gray56;
         opacity: 0.7;
+
+        @media (min-width: $medium-plus-one) {
+          font-size: 12px;
+          margin-top: 5px;
+        }
+
+        @media (max-width: $medium) and (min-width: $small-plus-one) {
+          font-size: 11px;
+          margin-top: 4px;
+        }
+
+        @media (max-width: $small) {
+          font-size: 9px;
+          margin-top: 3px;
+        }
       }
     }
 
@@ -56,6 +146,18 @@
       .book-image {
         height: 120px;
         box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
+
+        @media (min-width: $medium-plus-one) {
+          height: 120px;
+        }
+
+        @media (max-width: $medium) and (min-width: $small-plus-one) {
+          height: 110px;
+        }
+
+        @media (max-width: $small) {
+          height: 100px;
+        }
 
         img {
           height: 100%;
@@ -84,21 +186,48 @@
 
     .tag-item-button {
       display: inline-block;
-      margin-right: 5px;
-      padding: 5px;
       border: 1px solid $gray91;
       color: $gray56;
       border-radius: 7px;
+
+      @media (min-width: $medium-plus-one) {
+        padding: 5px;
+        font-size: 14px;
+        margin-right: 5px;
+      }
+
+      @media (min-width: $small-plus-one) and (max-width: $medium) {
+        padding: 5px;
+        font-size: 12px;
+        margin-right: 4px;
+      }
+
+      @media (max-width: $small) {
+        padding: 3px;
+        font-size: 6px;
+        margin-right: 2px;
+      }
     }
   }
 
   .post-content {
     margin-top: 30px;
-    font-size: 17px;
     letter-spacing: 1px;
     line-height: 2;
     color: $post_content_color;
     opacity: 0.9;
+
+    @media (min-width: $medium-plus-one) {
+      font-size: 17px;
+    }
+
+    @media (min-width: $small-plus-one) and (max-width: $medium) {
+      font-size: 16px;
+    }
+
+    @media (max-width: $small) {
+      font-size: 15px;
+    }
 
     p {
       margin: 0;
