@@ -258,4 +258,77 @@
       }
     }
   }
+
+  .action-buttons {
+    position: relative;
+    margin-top: 100px;
+    height: 135px;
+    border-top: 1px solid $gray91;
+    border-bottom: 1px solid $gray91;
+
+    .action-buttons-comment {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      letter-spacing: 1px;
+      font-size: 17px;
+      font-weight: bold;
+      opacity: 0.8;
+      color: $post_title_color;
+    }
+
+    .clap-button {
+      position: absolute;
+      top: 55px;
+      left: 10px;
+      width: calc(30px * 2);
+      height: calc(30px * 2);
+      border-radius: 30px;
+      border: solid 1px $gray91;
+      padding: 10px;
+
+      .clap-image {
+        width: 40px;
+        opacity: 0.8;
+      }
+    }
+
+    .claps-count {
+      position: absolute;
+      top: 76px;
+      left: 81px;
+      color: $gray56;
+    }
+
+    .bookmark-button {
+      position: absolute;
+      top: 71px;
+      right: 99px;
+      color: $gray56;
+      opacity: 0.8;
+      font-size: 25px;
+    }
+
+    .twitter-button {
+      position: absolute;
+      top: 70px;
+      right: 55px;
+      color: $gray56;
+      opacity: 0.9;
+      font-size: 25px;
+    }
+
+    .facebook-button {
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      color: $gray56;
+      opacity: 0.8;
+      font-size: 25px;
+    }
+  }
+
+  .below-author-profile {
+    height: 200px;
+  }
 }
