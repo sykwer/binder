@@ -368,7 +368,18 @@
   }
 
   .below-author-profile {
+    position: relative;
     height: 200px;
+
+    .link-to-bookshelf {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $gray56;
+      opacity: 0.7;
+      letter-spacing: 0.5px;
+      z-index: 100;
+    }
 
     .author-profile-header {
       letter-spacing: 1px;

@@ -61,6 +61,7 @@
     </div>
   </div>
   <div class="below-author-profile">
+    <%= link_to "本棚を見る >", "/@#{@post.user.username}/bookshelf", class: "link-to-bookshelf" %>
     <h2 class="author-profile-header">この記事の著者</h2>
     <div class="author-profile-body clearfix">
       <%= image_tag @post.user.image_url, class: "author-profile-image" %>
