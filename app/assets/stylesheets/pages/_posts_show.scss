@@ -369,5 +369,72 @@
 
   .below-author-profile {
     height: 200px;
+
+    .author-profile-header {
+      letter-spacing: 1px;
+      font-size: 17px;
+      font-weight: bold;
+      opacity: 0.8;
+      color: $post_title_color;
+    }
+
+    .author-profile-body {
+      margin-top: 20px;
+
+      .author-profile-image {
+        display: block;
+        float: left;
+
+        @media (min-width: $small-plus-one) {
+          width: 35px * 2;
+          height: 35px * 2;
+          border-radius: 35px;
+        }
+
+        @media (max-width: $small) {
+          width: 25px * 2;
+          height: 25px * 2;
+          border-radius: 25px;
+        }
+      }
+
+      .author-profile-right {
+        float: left;
+        margin-left: 20px;
+
+        @media (min-width: $medium-plus-one) {
+          width: calc(700px - 90px);
+        }
+
+        @media (min-width: $small-plus-one) and (max-width: $medium) {
+          width: calc(90% - 55px);
+        }
+
+        @media (max-width: $small) {
+          width: calc(90% - 45px);
+        }
+
+        .author-profile-name {
+          display: inline-block;
+          color: $post_title_color;
+        }
+
+        .follow-button {
+          margin-left: 10px;
+          border: 1.2px solid $fresh_green;
+          color: $fresh_green;
+          opacity: 0.7;
+          border-radius: 5px;
+          padding: 1px 13px;
+          font-size: 11px;
+        }
+
+        .author-profile-bio {
+          color: $gray56;
+          line-height: 1.8;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
   }
 }

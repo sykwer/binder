@@ -61,5 +61,14 @@
     </div>
   </div>
   <div class="below-author-profile">
+    <h2 class="author-profile-header">この記事の著者</h2>
+    <div class="author-profile-body clearfix">
+      <%= image_tag @post.user.image_url, class: "author-profile-image" %>
+      <div class="author-profile-right">
+        <p class="author-profile-name"><%= @post.user.name %></p>
+        <button class="follow-button">フォロー</button>
+        <p class="author-profile-bio"><%= @post.user.bio %></p>
+      </div>
+    </div>
   </div>
 </div>
