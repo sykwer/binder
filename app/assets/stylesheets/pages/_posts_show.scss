@@ -238,9 +238,23 @@
     }
 
     h3 {
-      font-size: 25px;
       font-weight: bold;
       color: $post_title_color;
+
+      @media (min-width: $medium-plus-one) {
+        font-size: 25px;
+        margin-bottom: 25px;
+      }
+
+      @media (min-width: $small-plus-one) and (max-width: $medium) {
+        font-size: 22px;
+        margin-bottom: 22px;
+      }
+
+      @media (max-width: $small) {
+        font-size: 18px;
+        margin-bottom: 18px;
+      }
     }
   }
 }
