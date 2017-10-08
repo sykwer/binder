@@ -33,7 +33,6 @@
     <%= @post.content.html_safe %>
   </div>
   <div class="action-buttons">
-    <p class="action-buttons-comment">拍手で筆者へ賞賛を送る</p>
     <button class="clap-button">
       <%= image_tag "before_clap", class: "clap-image" %>
     </button>
@@ -47,6 +46,19 @@
     <button class="facebook-button">
       <i class="fa fa-facebook-square" aria-hidden="true"></i>
     </button>
+  </div>
+  <div class="book-introduction">
+    <h2 class="book-intro-header">この記事の本</h2>
+    <div class="book-intro-body">
+      <%= image_tag @post.book_image_url, class: "book-intro-image" %>
+      <div class="book-infos">
+        <p class="book-title overflow-ellipsis">書名: <%= @post.book_title %></p>
+        <p class="book-author overflow-ellipsis">著者: <%= @post.book_author %></p>
+        <% if @post.book_publisher.present? %>
+          <p class="book-publisher overflow-ellipsis">出版: <%= @post.book_publisher %></p>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="below-author-profile">
   </div>
