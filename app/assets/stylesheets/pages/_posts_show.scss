@@ -265,27 +265,10 @@
     height: 135px;
     border-bottom: 1px solid $gray91;
 
-    .clap-button {
+    .bottom-clap-button-wrapper {
       position: absolute;
       top: 55px;
       left: 10px;
-      width: calc(30px * 2);
-      height: calc(30px * 2);
-      border-radius: 30px;
-      border: solid 1px $gray91;
-      padding: 10px;
-
-      .clap-image {
-        width: 40px;
-        opacity: 0.8;
-      }
-    }
-
-    .claps-count {
-      position: absolute;
-      top: 76px;
-      left: 81px;
-      color: $gray56;
     }
 
     .bookmark-button {

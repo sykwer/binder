@@ -33,10 +33,12 @@
     <%= @post.content.html_safe %>
   </div>
   <div class="action-buttons">
-    <button class="clap-button">
-      <%= image_tag "before_clap", class: "clap-image" %>
-    </button>
-    <p class="claps-count">35</p>
+    <div class="bottom-clap-button-wrapper">
+      <button class="clap-button-component">
+        <%= image_tag "before_clap", class: "clap-image" %>
+        <p class="claps-count-right">35</p>
+      </button>
+    </div>
     <button class="bookmark-button">
       <i class="fa fa-bookmark-o" aria-hidden="true"></i>
     </button>
