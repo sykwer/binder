@@ -5,8 +5,19 @@
   transition: top 0.25s ease-in-out;
 
   width: 100%;
-  padding: 10px 150px;
   background-color: white;
+
+  @media (max-width: $small) {
+    padding: 10px 30px;
+  }
+
+  @media (min-width: $small_plus_one) and (max-width: $medium) {
+    padding: 10px 50px;
+  }
+
+  @media (min-width: $medium_plus_one) {
+    padding: 10px 150px;
+  }
 
   .header-upper {
 
@@ -29,6 +40,7 @@
       float: right;
 
       .header-menu {
+        padding-top: 10px;
 
         .menu-item {
           display: inline-block;
@@ -40,6 +52,12 @@
           font-size: 20px;
           color: $gray56;
           opacity: 0.7;
+        }
+
+        .write-record {
+          @media (max-width: $medium) {
+            display: none;
+          }
         }
 
         .write-record a {

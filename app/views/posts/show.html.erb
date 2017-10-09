@@ -1,51 +1,85 @@
 <%= render "shared/green_header" %>
-<div class="container" style="margin-top: 100px">
-  <div class="row">
-    <div class="col-md-1">
+<div class="posts-show">
+  <h2 class="post-title">
+    <%= @post.title %>
+  </h2>
+  <div class="meta-data-wrapper clearfix">
+    <div class="profile-image">
+      <%=  link_to(image_tag(@post.user.image_url), "/@#{@post.user.username}") %>
     </div>
-    <div class="col-md-10">
-      <div class="post-editor-component">
-        <div class="post-preview-component">
-          <div class="header-wrapper clearfix">
-            <div class="header-image">
-              <%= link_to(image_tag(@post.user.image_url), "/@#{@post.user.username}") %>
-            </div>
-            <div class="header-text">
-              <div class="header-profile-name">
-                <span><%= @post.user.name %></span>
-              </div>
-              <div class="header-datetime">
-                <span><%= @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now) %></span>
-              </div>
-            </div>
-          </div>
-          <div class="main-wrapper clearfix">
-            <div class="main-left">
-              <div class="main-book-shadowed">
-                <%= link_to(image_tag(@post.book_image_url), @post.affiliate_link.present? ? @post.affiliate_link : "#") %>
-              </div>
-              <div class="main-bookinfo">
-                <div class="book-name overflow-ellipsis">
-                  <span><%= @post.book_title %></span>
-                </div>
-                <div class="book-author overflow-ellipsis">
-                  <span><%= @post.book_author %></span>
-                </div>
-              </div>
-            </div>
-            <div class="main-right">
-              <div class="post-title">
-                <span><%= @post.title_draft %></span>
-              </div>
-              <div class="post-content">
-                <span><%= @post.content.html_safe %></span>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="meta-data-right">
+      <div class="profile-name">
+        <span><%= @post.user.name %></span>
+      </div>
+      <div class="profile-bio overflow-ellipsis">
+        <span><%= @post.user.bio %></span>
+      </div>
+      <div class="published-at">
+        <span><%= @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now) %></span>
       </div>
     </div>
-    <div class="col-md-1">
+    <div class="bookinfo">
+      <div class="book-image">
+        <%= link_to(image_tag(@post.book_image_url), @post.affiliate_link.present? ? @post.affiliate_link : "#") %>
+      </div>
+    </div>
+    <div class="post-tags">
+      <button class="tag-item-button">ドグラマグラ</button>
+      <button class="tag-item-button">夢野久作</button>
+      <button class="tag-item-button">小説</button>
+    </div>
+  </div>
+  <div class="post-content">
+    <%= @post.content.html_safe %>
+  </div>
+  <div class="action-buttons">
+    <button class="clap-button">
+      <%= image_tag "before_clap", class: "clap-image" %>
+    </button>
+    <p class="claps-count">35</p>
+    <button class="bookmark-button">
+      <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+    </button>
+    <button class="twitter-button">
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+    </button>
+    <button class="facebook-button">
+      <i class="fa fa-facebook-square" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="book-introduction">
+    <h2 class="book-intro-header">この記事の本</h2>
+    <div class="book-intro-body">
+      <%= image_tag @post.book_image_url, class: "book-intro-image" %>
+      <div class="book-infos">
+        <p class="book-title overflow-ellipsis">書名: <%= @post.book_title %></p>
+        <p class="book-author overflow-ellipsis">著者: <%= @post.book_author %></p>
+        <% if @post.book_publisher.present? %>
+          <p class="book-publisher overflow-ellipsis">出版: <%= @post.book_publisher %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="links-to-sibling-post clearfix">
+    <div class="left-link-wrapper">
+      <p class="link-to-prior-post">noteにおけるコア体験と相互作用メモ。お手伝いすることになりました。</p>
+      <i class="fa fa-angle-left left-link-arrow" aria-hidden="true"></i>
+    </div>
+    <div class="right-link-wrapper">
+      <p class="link-to-next-post">最高体験責任者(CXO)</p>
+      <i class="fa fa-angle-right right-link-arrow" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="below-author-profile">
+    <%= link_to "本棚を見る >", "/@#{@post.user.username}/bookshelf", class: "link-to-bookshelf" %>
+    <h2 class="author-profile-header">この記事の著者</h2>
+    <div class="author-profile-body clearfix">
+      <%= image_tag @post.user.image_url, class: "author-profile-image" %>
+      <div class="author-profile-right">
+        <p class="author-profile-name"><%= @post.user.name %></p>
+        <button class="follow-button">フォロー</button>
+        <p class="author-profile-bio"><%= @post.user.bio %></p>
+      </div>
     </div>
   </div>
 </div>

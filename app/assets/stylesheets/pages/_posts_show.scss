@@ -1,130 +1,547 @@
 .posts-show {
-  padding: 50px;
-  background-color: $background_gray;
-  height: 650px;
+  width: 700px;
+  margin: 100px auto 0;
 
-  .article-card {
-    width: 640px;
-    margin: 0 auto;
-    background: $article_card_background_color;
-    padding: $article_card_padding;
-    border: 1px solid $gray91;
+  @media (min-width: $medium-plus-one) {
+    width: 700px;
+  }
 
-    .header-wrapper {
+  @media (max-width: $medium) {
+    width: 90%;
+  }
 
-      .header-image {
-        float: left;
+  .post-title {
+    margin-top: 30px;
+    font-size: 35px;
+    line-height: 1.4;
+    font-weight: bold;
+    letter-spacing: 1.1px;
+    color: $post_title_color;
+
+    @media (min-width: $medium-plus-one) {
+      font-size: 35px;
+    }
+
+    @media (max-width: $medium) and (min-width: $small-plus-one) {
+      font-size: 30px;
+    }
+
+    @media (max-width: $small) {
+      font-size: 23px;
+    }
+  }
+
+  .meta-data-wrapper {
+    position: relative;
+    margin-top: 40px;
+
+    @media (min-width: $medium-plus-one) {
+      height: 120px;
+    }
+
+    @media (max-width: $medium) and (min-width: $small-plus-one) {
+      height: 110px;
+    }
+
+    @media (max-width: $small) {
+      height: 100px;
+    }
+
+
+    .profile-image {
+      float: left;
+
+      img {
+
+        @media (min-width: $medium-plus-one) {
+          width: calc(35px * 2);
+          height: calc(35px * 2);
+          border-radius: 35px;
+        }
+
+        @media (max-width: $medium) {
+          width: calc(25px * 2);
+          height: calc(25px * 2);
+          border-radius: 25px;
+        }
+      }
+    }
+
+    .meta-data-right {
+      float: left;
+      margin-left: 12px;
+
+      @media (min-width: $medium-plus-one) {
+        width: calc(90% - 70px - 85px);
+      }
+
+      @media (max-width: $medium) and (min-width: $small-plus-one) {
+        width: calc(90% - 70px - 75px);
+      }
+
+      @media (max-width: $small) {
+        width: calc(90% - 50px - 70px);
+      }
+
+      .profile-name {
+        color: $post_title_color;
+
+        @media (min-width: $medium-plus-one) {
+          font-size: 15px;
+        }
+
+        @media (max-width: $medium) and (min-width: $small-plus-one) {
+          font-size: 14px;
+        }
+
+        @media (max-width: $small) {
+          font-size: 12px;
+        }
+      }
+
+      .profile-bio {
+        margin-top: 3px;
+        color: $gray56;
+        opacity: 0.8;
+
+        @media (min-width: $medium-plus-one) {
+          font-size: 12px;
+        }
+
+        @media (max-width: $medium) and (min-width: $small-plus-one) {
+          font-size: 11px;
+        }
+
+        @media (max-width: $small) {
+          font-size: 9px;
+        }
+      }
+
+      .published-at {
+        color: $gray56;
+        opacity: 0.7;
+
+        @media (min-width: $medium-plus-one) {
+          font-size: 12px;
+          margin-top: 5px;
+        }
+
+        @media (max-width: $medium) and (min-width: $small-plus-one) {
+          font-size: 11px;
+          margin-top: 4px;
+        }
+
+        @media (max-width: $small) {
+          font-size: 9px;
+          margin-top: 3px;
+        }
+      }
+    }
+
+    .bookinfo {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+
+      .book-image {
+        height: 120px;
+        box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
+
+        @media (min-width: $medium-plus-one) {
+          height: 120px;
+        }
+
+        @media (max-width: $medium) and (min-width: $small-plus-one) {
+          height: 110px;
+        }
+
+        @media (max-width: $small) {
+          height: 100px;
+        }
 
         img {
-          width: $profile_image_radius * 2;
-          height: $profile_image_radius * 2;
-          border-radius: $profile_image_radius;
-        }
-      }
-
-      .header-text {
-        float: left;
-        margin-left: 10px;
-
-        .header-profile-name {
-          color: $fresh_green;
-        }
-
-        .header-datetime {
-          color: $gray56;
+          height: 100%;
         }
       }
     }
 
-    .main-wrapper {
-      margin-top: 20px;
+    .post-tags {
+      position: absolute;
+      left: 0;
+      bottom: 0;
 
-      .main-left {
-        float: left;
-        width: 25%;
+      .tag-item {
+        display: inline-block;
+        margin-right: 5px;
+        padding: 3px;
+        border: 1px solid $gray91;
+      }
+    }
+  }
 
-        .main-book {
-          box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
+  .post-tags {
+    position: absolute;
+    left: 0;
+    bottom: 0;
 
-          img {
-            width: 100%;
-          }
-        }
+    .tag-item-button {
+      display: inline-block;
+      border: 1px solid $gray91;
+      color: $gray56;
+      border-radius: 7px;
 
-        .main-bookinfo {
-          margin-top: 13px;
-          color: $black_gray;
-
-          .book-name {
-            font-size: 15px;
-          }
-
-          .book-author {
-            font-size: 8px;
-            width: 80%;
-            margin-top: 3px;
-          }
-        }
+      @media (min-width: $medium-plus-one) {
+        padding: 5px;
+        font-size: 14px;
+        margin-right: 5px;
       }
 
-      .main-right {
+      @media (min-width: $small-plus-one) and (max-width: $medium) {
+        padding: 5px;
+        font-size: 12px;
+        margin-right: 4px;
+      }
+
+      @media (max-width: $small) {
+        padding: 3px;
+        font-size: 6px;
+        margin-right: 2px;
+      }
+    }
+  }
+
+  .post-content {
+    margin-top: 30px;
+    letter-spacing: 1px;
+    line-height: 2;
+    color: $post_content_color;
+    opacity: 0.9;
+
+    @media (min-width: $medium-plus-one) {
+      font-size: 17px;
+    }
+
+    @media (min-width: $small-plus-one) and (max-width: $medium) {
+      font-size: 16px;
+    }
+
+    @media (max-width: $small) {
+      font-size: 15px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    b {
+      color: $post_title_color;
+    }
+
+    h3 {
+      font-weight: bold;
+      line-height: 1.8;
+      color: $post_title_color;
+
+      @media (min-width: $medium-plus-one) {
+        font-size: 25px;
+        margin-bottom: 25px;
+      }
+
+      @media (min-width: $small-plus-one) and (max-width: $medium) {
+        font-size: 22px;
+        margin-bottom: 22px;
+      }
+
+      @media (max-width: $small) {
+        font-size: 18px;
+        margin-bottom: 18px;
+      }
+    }
+  }
+
+  .action-buttons {
+    position: relative;
+    margin-top: 100px;
+    height: 135px;
+    border-bottom: 1px solid $gray91;
+
+    .clap-button {
+      position: absolute;
+      top: 55px;
+      left: 10px;
+      width: calc(30px * 2);
+      height: calc(30px * 2);
+      border-radius: 30px;
+      border: solid 1px $gray91;
+      padding: 10px;
+
+      .clap-image {
+        width: 40px;
+        opacity: 0.8;
+      }
+    }
+
+    .claps-count {
+      position: absolute;
+      top: 76px;
+      left: 81px;
+      color: $gray56;
+    }
+
+    .bookmark-button {
+      position: absolute;
+      top: 71px;
+      right: 99px;
+      color: $gray56;
+      opacity: 0.8;
+      font-size: 25px;
+    }
+
+    .twitter-button {
+      position: absolute;
+      top: 70px;
+      right: 55px;
+      color: $gray56;
+      opacity: 0.9;
+      font-size: 25px;
+    }
+
+    .facebook-button {
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      color: $gray56;
+      opacity: 0.8;
+      font-size: 25px;
+    }
+  }
+
+  .book-introduction {
+    height: 180px;
+    border-bottom: 1px solid $gray91;
+
+    .book-intro-header {
+      letter-spacing: 1px;
+      font-size: 17px;
+      font-weight: bold;
+      opacity: 0.8;
+      color: $post_title_color;
+    }
+
+    .book-intro-body {
+      margin-top: 20px;
+
+      .book-intro-image {
+        display: block;
         float: left;
-        width: 71%; // FIXME: wanna calucurate
+        height: 120px;
+        box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
+      }
+
+      .book-infos {
+        float: left;
         margin-left: 20px;
+        color: $post_content_color;
+        letter-spacing: 1px;
 
-        .main-book-review {
-          font-size: 18px;
-          font-weight: 100;
-          letter-spacing: 1px;
-          line-height: 1.5;
-          color: $black_gray;
-          opacity: 0.8;
-        }
-      }
-    }
-
-    .footer-wrapper {
-      margin-top: 20px;
-
-      .footer-left {
-        float: left;
-
-        .bookmark {
-          display: inline-block;
-          font-size: 25px;
-          color: $fresh_green;
-          opacity: 0.8;
+        @media (min-width: $medium-plus-one) {
+          width: calc(700px - 120px);
         }
 
-        .bookmark-count {
-          display: inline-block;
-          margin-left: 8px;
-          vertical-align: 6px;
-          font-size: 17px;
-          color: $gray56;
+        @media (max-width: $medium) {
+          width: calc(90% - 120px);
         }
-      }
 
-      .footer-right {
-        float: right;
+        .book-title {
+          margin-top: 20px;
+        }
 
-        .article-menu {
-          font-size: 25px;
-          color: $gray56;
+        .book-author {
+          margin-top: 10px;
+        }
+
+        .book-publisher {
+          margin-top: 10px;
         }
       }
     }
   }
 
-  .below-article-card {
-    width: 640px;
-    margin: 15px auto 0;
+  .links-to-sibling-post {
+    border-bottom: 1px solid $gray91;
+    padding: 20px 0;
+    height: 90px;
+
+    .left-link-wrapper {
+      position: relative;
+      float: left;
+      width: 50%;
+      border-right: 1px solid $gray91;
+      height: 50px;
+
+      .link-to-prior-post {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 20px;
+        margin: 0;
+        padding-right: 20px;
+        color: $post_title_color;
+        font-weight: bold;
+        line-height: 1.5;
+        overflow: hidden;
+
+        // for multiple lines ellipsis (only for webkit)
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+
+        @media (min-width: $small-plus-one) {
+          font-size: 14px;
+          max-height: calc(14px * 1.5 * 3);
+        }
+
+        @media (max-width: $small) {
+          font-size: 13px;
+          max-height: calc(13px * 1.5 * 3);
+        }
+      }
+
+      .left-link-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        font-size: 20px;
+        color: $post_title_color;
+      }
+    }
+
+    .right-link-wrapper {
+      position: relative;
+      float: left;
+      width: 50%;
+      height: 50px;
+
+      .link-to-next-post {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        margin: 0;
+        padding-left: 20px;
+        color: $post_title_color;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 1.5;
+        overflow: hidden;
+
+        // for multiple lines ellipsis (only for webkit)
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+
+        @media (min-width: $small-plus-one) {
+          font-size: 14px;
+          max-height: calc(14px * 1.5 * 3);
+        }
+
+        @media (max-width: $small) {
+          font-size: 13px;
+          max-height: calc(13px * 1.5 * 3);
+        }
+      }
+
+      .right-link-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        font-size: 20px;
+        color: $post_title_color;
+      }
+    }
+  }
+
+  .below-author-profile {
+    position: relative;
+    height: 200px;
 
     .link-to-bookshelf {
-      display: block;
-      float: right;
-      color: $fresh_green;
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $gray56;
+      opacity: 0.7;
       letter-spacing: 0.5px;
+      z-index: 100;
+    }
+
+    .author-profile-header {
+      letter-spacing: 1px;
+      font-size: 17px;
+      font-weight: bold;
+      opacity: 0.8;
+      color: $post_title_color;
+    }
+
+    .author-profile-body {
+      margin-top: 20px;
+
+      .author-profile-image {
+        display: block;
+        float: left;
+
+        @media (min-width: $small-plus-one) {
+          width: 35px * 2;
+          height: 35px * 2;
+          border-radius: 35px;
+        }
+
+        @media (max-width: $small) {
+          width: 25px * 2;
+          height: 25px * 2;
+          border-radius: 25px;
+        }
+      }
+
+      .author-profile-right {
+        float: left;
+        margin-left: 20px;
+
+        @media (min-width: $medium-plus-one) {
+          width: calc(700px - 90px);
+        }
+
+        @media (min-width: $small-plus-one) and (max-width: $medium) {
+          width: calc(90% - 55px);
+        }
+
+        @media (max-width: $small) {
+          width: calc(90% - 45px);
+        }
+
+        .author-profile-name {
+          display: inline-block;
+          color: $post_title_color;
+        }
+
+        .follow-button {
+          margin-left: 10px;
+          border: 1.2px solid $fresh_green;
+          color: $fresh_green;
+          opacity: 0.7;
+          border-radius: 5px;
+          padding: 1px 13px;
+          font-size: 11px;
+        }
+
+        .author-profile-bio {
+          color: $gray56;
+          line-height: 1.8;
+          letter-spacing: 0.5px;
+        }
+      }
     }
   }
 }
