@@ -12,6 +12,7 @@ create_table "posts", id: false, force: :cascade, options: default_options do |t
   t.string     :book_publisher,     null: false, default: ""
   t.string     :affiliate_link,     null: false, default: ""
   t.integer    :bookmarked_count,   null: false, default: 0
+  t.integer    :claps_count,        null: false, default: 0
   t.datetime   :first_published_at
   t.timestamps                      null: false
 
