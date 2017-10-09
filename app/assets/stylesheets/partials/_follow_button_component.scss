@@ -1,8 +1,15 @@
 .follow-button-component {
   border: 1.2px solid $fresh_green;
   color: $fresh_green;
-  opacity: 0.7;
   border-radius: 5px;
-  padding: 1px 13px;
+  padding: 2px 10px;
+  font-size: 11px;
+}
+
+.following-button-component {
+  background-color: $fresh_green;
+  color: white;
+  border-radius: 5px;
+  padding: 2px 10px;
   font-size: 11px;
 }
