@@ -367,6 +367,102 @@
     }
   }
 
+  .links-to-sibling-post {
+    border-bottom: 1px solid $gray91;
+    padding: 20px 0;
+    height: 90px;
+
+    .left-link-wrapper {
+      position: relative;
+      float: left;
+      width: 50%;
+      border-right: 1px solid $gray91;
+      height: 50px;
+
+      .link-to-prior-post {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 20px;
+        margin: 0;
+        padding-right: 20px;
+        color: $post_title_color;
+        font-weight: bold;
+        line-height: 1.5;
+        overflow: hidden;
+
+        // for multiple lines ellipsis (only for webkit)
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+
+        @media (min-width: $small-plus-one) {
+          font-size: 14px;
+          max-height: calc(14px * 1.5 * 3);
+        }
+
+        @media (max-width: $small) {
+          font-size: 13px;
+          max-height: calc(13px * 1.5 * 3);
+        }
+      }
+
+      .left-link-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        font-size: 20px;
+        color: $post_title_color;
+      }
+    }
+
+    .right-link-wrapper {
+      position: relative;
+      float: left;
+      width: 50%;
+      height: 50px;
+
+      .link-to-next-post {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        margin: 0;
+        padding-left: 20px;
+        color: $post_title_color;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 1.5;
+        overflow: hidden;
+
+        // for multiple lines ellipsis (only for webkit)
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+
+        @media (min-width: $small-plus-one) {
+          font-size: 14px;
+          max-height: calc(14px * 1.5 * 3);
+        }
+
+        @media (max-width: $small) {
+          font-size: 13px;
+          max-height: calc(13px * 1.5 * 3);
+        }
+      }
+
+      .right-link-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 0;
+        font-size: 20px;
+        color: $post_title_color;
+      }
+    }
+  }
+
   .below-author-profile {
     position: relative;
     height: 200px;
