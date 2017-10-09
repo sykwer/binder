@@ -77,7 +77,9 @@
       <%= image_tag @post.user.image_url, class: "author-profile-image" %>
       <div class="author-profile-right">
         <p class="author-profile-name"><%= @post.user.name %></p>
-        <button class="follow-button">フォロー</button>
+        <div class="follow-button-wrapper">
+          <button class="follow-button-component">フォロー</button>
+        </div>
         <p class="author-profile-bio"><%= @post.user.bio %></p>
       </div>
     </div>
