@@ -4,6 +4,9 @@ class Post < ApplicationRecord
   has_many :bookmarks, foreign_key: :post_uuid
   has_many :bookmarking_users, through: :bookmarks, source: :user
 
+  has_many :claps, foreign_key: :post_uuid
+  has_many :clapping_users, through: :claps, source: :user
+
   before_create do
     self.uuid = SecureRandom.uuid
   end

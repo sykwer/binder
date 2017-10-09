@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :bookmarks
   has_many :bookmarked_posts, through: :bookmarks, source: :post
 
+  has_many :claps
+  has_many :clapped_posts, through: :claps, source: :post
+
   has_many :active_relationships, class_name: "Follow", foreign_key: "source_id", dependent: :destroy
   has_many :followings, through: :active_relationships, source: :destination
 
