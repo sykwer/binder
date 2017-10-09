@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resource :title_draft, controller: "posts/title_drafts", only: %i(update)
       resource :book_info, controller: 'posts/book_infos', only: %i(update)
       resources :bookmarks, controller: "posts/bookmarks", only: %i(create)
+      resources :claps, controller: "posts/claps", only: %i(create)
       delete "bookmarks", to: "posts/bookmarks#destroy"
     end
 
