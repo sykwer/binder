@@ -6,6 +6,7 @@ import { succeedClap } from "./actions"
 function* requestClapFlow() {
   while (true) {
     yield take("CLICK_CLAP")
+
     const state = yield select()
     const isSuccess = yield call(requestClap, state.postUuid)
 
