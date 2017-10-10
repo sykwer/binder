@@ -1,0 +1,19 @@
+.clap-button-component {
+  width: calc(30px * 2);
+  height: calc(30px * 2);
+  border-radius: 30px;
+  border: solid 1px $gray91;
+  padding: 10px;
+
+  .clap-image {
+    width: 40px;
+    opacity: 0.8;
+  }
+
+  .claps-count-right {
+    position: absolute;
+    top: 21px;
+    left: 71px;
+    color: $gray56;
+  }
+}

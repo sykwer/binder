@@ -12,9 +12,11 @@ create_table "posts", id: false, force: :cascade, options: default_options do |t
   t.string     :book_publisher,     null: false, default: ""
   t.string     :affiliate_link,     null: false, default: ""
   t.integer    :bookmarked_count,   null: false, default: 0
+  t.integer    :claps_count,        null: false, default: 0
   t.datetime   :first_published_at
   t.timestamps                      null: false
 
   t.index ["uuid"], name: "index_posts_on_uuid", unique: true, using: :btree
   t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  t.index ["asin"], name: "index_posts_on_asin", using: :btree
 end
