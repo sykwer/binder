@@ -34,10 +34,16 @@
   </div>
   <div class="action-buttons">
     <div class="bottom-clap-button-wrapper">
-      <button class="clap-button-component">
-        <%= image_tag "before_clap", class: "clap-image" %>
-        <p class="claps-count-right">35</p>
-      </button>
+      <%= content_tag :div,
+        id: "clap-button-root",
+        data: {
+          postUuid: @post.uuid,
+          clappedCount: @post.claps_count,
+          clappedCountByMe: current_user.present? ? current_user.clap_count_of(@post) : 0,
+          beforeClapImage: image_url("before_clap"),
+          afterClapImage: image_url("after_clap"),
+        }.to_json do %>
+      <% end %>
     </div>
     <button class="bookmark-button">
       <i class="fa fa-bookmark-o" aria-hidden="true"></i>

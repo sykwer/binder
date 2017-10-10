@@ -36,4 +36,8 @@ class User < ApplicationRecord
   def follower_ids
     Follow.where(destination_id: id).pluck(:source_id)
   end
+
+  def clap_count_of(post)
+    Clap.where(post: post, user: self).count
+  end
 end
