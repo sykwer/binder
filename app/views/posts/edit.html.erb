@@ -1,29 +1,20 @@
 <%= render "shared/editor_header" %>
-<div class="container" style="margin-top: 40px">
-  <div class="row">
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-10">
-      <%= content_tag :div,
-        id: "post-editor-app",
-        data: {
-          uuid: @post.uuid,
-          bookAsin: @post.asin,
-          bookTitle: @post.book_title,
-          bookAuthor: @post.book_author,
-          bookPublisher: @post.book_publisher,
-          image: @post.book_image_url,
-          content: @post.content_draft,
-          title: @post.title_draft,
-          date: @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now),
-          user: {
-            name: current_user.name,
-            image: current_user.image_url,
-          },
-        }.to_json do %>
-      <% end %>
-    </div>
-    <div class="col-md-1">
-    </div>
-  </div>
+  <%= content_tag :div,
+    id: "post-editor-app",
+    data: {
+      uuid: @post.uuid,
+      bookAsin: @post.asin,
+      bookTitle: @post.book_title,
+      bookAuthor: @post.book_author,
+      bookPublisher: @post.book_publisher,
+      image: @post.book_image_url,
+      content: @post.content_draft,
+      title: @post.title_draft,
+      date: @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now),
+      user: {
+        name: current_user.name,
+        image: current_user.image_url,
+      },
+    }.to_json do %>
+  <% end %>
 </div>
