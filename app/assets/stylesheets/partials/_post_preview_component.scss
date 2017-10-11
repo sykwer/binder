@@ -113,6 +113,11 @@
           font-size: 25px;
           color: $post_title_color;
         }
+
+        a {
+          color: $post_content_color;
+          text-decoration: underline;
+        }
       }
     }
   }

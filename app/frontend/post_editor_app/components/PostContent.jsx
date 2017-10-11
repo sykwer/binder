@@ -48,6 +48,24 @@ window.addEventListener("load", () => {
     autoLink: true,
     imageDragging: false,
     placeholder: false,
+    toolbar: {
+      buttons: [
+        {
+          name: "h2",
+          action: "append-h3",
+          aria: "header type 2",
+          tagNames: ["h3"],
+          contentDefault: "<b>T</b>",
+          classList: ["custom-class-h22"],
+          attrs: {
+            "data-custom-attr": "attr-value-h2",
+          },
+        },
+        "bold",
+        "quote",
+        "anchor",
+      ],
+    },
   })
 })
 
