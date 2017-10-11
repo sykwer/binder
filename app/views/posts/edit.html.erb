@@ -1,4 +1,3 @@
-<%= render "shared/editor_header" %>
   <%= content_tag :div,
     id: "post-editor-app",
     data: {
@@ -13,8 +12,10 @@
       date: @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now),
       user: {
         name: current_user.name,
+        username: current_user.username,
         image: current_user.image_url,
       },
+      logoImage: image_url("gray_book_logo.png")
     }.to_json do %>
   <% end %>
 </div>

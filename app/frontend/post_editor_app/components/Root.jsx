@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
+import Header from "./Header"
 import PostContentContainer from "./PostContentContainer"
 import BookInfoInputContainer from "./BookInfoInputContainer"
 import PostMetaInfo from "./PostMetaInfo"
@@ -13,6 +14,7 @@ import { closeBookSelector } from "../store/actions"
 
 const cpnt = ({ isBookSelectorOpen, handleClickCloseBookSelector }) => (
   <div className="post-editor-component">
+    <Header />
     {
       isBookSelectorOpen && (
         <div

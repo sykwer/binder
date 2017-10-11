@@ -179,6 +179,11 @@ const user = (state = null, action) => {
   return state
 }
 
+// eslint-disable-next-line
+const logoImage = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   bookNameInput,
   authorInput,
@@ -198,6 +203,7 @@ const rootReducer = combineReducers({
   uuid,
   date,
   user,
+  logoImage,
 })
 
 export default rootReducer

@@ -26,8 +26,10 @@ const run = () => {
       date: data.date,
       user: {
         name: data.user.name,
+        username: data.user.username,
         image: data.user.image,
       },
+      logoImage: data.logoImage,
     }
     const store = createStore(
       rootReducer,
