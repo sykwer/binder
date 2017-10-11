@@ -175,6 +175,21 @@ const date = (state = null, action) => {
 }
 
 // eslint-disable-next-line
+const isPublished = (state = null, action) => {
+  return state
+}
+
+const isChangesUnpublished = (state = null, action) => {
+  switch (action.type) {
+    case "UPDATE_POST_CONTENT":
+    case "UPDATE_POST_TITLE":
+      return true
+    default:
+      return state
+  }
+}
+
+// eslint-disable-next-line
 const user = (state = null, action) => {
   return state
 }
@@ -202,6 +217,8 @@ const rootReducer = combineReducers({
   isBookSelectorOpen,
   uuid,
   date,
+  isChangesUnpublished,
+  isPublished,
   user,
   logoImage,
 })

@@ -10,6 +10,8 @@
       content: @post.content_draft,
       title: @post.title_draft,
       date: @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now),
+      isPublished: @post.published?,
+      isChangesUnpublished: @post.content != @post.content_draft || @post.title != @post.title_draft,
       user: {
         name: current_user.name,
         username: current_user.username,

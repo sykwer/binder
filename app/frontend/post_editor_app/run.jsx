@@ -24,6 +24,8 @@ const run = () => {
       selectedBookImage: data.image,
       postContent: data.content,
       date: data.date,
+      isPublished: data.isPublished,
+      isChangesUnpublished: data.isChangesUnpublished,
       user: {
         name: data.user.name,
         username: data.user.username,

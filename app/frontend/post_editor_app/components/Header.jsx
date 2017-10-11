@@ -8,6 +8,7 @@ const cpnt = ({
   userImage,
   logoImage,
   saveStatus,
+  publicationStatus,
 }) => (
   <header className="editor-header">
     <div className="header-wrapper clearfix">
@@ -20,6 +21,9 @@ const cpnt = ({
             />
           </a>
         </h1>
+        <p className="publication-status">
+          {publicationStatus}
+        </p>
         <p className="save-status">
           {saveStatus}
         </p>
@@ -37,7 +41,7 @@ const cpnt = ({
               </button>
             </li>
             <li className="menu-item profile-window">
-              <a href={`/${username}`}>
+              <a href={`/@${username}`}>
                 <img
                   src={userImage}
                   alt={name}
@@ -57,6 +61,7 @@ cpnt.propTypes = {
   userImage: PropTypes.string.isRequired,
   logoImage: PropTypes.string.isRequired,
   saveStatus: PropTypes.string.isRequired,
+  publicationStatus: PropTypes.string.isRequired,
 }
 
 const stateToSaveStatus = (state) => {
@@ -76,12 +81,25 @@ const stateToSaveStatus = (state) => {
   return "Error"
 }
 
+const stateToPublicationStatus = (state) => {
+  if (!state.isPublished) {
+    return "Draft"
+  }
+
+  if (state.isChangesUnpublished) {
+    return "Changes unpublished"
+  }
+
+  return "Open to public"
+}
+
 const mapStateToProps = state => ({
   name: state.user.name,
   username: state.user.username,
   userImage: state.user.image,
   logoImage: state.logoImage,
   saveStatus: stateToSaveStatus(state),
+  publicationStatus: stateToPublicationStatus(state),
 })
 
 const Header = connect(

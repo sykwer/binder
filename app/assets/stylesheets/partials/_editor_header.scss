@@ -28,9 +28,19 @@
         }
       }
 
-      .save-status {
+      .publication-status {
         display: inline-block;
         margin-left: 25px;
+        margin-top: 10px;
+        font-size: 15px;
+        color: $post_title_color;
+        opacity: 0.9;
+        letter-spacing: -0.2px;
+      }
+
+      .save-status {
+        display: inline-block;
+        margin-left: 15px;
         margin-top: 10px;
         font-size: 15px;
         letter-spacing: 0.5px;
