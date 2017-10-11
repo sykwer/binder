@@ -16,16 +16,16 @@ const mapStateToProps = (state) => {
   let isListEmpty
   switch (state.bookSearchState) {
     case "EMPTY":
-      listBoxWord = "Type in search critearia."
+      listBoxWord = "検索条件を入力してください"
       isListEmpty = true
       break
     case "IS_TYPING":
     case "IS_FETCHING":
-      listBoxWord = "Searching.."
+      listBoxWord = "検索中..."
       isListEmpty = true
       break
     case "IS_FETCHED_EMPTY":
-      listBoxWord = "Not found."
+      listBoxWord = "見つかりませんでした"
       isListEmpty = true
       break
     default:
