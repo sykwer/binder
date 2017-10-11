@@ -7,6 +7,7 @@ const cpnt = ({
   username,
   userImage,
   logoImage,
+  saveStatus,
 }) => (
   <header className="editor-header">
     <div className="header-wrapper clearfix">
@@ -19,6 +20,9 @@ const cpnt = ({
             />
           </a>
         </h1>
+        <p className="save-status">
+          {saveStatus}
+        </p>
       </div>
       <div className="header-right">
         <nav className="header-menu">
@@ -52,6 +56,24 @@ cpnt.propTypes = {
   username: PropTypes.string.isRequired,
   userImage: PropTypes.string.isRequired,
   logoImage: PropTypes.string.isRequired,
+  saveStatus: PropTypes.string.isRequired,
+}
+
+const stateToSaveStatus = (state) => {
+  const content = state.contentSaveState
+  const title = state.titleSaveState
+
+  if (content === "INITIAL" && title === "INITIAL") {
+    return ""
+  } else if (content === "IS_SAVING" || title === "IS_SAVING") {
+    return "Saving.."
+  } else if (content === "IS_NOT_SAVED" || title === "IS_NOT_SAVED") {
+    return "Unsaved"
+  } else if (content === "IS_SAVED" || title === "IS_SAVED") {
+    return "Saved"
+  }
+
+  return "Error"
 }
 
 const mapStateToProps = state => ({
@@ -59,6 +81,7 @@ const mapStateToProps = state => ({
   username: state.user.username,
   userImage: state.user.image,
   logoImage: state.logoImage,
+  saveStatus: stateToSaveStatus(state),
 })
 
 const Header = connect(
