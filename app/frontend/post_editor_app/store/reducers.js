@@ -164,6 +164,17 @@ const isBookSelectorOpen = (state = false, action) => {
   }
 }
 
+const isPublishWindowDisplayed = (state = false, action) => {
+  switch (action.type) {
+    case "OPEN_PUBLISH_WINDOW":
+      return true
+    case "CLOSE_PUBLISH_WINDOW":
+      return false
+    default:
+      return state
+  }
+}
+
 // eslint-disable-next-line
 const uuid = (state = null, action) => {
   return state
@@ -215,6 +226,7 @@ const rootReducer = combineReducers({
   titleSaveState,
   bookSearchState,
   isBookSelectorOpen,
+  isPublishWindowDisplayed,
   uuid,
   date,
   isChangesUnpublished,

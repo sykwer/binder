@@ -82,3 +82,11 @@ export const openBookSelector = () => ({
 export const closeBookSelector = () => ({
   type: "CLOSE_BOOK_SELECTOR",
 })
+
+export const openPublishWindow = () => ({
+  type: "OPEN_PUBLISH_WINDOW",
+})
+
+export const closePublishWindow = () => ({
+  type: "CLOSE_PUBLISH_WINDOW",
+})
