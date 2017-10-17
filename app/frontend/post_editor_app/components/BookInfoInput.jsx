@@ -20,7 +20,7 @@ const BookInfoInput = ({
   >
     <input
       type="text"
-      placeholder="Title"
+      placeholder="タイトル"
       className="book-title input-item"
       id="book-title-input"
       onChange={(e) => {
@@ -30,7 +30,7 @@ const BookInfoInput = ({
     />
     <input
       type="text"
-      placeholder="Author"
+      placeholder="著者"
       className="book-author input-item"
       onChange={(e) => {
         onChangeAuthor(e.target.value)
@@ -39,7 +39,7 @@ const BookInfoInput = ({
     />
     <input
       type="text"
-      placeholder="Publisher"
+      placeholder="出版社"
       className="book-publisher input-item"
       onChange={(e) => {
         onChangePublisher(e.target.value)

@@ -1,10 +1,17 @@
 .book-selector-component {
 
   .bookinfo-input {
-    width: 400px;
     height: 140px;
     padding-right: 20px;
     margin: 50px auto 0;
+
+    @media (min-width: $small-plus-one) {
+      width: 400px;
+    }
+
+    @media (max-width: $small) {
+      width: 370px;
+    }
 
     .input-item {
       display: block;
@@ -28,10 +35,17 @@
   }
 
   .booklist-window {
-    width: 400px;
     height: 400px;
     margin: 10px auto 0;
     background: $gray91;
+
+    @media (min-width: $small-plus-one) {
+      width: 400px;
+    }
+
+    @media (max-width: $small) {
+      width: 370px;
+    }
 
     .list-box-word {
       display: block;

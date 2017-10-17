@@ -82,3 +82,23 @@ export const openBookSelector = () => ({
 export const closeBookSelector = () => ({
   type: "CLOSE_BOOK_SELECTOR",
 })
+
+export const openPublishWindow = () => ({
+  type: "OPEN_PUBLISH_WINDOW",
+})
+
+export const closePublishWindow = () => ({
+  type: "CLOSE_PUBLISH_WINDOW",
+})
+
+export const toggleSharedOnTwitter = () => ({
+  type: "TOGGLE_SHARED_ON_TWITTER",
+})
+
+export const toggleSharedOnFacebook = () => ({
+  type: "TOGGLE_SHARED_ON_FACEBOOK",
+})
+
+export const publishPost = () => ({
+  type: "PUBLISH_POST",
+})

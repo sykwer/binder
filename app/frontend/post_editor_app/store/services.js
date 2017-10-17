@@ -50,3 +50,8 @@ export const requestSaveSelectedBook = (
     book_publisher: publisher,
   }).then(res => res.status === 200)
 }
+
+export const requestPostPublish = (postUuid) => {
+  const url = `http://localhost:3000/api/posts/${postUuid}/content`
+  return axios.patch(url).then(res => res.status === 200)
+}

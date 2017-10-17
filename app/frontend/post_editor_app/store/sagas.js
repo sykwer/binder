@@ -6,6 +6,7 @@ import {
   requestBookList,
   requestSaveSelectedBook,
   requestSaveTitleDraft,
+  requestPostPublish,
 } from "./services"
 
 import {
@@ -107,11 +108,26 @@ function* postTitleSaveFlow() {
   }
 }
 
+function* postPublishFlow() {
+  while (true) {
+    yield take("PUBLISH_POST")
+    const state = yield select()
+    const isSuccess = yield call(requestPostPublish, state.uuid)
+
+    if (isSuccess) {
+      window.location.assign(`http://localhost:3000/posts/${state.uuid}`)
+    } else {
+      // handle failure
+    }
+  }
+}
+
 function* rootSaga() {
   yield takeLatest("UPDATE_POST_CONTENT", postContentSaveFlow)
   yield takeLatest("UPDATE_POST_TITLE", postTitleSaveFlow)
   yield fork(searchBookListFlow)
   yield takeLatest("SELECT_BOOK", afterSelectBookFlow)
+  yield fork(postPublishFlow)
 }
 
 export default rootSaga

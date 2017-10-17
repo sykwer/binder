@@ -164,6 +164,35 @@ const isBookSelectorOpen = (state = false, action) => {
   }
 }
 
+const isPublishWindowDisplayed = (state = false, action) => {
+  switch (action.type) {
+    case "OPEN_PUBLISH_WINDOW":
+      return true
+    case "CLOSE_PUBLISH_WINDOW":
+      return false
+    default:
+      return state
+  }
+}
+
+const isSharedOnTwitter = (state = false, action) => {
+  switch (action.type) {
+    case "TOGGLE_SHARED_ON_TWITTER":
+      return !state
+    default:
+      return state
+  }
+}
+
+const isSharedOnFacebook = (state = false, action) => {
+  switch (action.type) {
+    case "TOGGLE_SHARED_ON_FACEBOOK":
+      return !state
+    default:
+      return state
+  }
+}
+
 // eslint-disable-next-line
 const uuid = (state = null, action) => {
   return state
@@ -175,7 +204,27 @@ const date = (state = null, action) => {
 }
 
 // eslint-disable-next-line
+const isPublished = (state = null, action) => {
+  return state
+}
+
+const isChangesUnpublished = (state = null, action) => {
+  switch (action.type) {
+    case "UPDATE_POST_CONTENT":
+    case "UPDATE_POST_TITLE":
+      return true
+    default:
+      return state
+  }
+}
+
+// eslint-disable-next-line
 const user = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const logoImage = (state = null, action) => {
   return state
 }
 
@@ -195,9 +244,15 @@ const rootReducer = combineReducers({
   titleSaveState,
   bookSearchState,
   isBookSelectorOpen,
+  isPublishWindowDisplayed,
+  isSharedOnTwitter,
+  isSharedOnFacebook,
   uuid,
   date,
+  isChangesUnpublished,
+  isPublished,
   user,
+  logoImage,
 })
 
 export default rootReducer
