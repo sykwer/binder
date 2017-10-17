@@ -60,7 +60,7 @@
           vertical-align: middle;
         }
 
-        .publish-button  {
+        .publish-window-open-button  {
           position: relative;
           color: $fresh_green;
 
@@ -77,11 +77,101 @@
           .publish-window {
             position: absolute;
             top: 39px;
-            left: -100px;
-            height: 400px;
-            width: 300px;
+            left: -106px;
+            height: 325px;
+            width: 350px;
+            padding: 20px;
             border: 1px solid $gray91;
             background-color: white;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+            cursor: default;
+
+            .publish-window-header {
+              margin: 0;
+              color: $post_title_color;
+              font-size: 16px;
+            }
+
+            .add-tag-explanation {
+              margin-top: 15px;
+              color: $post_content_color;
+              opacity: 0.85;
+              font-size: 13px;
+              letter-spacing: 0.5;
+            }
+
+            .add-tag-box {
+              height: 70px;
+            }
+
+            .social-share {
+              padding: 15px 0;
+              border-top: 1px solid $gray91;
+              border-bottom: 1px solid $gray91;
+
+              .share-on-twitter,
+              .share-on-facebook {
+                font-weight: normal;
+                letter-spacing: 0.5px;
+                color: $post_content_color;
+                opacity: 0.85;
+              }
+
+              .share-on-facebook {
+                margin-bottom: 0;
+              }
+
+              .checkbox-button {
+                display: inline-block;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                margin: 0;
+                margin-right: 7px;
+                margin-bottom: 5px;
+                width: 20px;
+                height: 20px;
+                vertical-align: middle;
+                border: 1px solid $gray56;
+                opacity: 0.5;
+                border-radius: 3px;
+                outline: 1px solid transparent;
+                cursor: pointer;
+
+                transition-property: background-color, opacity, border;
+                transition-duration: 0.3s;
+                transition-timing-function: ease-in-out;
+              }
+
+              .checkbox-button:checked {
+                background-color: $fresh_green;
+                opacity: 1;
+                border: 1px solid transparent;
+              }
+            }
+
+            .publish-button-wrapper {
+              position: relative;
+
+              .publish-button {
+                position: absolute;
+                top: 20px;
+                right: 0;
+                padding: 5px 10px;
+                color: $fresh_green;
+                border: 1px solid $fresh_green;
+                border-radius: 5px;
+                font-size: 12px;
+
+                transition-property: color, background-color;
+                transition-duration: 0.3s;
+                transition-timing-function: ease-in-out;
+              }
+
+              .publish-button:hover {
+                color: white;
+                background-color: $fresh_green;
+              }
+            }
           }
 
           .publish-window:before {

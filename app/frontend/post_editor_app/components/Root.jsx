@@ -10,10 +10,26 @@ import BookListContainer from "./BookListContainer"
 import SelectedBook from "./SelectedBook"
 import PostTitle from "./PostTitle"
 
-import { closeBookSelector } from "../store/actions"
+import {
+  closeBookSelector,
+  closePublishWindow,
+} from "../store/actions"
 
-const cpnt = ({ isBookSelectorOpen, handleClickCloseBookSelector }) => (
-  <div className="post-editor-component">
+const cpnt = ({
+  isBookSelectorOpen,
+  handleClickCloseBookSelector,
+  handleClickClosePublishWindow,
+}) => (
+  <div
+    className="post-editor-component cancel-focus-outline"
+    role="button"
+    tabIndex="0"
+    onClick={(e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      handleClickClosePublishWindow()
+    }}
+  >
     <Header />
     {
       isBookSelectorOpen && (
@@ -47,6 +63,7 @@ const cpnt = ({ isBookSelectorOpen, handleClickCloseBookSelector }) => (
 cpnt.propTypes = {
   isBookSelectorOpen: PropTypes.bool.isRequired,
   handleClickCloseBookSelector: PropTypes.func.isRequired,
+  handleClickClosePublishWindow: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -56,6 +73,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleClickCloseBookSelector: () => {
     dispatch(closeBookSelector())
+  },
+  handleClickClosePublishWindow: () => {
+    dispatch(closePublishWindow())
   },
 })
 

@@ -90,3 +90,11 @@ export const openPublishWindow = () => ({
 export const closePublishWindow = () => ({
   type: "CLOSE_PUBLISH_WINDOW",
 })
+
+export const toggleSharedOnTwitter = () => ({
+  type: "TOGGLE_SHARED_ON_TWITTER",
+})
+
+export const toggleSharedOnFacebook = () => ({
+  type: "TOGGLE_SHARED_ON_FACEBOOK",
+})

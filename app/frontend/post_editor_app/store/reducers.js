@@ -175,6 +175,24 @@ const isPublishWindowDisplayed = (state = false, action) => {
   }
 }
 
+const isSharedOnTwitter = (state = false, action) => {
+  switch (action.type) {
+    case "TOGGLE_SHARED_ON_TWITTER":
+      return !state
+    default:
+      return state
+  }
+}
+
+const isSharedOnFacebook = (state = false, action) => {
+  switch (action.type) {
+    case "TOGGLE_SHARED_ON_FACEBOOK":
+      return !state
+    default:
+      return state
+  }
+}
+
 // eslint-disable-next-line
 const uuid = (state = null, action) => {
   return state
@@ -227,6 +245,8 @@ const rootReducer = combineReducers({
   bookSearchState,
   isBookSelectorOpen,
   isPublishWindowDisplayed,
+  isSharedOnTwitter,
+  isSharedOnFacebook,
   uuid,
   date,
   isChangesUnpublished,
