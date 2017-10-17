@@ -98,3 +98,7 @@ export const toggleSharedOnTwitter = () => ({
 export const toggleSharedOnFacebook = () => ({
   type: "TOGGLE_SHARED_ON_FACEBOOK",
 })
+
+export const publishPost = () => ({
+  type: "PUBLISH_POST",
+})

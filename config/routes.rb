@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :posts, only: %i(show), param: :uuid do
       resource :content_draft, controller: 'posts/content_drafts', only: %i(update)
       resource :title_draft, controller: "posts/title_drafts", only: %i(update)
+      resource :content, controller: "posts/contents", only: %i(update)
       resource :book_info, controller: 'posts/book_infos', only: %i(update)
       resources :bookmarks, controller: "posts/bookmarks", only: %i(create)
       resources :claps, controller: "posts/claps", only: %i(create)

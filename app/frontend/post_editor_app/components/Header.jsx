@@ -6,6 +6,7 @@ import {
   openPublishWindow,
   toggleSharedOnTwitter,
   toggleSharedOnFacebook,
+  publishPost,
 } from "../store/actions"
 
 const cpnt = ({
@@ -190,7 +191,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(toggleSharedOnFacebook())
   },
   handleClickPublish: () => {
-    alert("Publish!!")
+    dispatch(publishPost())
   },
 })
 
