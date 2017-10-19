@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     registration = Registration.new(
       username: params[:registration][:username],
       fb_data: session["devise.facebook_data"],
+      tw_data: session["devise.twitter_data"],
     )
 
     if user = registration.save

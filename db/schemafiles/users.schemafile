@@ -1,5 +1,5 @@
 create_table "users", force: :cascade, options: default_options do |t|
-  t.string   :email,               null: false, default: ""
+  t.string   :email
   t.string   :name,                null: false
   t.string   :username,            null: false
   t.string   :bio,                 null: false, default: ""
@@ -13,10 +13,12 @@ create_table "users", force: :cascade, options: default_options do |t|
   t.string   :current_sign_in_ip
   t.string   :last_sign_in_ip
   t.string   :facebook_uid
+  t.string   :twitter_uid
 
   t.timestamps null: false
 
   t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   t.index ["facebook_uid"], name: "index_users_on_facebook_uid", unique: true, using: :btree
+  t.index ["twitter_uid"], name: "index_users_on_twitter_uid", unique: true, using: :btree
 end
