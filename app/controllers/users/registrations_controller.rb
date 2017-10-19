@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     registration = Registration.new(
       username: params[:registration][:username],
-      auth: session["devise.facebook_data"],
+      fb_data: session["devise.facebook_data"],
     )
 
     if user = registration.save
