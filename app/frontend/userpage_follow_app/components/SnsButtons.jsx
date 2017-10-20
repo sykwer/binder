@@ -1,14 +1,46 @@
 import React from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
 
-const SnsButtons = () => (
+const cpnt = ({ facebookLink, twitterLink }) => (
   <div className="sns-buttons">
     <span className="twitter-button">
-      <i className="fa fa-twitter" aria-hidden="true" />
+      {
+        twitterLink ? (
+          <a href={twitterLink} target="_blank">
+            <i className="fa fa-twitter active-button" aria-hidden="true" />
+          </a>
+        ) : (
+          <i className="fa fa-twiter inactive-button" aria-hidden="true" />
+        )
+      }
     </span>
     <span className="facebook-button">
-      <i className="fa fa-facebook" aria-hidden="true" />
+      {
+        facebookLink ? (
+          <a href={facebookLink} target="_blank">
+            <i className="fa fa-facebook active-button" aria-hidden="true" />
+          </a>
+        ) : (
+          <i className="fa fa-facebook inactive-button" aria-hidden="true" />
+        )
+      }
     </span>
   </div>
 )
+
+cpnt.propTypes = {
+  facebookLink: PropTypes.string.isRequired,
+  twitterLink: PropTypes.string.isRequired,
+}
+
+const mapStateToProps = state => ({
+  facebookLink: state.facebookLink,
+  twitterLink: state.twitterLink,
+})
+
+const SnsButtons = connect(
+  mapStateToProps,
+)(cpnt)
 
 export default SnsButtons

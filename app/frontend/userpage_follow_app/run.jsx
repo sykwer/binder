@@ -22,6 +22,8 @@ const run = () => {
       myUserId: data.myUserId,
       name: data.name,
       username: data.username,
+      facebookLink: data.facebookLink,
+      twitterLink: data.twitterLink,
     }
 
     const sagaMiddleware = createSagaMiddleware()

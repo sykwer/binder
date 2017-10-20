@@ -27,6 +27,8 @@ const run = () => {
       image: data.image,
       followingsCount: data.followings,
       followersCount: data.followers,
+      facebookLink: data.facebookLink,
+      twitterLink: data.twitterLink,
     }
 
     const store = createStore(

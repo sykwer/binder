@@ -78,6 +78,16 @@ const username = (state = null, action) => {
   return state
 }
 
+// eslint-disable-next-line
+const facebookLink = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const twitterLink = (state = null, action) => {
+  return state
+}
+
 const appState = (state = "NOT_EDITING", action) => {
   switch (action.type) {
     case "START_EDIT":
@@ -216,6 +226,8 @@ const rootReducer = combineReducers({
   followingsCount,
   name,
   username,
+  facebookLink,
+  twitterLink,
   appState,
   followers,
   followings,
