@@ -21,14 +21,26 @@ const cpnt = ({
     </div>
     <div className="sns-buttons">
       <span className="twitter-button">
-        <a href={twitterLink} target="_blank">
-          <i className="fa fa-twitter" aria-hidden="true" />
-        </a>
+        {
+          twitterLink ? (
+            <a href={twitterLink} target="_blank">
+              <i className="fa fa-twitter active-button" aria-hidden="true" />
+            </a>
+          ) : (
+            <i className="fa fa-twitter inactive-button" aria-hidden="true" />
+          )
+        }
       </span>
       <span className="facebook-button">
-        <a href={facebookLink} target="_blank">
-          <i className="fa fa-facebook" aria-hidden="true" />
-        </a>
+        {
+          facebookLink ? (
+            <a href={facebookLink} target="_blank">
+              <i className="fa fa-facebook active-button" aria-hidden="true" />
+            </a>
+          ) : (
+            <i className="fa fa-facebook inactive-button" aria-hidden="true" />
+          )
+        }
       </span>
     </div>
   </div>

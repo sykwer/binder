@@ -61,7 +61,6 @@
             .sns-buttons {
               float: left;
               margin-left: 30px;
-              color: $gray56;
               font-size: 18px;
 
               .twitter-button {
@@ -70,7 +69,21 @@
 
               .facebook-button {
                 display: inline-block;
-                margin-left: 5px;
+                margin-left: 10px;
+              }
+
+              .inactive-button {
+                color: $gray56;
+                opacity: 0.5;
+              }
+
+              .active-button {
+                color: $gray56;
+                opacity: 0.9;
+              }
+
+              .active-button:hover {
+                opacity: 1;
               }
             }
           }
