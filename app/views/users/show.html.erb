@@ -13,6 +13,8 @@
           image: @user.image_url,
           followings: @user.followings_count,
           followers: @user.followers_count,
+          facebookLink: @user.facebook_link,
+          twitterLink: @user.twitter_link,
         }.to_json do %>
       <% end %>
     <% else %>

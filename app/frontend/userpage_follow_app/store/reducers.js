@@ -51,6 +51,16 @@ const username = (state = null, action) => {
   return state
 }
 
+// eslint-disable-next-line
+const facebookLink = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const twitterLink = (state = null, action) => {
+  return state
+}
+
 const followers = (state = [], action) => {
   switch (action.type) {
     case "FINISH_FETCH_FOLLOWERS":
@@ -174,6 +184,8 @@ const rootReducer = combineReducers({
   myUserId,
   username,
   name,
+  facebookLink,
+  twitterLink,
   followers,
   followings,
   followersPage,
