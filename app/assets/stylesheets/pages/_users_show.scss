@@ -1,11 +1,19 @@
 .mypage {
+  margin-top: 100px;
 
   .mypage-upper {
     width: 100%;
 
     .profile {
       margin: 30px auto;
-      width: 600px;
+
+      @media (min-width: $small_plus_one) {
+        width: 580px;
+      }
+
+      @media (max-width: $small) {
+        width: 90%;
+      }
 
       .profile-main {
 
@@ -16,17 +24,41 @@
             color: $black_gray;
             font-size: 30px;
             margin-top: 15px;
+
+            @media (min-width: $small_plus_one) {
+              font-size: 30px;
+            }
+
+            @media (max-width: $small) {
+              font-size: 23px;
+            }
           }
 
           .bio {
-            margin-top: 3px;
+            margin-top: 8px;
             color: $gray56;
             font-size: 15px;
             letter-spacing: 0.5px;
+
+            @media (min-width: $small_plus_one) {
+              font-size: 15px;
+            }
+
+            @media (max-width: $small) {
+              font-size: 12px;
+            }
           }
 
           .profile-sub-wrapper {
             margin-top: 20px;
+
+            @media (min-width: $small_plus_one) {
+              font-size: 15px;
+            }
+
+            @media (max-width: $small) {
+              font-size: 13px;
+            }
 
             .follows {
               float: left;
@@ -116,9 +148,18 @@
           float: right;
 
           img {
-            width: 120px;
-            height: 120px;
-            border-radius: 60px;
+
+            @media (min-width: $small_plus_one) {
+              width: 120px;
+              height: 120px;
+              border-radius: 60px;
+            }
+
+            @media (max-width: $small) {
+              width: 80px;
+              height: 80px;
+              border-radius: 40px;
+            }
           }
         }
       }
@@ -158,8 +199,16 @@
   }
 
   .mypage-menu {
-    width: 600px;
-    margin: 70px auto 10px;
+
+    @media (min-width: $small_plus_one) {
+      margin: 70px auto 10px;
+      width: 580px;
+    }
+
+    @media (max-width: $small) {
+      margin: 45px auto 10px;
+      width: 90%;
+    }
 
     ul {
       padding: 0;
@@ -171,12 +220,20 @@
 
     .menu-item {
       display: inline-block;
-      font-size: 17px;
-      margin-right: 20px;
       letter-spacing: 1px;
       color: $gray56;
       opacity: 0.4;
       transition: opacity 0.3s;
+
+      @media (min-width: $small_plus_one) {
+        font-size: 17px;
+        margin-right: 20px;
+      }
+
+      @media (max-width: $small) {
+        font-size: 15px;
+        margin-right: 15px;
+      }
     }
 
     .menu-item.active,
@@ -187,27 +244,48 @@
 
   .mypage-lower {
     width: 100%;
-    padding: 30px;
+    padding: 30px 0;
     min-height: 370px;
     background: $background_gray;
     border-top: 1px solid $gray91;
 
     .book-list {
-      width: 950px;
       margin: 0 auto;
+      display: grid;
 
-      table tr td {
-        padding: 20px;
+      @media (min-width: $medium_plus_one) {
+        width: 900px;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 35px;
+      }
+
+      @media (min-width: $small_plus_one) and (max-width: $medium) {
+        width: 90%;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 30px;
+      }
+
+      @media (max-width: $small) {
+        width: 90%;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+      }
+
+      .book-in-shelf-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 133%;
 
         .book-in-shelf {
-          height: 200px;
-          width: 150px;
+          position: absolute;
           box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+          height: 100%;
+          width: 100%;
         }
+      }
 
-        .book-in-shelf:hover {
-          opacity: 0.8;
-        }
+      .book-in-shelf:hover {
+        opacity: 0.8;
       }
     }
   }
