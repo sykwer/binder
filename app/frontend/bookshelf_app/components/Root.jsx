@@ -6,7 +6,7 @@ import BookList from "./BookList"
 import BottomObserver from "./BottomObserver"
 
 const Root = () => (
-  <div className="book-list">
+  <div>
     <Route
       path="/@:username"
       render={() => {

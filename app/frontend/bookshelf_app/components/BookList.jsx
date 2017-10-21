@@ -5,58 +5,50 @@ import { Link } from "react-router-dom"
 
 import { startFetchPostDetail } from "../store/actions"
 
-const tableRow = ({ rowPosts, rowCount, handleOnClickBook }) => {
-  const bookColumns = rowPosts.map(post => (
-    <td key={post.id}>
-      <Link
-        to={`/posts/${post.id}`}
-        onClick={() => { handleOnClickBook(post.id) }}
-      >
-        <img className="book-in-shelf" src={post.bookImageUrl} alt={post.bookTitle} />
-      </Link>
-    </td>
+const BookCpnt = ({ post, handleClickBook }) => (
+  <Link
+    to={`/posts/${post.id}`}
+    onClick={() => { handleClickBook() }}
+  >
+    <div className="book-in-shelf-container">
+      <img
+        className="book-in-shelf"
+        src={post.bookImageUrl}
+        alt={post.bookTitle}
+      />
+    </div>
+  </Link>
+)
+
+BookCpnt.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    bookImageUrl: PropTypes.string.isRequired,
+    bookTitle: PropTypes.string.isRequired,
+  }).isRequired,
+  handleClickBook: PropTypes.func.isRequired,
+}
+
+const cpnt = ({ posts, handleClickBook }) => {
+  const bookCpnts = posts.map(post => (
+    <BookCpnt
+      key={post.id}
+      post={post}
+      handleClickBook={handleClickBook}
+    />
   ))
 
   return (
-    <tr key={rowCount}>
-      {bookColumns}
-    </tr>
-  )
-}
-
-tableRow.propTypes = {
-  // eslint-disable-next-line
-  rowPosts: PropTypes.array.isRequired,
-  rowCount: PropTypes.number.isRequired,
-  handleOnClickBook: PropTypes.func.isRequired,
-}
-
-const cpnt = ({ posts, handleOnClickBook }) => {
-  // Workaround: postsをコピーして使わないとstateを直接いじることになる
-  // TODO: Immutableを使った方がいいケース??
-  const copyPosts = posts.slice()
-  const tableRows = []
-
-  let rowCount = 0
-  while (copyPosts.length) {
-    const rowPosts = copyPosts.splice(0, 5)
-    tableRows.push(tableRow({ rowPosts, rowCount, handleOnClickBook }))
-    rowCount += 1
-  }
-
-  return (
-    <table>
-      <tbody>
-        {tableRows}
-      </tbody>
-    </table>
+    <div className="book-list">
+      {bookCpnts}
+    </div>
   )
 }
 
 cpnt.propTypes = {
   // eslint-disable-next-line
   posts: PropTypes.array.isRequired,
-  handleOnClickBook: PropTypes.func.isRequired,
+  handleClickBook: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -64,7 +56,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleOnClickBook: (postUuid) => {
+  handleClickBook: (postUuid) => {
     dispatch(startFetchPostDetail(postUuid))
   },
 })
