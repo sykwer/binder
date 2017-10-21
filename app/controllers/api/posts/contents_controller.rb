@@ -6,7 +6,7 @@ class Api::Posts::ContentsController < Api::ApplicationController
     PostFanoutService.new(
       target_user_ids: [current_user.id] + current_user.follower_ids,
       post_uuid: @post.uuid,
-    )
+    ).fanout
 
     head 200
   end
