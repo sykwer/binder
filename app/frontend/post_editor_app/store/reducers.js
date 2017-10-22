@@ -228,6 +228,52 @@ const logoImage = (state = null, action) => {
   return state
 }
 
+const selectedTags = (state = [], action) => {
+  switch (action.type) {
+    case "SELECT_TAG":
+      return [...state, action.tag]
+    case "DELETE_TAG":
+      return state.filter(tag => (
+        tag.name !== action.tagName
+      ))
+    default:
+      return state
+  }
+}
+
+const tagNameInput = (state = null, action) => {
+  switch (action.type) {
+    case "CHANGE_TAG_INPUT":
+      return action.text
+    default:
+      return state
+  }
+}
+
+const tagSearchState = (state = "NOT_FETCHED", action) => {
+  switch (action.type) {
+    case "START_FETCH_TAGS":
+      return "FETCHING"
+    case "FINISH_FETCH_TAGS":
+      return "FETCHED"
+    case "EMPTY_TAG_INPUT":
+      return "NOT_FETCHED"
+    default:
+      return state
+  }
+}
+
+const searchedTagsList = (state = [], action) => {
+  switch (action.type) {
+    case "FINISH_FETCH_TAGS":
+      return action.tags
+    case "EMPTY_TAG_NAME_INPUT":
+      return []
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   bookNameInput,
   authorInput,
@@ -253,6 +299,10 @@ const rootReducer = combineReducers({
   isPublished,
   user,
   logoImage,
+  selectedTags,
+  tagNameInput,
+  tagSearchState,
+  searchedTagsList,
 })
 
 export default rootReducer

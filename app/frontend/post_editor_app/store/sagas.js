@@ -7,6 +7,7 @@ import {
   requestSaveSelectedBook,
   requestSaveTitleDraft,
   requestPostPublish,
+  requestTagsList,
 } from "./services"
 
 import {
@@ -14,6 +15,8 @@ import {
   finishSavingPostContent,
   startSavingPostTitle,
   finishSavingPostTitle,
+  startFetchTags,
+  finishFetchTags,
 } from "./actions"
 
 function* postContentSaveFlow(action) {
@@ -122,12 +125,33 @@ function* postPublishFlow() {
   }
 }
 
+function* tagsFetch(q) {
+  const tags = yield call(requestTagsList, q)
+  yield put(finishFetchTags(tags))
+}
+
+function* tagsFetchFlow() {
+  let lastTask
+
+  while (true) {
+    const action = yield take("CHANGE_TAG_INPUT")
+
+    if (lastTask) {
+      yield cancel(lastTask)
+    }
+
+    yield put(startFetchTags())
+    yield fork(tagsFetch, action.text)
+  }
+}
+
 function* rootSaga() {
   yield takeLatest("UPDATE_POST_CONTENT", postContentSaveFlow)
   yield takeLatest("UPDATE_POST_TITLE", postTitleSaveFlow)
   yield fork(searchBookListFlow)
   yield takeLatest("SELECT_BOOK", afterSelectBookFlow)
   yield fork(postPublishFlow)
+  yield fork(tagsFetchFlow)
 }
 
 export default rootSaga

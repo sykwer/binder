@@ -102,3 +102,31 @@ export const toggleSharedOnFacebook = () => ({
 export const publishPost = () => ({
   type: "PUBLISH_POST",
 })
+
+export const selectTag = tag => ({
+  type: "SELECT_TAG",
+  tag,
+})
+
+export const deleteTag = tagName => ({
+  type: "DELETE_TAG",
+  tagName,
+})
+
+export const changeTagInput = text => ({
+  type: "CHANGE_TAG_INPUT",
+  text,
+})
+
+export const startFetchTags = () => ({
+  type: "START_FETCH_TAGS",
+})
+
+export const finishFetchTags = tags => ({
+  type: "FINISH_FETCH_TAGS",
+  tags,
+})
+
+export const emptyTagInput = () => ({
+  type: "EMPTY_TAG_INPUT",
+})

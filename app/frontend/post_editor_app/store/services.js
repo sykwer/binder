@@ -55,3 +55,12 @@ export const requestPostPublish = (postUuid) => {
   const url = `http://localhost:3000/api/posts/${postUuid}/content`
   return axios.patch(url).then(res => res.status === 200)
 }
+
+export const requestTagsList = (q) => {
+  const url = "http://localhost:3000/api/tags/search"
+  return axios.get(url, {
+    params: {
+      q,
+    },
+  })
+}
