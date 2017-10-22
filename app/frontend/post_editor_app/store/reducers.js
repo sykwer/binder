@@ -267,7 +267,7 @@ const searchedTagsList = (state = [], action) => {
   switch (action.type) {
     case "FINISH_FETCH_TAGS":
       return action.tags
-    case "EMPTY_TAG_NAME_INPUT":
+    case "EMPTY_TAG_INPUT":
       return []
     default:
       return state
