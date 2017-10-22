@@ -1,0 +1,9 @@
+create_table "post_tags", force: :cascade, options: default_options do |t|
+  t.string  :post_uuid, null: false
+  t.integer :tag_id,    null: false
+  t.timestamps          null: false
+
+  t.index ["post_uuid"], name: "index_post_tags_on_post_uuid", using: :btree
+  t.index ["tag_id"], name: "index_post_tags_on_tag_id", using: :btree
+  t.index ["post_uuid", "tag_id"], name: "index_post_tags_on_post_uuid_and_tag_id", unique: true, using: :btree
+end

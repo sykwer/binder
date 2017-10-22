@@ -1,0 +1,7 @@
+create_table "tags", force: :cascade, options: default_options do |t|
+  t.string  :name,           null: false, default: ""
+  t.integer :attached_count, null: false, default: 0
+  t.timestamps               null: false
+
+  t.index ["name"], name: "index_tags_on_name", unique: true, using: :btree
+end
