@@ -126,7 +126,9 @@ function* postPublishFlow() {
 }
 
 function* tagsFetch(q) {
-  const tags = yield call(requestTagsList, q)
+  const state = yield select()
+  const tagNames = state.selectedTags.map(tag => tag.name)
+  const tags = yield call(requestTagsList, q, tagNames)
   yield put(finishFetchTags(tags))
 }
 

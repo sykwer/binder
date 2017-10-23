@@ -231,6 +231,10 @@ const logoImage = (state = null, action) => {
 const selectedTags = (state = [], action) => {
   switch (action.type) {
     case "SELECT_TAG":
+      if (state.some(tag => tag.name === action.tag.name)) {
+        return state
+      }
+
       return [...state, action.tag]
     case "DELETE_TAG":
       return state.filter(tag => (

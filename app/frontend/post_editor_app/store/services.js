@@ -56,11 +56,12 @@ export const requestPostPublish = (postUuid) => {
   return axios.patch(url).then(res => res.status === 200)
 }
 
-export const requestTagsList = (q) => {
+export const requestTagsList = (q, tagNames) => {
   const url = "http://localhost:3000/api/tags/search"
   return axios.get(url, {
     params: {
       q,
+      excluded_names: tagNames,
     },
   }).then(res => res.data.tags)
 }
