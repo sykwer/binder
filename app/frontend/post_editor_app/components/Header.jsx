@@ -25,6 +25,8 @@ const cpnt = ({
   isFacebookChecked,
   searchedTagsList,
   selectedTags,
+  tagNameInput,
+  tagSearchState,
   handleClickOpenPublishWindow,
   handleToggleSharedOnTwitter,
   handleToggleSharedOnFacebook,
@@ -141,7 +143,7 @@ const cpnt = ({
                                 handleEmptyTagInput()
                               } else {
                                 window.setTimeout(() => {
-                                  handleInputTagName(tagInputDiv.innerText)
+                                  handleInputTagName(document.getElementById("tag-input-box-div").innerText)
                                 }, 300)
                               }
                             }}
@@ -176,6 +178,37 @@ const cpnt = ({
                                   </li>
                                 ))
                               }
+                            </ul>
+                          </div>
+                        }
+                        { tagSearchState === "FETCHED" && searchedTagsList.length === 0 &&
+                          document.getElementById("tag-input-box-div").innerText.length > 0 &&
+                          <div className="searched-tags-list">
+                            <ul className="tags-ul-list">
+                              <li>
+                                <button
+                                  className="tags-list-item"
+                                  onClick={(e) => {
+                                    e.preventDefault()
+                                    e.stopPropagation()
+                                    handleSelectTag({
+                                      id: null,
+                                      name: tagNameInput,
+                                      attatchedCount: 0,
+                                    })
+
+                                    tagInputDiv.innerText = ""
+                                    const range = document.createRange()
+                                    const selection = window.getSelection()
+                                    range.selectNodeContents(tagInputDiv)
+                                    range.collapse(false)
+                                    selection.removeAllRanges()
+                                    selection.addRange(range)
+                                  }}
+                                >
+                                  {tagNameInput}
+                                </button>
+                              </li>
                             </ul>
                           </div>
                         }
@@ -254,6 +287,8 @@ cpnt.propTypes = {
     name: PropTypes.string.isRequired,
     attatchedCount: PropTypes.number.isRequired,
   }).isRequired,
+  tagNameInput: PropTypes.string.isRequired,
+  tagSearchState: PropTypes.string.isRequired,
   handleClickOpenPublishWindow: PropTypes.func.isRequired,
   handleToggleSharedOnTwitter: PropTypes.func.isRequired,
   handleToggleSharedOnFacebook: PropTypes.func.isRequired,
@@ -305,6 +340,8 @@ const mapStateToProps = state => ({
   isFacebookChecked: state.isSharedOnFacebook,
   searchedTagsList: state.searchedTagsList,
   selectedTags: state.selectedTags,
+  tagNameInput: state.tagNameInput,
+  tagSearchState: state.tagSearchState,
 })
 
 const mapDispatchToProps = dispatch => ({
