@@ -96,11 +96,99 @@
               color: $post_content_color;
               opacity: 0.85;
               font-size: 13px;
-              letter-spacing: 0.5;
+              letter-spacing: 0.5px;
+              line-height: 1.8;
             }
 
             .add-tag-box {
-              height: 70px;
+              height: 80px;
+
+              .tag-input-box-wrapper {
+                position: relative;
+
+                .tag-token {
+                  display: inline-block;
+                  padding: 5px 8px;
+                  margin-right: 10px;
+                  margin-bottom: 10px;
+                  border-radius: 3px;
+                  color: $post_content_color;
+                  opacity: 0.8;
+                  background-color: $light_gray;
+
+                  .delete-tag-button {
+                    margin-left: 7px;
+                  }
+                }
+
+                .tag-input-box {
+                  display: inline-block;
+                  min-width: 100px;
+                  height: 30px;
+                  line-height: 30px;
+                  color: $post_content_color;
+                }
+
+                .searched-tags-list {
+                  position: absolute;
+                  top: 40px;
+                  left: -80px;
+                  width: 200px;
+                  background-color: white;
+                  border: 1px solid $gray91;
+                  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+                  z-index: 10000;
+
+                  .tags-ul-list {
+                    padding: 0;
+                  }
+
+                  .tags-list-item {
+                    width: 100%;
+                    text-align: left;
+                    color: $post_content_color;
+                    font-weight: bold;
+                    padding: 10px 20px;
+                    border-radius: 1px;
+                    letter-spacing: 0.5px;
+
+                    transition-property: color, background-color;
+                    transition-duration: 0.1s;
+                    transition-timing-function: ease-in-out;
+                  }
+
+                  .tags-list-item:hover {
+                    color: white;
+                    background-color: $fresh_green;
+                  }
+                }
+
+                .searched-tags-list:before {
+                  content: "";
+                  position: absolute;
+                  top: -14px;
+                  left: 50%;
+                  margin-left: -13px;
+                  width: 0;
+                  height: 0;
+                  border-bottom: 13px solid $gray91;
+                  border-left: 13px solid transparent;
+                  border-right: 13px solid transparent;
+                }
+
+                .searched-tags-list:after {
+                  content: "";
+                  position: absolute;
+                  top: -13px;
+                  left: 50%;
+                  margin-left: -13px;
+                  width: 0;
+                  height: 0;
+                  border-bottom: 13px solid white;
+                  border-left: 13px solid transparent;
+                  border-right: 13px solid transparent;
+                }
+              }
             }
 
             .social-share {

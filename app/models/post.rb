@@ -7,6 +7,9 @@ class Post < ApplicationRecord
   has_many :claps, foreign_key: :post_uuid
   has_many :clapping_users, through: :claps, source: :user
 
+  has_many :post_tags, foreign_key: :post_uuid
+  has_many :tags, through: :post_tags, source: :tag
+
   before_create do
     self.uuid = SecureRandom.uuid
   end
@@ -33,5 +36,11 @@ class Post < ApplicationRecord
 
   def bookmarked_by?(user)
     bookmarks.where(user: user).exists?
+  end
+
+  def attatch_tags!(tags)
+    tags.each do |tag|
+      PostTag.find_or_create_by!(post_uuid: uuid, tag_id: tag.id)
+    end
   end
 end

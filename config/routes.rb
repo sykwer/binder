@@ -44,5 +44,7 @@ Rails.application.routes.draw do
 
     resources :follows, only: %i(create)
     delete 'follows', to: "follows#destroy"
+
+    get "tags/search", to: "tags#search"
   end
 end

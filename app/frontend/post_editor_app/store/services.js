@@ -51,7 +51,32 @@ export const requestSaveSelectedBook = (
   }).then(res => res.status === 200)
 }
 
-export const requestPostPublish = (postUuid) => {
+export const requestPostPublish = (postUuid, tags) => {
   const url = `http://localhost:3000/api/posts/${postUuid}/content`
-  return axios.patch(url).then(res => res.status === 200)
+
+  const attachedTagIds = []
+  const createdTagNames = []
+
+  tags.forEach((tag) => {
+    if (tag.id === null) {
+      createdTagNames.push(tag.name)
+    } else {
+      attachedTagIds.push(tag.id)
+    }
+  })
+
+  return axios.patch(url, {
+    created_tag_names: createdTagNames,
+    attached_tag_ids: attachedTagIds,
+  }).then(res => res.status === 200)
+}
+
+export const requestTagsList = (q, tagNames) => {
+  const url = "http://localhost:3000/api/tags/search"
+  return axios.get(url, {
+    params: {
+      q,
+      excluded_names: tagNames,
+    },
+  }).then(res => res.data.tags)
 }

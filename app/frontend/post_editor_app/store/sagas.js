@@ -7,6 +7,7 @@ import {
   requestSaveSelectedBook,
   requestSaveTitleDraft,
   requestPostPublish,
+  requestTagsList,
 } from "./services"
 
 import {
@@ -14,6 +15,8 @@ import {
   finishSavingPostContent,
   startSavingPostTitle,
   finishSavingPostTitle,
+  startFetchTags,
+  finishFetchTags,
 } from "./actions"
 
 function* postContentSaveFlow(action) {
@@ -112,12 +115,38 @@ function* postPublishFlow() {
   while (true) {
     yield take("PUBLISH_POST")
     const state = yield select()
-    const isSuccess = yield call(requestPostPublish, state.uuid)
+    const isSuccess = yield call(requestPostPublish, state.uuid, state.selectedTags)
 
     if (isSuccess) {
       window.location.assign(`http://localhost:3000/posts/${state.uuid}`)
     } else {
       // handle failure
+    }
+  }
+}
+
+function* tagsFetch(q) {
+  const state = yield select()
+  const tagNames = state.selectedTags.map(tag => tag.name)
+  const tags = yield call(requestTagsList, q, tagNames)
+  yield put(finishFetchTags(tags))
+}
+
+function* tagsFetchFlow() {
+  let lastTask
+
+  while (true) {
+    const action = yield take("CHANGE_TAG_INPUT")
+
+    if (lastTask) {
+      yield cancel(lastTask)
+    }
+
+    yield call(delay, 300)
+
+    if (action.text.length > 1) {
+      yield put(startFetchTags())
+      lastTask = yield fork(tagsFetch, action.text)
     }
   }
 }
@@ -128,6 +157,7 @@ function* rootSaga() {
   yield fork(searchBookListFlow)
   yield takeLatest("SELECT_BOOK", afterSelectBookFlow)
   yield fork(postPublishFlow)
+  yield fork(tagsFetchFlow)
 }
 
 export default rootSaga

@@ -17,6 +17,13 @@
         username: current_user.username,
         image: current_user.image_url,
       },
+      tags: @post.tags.map { |tag|
+        {
+          id: tag.id,
+          name: tag.name,
+          attachedCount: tag.attached_count
+        }
+      },
       logoImage: image_url("gray_book_logo.png")
     }.to_json do %>
   <% end %>
