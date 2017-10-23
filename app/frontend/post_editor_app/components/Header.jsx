@@ -93,7 +93,7 @@ const cpnt = ({
                   >
                     <h2 className="publish-window-header">Ready to publish?</h2>
                     <p className="add-tag-explanation">
-                      記事に関連するタグを3つまで付けることができます。(タイトル/著者のタグは自動で付きます)
+                      記事に関連するタグを5つまで付けることができます。(タイトル/著者のタグは自動で付きます)
                     </p>
                     <div className="add-tag-box">
                       <div className="tag-input-box-wrapper">
@@ -111,12 +111,15 @@ const cpnt = ({
                                   e.stopPropagation()
                                   handleClickDeleteTag(tag.name)
 
-                                  const range = document.createRange()
-                                  const selection = window.getSelection()
-                                  range.selectNodeContents(tagInputDiv)
-                                  range.collapse(false)
-                                  selection.removeAllRanges()
-                                  selection.addRange(range)
+                                  window.setTimeout(() => {
+                                    const node = document.getElementById("tag-input-box-div")
+                                    const range = document.createRange()
+                                    const selection = window.getSelection()
+                                    range.selectNodeContents(node)
+                                    range.collapse(false)
+                                    selection.removeAllRanges()
+                                    selection.addRange(range)
+                                  }, 300)
                                 }}
                               >
                                 ×
@@ -124,24 +127,26 @@ const cpnt = ({
                             </div>
                           ))
                         }
-                        <div
-                          contentEditable
-                          placeholder="タグ名を入力..."
-                          className="tag-input-box"
-                          id="tag-input-box-div"
-                          ref={(node) => { tagInputDiv = node }}
-                          onInput={(e) => {
-                            e.preventDefault()
+                        { selectedTags.length < 5 &&
+                          <div
+                            contentEditable
+                            placeholder="タグ名を入力..."
+                            className="tag-input-box"
+                            id="tag-input-box-div"
+                            ref={(node) => { tagInputDiv = node }}
+                            onInput={(e) => {
+                              e.preventDefault()
 
-                            if (tagInputDiv.innerText.length === 0) {
-                              handleEmptyTagInput()
-                            } else {
-                              window.setTimeout(() => {
-                                handleInputTagName(tagInputDiv.innerText)
-                              }, 300)
-                            }
-                          }}
-                        />
+                              if (tagInputDiv.innerText.length === 0) {
+                                handleEmptyTagInput()
+                              } else {
+                                window.setTimeout(() => {
+                                  handleInputTagName(tagInputDiv.innerText)
+                                }, 300)
+                              }
+                            }}
+                          />
+                        }
                         { searchedTagsList.length > 0 &&
                           <div className="searched-tags-list">
                             <ul className="tags-ul-list">
