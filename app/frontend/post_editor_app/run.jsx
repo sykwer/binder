@@ -31,6 +31,7 @@ const run = () => {
         username: data.user.username,
         image: data.user.image,
       },
+      selectedTags: data.tags,
       logoImage: data.logoImage,
     }
     const store = createStore(

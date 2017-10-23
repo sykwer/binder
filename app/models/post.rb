@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_many :clapping_users, through: :claps, source: :user
 
   has_many :post_tags, foreign_key: :post_uuid
-  has_many :tags, through: :post_tags, source: :post
+  has_many :tags, through: :post_tags, source: :tag
 
   before_create do
     self.uuid = SecureRandom.uuid
