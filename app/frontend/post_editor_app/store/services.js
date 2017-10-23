@@ -62,5 +62,5 @@ export const requestTagsList = (q) => {
     params: {
       q,
     },
-  })
+  }).then(res => res.data.tags)
 }

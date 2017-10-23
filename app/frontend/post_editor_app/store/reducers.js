@@ -241,10 +241,12 @@ const selectedTags = (state = [], action) => {
   }
 }
 
-const tagNameInput = (state = null, action) => {
+const tagNameInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_TAG_INPUT":
       return action.text
+    case "SELECT_TAG":
+      return ""
     default:
       return state
   }
@@ -267,6 +269,7 @@ const searchedTagsList = (state = [], action) => {
   switch (action.type) {
     case "FINISH_FETCH_TAGS":
       return action.tags
+    case "SELECT_TAG":
     case "EMPTY_TAG_INPUT":
       return []
     default:

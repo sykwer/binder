@@ -140,8 +140,10 @@ function* tagsFetchFlow() {
       yield cancel(lastTask)
     }
 
+    yield call(delay, 300)
+
     yield put(startFetchTags())
-    yield fork(tagsFetch, action.text)
+    lastTask = yield fork(tagsFetch, action.text)
   }
 }
 
