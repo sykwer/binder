@@ -115,6 +115,10 @@
                   color: $post_content_color;
                   opacity: 0.8;
                   background-color: $light_gray;
+
+                  .delete-tag-button {
+                    margin-left: 7px;
+                  }
                 }
 
                 .tag-input-box {

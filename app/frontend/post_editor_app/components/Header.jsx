@@ -10,6 +10,7 @@ import {
   changeTagInput,
   emptyTagInput,
   selectTag,
+  deleteTag,
 } from "../store/actions"
 
 const cpnt = ({
@@ -31,6 +32,7 @@ const cpnt = ({
   handleInputTagName,
   handleEmptyTagInput,
   handleSelectTag,
+  handleClickDeleteTag,
 }) => {
   let tagInputDiv
 
@@ -102,6 +104,23 @@ const cpnt = ({
                               key={tag.name}
                             >
                               {tag.name}
+                              <button
+                                className="delete-tag-button"
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  e.stopPropagation()
+                                  handleClickDeleteTag(tag.name)
+
+                                  const range = document.createRange()
+                                  const selection = window.getSelection()
+                                  range.selectNodeContents(tagInputDiv)
+                                  range.collapse(false)
+                                  selection.removeAllRanges()
+                                  selection.addRange(range)
+                                }}
+                              >
+                                ×
+                              </button>
                             </div>
                           ))
                         }
@@ -237,6 +256,7 @@ cpnt.propTypes = {
   handleInputTagName: PropTypes.func.isRequired,
   handleEmptyTagInput: PropTypes.func.isRequired,
   handleSelectTag: PropTypes.func.isRequired,
+  handleClickDeleteTag: PropTypes.func.isRequired,
 }
 
 const stateToSaveStatus = (state) => {
@@ -303,6 +323,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleSelectTag: (tag) => {
     dispatch(selectTag(tag))
+  },
+  handleClickDeleteTag: (tagName) => {
+    dispatch(deleteTag(tagName))
   },
 })
 
