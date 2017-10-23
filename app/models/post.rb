@@ -37,4 +37,10 @@ class Post < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.where(user: user).exists?
   end
+
+  def attatch_tags!(tags)
+    tags.each do |tag|
+      PostTag.find_or_create_by!(post_uuid: uuid, tag_id: tag.id)
+    end
+  end
 end

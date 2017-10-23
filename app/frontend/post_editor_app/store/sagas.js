@@ -115,7 +115,7 @@ function* postPublishFlow() {
   while (true) {
     yield take("PUBLISH_POST")
     const state = yield select()
-    const isSuccess = yield call(requestPostPublish, state.uuid)
+    const isSuccess = yield call(requestPostPublish, state.uuid, state.selectedTags)
 
     if (isSuccess) {
       window.location.assign(`http://localhost:3000/posts/${state.uuid}`)
