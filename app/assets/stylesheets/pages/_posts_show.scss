@@ -168,44 +168,48 @@
     .post-tags {
       position: absolute;
       left: 0;
-      bottom: 0;
 
-      .tag-item {
-        display: inline-block;
-        margin-right: 5px;
-        padding: 3px;
-        border: 1px solid $gray91;
-      }
-    }
-  }
-
-  .post-tags {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-
-    .tag-item-button {
-      display: inline-block;
-      border: 1px solid $gray91;
-      color: $gray56;
-      border-radius: 7px;
-
-      @media (min-width: $medium-plus-one) {
-        padding: 5px;
-        font-size: 14px;
-        margin-right: 5px;
+      @media (min-width: $medium_plus_one) {
+        top: 85px;
+        width: 600px;
       }
 
-      @media (min-width: $small-plus-one) and (max-width: $medium) {
-        padding: 5px;
-        font-size: 12px;
-        margin-right: 4px;
+      @media (max-width: $medium) and (min-width: $small_plus_one) {
+        top: 70px;
+        width: calc(90% - 70px);
       }
 
       @media (max-width: $small) {
-        padding: 3px;
-        font-size: 6px;
-        margin-right: 2px;
+        top: 65px;
+        width: calc(90% - 40px);
+      }
+
+      .tag-item-button {
+        display: inline-block;
+        border: 1px solid $gray91;
+        color: $gray56;
+        border-radius: 7px;
+
+        @media (min-width: $medium-plus-one) {
+          padding: 5px;
+          font-size: 14px;
+          margin-right: 5px;
+          margin-bottom: 5px;
+        }
+
+        @media (min-width: $small-plus-one) and (max-width: $medium) {
+          padding: 5px;
+          font-size: 12px;
+          margin-right: 4px;
+          margin-bottom: 6px;
+        }
+
+        @media (max-width: $small) {
+          padding: 3px;
+          font-size: 6px;
+          margin-right: 2px;
+          margin-bottom: 4px;
+        }
       }
     }
   }
