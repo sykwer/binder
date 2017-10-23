@@ -24,9 +24,9 @@
       </div>
     </div>
     <div class="post-tags">
-      <button class="tag-item-button">ドグラマグラ</button>
-      <button class="tag-item-button">夢野久作</button>
-      <button class="tag-item-button">小説</button>
+      <% [@post.book_title, @post.book_author].concat(@post.tags.map { |t| t.name }).each do |tag| %>
+        <button class="tag-item-button"><%= tag %></button>
+      <% end %>
     </div>
   </div>
   <div class="post-content">

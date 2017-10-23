@@ -43,4 +43,10 @@ class Post < ApplicationRecord
       PostTag.find_or_create_by!(post_uuid: uuid, tag_id: tag.id)
     end
   end
+
+  def detach_tags(tags)
+    tags.each do |tag|
+      PostTag.where(post_uuid: uuid, tag_id: tag.id).take.delete
+    end
+  end
 end
