@@ -6,6 +6,8 @@ class Api::Posts::ContentsController < Api::ApplicationController
       Tag.create!(name: name)
     end
     attached_tags = Tag.where(id: params[:attached_tag_ids])
+
+    @post.detach_tags(@post.tags - attached_tags)
     @post.attatch_tags!(new_tags.concat(attached_tags))
 
     @post.publish_or_update_content!
