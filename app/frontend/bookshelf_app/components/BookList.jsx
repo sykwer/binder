@@ -8,7 +8,7 @@ import { startFetchPostDetail } from "../store/actions"
 const BookCpnt = ({ post, handleClickBook }) => (
   <Link
     to={`/posts/${post.id}`}
-    onClick={() => { handleClickBook() }}
+    onClick={() => { handleClickBook(post.id) }}
   >
     <div className="book-in-shelf-container">
       <img
