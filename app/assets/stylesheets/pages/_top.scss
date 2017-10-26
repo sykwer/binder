@@ -14,10 +14,12 @@
       .timeline-title {
         padding-bottom: 10px;
         margin-bottom: 0;
-        width: 130px;
+        width: 110px;
         border-bottom: 2px solid $gray91;
-        font-size: 25px;
+        font-size: 20px;
+        font-weight: bold;
         letter-spacing: 1px;
+        color: $post_title_color;
       }
     }
   }
@@ -36,8 +38,10 @@
         margin-bottom: 0;
         width: 180px;
         border-bottom: 2px solid $gray91;
-        font-size: 25px;
+        font-size: 20px;
+        font-weight: bold;
         letter-spacing: 0.5px;
+        color: $post_title_color;
       }
     }
   }
@@ -56,7 +60,9 @@
         margin-bottom: 0;
         width: 260px;
         border-bottom: 2px solid $gray91;
-        font-size: 25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: $post_title_color;
       }
     }
   }
