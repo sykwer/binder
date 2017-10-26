@@ -69,104 +69,107 @@
 }
 
 .posts-std-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 25px;
 
-  .posts-std-grid-item {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    padding: 20px;
-    padding-left: 0;
-    border: 1px solid $gray91;
+  @media (min-width: $small_plus_one) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 25px;
 
-    .book-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 249px;
-      width: calc(249px / 1.6);
-      border-right: 1px solid $gray91;
-      border-bottom: 1px solid $gray91;
-      opacity: 0.9;
-    }
+    .posts-std-grid-item {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      padding: 20px;
+      padding-left: 0;
+      border: 1px solid $gray91;
 
-    .book-image:hover {
-      opacity: 1;
-    }
-
-    .post-info {
-      margin-left: calc((250px / 1.6) + 20px);
-
-      .post-title {
-        font-size: 20px;
-        line-height: 1.5;
-        max-height: calc(20px * 1.5 * 2);
-        font-weight: bold;
-        color: black;
-
-        // for multiple lines ellipsis (only for webkit)
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+      .book-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 249px;
+        width: calc(249px / 1.6);
+        border-right: 1px solid $gray91;
+        border-bottom: 1px solid $gray91;
+        opacity: 0.9;
       }
 
-      .post-content {
-        margin-top: 10px;
-        font-size: 15px;
-        line-height: 1.6;
-        max-height: calc(15px * 1.6 * 3);
-        letter-spacing: 1px;
-        color: $gray56;
-
-        // for multiple lines ellipsis (only for webkit)
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-      }
-    }
-
-    .profile-info {
-      position: absolute;
-      bottom: 15px;
-      left: calc((250px / 1.6) + 20px);
-
-      .profile-image {
-        display: block;
-        float: left;
-        width: 30px;
-        height: 30px;
-        border-radius: 15px;
+      .book-image:hover {
+        opacity: 1;
       }
 
-      .profile-right {
-        float: left;
-        margin-left: 10px;
+      .post-info {
+        margin-left: calc((250px / 1.6) + 20px);
 
-        .profile-name {
-          font-size: 12px;
-          margin: 0;
-          color: $fresh_green;
+        .post-title {
+          font-size: 20px;
+          line-height: 1.5;
+          max-height: calc(20px * 1.5 * 2);
+          font-weight: bold;
+          color: black;
+
+          // for multiple lines ellipsis (only for webkit)
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
         }
 
-        .profile-name:hover {
-          text-decoration: underline;
-        }
-
-        .post-published-at {
-          font-size: 10px;
+        .post-content {
+          margin-top: 10px;
+          font-size: 15px;
+          line-height: 1.6;
+          max-height: calc(15px * 1.6 * 3);
+          letter-spacing: 1px;
           color: $gray56;
+
+          // for multiple lines ellipsis (only for webkit)
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
         }
       }
-    }
 
-    .bookmark-button-wrapper {
-      position: absolute;
-      bottom: 25px;
-      right: 18px;
+      .profile-info {
+        position: absolute;
+        bottom: 15px;
+        left: calc((250px / 1.6) + 20px);
+
+        .profile-image {
+          display: block;
+          float: left;
+          width: 30px;
+          height: 30px;
+          border-radius: 15px;
+        }
+
+        .profile-right {
+          float: left;
+          margin-left: 10px;
+
+          .profile-name {
+            font-size: 12px;
+            margin: 0;
+            color: $fresh_green;
+          }
+
+          .profile-name:hover {
+            text-decoration: underline;
+          }
+
+          .post-published-at {
+            font-size: 10px;
+            color: $gray56;
+          }
+        }
+      }
+
+      .bookmark-button-wrapper {
+        position: absolute;
+        bottom: 25px;
+        right: 18px;
+      }
     }
   }
 }
