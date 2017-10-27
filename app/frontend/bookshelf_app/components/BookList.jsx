@@ -1,15 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
 
-import { startFetchPostDetail } from "../store/actions"
-
-const BookCpnt = ({ post, handleClickBook }) => (
-  <Link
-    to={`/posts/${post.id}`}
-    onClick={() => { handleClickBook(post.id) }}
-  >
+const BookCpnt = ({ post }) => (
+  <a href={`/posts/${post.id}`}>
     <div className="book-in-shelf-container">
       <img
         className="book-in-shelf"
@@ -17,7 +11,7 @@ const BookCpnt = ({ post, handleClickBook }) => (
         alt={post.bookTitle}
       />
     </div>
-  </Link>
+  </a>
 )
 
 BookCpnt.propTypes = {
@@ -26,15 +20,13 @@ BookCpnt.propTypes = {
     bookImageUrl: PropTypes.string.isRequired,
     bookTitle: PropTypes.string.isRequired,
   }).isRequired,
-  handleClickBook: PropTypes.func.isRequired,
 }
 
-const cpnt = ({ posts, handleClickBook }) => {
+const cpnt = ({ posts }) => {
   const bookCpnts = posts.map(post => (
     <BookCpnt
       key={post.id}
       post={post}
-      handleClickBook={handleClickBook}
     />
   ))
 
@@ -46,24 +38,19 @@ const cpnt = ({ posts, handleClickBook }) => {
 }
 
 cpnt.propTypes = {
-  // eslint-disable-next-line
-  posts: PropTypes.array.isRequired,
-  handleClickBook: PropTypes.func.isRequired,
+  posts: PropTypes.arrayOf({
+    id: PropTypes.string.isRequired,
+    bookImageUrl: PropTypes.string.isRequired,
+    bookTitle: PropTypes.string.isRequird,
+  }).isRequired,
 }
 
 const mapStateToProps = state => ({
   posts: state.posts,
 })
 
-const mapDispatchToProps = dispatch => ({
-  handleClickBook: (postUuid) => {
-    dispatch(startFetchPostDetail(postUuid))
-  },
-})
-
 const BookList = connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(cpnt)
 
 export default BookList
