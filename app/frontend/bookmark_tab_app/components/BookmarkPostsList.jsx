@@ -26,15 +26,15 @@ const cpnt = ({
           <p className="published-date">{post.publishedAt}</p>
         </div>
       </div>
-      <h2 className="post-title">{post.title}</h2>
       <div className="item-body clearfix">
         <img
           className="book-image"
           src={post.bookImageUrl}
           alt={post.bookTitle}
         />
-        <div className="post-content">
-          {renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}
+        <div className="item-body-right">
+          <h2 className="post-title">{post.title}</h2>
+          <p className="post-content">{renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}</p>
         </div>
       </div>
     </div>

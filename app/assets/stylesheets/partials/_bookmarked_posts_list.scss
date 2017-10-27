@@ -35,18 +35,13 @@
       }
     }
 
-    .post-title {
-      color: black;
-      font-weight: bold;
-    }
-
     .item-body {
-      margin-top: 20px;
 
       .book-image {
         display: block;
         float: left;
         width: 120px;
+        height: calc(120px * 3/2);
         opacity: 0.9;
       }
 
@@ -54,23 +49,33 @@
         opacity: 1;
       }
 
-      .post-content {
+      .item-body-right {
         float: left;
-        width: 480px;
-        margin-left: 30px;
-        color: $gray56;
-        font-size: 17px;
-        line-height: 1.8;
-        max-height: calc(17px * 1.8 * 9);
-        overflow: hidden;
-        letter-spacing: 1px;
+        width: 500px;
 
-        p {
+        .post-title {
           margin: 0;
+          color: $post_title_color;
+          font-weight: bold;
+          font-size: 25px;
         }
 
-        blockquote {
-          margin-bottom: 0px;
+        .post-content {
+          color: $gray56;
+          font-size: 15px;
+          line-height: 1.8;
+          max-height: calc(17px * 1.8 * 9);
+          overflow: hidden;
+          letter-spacing: 1px;
+
+          p {
+            margin: 0;
+          }
+
+          blockquote {
+            margin-bottom: 0;
+          }
+
         }
       }
     }
