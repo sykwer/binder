@@ -145,7 +145,7 @@
       .post-title {
         line-height: 1.5;
         font-weight: bold;
-        color: black;
+        color: $post_title_color;
 
         // for multiple )ines ellipsis (only for webkit)
         overflow: hidden;
