@@ -28,7 +28,7 @@
             class: @menu.eql?("bookshelf") || @menu.blank? ? "active menu-item" : "menu-item" %>
         </li>
         <li>
-          <%= link_to "Likes", "/@#{@user.username}/likes",
+          <%= link_to "Bookmarks", "/@#{@user.username}/likes",
             class: @menu.eql?("likes") ? "active menu-item" : "menu-item" %>
         </li>
         <% if current_user == @user %>
