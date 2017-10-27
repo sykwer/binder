@@ -53,7 +53,6 @@
 
         .profile-name {
           margin: 0;
-          color: $fresh_green;
 
           @media (max-width: $small) {
             font-size: 12px;
@@ -64,10 +63,16 @@
           }
         }
 
+        .profile-name-link {
+          color: $fresh_green;
+        }
+
+        .profile-name-link:hover {
+          text-decoration: underline;
+        }
+
         .profile-bio {
           margin: 0;
-          color: $gray56;
-          opacity: 0.8;
 
           @media (max-width: $small) {
             margin-top: 3px;
@@ -79,6 +84,11 @@
             font-size: 14px;
             letter-spacing: 0.5px;
           }
+        }
+
+        .profile-bio-link {
+          color: $gray56;
+          opacity: 0.8;
         }
 
         .published-date {
@@ -170,6 +180,10 @@
         font-weight: bold;
         font-size: 20px;
         line-height: 1.5;
+
+        a {
+          color: $post_title_color;
+        }
 
         @media (max-width: $small) {
           font-size: 20px;

@@ -16,14 +16,30 @@ const cpnt = ({
       className="bookmarked-posts-list-item"
     >
       <div className="item-header clearfix">
-        <img
-          className="profile-image"
-          src={post.userImageUrl}
-          alt={post.userName}
-        />
+        <a href={`/@${post.userUserName}`}>
+          <img
+            className="profile-image"
+            src={post.userImageUrl}
+            alt={post.userName}
+          />
+        </a>
         <div className="item-header-right">
-          <p className="profile-name">{post.userName}</p>
-          <p className="profile-bio">{post.userBio}</p>
+          <p className="profile-name">
+            <a
+              className="profile-name-link"
+              href={`/@${post.userUserName}`}
+            >
+              {post.userName}
+            </a>
+          </p>
+          <p className="profile-bio">
+            <a
+              className="profile-bio-link"
+              href={`/@${post.userUserName}`}
+            >
+              {post.userBio}
+            </a>
+          </p>
           <p className="published-date">{post.publishedAt}</p>
         </div>
       </div>
@@ -45,8 +61,16 @@ const cpnt = ({
         alt={post.bookTitle}
       />
       <div className="item-body clearfix">
-        <h2 className="post-title">{post.title}</h2>
-        <p className="post-content">{renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}</p>
+        <a href={`/posts/${post.uuid}`}>
+          <h2 className="post-title">
+            {post.title}
+          </h2>
+        </a>
+        <a href={`/posts/${post.uuid}`}>
+          <p className="post-content">
+            {renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}
+          </p>
+        </a>
       </div>
     </div>
   ))
