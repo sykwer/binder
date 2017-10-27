@@ -11,6 +11,7 @@ json.posts @posts do |post|
   json.userImageUrl post.user.image_url
   json.userName post.user.name
   json.userUserName post.user.username
+  json.userBio post.user.bio
   json.isBookmarked current_user.present? ? post.bookmarked_by?(current_user) : false
   json.bookmarkedCount post.bookmarked_count
 end

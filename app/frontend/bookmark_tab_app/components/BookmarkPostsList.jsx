@@ -23,19 +23,30 @@ const cpnt = ({
         />
         <div className="item-header-right">
           <p className="profile-name">{post.userName}</p>
+          <p className="profile-bio">{post.userBio}</p>
           <p className="published-date">{post.publishedAt}</p>
         </div>
       </div>
+      <div className="tags-wrapper">
+        <button
+          className="tag-button"
+        >
+          {post.bookTitle}
+        </button>
+        <button
+          className="tag-button"
+        >
+          {post.bookAuthor}
+        </button>
+      </div>
+      <img
+        className="book-image"
+        src={post.bookImageUrl}
+        alt={post.bookTitle}
+      />
       <div className="item-body clearfix">
-        <img
-          className="book-image"
-          src={post.bookImageUrl}
-          alt={post.bookTitle}
-        />
-        <div className="item-body-right">
-          <h2 className="post-title">{post.title}</h2>
-          <p className="post-content">{renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}</p>
-        </div>
+        <h2 className="post-title">{post.title}</h2>
+        <p className="post-content">{renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}</p>
       </div>
     </div>
   ))
@@ -61,6 +72,7 @@ cpnt.propTypes = {
     userImageUrl: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
     userUserName: PropTypes.string.isRequired,
+    userBio: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
     bookmarkedCount: PropTypes.number.isRequired,
   })).isRequired,
