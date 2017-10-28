@@ -23,11 +23,21 @@ export const clickUnbookmark = postUuid => ({
 })
 
 export const succeedBookmark = postUuid => ({
-  type: "SUCCEDD_BOOKMARK",
+  type: "SUCCEED_BOOKMARK",
   postUuid,
 })
 
 export const succeedUnbookmark = postUuid => ({
   type: "SUCCEED_UNBOOKMARK",
+  postUuid,
+})
+
+export const clickClap = postUuid => ({
+  type: "CLICK_CLAP",
+  postUuid,
+})
+
+export const succeedClap = postUuid => ({
+  type: "SUCCEED_CLAP",
   postUuid,
 })

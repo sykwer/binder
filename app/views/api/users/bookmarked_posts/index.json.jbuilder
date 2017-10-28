@@ -11,8 +11,11 @@ json.posts @posts do |post|
   json.userImageUrl post.user.image_url
   json.userName post.user.name
   json.userUserName post.user.username
+  json.userBio post.user.bio
   json.isBookmarked current_user.present? ? post.bookmarked_by?(current_user) : false
   json.bookmarkedCount post.bookmarked_count
+  json.clappedCount post.claps_count
+  json.clappedCountByMe current_user.present? ? current_user.clap_count_of(post) : 0
 end
 
 json.oldestUnixTime @oldest_unixtime

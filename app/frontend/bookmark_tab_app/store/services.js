@@ -18,3 +18,8 @@ export const fetchPosts = (oldestUnixTime, userId) => {
     },
   }).then(res => [res.data.posts, res.data.oldestUnixTime])
 }
+
+export const requestClap = (postUuid) => {
+  const url = `http://localhost:3000/api/posts/${postUuid}/claps`
+  return axios.post(url).then(res => res.status === 200)
+}

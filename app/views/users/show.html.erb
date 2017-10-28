@@ -27,14 +27,14 @@
           <%= link_to "Bookshelf", "/@#{@user.username}/bookshelf",
             class: @menu.eql?("bookshelf") || @menu.blank? ? "active menu-item" : "menu-item" %>
         </li>
-        <li>
-          <%= link_to "Likes", "/@#{@user.username}/likes",
-            class: @menu.eql?("likes") ? "active menu-item" : "menu-item" %>
-        </li>
         <% if current_user == @user %>
           <li>
             <%= link_to "Drafts", "/@#{@user.username}/drafts",
             class: @menu.eql?("drafts") ? "active menu-item" : "menu-item" %>
+          </li>
+          <li>
+            <%= link_to "Bookmarks", "/@#{@user.username}/likes",
+              class: @menu.eql?("likes") ? "active menu-item" : "menu-item" %>
           </li>
         <% end %>
       </ul>
@@ -54,6 +54,8 @@
         id: "bookmark-tab-app",
         data: {
           userId: @user.id,
+          beforeClapImage: image_url("before_clap"),
+          afterClapImage: image_url("after_clap"),
         }.to_json do %>
       <% end %>
     <% end %>

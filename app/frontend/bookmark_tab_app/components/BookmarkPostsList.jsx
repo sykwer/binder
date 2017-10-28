@@ -3,12 +3,19 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import renderHTML from "react-render-html"
 
-import { clickBookmark, clickUnbookmark } from "../store/actions"
+import {
+  clickBookmark,
+  clickUnbookmark,
+  clickClap,
+} from "../store/actions"
 
 const cpnt = ({
   posts,
-  handleClickBookmark, // eslint-disable-line
-  handleClickUnbookmark, // eslint-disable-line
+  beforeClapImage,
+  afterClapImage,
+  handleClickBookmark,
+  handleClickUnbookmark,
+  handleClickClap,
 }) => {
   const bookmarkedPosts = posts.map(post => (
     <div
@@ -16,26 +23,123 @@ const cpnt = ({
       className="bookmarked-posts-list-item"
     >
       <div className="item-header clearfix">
-        <img
-          className="profile-image"
-          src={post.userImageUrl}
-          alt={post.userName}
-        />
+        <a href={`/@${post.userUserName}`}>
+          <img
+            className="profile-image"
+            src={post.userImageUrl}
+            alt={post.userName}
+          />
+        </a>
         <div className="item-header-right">
-          <p className="profile-name">{post.userName}</p>
+          <p className="profile-name">
+            <a
+              className="profile-name-link"
+              href={`/@${post.userUserName}`}
+            >
+              {post.userName}
+            </a>
+          </p>
+          <p className="profile-bio">
+            <a
+              className="profile-bio-link"
+              href={`/@${post.userUserName}`}
+            >
+              {post.userBio}
+            </a>
+          </p>
           <p className="published-date">{post.publishedAt}</p>
         </div>
       </div>
-      <h2 className="post-title">{post.title}</h2>
+      <div className="tags-wrapper">
+        <button
+          className="tag-button"
+        >
+          {post.bookTitle}
+        </button>
+        <button
+          className="tag-button"
+        >
+          {post.bookAuthor}
+        </button>
+      </div>
+      <img
+        className="book-image"
+        src={post.bookImageUrl}
+        alt={post.bookTitle}
+      />
       <div className="item-body clearfix">
-        <img
-          className="book-image"
-          src={post.bookImageUrl}
-          alt={post.bookTitle}
-        />
-        <div className="post-content">
-          {renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}
-        </div>
+        <a href={`/posts/${post.uuid}`}>
+          <h2 className="post-title">
+            {post.title}
+          </h2>
+        </a>
+        <a href={`/posts/${post.uuid}`}>
+          <p className="post-content">
+            {renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}
+          </p>
+        </a>
+      </div>
+      <div className="item-footer clearfix">
+        {
+          post.clappedCountByMe > 0 ? (
+            <button
+              className="clap-button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                handleClickClap(post.uuid)
+              }}
+            >
+              <img
+                className="clap-image"
+                src={afterClapImage}
+                alt="clapped"
+              />
+              <span className="clap-count">{post.clappedCount}</span>
+            </button>
+          ) : (
+            <button
+              className="clap-button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                handleClickClap(post.uuid)
+              }}
+            >
+              <img
+                className="clap-image"
+                src={beforeClapImage}
+                alt="clap"
+              />
+              <span className="clap-count">{post.clappedCount}</span>
+            </button>
+          )
+        }
+        {
+          post.isBookmarked ? (
+            <button
+              className="bookmark-button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                handleClickUnbookmark(post.uuid)
+              }}
+            >
+              <i className="fa fa-bookmark" aria-hidden="true" />
+            </button>
+          ) : (
+            <button
+              className="bookmark-button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                handleClickBookmark(post.uuid)
+              }}
+            >
+              <i className="fa fa-bookmark-o" aria-hidden="true" />
+            </button>
+          )
+        }
       </div>
     </div>
   ))
@@ -61,15 +165,23 @@ cpnt.propTypes = {
     userImageUrl: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
     userUserName: PropTypes.string.isRequired,
+    userBio: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
     bookmarkedCount: PropTypes.number.isRequired,
+    clappedCount: PropTypes.number.isRequired,
+    clappedCountByMe: PropTypes.number.isRequired,
   })).isRequired,
+  beforeClapImage: PropTypes.string.isRequired,
+  afterClapImage: PropTypes.string.isRequired,
   handleClickBookmark: PropTypes.func.isRequired,
   handleClickUnbookmark: PropTypes.func.isRequired,
+  handleClickClap: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   posts: state.posts,
+  beforeClapImage: state.beforeClapImage,
+  afterClapImage: state.afterClapImage,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -78,6 +190,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleClickUnbookmark: (postUuid) => {
     dispatch(clickUnbookmark(postUuid))
+  },
+  handleClickClap: (postUuid) => {
+    dispatch(clickClap(postUuid))
   },
 })
 
