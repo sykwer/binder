@@ -91,9 +91,11 @@ const cpnt = ({
               }}
             >
               <img
+                className="clap-image"
                 src={afterClapImage}
                 alt="clapped"
               />
+              <span className="clap-count">{post.clappedCount}</span>
             </button>
           ) : (
             <button
@@ -105,9 +107,11 @@ const cpnt = ({
               }}
             >
               <img
+                className="clap-image"
                 src={beforeClapImage}
                 alt="clap"
               />
+              <span className="clap-count">{post.clappedCount}</span>
             </button>
           )
         }

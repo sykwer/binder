@@ -229,9 +229,18 @@
       margin-top: 30px;
 
       .clap-button {
-        img {
+
+        .clap-image {
           width: 30px;
           height: 30px;
+        }
+
+        .clap-count {
+          display: inline-block;
+          margin-left: 10px;
+          font-size: 13px;
+          color: $gray56;
+          opacity: 0.8;
         }
       }
 
