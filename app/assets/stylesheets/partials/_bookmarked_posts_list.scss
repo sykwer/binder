@@ -224,5 +224,16 @@
         }
       }
     }
+
+    .item-footer {
+      margin-top: 20px;
+
+      .bookmark-button {
+        float: right;
+        font-size: 20px;
+        color: $gray56;
+        opacity: 0.8;
+      }
+    }
   }
 }

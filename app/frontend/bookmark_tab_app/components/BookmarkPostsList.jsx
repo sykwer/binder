@@ -7,8 +7,8 @@ import { clickBookmark, clickUnbookmark } from "../store/actions"
 
 const cpnt = ({
   posts,
-  handleClickBookmark, // eslint-disable-line
-  handleClickUnbookmark, // eslint-disable-line
+  handleClickBookmark,
+  handleClickUnbookmark,
 }) => {
   const bookmarkedPosts = posts.map(post => (
     <div
@@ -71,6 +71,33 @@ const cpnt = ({
             {renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}
           </p>
         </a>
+      </div>
+      <div className="item-footer clearfix">
+        {
+          post.isBookmarked ? (
+            <button
+              className="bookmark-button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                handleClickUnbookmark(post.uuid)
+              }}
+            >
+              <i className="fa fa-bookmark" aria-hidden="true" />
+            </button>
+          ) : (
+            <button
+              className="bookmark-button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                handleClickBookmark(post.uuid)
+              }}
+            >
+              <i className="fa fa-bookmark-o" aria-hidden="true" />
+            </button>
+          )
+        }
       </div>
     </div>
   ))
