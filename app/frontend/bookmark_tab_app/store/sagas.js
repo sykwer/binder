@@ -3,12 +3,14 @@ import { fork, take, select, put, call } from "redux-saga/effects"
 import {
   requestBookmark,
   requestUnbookmark,
+  requestClap,
   fetchPosts,
 } from "./services"
 
 import {
   succeedBookmark,
   succeedUnbookmark,
+  succeedClap,
   finishFetchPosts,
   notifyAllPostsFetched,
 } from "./actions"
@@ -39,6 +41,19 @@ function* unbookmarkFlow() {
   }
 }
 
+function* clapFlow() {
+  while (true) {
+    const action = yield take("CLICK_CLAP")
+    const isSuccess = yield call(requestClap, action.postUuid)
+
+    if (isSuccess) {
+      yield put(succeedClap(action.postUuid))
+    } else {
+      // handle failure
+    }
+  }
+}
+
 function* fetchPostsFlow() {
   while (true) {
     yield take("START_FETCH_POSTS")
@@ -63,6 +78,7 @@ function* rootSaga() {
   yield fork(bookmarkFlow)
   yield fork(unbookmarkFlow)
   yield fork(fetchPostsFlow)
+  yield fork(clapFlow)
 }
 
 export default rootSaga

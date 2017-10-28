@@ -15,6 +15,8 @@ const run = () => {
 
     const initialState = {
       userId: data.userId,
+      beforeClapImage: data.beforeClapImage,
+      afterClapImage: data.afterClapImage,
     }
 
     const sagaMiddleware = createSagaMiddleware()

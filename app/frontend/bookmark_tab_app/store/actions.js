@@ -31,3 +31,13 @@ export const succeedUnbookmark = postUuid => ({
   type: "SUCCEED_UNBOOKMARK",
   postUuid,
 })
+
+export const clickClap = postUuid => ({
+  type: "CLICK_CLAP",
+  postUuid,
+})
+
+export const succeedClap = postUuid => ({
+  type: "SUCCEED_CLAP",
+  postUuid,
+})

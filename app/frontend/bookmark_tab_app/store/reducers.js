@@ -5,6 +5,16 @@ const userId = (state = null, action) => {
   return state
 }
 
+// eslint-disable-next-line
+const beforeClapImage = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const afterClapImage = (state = null, action) => {
+  return state
+}
+
 const posts = (state = [], action) => {
   switch (action.type) {
     case "FINISH_FETCH_POSTS":
@@ -21,6 +31,18 @@ const posts = (state = [], action) => {
       return state.map((post) => {
         if (post.uuid === action.postUuid) {
           return { ...post, isBookmarked: false }
+        }
+
+        return post
+      })
+    case "SUCCEED_CLAP":
+      return state.map((post) => {
+        if (post.uuid === action.postUuid) {
+          return {
+            ...post,
+            clappedCount: post.clappedCount + 1,
+            clappedCountByMe: post.clappedCountByMe + 1,
+          }
         }
 
         return post
@@ -50,6 +72,8 @@ const isAllPostsFetched = (state = false, action) => {
 
 const rootReducer = combineReducers({
   userId,
+  beforeClapImage,
+  afterClapImage,
   posts,
   oldestUnixTime,
   isAllPostsFetched,

@@ -226,7 +226,14 @@
     }
 
     .item-footer {
-      margin-top: 20px;
+      margin-top: 30px;
+
+      .clap-button {
+        img {
+          width: 30px;
+          height: 30px;
+        }
+      }
 
       .bookmark-button {
         float: right;

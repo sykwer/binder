@@ -3,12 +3,19 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import renderHTML from "react-render-html"
 
-import { clickBookmark, clickUnbookmark } from "../store/actions"
+import {
+  clickBookmark,
+  clickUnbookmark,
+  clickClap,
+} from "../store/actions"
 
 const cpnt = ({
   posts,
+  beforeClapImage,
+  afterClapImage,
   handleClickBookmark,
   handleClickUnbookmark,
+  handleClickClap,
 }) => {
   const bookmarkedPosts = posts.map(post => (
     <div
@@ -74,6 +81,37 @@ const cpnt = ({
       </div>
       <div className="item-footer clearfix">
         {
+          post.clappedCountByMe > 0 ? (
+            <button
+              className="clap-button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                handleClickClap(post.uuid)
+              }}
+            >
+              <img
+                src={afterClapImage}
+                alt="clapped"
+              />
+            </button>
+          ) : (
+            <button
+              className="clap-button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                handleClickClap(post.uuid)
+              }}
+            >
+              <img
+                src={beforeClapImage}
+                alt="clap"
+              />
+            </button>
+          )
+        }
+        {
           post.isBookmarked ? (
             <button
               className="bookmark-button"
@@ -126,13 +164,20 @@ cpnt.propTypes = {
     userBio: PropTypes.string.isRequired,
     isBookmarked: PropTypes.bool.isRequired,
     bookmarkedCount: PropTypes.number.isRequired,
+    clappedCount: PropTypes.number.isRequired,
+    clappedCountByMe: PropTypes.number.isRequired,
   })).isRequired,
+  beforeClapImage: PropTypes.string.isRequired,
+  afterClapImage: PropTypes.string.isRequired,
   handleClickBookmark: PropTypes.func.isRequired,
   handleClickUnbookmark: PropTypes.func.isRequired,
+  handleClickClap: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   posts: state.posts,
+  beforeClapImage: state.beforeClapImage,
+  afterClapImage: state.afterClapImage,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -141,6 +186,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleClickUnbookmark: (postUuid) => {
     dispatch(clickUnbookmark(postUuid))
+  },
+  handleClickClap: (postUuid) => {
+    dispatch(clickClap(postUuid))
   },
 })
 
