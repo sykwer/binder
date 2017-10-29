@@ -60,11 +60,7 @@
       <% end %>
     <% end %>
     <% if @menu == "drafts" && @user == current_user %>
-      <div class="draft-list">
-        <% @draft_posts.each do |post| %>
-          <%= render "users/draft" %>
-        <% end %>
-      </div>
+      <%= render "users/draft" %>
     <% end %>
   </div>
 </div>
