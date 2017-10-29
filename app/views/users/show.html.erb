@@ -61,6 +61,12 @@
     <% end %>
     <% if @menu == "drafts" && @user == current_user %>
       <%= render "users/draft" %>
+      <%= content_tag :div,
+        id: "draft-tab-app",
+        data: {
+          posts: @draft_posts,
+        }.to_json do %>
+      <% end %>
     <% end %>
   </div>
 </div>
