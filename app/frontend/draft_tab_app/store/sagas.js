@@ -9,7 +9,7 @@ function* deletePostFlow() {
     const isSuccess = yield call(requestDeletePost, action.postUuid)
 
     if (isSuccess) {
-      window.location.assign(`http://localhost:3000/@${state.userId}/drafts`)
+      window.location.assign(`http://localhost:3000/@${state.userName}/drafts`)
     } else {
       // handle failure
     }

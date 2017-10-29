@@ -1,5 +1,5 @@
 <%= render "shared/green_header" %>
-<div class="mypage">
+<div class="mypage" id="mypage-toplevel-id">
   <div class="mypage-upper">
 
     <% if current_user == @user %>
@@ -60,11 +60,10 @@
       <% end %>
     <% end %>
     <% if @menu == "drafts" && @user == current_user %>
-      <%= render "users/draft" %>
       <%= content_tag :div,
         id: "draft-tab-app",
         data: {
-          userId: current_user.id,
+          userName: current_user.username,
           posts: @draft_posts,
         }.to_json do %>
       <% end %>

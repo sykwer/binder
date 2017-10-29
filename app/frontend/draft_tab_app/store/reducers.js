@@ -1,7 +1,7 @@
 import { combineReducers } from "redux"
 
 // eslint-disable-next-line
-const userId = (state = null, action) => {
+const userName = (state = null, action) => {
   return state
 }
 
@@ -12,7 +12,7 @@ const posts = (state = [], action) => {
 
 const menuDisplayedPostUuid = (state = null, action) => {
   switch (action.type) {
-    case "DISPLAY_MEMU":
+    case "DISPLAY_MENU":
       return action.postUuid
     case "CLOSE_MENU":
       return null
@@ -35,7 +35,7 @@ const toBeDeletedPostUuid = (state = null, action) => {
 }
 
 const rootReducer = combineReducers({
-  userId,
+  userName,
   posts,
   menuDisplayedPostUuid,
   toBeDeletedPostUuid,

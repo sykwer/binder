@@ -3,9 +3,8 @@ export const displayMenu = postUuid => ({
   postUuid,
 })
 
-export const closeMenu = postUuid => ({
+export const closeMenu = () => ({
   type: "CLOSE_MENU",
-  postUuid,
 })
 
 export const clickDeleteMenu = postUuid => ({

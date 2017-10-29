@@ -6,6 +6,7 @@ import createSagaMiddleware from "redux-saga"
 
 import rootReducer from "./store/reducers"
 import rootSaga from "./store/sagas"
+import Root from "./components/Root"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
@@ -13,7 +14,7 @@ const run = () => {
     const data = JSON.parse(node.getAttribute("data"))
 
     const initialState = {
-      userId: data.userId,
+      userName: data.userName,
       posts: data.posts,
     }
 
@@ -29,7 +30,7 @@ const run = () => {
 
     render(
       <Provider store={store}>
-        <p>Boot app from here</p>
+        <Root />
       </Provider>,
       node,
     )
