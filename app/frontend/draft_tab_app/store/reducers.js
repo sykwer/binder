@@ -10,19 +10,6 @@ const posts = (state = [], action) => {
   return state
 }
 
-const menuDisplayedPostUuid = (state = null, action) => {
-  switch (action.type) {
-    case "DISPLAY_MENU":
-      return action.postUuid
-    case "CLOSE_MENU":
-      return null
-    case "CLICK_DELETE_MENU":
-      return null
-    default:
-      return state
-  }
-}
-
 const toBeDeletedPostUuid = (state = null, action) => {
   switch (action.type) {
     case "CLICK_DELETE_MENU":
@@ -37,7 +24,6 @@ const toBeDeletedPostUuid = (state = null, action) => {
 const rootReducer = combineReducers({
   userName,
   posts,
-  menuDisplayedPostUuid,
   toBeDeletedPostUuid,
 })
 

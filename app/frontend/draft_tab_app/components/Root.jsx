@@ -3,8 +3,6 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
 import {
-  displayMenu,
-  closeMenu,
   clickDeleteMenu,
   clickDelete,
   clickCancelDelete,
@@ -12,33 +10,12 @@ import {
 
 const cpnt = ({
   posts,
-  menuDisplayedPostUuid,
   toBeDeletedPostUuid,
-  handleClickDisplayMenu,
-  handleClickCloseMenu,
   handleClickDeleteMenu,
   handleClickDelete,
   handleClickCancelDelete,
 }) => (
   <div>
-    <div
-      className="menu-close-listener-div"
-      role="button"
-      tabIndex="0"
-      onClick={(e) => {
-        e.stopPropagation()
-        handleClickCloseMenu()
-      }}
-    />
-    <div
-      role="button"
-      tabIndex="0"
-      onClick={(e) => {
-        e.stopPropagation()
-        handleClickCloseMenu()
-      }}
-      style={{ width: "100%", height: "100%", position: "fixed", top: 0, left: 0 }}
-    />
     {
       toBeDeletedPostUuid && (
         <div className="delete-confirmation-window">
@@ -80,47 +57,36 @@ const cpnt = ({
                 {`Last Edited ${post.updated_at}`}
               </p>
               <div className="menu-wrapper">
-                <button
+                <i
+                  className="fa fa-chevron-down draft-menu-down"
+                  aria-hidden="true"
+                />
+                <div
+                  role="button"
+                  tabIndex="0"
                   onClick={(e) => {
                     e.stopPropagation()
-                    handleClickDisplayMenu(post.uuid)
                   }}
+                  className="draft-menu"
                 >
-                  <i
-                    className="fa fa-chevron-down draft-menu-down"
-                    aria-hidden="true"
-                  />
-                </button>
-                {
-                  menuDisplayedPostUuid === post.uuid && (
-                    <div
-                      role="button"
-                      tabIndex="0"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                      }}
-                      className="draft-menu"
-                    >
-                      <a
-                        className="edit-button"
-                        href={`http://localhost:3000/posts/${post.uuid}/edit`}
-                      >
-                        Edit
-                      </a>
-                      <a
-                        className="delete-button"
-                        role="button"
-                        tabIndex="0"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          handleClickDeleteMenu(post.uuid)
-                        }}
-                      >
-                        Delete
-                      </a>
-                    </div>
-                  )
-                }
+                  <a
+                    className="edit-button"
+                    href={`http://localhost:3000/posts/${post.uuid}/edit`}
+                  >
+                    Edit
+                  </a>
+                  <a
+                    className="delete-button"
+                    role="button"
+                    tabIndex="0"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleClickDeleteMenu(post.uuid)
+                    }}
+                  >
+                    Delete
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -132,10 +98,7 @@ const cpnt = ({
 
 cpnt.propTypes = {
   posts: PropTypes.array, // eslint-disable-line
-  menuDisplayedPostUuid: PropTypes.string,
   toBeDeletedPostUuid: PropTypes.string,
-  handleClickDisplayMenu: PropTypes.func.isRequired,
-  handleClickCloseMenu: PropTypes.func.isRequired,
   handleClickDeleteMenu: PropTypes.func.isRequired,
   handleClickDelete: PropTypes.func.isRequired,
   handleClickCancelDelete: PropTypes.func.isRequired,
@@ -143,23 +106,36 @@ cpnt.propTypes = {
 
 cpnt.defaultProps = {
   posts: [],
-  menuDisplayedPostUuid: null,
   toBeDeletedPostUuid: null,
 }
 
+window.addEventListener("load", () => {
+  const draftMenuDowns = document.getElementsByClassName("draft-menu-down")
+  const draftMenus = document.getElementsByClassName("draft-menu")
+
+  for (let i = 0; i < draftMenuDowns.length; i += 1) {
+    const node = draftMenuDowns[i]
+    node.addEventListener("click", (e) => {
+      e.stopPropagation()
+      const menu = e.target.nextElementSibling
+      menu.setAttribute("style", "display: block;")
+    }, false)
+  }
+
+  document.body.addEventListener("click", () => {
+    for (let i = 0; i < draftMenus.length; i += 1) {
+      const node = draftMenus[i]
+      node.setAttribute("style", "display: none;")
+    }
+  }, false)
+})
+
 const mapStateToProps = state => ({
   posts: state.posts,
-  menuDisplayedPostUuid: state.menuDisplayedPostUuid,
   toBeDeletedPostUuid: state.toBeDeletedPostUuid,
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleClickDisplayMenu: (postUuid) => {
-    dispatch(displayMenu(postUuid))
-  },
-  handleClickCloseMenu: () => {
-    dispatch(closeMenu())
-  },
   handleClickDeleteMenu: (postUuid) => {
     dispatch(clickDeleteMenu(postUuid))
   },
