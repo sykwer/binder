@@ -64,6 +64,7 @@
       <%= content_tag :div,
         id: "draft-tab-app",
         data: {
+          userId: current_user.id,
           posts: @draft_posts,
         }.to_json do %>
       <% end %>
