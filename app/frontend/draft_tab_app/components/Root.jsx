@@ -19,6 +19,9 @@ const cpnt = ({
     {
       toBeDeletedPostUuid && (
         <div className="delete-confirmation-window">
+          <p className="delete-confirm-msg">
+            本当にこの下書きを削除しますか?
+          </p>
           <div className="delete-buttons-wrapper">
             <button
               className="delete-button"
