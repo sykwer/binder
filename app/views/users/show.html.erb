@@ -66,6 +66,7 @@
           userName: current_user.username,
           posts: @draft_posts.map do |post|
             {
+              uuid: post.uuid,
               titleDraft: post.title_draft,
               updatedAt: format_date(post.updated_at),
             }
