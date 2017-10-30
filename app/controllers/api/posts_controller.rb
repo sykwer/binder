@@ -1,7 +1,12 @@
 class Api::PostsController < Api::ApplicationController
-  before_action :set_post, only: %i(show)
+  before_action :set_post
 
   def show
+  end
+
+  def destroy
+    @post.destroy!
+    head 200
   end
 
   private

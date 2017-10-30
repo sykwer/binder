@@ -60,11 +60,19 @@
       <% end %>
     <% end %>
     <% if @menu == "drafts" && @user == current_user %>
-      <div class="draft-list">
-        <% @draft_posts.each do |post| %>
-          <%= render "users/draft" %>
-        <% end %>
-      </div>
+      <%= content_tag :div,
+        id: "draft-tab-app",
+        data: {
+          userName: current_user.username,
+          posts: @draft_posts.map do |post|
+            {
+              uuid: post.uuid,
+              titleDraft: post.title_draft,
+              updatedAt: format_date(post.updated_at),
+            }
+          end,
+        }.to_json do %>
+      <% end %>
     <% end %>
   </div>
 </div>
