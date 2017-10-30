@@ -33,6 +33,7 @@
       margin: 0;
       font-weight: bold;
       color: $post_title_color;
+      line-height: 1.3;
 
       @media (min-width: $medium_plus_one) {
         font-size: 25px;

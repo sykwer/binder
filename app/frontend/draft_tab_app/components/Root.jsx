@@ -52,13 +52,17 @@ const cpnt = ({
             key={post.uuid}
             className="draft-list-item"
           >
-            <h2 className="post-title">
-              { post.titleDraft ? post.titleDraft : "タイトル未設定" }
-            </h2>
+            <a href={`http://localhost:3000/posts/${post.uuid}/edit`}>
+              <h2 className="post-title">
+                { post.titleDraft ? post.titleDraft : "タイトル未設定" }
+              </h2>
+            </a>
             <div className="item-footer clearfix">
-              <p className="last-edited">
-                {`Last Edited ${post.updatedAt}`}
-              </p>
+              <a href={`http://localhost:3000/posts/${post.uuid}/edit`}>
+                <p className="last-edited">
+                  {`Last Edited ${post.updatedAt}`}
+                </p>
+              </a>
               <div className="menu-wrapper">
                 <i
                   className="fa fa-chevron-down draft-menu-down"
