@@ -50,11 +50,11 @@ const cpnt = ({
             className="draft-list-item"
           >
             <h2 className="post-title">
-              { post.title_draft ? post.title_draft : "タイトル未設定" }
+              { post.titleDraft ? post.titleDraft : "タイトル未設定" }
             </h2>
             <div className="item-footer clearfix">
               <p className="last-edited">
-                {`Last Edited ${post.updated_at}`}
+                {`Last Edited ${post.updatedAt}`}
               </p>
               <div className="menu-wrapper">
                 <i

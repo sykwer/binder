@@ -64,7 +64,12 @@
         id: "draft-tab-app",
         data: {
           userName: current_user.username,
-          posts: @draft_posts,
+          posts: @draft_posts.map do |post|
+            {
+              titleDraft: post.title_draft,
+              updatedAt: format_date(post.updated_at),
+            }
+          end,
         }.to_json do %>
       <% end %>
     <% end %>
