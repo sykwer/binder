@@ -42,28 +42,6 @@
     }
   }
 
-  .you-might-like-wrapper {
-    max-width: 1000px;
-    margin: 0 auto;
-    margin-top: 100px;
-
-    .you-might-like-header {
-      border-bottom: 1px solid $light_gray;
-      margin-bottom: 25px;  // == grid gap
-
-      .you-might-like-title {
-        padding-bottom: 10px;
-        margin-bottom: 0;
-        width: 180px;
-        border-bottom: 2px solid $gray91;
-        font-size: 20px;
-        font-weight: bold;
-        letter-spacing: 0.5px;
-        color: $post_title_color;
-      }
-    }
-  }
-
   .people-you-may-know-wrapper {
     max-width: 1000px;
     margin: 0 auto;
