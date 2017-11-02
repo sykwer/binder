@@ -38,6 +38,6 @@ class User < ApplicationRecord
   end
 
   def clap_count_of(post)
-    Clap.where(post: post, user: self).count
+    Clap.where(post: post, user: self).take.count
   end
 end
