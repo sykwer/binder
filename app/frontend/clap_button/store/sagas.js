@@ -6,8 +6,12 @@ import { succeedClap } from "./actions"
 function* requestClapFlow() {
   while (true) {
     yield take("CLICK_CLAP")
-
     const state = yield select()
+
+    if (state.clappedCountByMe >= 50) {
+      break
+    }
+
     const isSuccess = yield call(requestClap, state.postUuid)
 
     if (isSuccess) {
