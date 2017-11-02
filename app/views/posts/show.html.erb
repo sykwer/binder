@@ -45,9 +45,13 @@
         }.to_json do %>
       <% end %>
     </div>
-    <button class="bookmark-button">
-      <i class="fa fa-bookmark-o" aria-hidden="true"></i>
-    </button>
+    <%= content_tag :div,
+      class: "bookmark-component-root-div bookmark-button-wrapper",
+      data: {
+        postUuid: @post.uuid,
+        isBookmarked: @post.bookmarked_by?(current_user),
+      }.to_json do %>
+    <% end %>
     <button class="twitter-button">
       <i class="fa fa-twitter" aria-hidden="true"></i>
     </button>
