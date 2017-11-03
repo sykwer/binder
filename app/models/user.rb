@@ -16,15 +16,6 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Follow", foreign_key: "destination_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :source
 
-  # To know structure of auth, see https://github.com/mkdynamic/omniauth-facebook#auth-hash
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.name = auth.info.name
-      user.image_url = auth.info.image
-    end
-  end
-
   def follows?(user)
     followings.where(id: user.id).exists?
   end
@@ -50,8 +41,16 @@ class User < ApplicationRecord
     when "twitter"
       self.twitter_uid = auth_param["uid"]
       self.twitter_link = auth_param["info"]["urls"]["Twitter"]
+      self.twitter_access_token = auth_param["credentials"]["token"]
+      self.twitter_access_token_secret = auth_param["credentials"]["secret"]
     end
 
+    save!
+  end
+
+  def update_twitter_access_token!(auth_param)
+    self.twitter_access_token = auth_param["credentials"]["token"]
+    self.twitter_access_token_secret = auth_param["credentials"]["secret"]
     save!
   end
 end

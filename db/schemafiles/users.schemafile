@@ -16,6 +16,8 @@ create_table "users", force: :cascade, options: default_options do |t|
   t.string   :facebook_link
   t.string   :twitter_uid
   t.string   :twitter_link
+  t.string   :twitter_access_token
+  t.string   :twitter_access_token_secret
 
   t.timestamps null: false
 

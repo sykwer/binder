@@ -8,16 +8,29 @@ class Registration
   def save
     return false if invalid?
 
-    user = User.new(
-      username: username,
-      facebook_uid: fb_data.present? ? fb_data["uid"] : nil,
-      facebook_link: fb_data.present? ? fb_data["extra"]["raw_info"]["link"] : nil,
-      twitter_uid: fb_data.present? ? nil : tw_data["uid"],
-      twitter_link: fb_data.present? ? nil : tw_data["info"]["urls"]["Twitter"],
-      email: fb_data.present? ? fb_data["info"]["email"] : nil,
-      name: fb_data.present? ? fb_data["info"]["name"] : tw_data["info"]["name"],
-      image_url: fb_data.present? ? fb_data["info"]["image"] : tw_data["info"]["image"],
-    )
+    if fb_data.present?
+      user = User.new(
+        username: username,
+        facebook_uid: fb_data["uid"],
+        facebook_link: fb_data["extra"]["raw_info"]["link"],
+        email: fb_data["info"]["email"],
+        name: fb_data["info"]["name"],
+        image_url: fb_data["info"]["image"],
+      )
+    elsif tw_data.present?
+      user = User.new(
+        username: username,
+        twitter_uid: tw_data["uid"],
+        twitter_link: tw_data["info"]["urls"]["Twitter"],
+        twitter_access_token: tw_data["credentials"]["token"],
+        twitter_access_token_secret: tw_data["credentials"]["secret"],
+        name: tw_data["info"]["name"],
+        image_url: tw_data["info"]["image"],
+      )
+    else
+      raise "Invalid auth hash from omniauth"
+    end
+
     user.save!
     user
   end
@@ -39,7 +52,8 @@ class Registration
     return if tw_data.blank?
 
     if tw_data["uid"].present? && tw_data["info"]["name"].present? &&
-        tw_data["info"]["image"].present? && tw_data["info"]["urls"]["Twitter"].present?
+        tw_data["info"]["image"].present? && tw_data["info"]["urls"]["Twitter"].present? &&
+        tw_data["credentials"]["token"].present? && tw_data["credentials"]["secret"].present?
       return
     end
     errors.add(:registration, "must be made from valid twitter auth hash")

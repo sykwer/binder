@@ -26,6 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     if user.present?
+      user.update_twitter_access_token!(auth_param)
       sign_in_and_redirect user, event: :authentication
     else
       # Too large data, need to except extra data from twitter auth hash.
