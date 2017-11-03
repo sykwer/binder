@@ -11,10 +11,16 @@ class Api::Posts::ContentsController < Api::ApplicationController
     @post.attatch_tags!(new_tags.concat(attached_tags))
 
     @post.publish_or_update_content!
+
     PostFanoutService.new(
       target_user_ids: [current_user.id] + current_user.follower_ids,
       post_uuid: @post.uuid,
     ).fanout
+
+    SharePostOnTwitterService.new(
+      user: current_user,
+      post: @post,
+    ).share if params[:share_on_twitter]
 
     head 200
   end
