@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  get "/@:username", to: "users#show"
+  get "/@:username", to: "users#show", as: :mypage
   get "/@:username/followers", to: "users#show"
   get "/@:username/followings", to: "users#show"
   get "/@:username/:menu", to: "users#show"

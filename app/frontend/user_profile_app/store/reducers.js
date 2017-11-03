@@ -88,6 +88,16 @@ const twitterLink = (state = null, action) => {
   return state
 }
 
+// eslint-disable-next-line
+const facebookOmniauthPath = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const twitterOmniauthPath = (state = null, action) => {
+  return state
+}
+
 const appState = (state = "NOT_EDITING", action) => {
   switch (action.type) {
     case "START_EDIT":
@@ -228,6 +238,8 @@ const rootReducer = combineReducers({
   username,
   facebookLink,
   twitterLink,
+  facebookOmniauthPath,
+  twitterOmniauthPath,
   appState,
   followers,
   followings,
