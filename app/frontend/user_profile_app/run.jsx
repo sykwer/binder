@@ -29,6 +29,8 @@ const run = () => {
       followersCount: data.followers,
       facebookLink: data.facebookLink,
       twitterLink: data.twitterLink,
+      facebookOmniauthPath: data.facebookOmniauthPath,
+      twitterOmniauthPath: data.twitterOmniauthPath,
     }
 
     const store = createStore(

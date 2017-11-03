@@ -9,6 +9,9 @@ const cpnt = ({
   username,
   facebookLink,
   twitterLink,
+  facebookOmniauthPath,
+  twitterOmniauthPath,
+  isEditMode,
 }) => (
   <div className="profile-sub-wrapper clearfix">
     <div className="follows">
@@ -20,28 +23,54 @@ const cpnt = ({
       </Link>
     </div>
     <div className="sns-buttons">
-      <span className="twitter-button">
+      <div className="twitter-button-wrapper">
         {
-          twitterLink ? (
+          twitterLink && (
             <a href={twitterLink} target="_blank">
               <i className="fa fa-twitter active-button" aria-hidden="true" />
             </a>
-          ) : (
+          )
+        }
+        {
+          !twitterLink && !isEditMode && (
             <i className="fa fa-twitter inactive-button" aria-hidden="true" />
           )
         }
-      </span>
-      <span className="facebook-button">
         {
-          facebookLink ? (
+          !twitterLink && isEditMode && (
+            <a
+              className="twitter-connect-button"
+              href={twitterOmniauthPath}
+            >
+              Connect <i className="fa fa-twitter" />
+            </a>
+          )
+        }
+      </div>
+      <div className="facebook-button-wrapper">
+        {
+          facebookLink && (
             <a href={facebookLink} target="_blank">
               <i className="fa fa-facebook active-button" aria-hidden="true" />
             </a>
-          ) : (
+          )
+        }
+        {
+          !facebookLink && !isEditMode && (
             <i className="fa fa-facebook inactive-button" aria-hidden="true" />
           )
         }
-      </span>
+        {
+          !facebookLink && isEditMode && (
+            <a
+              href={facebookOmniauthPath}
+              className="facebook-connect-button"
+            >
+              Connect <i className="fa fa-facebook" />
+            </a>
+          )
+        }
+      </div>
     </div>
   </div>
 )
@@ -52,6 +81,9 @@ cpnt.propTypes = {
   username: PropTypes.string.isRequired,
   facebookLink: PropTypes.string.isRequired,
   twitterLink: PropTypes.string.isRequired,
+  facebookOmniauthPath: PropTypes.string.isRequired,
+  twitterOmniauthPath: PropTypes.string.isRequired,
+  isEditMode: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -60,6 +92,9 @@ const mapStateToProps = state => ({
   username: state.username,
   facebookLink: state.facebookLink ? state.facebookLink : "",
   twitterLink: state.twitterLink ? state.twitterLink : "",
+  facebookOmniauthPath: state.facebookOmniauthPath,
+  twitterOmniauthPath: state.twitterOmniauthPath,
+  isEditMode: state.appState === "IS_EDITTING",
 })
 
 const ProfileSub = connect(
