@@ -41,6 +41,7 @@ class User < ApplicationRecord
     when "facebook"
       self.facebook_uid = auth_param["uid"]
       self.facebook_link = auth_param["extra"]["raw_info"]["link"]
+      self.facebook_access_token = auth_param["credentials"]["token"]
       self.email = auth_param["info"]["email"]
     when "twitter"
       self.twitter_uid = auth_param["uid"]
@@ -55,6 +56,11 @@ class User < ApplicationRecord
   def update_twitter_access_token!(auth_param)
     self.twitter_access_token = auth_param["credentials"]["token"]
     self.twitter_access_token_secret = auth_param["credentials"]["secret"]
+    save!
+  end
+
+  def update_facebook_access_token!(auth_param)
+    self.facebook_access_token = auth_param["credentials"]["token"]
     save!
   end
 end

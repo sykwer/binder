@@ -42,7 +42,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
+# sns api client
 gem 'twitter'
+gem 'koala'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
