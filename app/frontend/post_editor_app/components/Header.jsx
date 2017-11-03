@@ -95,7 +95,7 @@ const cpnt = ({
                   >
                     <h2 className="publish-window-header">Ready to publish?</h2>
                     <p className="add-tag-explanation">
-                      記事に関連するタグを5つまで付けることができます。(タイトル/著者のタグは自動で付きます)
+                      記事に関連するタグを5つまで付けることができます。(書名/著者のタグは自動で付きます)
                     </p>
                     <div className="add-tag-box">
                       <div className="tag-input-box-wrapper">
@@ -223,7 +223,7 @@ const cpnt = ({
                           checked={isTwitterChecked}
                           onChange={handleToggleSharedOnTwitter}
                         />
-                        {"  twitterでシェアする"}
+                        {"  twitterに投稿する"}
                       </label>
                       <label className="share-on-facebook" htmlFor="facebook-checkbox">
                         <input
@@ -233,7 +233,7 @@ const cpnt = ({
                           checked={isFacebookChecked}
                           onChange={handleToggleSharedOnFacebook}
                         />
-                        {"  facebookでシェアする"}
+                        {"  facebookに投稿する"}
                       </label>
                     </div>
                     <div className="publish-button-wrapper">
