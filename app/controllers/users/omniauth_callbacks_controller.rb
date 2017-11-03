@@ -3,6 +3,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     auth_param = request.env["omniauth.auth"]
     user = User.find_by(facebook_uid: auth_param.uid)
 
+    if user.blank? && user_signed_in?
+      current_user.link_to_sns_of!(auth_param)
+      redirect_to mypage_url(current_user.username) and return
+    end
+
     if user.present?
       sign_in_and_redirect user, event: :authentication
     else
@@ -14,6 +19,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     auth_param = request.env["omniauth.auth"]
     user = User.find_by(twitter_uid: auth_param.uid)
+
+    if user.blank? && user_signed_in?
+      current_user.link_to_sns_of!(auth_param)
+      redirect_to mypage_url(current_user.username) and return
+    end
 
     if user.present?
       sign_in_and_redirect user, event: :authentication

@@ -40,4 +40,18 @@ class User < ApplicationRecord
   def clap_count_of(post)
     Clap.where(post: post, user: self).take.count
   end
+
+  def link_to_sns_of!(auth_param)
+    case auth_param["provider"]
+    when "facebook"
+      self.facebook_uid = auth_param["uid"]
+      self.facebook_link = auth_param["extra"]["raw_info"]["link"]
+      self.email = auth_param["info"]["email"]
+    when "twitter"
+      self.twitter_uid = auth_param["uid"]
+      self.twitter_link = auth_param["info"]["urls"]["Twitter"]
+    end
+
+    save!
+  end
 end
