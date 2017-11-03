@@ -20,7 +20,7 @@ class Api::Posts::ContentsController < Api::ApplicationController
     SharePostOnTwitterService.new(
       user: current_user,
       post: @post,
-    ).share if params[:share_on_twitter]
+    ).share if params[:share_on_twitter] && current_user.twitter_connected?
 
     head 200
   end

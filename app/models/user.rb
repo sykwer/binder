@@ -24,6 +24,10 @@ class User < ApplicationRecord
     followers.where(id: user.id).exists?
   end
 
+  def twitter_connected?
+    twitter_uid.present?
+  end
+
   def follower_ids
     Follow.where(destination_id: id).pluck(:source_id)
   end
