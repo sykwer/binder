@@ -120,6 +120,7 @@ function* postPublishFlow() {
       state.uuid,
       state.selectedTags,
       state.isSharedOnTwitter,
+      state.isSharedOnFacebook,
     )
 
     if (isSuccess) {

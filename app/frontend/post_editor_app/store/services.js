@@ -51,7 +51,12 @@ export const requestSaveSelectedBook = (
   }).then(res => res.status === 200)
 }
 
-export const requestPostPublish = (postUuid, tags, isSharedOnTwitter) => {
+export const requestPostPublish = (
+  postUuid,
+  tags,
+  isSharedOnTwitter,
+  isSharedOnFacebook,
+) => {
   const url = `http://localhost:3000/api/posts/${postUuid}/content`
 
   const attachedTagIds = []
@@ -69,6 +74,7 @@ export const requestPostPublish = (postUuid, tags, isSharedOnTwitter) => {
     created_tag_names: createdTagNames,
     attached_tag_ids: attachedTagIds,
     share_on_twitter: isSharedOnTwitter,
+    share_on_facebook: isSharedOnFacebook,
   }).then(res => res.status === 200)
 }
 

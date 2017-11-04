@@ -28,6 +28,10 @@ class User < ApplicationRecord
     twitter_uid.present?
   end
 
+  def facebook_connected?
+    facebook_uid.present?
+  end
+
   def follower_ids
     Follow.where(destination_id: id).pluck(:source_id)
   end

@@ -22,6 +22,11 @@ class Api::Posts::ContentsController < Api::ApplicationController
       post: @post,
     ).share if params[:share_on_twitter] && current_user.twitter_connected?
 
+    SharePostOnFacebookService.new(
+      user: current_user,
+      post: @post,
+    ).share if params[:share_on_facebook] && current_user.facebook_connected?
+
     head 200
   end
 
