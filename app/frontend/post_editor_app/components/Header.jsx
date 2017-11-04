@@ -277,16 +277,16 @@ cpnt.propTypes = {
   isPublishWindowDisplayed: PropTypes.bool.isRequired,
   isTwitterChecked: PropTypes.bool.isRequired,
   isFacebookChecked: PropTypes.bool.isRequired,
-  searchedTagsList: PropTypes.arrayOf({
+  searchedTagsList: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     attatchedCount: PropTypes.number.isRequired,
-  }).isRequired,
-  selectedTags: PropTypes.arrayOf({
+  })).isRequired,
+  selectedTags: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     attatchedCount: PropTypes.number.isRequired,
-  }).isRequired,
+  })).isRequired,
   tagNameInput: PropTypes.string.isRequired,
   tagSearchState: PropTypes.string.isRequired,
   handleClickOpenPublishWindow: PropTypes.func.isRequired,

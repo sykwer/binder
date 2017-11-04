@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       @draft_posts = current_user.posts.not_published.order(created_at: :desc)
     end
 
-    if !["bookshelf", "likes", "drafts"].include?(@menu) && @menu.present?
+    if !["bookshelf", "bookmarks", "drafts"].include?(@menu) && @menu.present?
       render status: 404, file: "/public/404" and return
     end
   end
