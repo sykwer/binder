@@ -20,6 +20,24 @@ class Post < ApplicationRecord
   scope :bookmarked_by, lambda { |user| joins(:bookmarks).where("bookmarks.user_id = ?", user.id) }
   scope :not_published, lambda { where(first_published_at: nil) }
 
+  def self.created_posterior_to(post)
+    Post.published
+      .where(user_id: post.user_id)
+      .where("created_at > ?", post.created_at)
+      .order(created_at: :asc)
+      .limit(1)
+      .take
+  end
+
+  def self.created_prior_to(post)
+    Post.published
+      .where(user_id: post.user_id)
+      .where("created_at < ?", post.created_at)
+      .order(created_at: :desc)
+      .limit(1)
+      .take
+  end
+
   def to_param
     uuid
   end
