@@ -53,7 +53,14 @@
       }.to_json do %>
     <% end %>
     <button class="twitter-button">
-      <i class="fa fa-twitter" aria-hidden="true"></i>
+      <%= content_tag :i,
+        id: "twitter-share-button",
+        class: "fa fa-twitter",
+        "aria-hidden": true,
+        data: {
+          postUrl: post_url(@post),
+        }.to_json do %>
+      <% end %>
     </button>
     <button class="facebook-button">
       <i class="fa fa-facebook-square" aria-hidden="true"></i>
@@ -105,3 +112,17 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  var twBtn = document.getElementById("twitter-share-button");
+  var data = JSON.parse(twBtn.getAttribute("data"));
+  twBtn.addEventListener("click", function() {
+    window.open(
+      "https://twitter.com/intent/tweet?url=" + data.postUrl,
+      "Tweet",
+      "height=285,width=550,resizable=1"
+    );
+  })
+})
+</script>
