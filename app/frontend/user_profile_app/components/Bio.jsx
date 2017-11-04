@@ -11,11 +11,18 @@ const cpnt = ({ onChangeBio, isEditable }) => {
     <div
       id="editable-bio"
       className="bio"
+      role="textbox"
+      tabIndex="0"
       contentEditable={isEditable}
       ref={(node) => { editable = node }}
       onInput={(e) => {
         e.preventDefault()
         onChangeBio(editable.innerText)
+      }}
+      onKeyDown={(e) => {
+        if (e.keyCode === 13) { // enter
+          e.preventDefault()
+        }
       }}
     />
   )

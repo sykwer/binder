@@ -11,11 +11,18 @@ const cpnt = ({ onChangeName, isEditable }) => {
     <div
       id="editable-name"
       className="name"
+      role="textbox"
+      tabIndex="0"
       contentEditable={isEditable}
       ref={(node) => { editable = node }}
       onInput={(e) => {
         e.preventDefault()
         onChangeName(editable.innerText)
+      }}
+      onKeyDown={(e) => {
+        if (e.keyCode === 13) { // enter
+          e.preventDefault()
+        }
       }}
     />
   )
