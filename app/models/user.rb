@@ -16,15 +16,6 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Follow", foreign_key: "destination_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :source
 
-  # To know structure of auth, see https://github.com/mkdynamic/omniauth-facebook#auth-hash
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.name = auth.info.name
-      user.image_url = auth.info.image
-    end
-  end
-
   def follows?(user)
     followings.where(id: user.id).exists?
   end
@@ -33,12 +24,21 @@ class User < ApplicationRecord
     followers.where(id: user.id).exists?
   end
 
+  def twitter_connected?
+    twitter_uid.present?
+  end
+
+  def facebook_connected?
+    facebook_uid.present?
+  end
+
   def follower_ids
     Follow.where(destination_id: id).pluck(:source_id)
   end
 
   def clap_count_of(post)
-    Clap.where(post: post, user: self).take.count
+    claps = Clap.where(post: post, user: self).take
+    claps.present? ? claps.count : 0
   end
 
   def link_to_sns_of!(auth_param)
@@ -46,12 +46,26 @@ class User < ApplicationRecord
     when "facebook"
       self.facebook_uid = auth_param["uid"]
       self.facebook_link = auth_param["extra"]["raw_info"]["link"]
+      self.facebook_access_token = auth_param["credentials"]["token"]
       self.email = auth_param["info"]["email"]
     when "twitter"
       self.twitter_uid = auth_param["uid"]
       self.twitter_link = auth_param["info"]["urls"]["Twitter"]
+      self.twitter_access_token = auth_param["credentials"]["token"]
+      self.twitter_access_token_secret = auth_param["credentials"]["secret"]
     end
 
+    save!
+  end
+
+  def update_twitter_access_token!(auth_param)
+    self.twitter_access_token = auth_param["credentials"]["token"]
+    self.twitter_access_token_secret = auth_param["credentials"]["secret"]
+    save!
+  end
+
+  def update_facebook_access_token!(auth_param)
+    self.facebook_access_token = auth_param["credentials"]["token"]
     save!
   end
 end
