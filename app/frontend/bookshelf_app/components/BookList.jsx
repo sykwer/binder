@@ -38,11 +38,11 @@ const cpnt = ({ posts }) => {
 }
 
 cpnt.propTypes = {
-  posts: PropTypes.arrayOf({
+  posts: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     bookImageUrl: PropTypes.string.isRequired,
-    bookTitle: PropTypes.string.isRequird,
-  }).isRequired,
+    bookTitle: PropTypes.string.isRequired,
+  })).isRequired,
 }
 
 const mapStateToProps = state => ({
