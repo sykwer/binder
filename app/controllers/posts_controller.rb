@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i(show edit destroy)
 
   def show
+    @prior_post = Post.created_prior_to(@post)
+    @posterior_post = Post.created_posterior_to(@post)
   end
 
   def create

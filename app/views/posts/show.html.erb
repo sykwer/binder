@@ -88,12 +88,20 @@
   </div>
   <div class="links-to-sibling-post clearfix">
     <div class="left-link-wrapper">
-      <p class="link-to-prior-post">noteにおけるコア体験と相互作用メモ。お手伝いすることになりました。</p>
-      <i class="fa fa-angle-left left-link-arrow" aria-hidden="true"></i>
+      <% if @prior_post.present? %>
+        <%= link_to post_path(@prior_post) do %>
+          <p class="link-to-prior-post"><%= @prior_post.title %></p>
+          <i class="fa fa-angle-left left-link-arrow" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
     </div>
     <div class="right-link-wrapper">
-      <p class="link-to-next-post">最高体験責任者(CXO)</p>
-      <i class="fa fa-angle-right right-link-arrow" aria-hidden="true"></i>
+      <% if @posterior_post.present? %>
+        <%= link_to post_path(@posterior_post) do %>
+          <p class="link-to-next-post"><%= @posterior_post.title %></p>
+          <i class="fa fa-angle-right right-link-arrow" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
   <div class="below-author-profile">
