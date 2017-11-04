@@ -37,7 +37,8 @@ class User < ApplicationRecord
   end
 
   def clap_count_of(post)
-    Clap.where(post: post, user: self).take.count
+    claps = Clap.where(post: post, user: self).take
+    claps.present? ? claps.count : 0
   end
 
   def link_to_sns_of!(auth_param)
