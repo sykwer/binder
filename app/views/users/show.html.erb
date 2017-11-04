@@ -35,8 +35,8 @@
             class: @menu.eql?("drafts") ? "active menu-item" : "menu-item" %>
           </li>
           <li>
-            <%= link_to "Bookmarks", "/@#{@user.username}/likes",
-              class: @menu.eql?("likes") ? "active menu-item" : "menu-item" %>
+            <%= link_to "Bookmarks", "/@#{@user.username}/bookmarks",
+              class: @menu.eql?("bookmarks") ? "active menu-item" : "menu-item" %>
           </li>
         <% end %>
       </ul>
@@ -51,7 +51,7 @@
         }.to_json do %>
       <% end %>
     <% end %>
-    <% if @menu == "likes" %>
+    <% if @menu == "bookmarks" %>
       <%= content_tag :div,
         id: "bookmark-tab-app",
         data: {

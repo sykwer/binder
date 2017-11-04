@@ -7,19 +7,19 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-    <%= javascript_pack_tag 'post_editor_app' %>
-    <%= javascript_pack_tag 'user_profile_app' %>
-    <%= javascript_pack_tag 'bookshelf_app' %>
-    <%= javascript_pack_tag 'userpage_follow_app' %>
-    <%= javascript_pack_tag 'timeline_app' %>
-    <%= javascript_pack_tag 'bookmark_button' %>
-    <%= javascript_pack_tag 'bookmark_tab_app' %>
-    <%= javascript_pack_tag 'follow_button' %>
-    <%= javascript_pack_tag 'draft_tab_app' %>
+    <%= javascript_pack_tag 'post_editor_app' if request.path.match(/\/posts\/[a-z0-9-]+\/edit/) %>
+    <%= javascript_pack_tag 'user_profile_app' if request.path.match(/\/@.+/) %>
+    <%= javascript_pack_tag 'bookshelf_app' if request.path.match(/\/@[a-zA-Z0-9_]+$|\/@[a-zA-Z0-9_]+\/bookshelf/) %>
+    <%= javascript_pack_tag 'userpage_follow_app' if request.path.match(/\/.+/) && defined?(@user) && current_user != @user %>
+    <% # javascript_pack_tag 'timeline_app' %>
+    <%= javascript_pack_tag 'bookmark_button' if request.path.match(/\//) || request.path.match(/\/posts\/[a-z0-9-]+/) %>
+    <%= javascript_pack_tag 'bookmark_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/bookmarks/) %>
+    <%= javascript_pack_tag 'follow_button' if request.path.match(/\/posts\/[a-z0-9-]+/) && defined?(@user) && current_user != @user %>
+    <%= javascript_pack_tag 'draft_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/drafts/) %>
   </head>
 
   <body>
     <%= yield %>
-    <%= javascript_pack_tag 'clap_button' %> <!-- See mojs #110 issue -->
+    <%= javascript_pack_tag 'clap_button' if request.path.match(/\/posts\/[a-z0-9-]+$/) %> <!-- See mojs #110 issue -->
   </body>
 </html>
