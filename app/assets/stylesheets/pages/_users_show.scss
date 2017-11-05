@@ -20,9 +20,16 @@
         .profile-main-left {
           float: left;
 
+          @media (min-width: $small_plus_one) {
+            width: calc(580px - 120px - 15px); // 15px is buffer
+          }
+
+          @media (max-width: $small) {
+            width: calc(100% - 80px - 15px); // 15px is buffer
+          }
+
           .name {
             color: $black_gray;
-            font-size: 30px;
             margin-top: 15px;
 
             @media (min-width: $small_plus_one) {
