@@ -15,6 +15,7 @@ const cpnt = ({ onChangeName, isEditable }) => {
       tabIndex="0"
       contentEditable={isEditable}
       ref={(node) => { editable = node }}
+      name-max-lengther=""
       onInput={(e) => {
         e.preventDefault()
         onChangeName(editable.innerText)
@@ -28,6 +29,14 @@ const cpnt = ({ onChangeName, isEditable }) => {
         if (editable.innerText.length >= 50 && ![8, 37, 39].includes(e.keyCode)) { // enter ← →
           e.preventDefault()
         }
+
+        window.setTimeout(() => {
+          if (editable.innerText.length >= 40) {
+            editable.setAttribute("name-max-lengther", ` ${editable.innerText.length}/50`)
+          } else {
+            editable.setAttribute("name-max-lengther", "")
+          }
+        }, 100)
       }}
     />
   )

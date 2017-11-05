@@ -35,10 +35,12 @@ const cpnt = ({
   }
 
   const onClickSave = () => {
+    document.getElementById("editable-name").setAttribute("name-max-lengther", "")
     handleOnClickSave(displayedName, displayedBio)
   }
 
   const onClickCancel = () => {
+    document.getElementById("editable-name").setAttribute("name-max-lengther", "")
     handleOnClickCancel(savedName, savedBio)
 
     // Editable nodes are uncontroled, so change manually
