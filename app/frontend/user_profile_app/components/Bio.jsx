@@ -11,11 +11,32 @@ const cpnt = ({ onChangeBio, isEditable }) => {
     <div
       id="editable-bio"
       className="bio"
+      role="textbox"
+      tabIndex="0"
       contentEditable={isEditable}
       ref={(node) => { editable = node }}
+      bio-max-lengther=""
       onInput={(e) => {
         e.preventDefault()
         onChangeBio(editable.innerText)
+      }}
+      onKeyDown={(e) => {
+        if (e.keyCode === 13) { // enter
+          e.preventDefault()
+        }
+
+        // FIX: hardcoding
+        if (editable.innerText.length >= 160 && ![8, 37, 39].includes(e.keyCode)) { // enter → ←
+          e.preventDefault()
+        }
+
+        window.setTimeout(() => {
+          if (editable.innerText.length >= 140) {
+            editable.setAttribute("bio-max-lengther", ` ${editable.innerText.length}/160`)
+          } else {
+            editable.setAttribute("bio-max-lengther", "")
+          }
+        }, 100)
       }}
     />
   )

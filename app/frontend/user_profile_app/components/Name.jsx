@@ -11,11 +11,32 @@ const cpnt = ({ onChangeName, isEditable }) => {
     <div
       id="editable-name"
       className="name"
+      role="textbox"
+      tabIndex="0"
       contentEditable={isEditable}
       ref={(node) => { editable = node }}
+      name-max-lengther=""
       onInput={(e) => {
         e.preventDefault()
         onChangeName(editable.innerText)
+      }}
+      onKeyDown={(e) => {
+        if (e.keyCode === 13) { // enter
+          e.preventDefault()
+        }
+
+        // FIX: hardcoding
+        if (editable.innerText.length >= 50 && ![8, 37, 39].includes(e.keyCode)) { // enter ← →
+          e.preventDefault()
+        }
+
+        window.setTimeout(() => {
+          if (editable.innerText.length >= 40) {
+            editable.setAttribute("name-max-lengther", ` ${editable.innerText.length}/50`)
+          } else {
+            editable.setAttribute("name-max-lengther", "")
+          }
+        }, 100)
       }}
     />
   )
