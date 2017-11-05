@@ -31,6 +31,7 @@
           .name {
             color: $black_gray;
             margin-top: 15px;
+            word-wrap: break-word;
 
             @media (min-width: $small_plus_one) {
               font-size: 30px;
@@ -55,6 +56,7 @@
             color: $gray56;
             font-size: 15px;
             letter-spacing: 0.5px;
+            word-wrap: break-word;
 
             @media (min-width: $small_plus_one) {
               font-size: 15px;
