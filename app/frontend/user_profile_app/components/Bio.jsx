@@ -23,6 +23,11 @@ const cpnt = ({ onChangeBio, isEditable }) => {
         if (e.keyCode === 13) { // enter
           e.preventDefault()
         }
+
+        // FIX: hardcoding
+        if (editable.innerText.length >= 160 && ![8, 37, 39].includes(e.keyCode)) { // enter → ←
+          e.preventDefault()
+        }
       }}
     />
   )
