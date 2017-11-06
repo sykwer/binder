@@ -24,8 +24,11 @@ const Header = ({
   handleSelectTag,
   handleClickDeleteTag,
 }) => {
-  let tagInputDiv
   const focusCaretOnTagInput = () => {
+    if (selectedTags.length >= 5) {
+      return
+    }
+
     const node = document.getElementById("tag-input-box-div")
     const range = document.createRange()
     const selection = window.getSelection()
@@ -120,15 +123,15 @@ const Header = ({
                             id="tag-input-box-div"
                             role="textbox"
                             tabIndex="0"
-                            ref={(node) => { tagInputDiv = node }}
                             onInput={(e) => {
                               e.preventDefault()
 
-                              if (tagInputDiv.innerText.length === 0) {
+                              const tagInput = document.getElementById("tag-input-box-div")
+                              if (tagInput && tagInput.innerText.length === 0) {
                                 handleEmptyTagInput()
-                              } else {
+                              } else if (tagInput) {
                                 window.setTimeout(() => {
-                                  handleInputTagName(document.getElementById("tag-input-box-div").innerText)
+                                  handleInputTagName(tagInput.innerText)
                                 }, 300)
                               }
                             }}
@@ -150,7 +153,7 @@ const Header = ({
                                   })
                                 }
 
-                                tagInputDiv.innerText = ""
+                                document.getElementById("tag-input-box-div").innerText = ""
                                 focusCaretOnTagInput()
                               }
                             }}
@@ -170,7 +173,7 @@ const Header = ({
                                         e.stopPropagation()
                                         handleSelectTag(tag)
 
-                                        tagInputDiv.innerText = ""
+                                        document.getElementById("tag-input-box-div").innerText = ""
                                         focusCaretOnTagInput()
                                       }}
                                     >
@@ -183,6 +186,7 @@ const Header = ({
                           </div>
                         }
                         { tagSearchState === "FETCHED" && searchedTagsList.length === 0 &&
+                          document.getElementById("tag-input-box-div") &&
                           document.getElementById("tag-input-box-div").innerText.length > 0 &&
                           <div className="searched-tags-list">
                             <ul className="tags-ul-list">
@@ -197,7 +201,7 @@ const Header = ({
                                       attatchedCount: 0,
                                     })
 
-                                    tagInputDiv.innerText = ""
+                                    document.getElementById("tag-input-box-div").innerText = ""
                                     focusCaretOnTagInput()
                                   }}
                                 >
