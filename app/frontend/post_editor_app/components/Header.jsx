@@ -135,6 +135,8 @@ const cpnt = ({
                             placeholder="タグ名を入力..."
                             className="tag-input-box"
                             id="tag-input-box-div"
+                            role="textbox"
+                            tabIndex="0"
                             ref={(node) => { tagInputDiv = node }}
                             onInput={(e) => {
                               e.preventDefault()
@@ -145,6 +147,11 @@ const cpnt = ({
                                 window.setTimeout(() => {
                                   handleInputTagName(document.getElementById("tag-input-box-div").innerText)
                                 }, 300)
+                              }
+                            }}
+                            onKeyDown={(e) => {
+                              if ([13, 32].includes(e.keyCode)) { // enter space
+                                e.preventDefault()
                               }
                             }}
                           />
