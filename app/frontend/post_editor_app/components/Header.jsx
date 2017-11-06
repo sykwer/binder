@@ -198,7 +198,7 @@ const Header = ({
                                     handleSelectTag({
                                       id: null,
                                       name: tagNameInput,
-                                      attatchedCount: 0,
+                                      attachedCount: 0,
                                     })
 
                                     document.getElementById("tag-input-box-div").innerText = ""
@@ -276,14 +276,14 @@ Header.propTypes = {
   isTwitterChecked: PropTypes.bool.isRequired,
   isFacebookChecked: PropTypes.bool.isRequired,
   searchedTagsList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
     name: PropTypes.string.isRequired,
-    attatchedCount: PropTypes.number.isRequired,
+    attachedCount: PropTypes.number.isRequired,
   })).isRequired,
   selectedTags: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
     name: PropTypes.string.isRequired,
-    attatchedCount: PropTypes.number.isRequired,
+    attachedCount: PropTypes.number.isRequired,
   })).isRequired,
   tagNameInput: PropTypes.string.isRequired,
   tagSearchState: PropTypes.string.isRequired,
