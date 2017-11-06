@@ -25,7 +25,6 @@ const cpnt = ({
     role="button"
     tabIndex="0"
     onClick={(e) => {
-      e.preventDefault()
       e.stopPropagation()
       handleClickClosePublishWindow()
     }}
@@ -37,8 +36,7 @@ const cpnt = ({
           className="book-selector-component"
           role="button"
           tabIndex="0"
-          onClick={(e) => {
-            e.preventDefault()
+          onClick={() => {
             handleClickCloseBookSelector()
           }}
         >

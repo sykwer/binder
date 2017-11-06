@@ -60,7 +60,6 @@ const Header = ({
               <li className="menu-item publish-window-open-button">
                 <button
                   onClick={(e) => {
-                    e.preventDefault()
                     e.stopPropagation()
                     handleClickOpenPublishWindow()
 
@@ -99,7 +98,6 @@ const Header = ({
                             <button
                               className="delete-tag-button"
                               onClick={(e) => {
-                                e.preventDefault()
                                 e.stopPropagation()
                                 handleClickDeleteTag(tag.name)
 
@@ -169,7 +167,6 @@ const Header = ({
                                     <button
                                       className="tags-list-item"
                                       onClick={(e) => {
-                                        e.preventDefault()
                                         e.stopPropagation()
                                         handleSelectTag(tag)
 
@@ -193,7 +190,6 @@ const Header = ({
                                 <button
                                   className="tags-list-item"
                                   onClick={(e) => {
-                                    e.preventDefault()
                                     e.stopPropagation()
                                     handleSelectTag({
                                       id: null,
@@ -239,7 +235,6 @@ const Header = ({
                       <button
                         className="publish-button"
                         onClick={(e) => {
-                          e.preventDefault()
                           e.stopPropagation()
                           handleClickPublish()
                         }}
