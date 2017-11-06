@@ -159,7 +159,7 @@ const cpnt = ({
                                 if (searchedTagsList.some(tag => tag.name === tagNameInput)) {
                                   const t = searchedTagsList.find(tag => tag.name === tagNameInput)
                                   handleSelectTag(t)
-                                } else if (tagNameInput.length > 0) { // enter
+                                } else if (tagNameInput.length > 0) {
                                   handleSelectTag({
                                     id: null,
                                     name: tagNameInput,
