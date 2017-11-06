@@ -153,6 +153,28 @@ const cpnt = ({
                               if ([13, 32].includes(e.keyCode)) { // enter space
                                 e.preventDefault()
                               }
+
+                              // We have to prevent this processed before tagslist fetched
+                              if (tagSearchState === "FETCHED" && e.keyCode === 13) { // enter
+                                if (searchedTagsList.some(tag => tag.name === tagNameInput)) {
+                                  const t = searchedTagsList.find(tag => tag.name === tagNameInput)
+                                  handleSelectTag(t)
+                                } else if (tagNameInput.length > 0) { // enter
+                                  handleSelectTag({
+                                    id: null,
+                                    name: tagNameInput,
+                                    attachedCount: 0,
+                                  })
+                                }
+
+                                tagInputDiv.innerText = ""
+                                const range = document.createRange()
+                                const selection = window.getSelection()
+                                range.selectNodeContents(tagInputDiv)
+                                range.collapse(false)
+                                selection.removeAllRanges()
+                                selection.addRange(range)
+                              }
                             }}
                           />
                         }
