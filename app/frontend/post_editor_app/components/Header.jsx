@@ -25,6 +25,15 @@ const Header = ({
   handleClickDeleteTag,
 }) => {
   let tagInputDiv
+  const focusCaretOnTagInput = () => {
+    const node = document.getElementById("tag-input-box-div")
+    const range = document.createRange()
+    const selection = window.getSelection()
+    range.selectNodeContents(node)
+    range.collapse(false)
+    selection.removeAllRanges()
+    selection.addRange(range)
+  }
 
   return (
     <header className="editor-header">
@@ -56,13 +65,7 @@ const Header = ({
                     handleClickOpenPublishWindow()
 
                     window.setTimeout(() => {
-                      const node = document.getElementById("tag-input-box-div")
-                      const range = document.createRange()
-                      const selection = window.getSelection()
-                      range.selectNodeContents(node)
-                      range.collapse(false)
-                      selection.removeAllRanges()
-                      selection.addRange(range)
+                      focusCaretOnTagInput()
                     }, 100)
                   }}
                 >
@@ -101,13 +104,7 @@ const Header = ({
                                 handleClickDeleteTag(tag.name)
 
                                 window.setTimeout(() => {
-                                  const node = document.getElementById("tag-input-box-div")
-                                  const range = document.createRange()
-                                  const selection = window.getSelection()
-                                  range.selectNodeContents(node)
-                                  range.collapse(false)
-                                  selection.removeAllRanges()
-                                  selection.addRange(range)
+                                  focusCaretOnTagInput()
                                 }, 300)
                               }}
                             >
@@ -156,12 +153,7 @@ const Header = ({
                                 }
 
                                 tagInputDiv.innerText = ""
-                                const range = document.createRange()
-                                const selection = window.getSelection()
-                                range.selectNodeContents(tagInputDiv)
-                                range.collapse(false)
-                                selection.removeAllRanges()
-                                selection.addRange(range)
+                                focusCaretOnTagInput()
                               }
                             }}
                           />
@@ -182,12 +174,7 @@ const Header = ({
                                         handleSelectTag(tag)
 
                                         tagInputDiv.innerText = ""
-                                        const range = document.createRange()
-                                        const selection = window.getSelection()
-                                        range.selectNodeContents(tagInputDiv)
-                                        range.collapse(false)
-                                        selection.removeAllRanges()
-                                        selection.addRange(range)
+                                        focusCaretOnTagInput()
                                       }}
                                     >
                                       {tag.name}
@@ -215,12 +202,7 @@ const Header = ({
                                     })
 
                                     tagInputDiv.innerText = ""
-                                    const range = document.createRange()
-                                    const selection = window.getSelection()
-                                    range.selectNodeContents(tagInputDiv)
-                                    range.collapse(false)
-                                    selection.removeAllRanges()
-                                    selection.addRange(range)
+                                    focusCaretOnTagInput()
                                   }}
                                 >
                                   {tagNameInput}
