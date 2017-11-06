@@ -25,10 +25,6 @@ const Header = ({
   handleClickDeleteTag,
 }) => {
   const focusCaretOnTagInput = () => {
-    if (selectedTags.length >= 5) {
-      return
-    }
-
     const node = document.getElementById("tag-input-box-div")
     const range = document.createRange()
     const selection = window.getSelection()
@@ -67,7 +63,9 @@ const Header = ({
                     handleClickOpenPublishWindow()
 
                     window.setTimeout(() => {
-                      focusCaretOnTagInput()
+                      if (selectedTags.length < 5) {
+                        focusCaretOnTagInput()
+                      }
                     }, 100)
                   }}
                 >
@@ -173,8 +171,10 @@ const Header = ({
                                         e.stopPropagation()
                                         handleSelectTag(tag)
 
-                                        document.getElementById("tag-input-box-div").innerText = ""
-                                        focusCaretOnTagInput()
+                                        if (selectedTags.length < 5) {
+                                          document.getElementById("tag-input-box-div").innerText = ""
+                                          focusCaretOnTagInput()
+                                        }
                                       }}
                                     >
                                       {tag.name}
@@ -201,8 +201,10 @@ const Header = ({
                                       attachedCount: 0,
                                     })
 
-                                    document.getElementById("tag-input-box-div").innerText = ""
-                                    focusCaretOnTagInput()
+                                    if (selectedTags.length < 5) {
+                                      document.getElementById("tag-input-box-div").innerText = ""
+                                      focusCaretOnTagInput()
+                                    }
                                   }}
                                 >
                                   {tagNameInput}
