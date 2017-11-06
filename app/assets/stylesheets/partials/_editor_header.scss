@@ -103,26 +103,26 @@
             .add-tag-box {
               height: 80px;
 
+              .tag-token {
+                display: inline-block;
+                padding: 5px 8px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                border-radius: 3px;
+                color: $post_content_color;
+                opacity: 0.8;
+                background-color: $light_gray;
+
+                .delete-tag-button {
+                  margin-left: 7px;
+                }
+              }
+
               .tag-input-box-wrapper {
                 position: relative;
-
-                .tag-token {
-                  display: inline-block;
-                  padding: 5px 8px;
-                  margin-right: 10px;
-                  margin-bottom: 10px;
-                  border-radius: 3px;
-                  color: $post_content_color;
-                  opacity: 0.8;
-                  background-color: $light_gray;
-
-                  .delete-tag-button {
-                    margin-left: 7px;
-                  }
-                }
+                display: inline-block;
 
                 .tag-input-box {
-                  display: inline-block;
                   min-width: 100px;
                   height: 30px;
                   line-height: 30px;

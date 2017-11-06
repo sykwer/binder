@@ -86,37 +86,37 @@ const Header = ({
                       記事に関連するタグを5つまで付けることができます。(書名/著者のタグは自動で付きます)
                     </p>
                     <div className="add-tag-box">
-                      <div className="tag-input-box-wrapper">
-                        {
-                          selectedTags.map(tag => (
-                            <div
-                              className="tag-token"
-                              key={tag.name}
-                            >
-                              {tag.name}
-                              <button
-                                className="delete-tag-button"
-                                onClick={(e) => {
-                                  e.preventDefault()
-                                  e.stopPropagation()
-                                  handleClickDeleteTag(tag.name)
+                      {
+                        selectedTags.map(tag => (
+                          <div
+                            className="tag-token"
+                            key={tag.name}
+                          >
+                            {tag.name}
+                            <button
+                              className="delete-tag-button"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                e.stopPropagation()
+                                handleClickDeleteTag(tag.name)
 
-                                  window.setTimeout(() => {
-                                    const node = document.getElementById("tag-input-box-div")
-                                    const range = document.createRange()
-                                    const selection = window.getSelection()
-                                    range.selectNodeContents(node)
-                                    range.collapse(false)
-                                    selection.removeAllRanges()
-                                    selection.addRange(range)
-                                  }, 300)
-                                }}
-                              >
-                                ×
-                              </button>
-                            </div>
-                          ))
-                        }
+                                window.setTimeout(() => {
+                                  const node = document.getElementById("tag-input-box-div")
+                                  const range = document.createRange()
+                                  const selection = window.getSelection()
+                                  range.selectNodeContents(node)
+                                  range.collapse(false)
+                                  selection.removeAllRanges()
+                                  selection.addRange(range)
+                                }, 300)
+                              }}
+                            >
+                              ×
+                            </button>
+                          </div>
+                        ))
+                      }
+                      <div className="tag-input-box-wrapper">
                         { selectedTags.length < 5 &&
                           <div
                             contentEditable
