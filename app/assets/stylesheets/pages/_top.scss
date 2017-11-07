@@ -7,7 +7,7 @@
     margin: 0 auto;
 
     @media (min-width: 1100px) {
-      max-width: 1000px;
+      width: 1000px;
     }
 
     @media (max-width: 1099px) and (min-width: $small_plus_one) {
