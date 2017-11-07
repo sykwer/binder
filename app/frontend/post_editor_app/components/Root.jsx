@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import Header from "./Header"
+import HeaderContainer from "./HeaderContainer"
 import PostContentContainer from "./PostContentContainer"
 import BookInfoInputContainer from "./BookInfoInputContainer"
 import PostMetaInfo from "./PostMetaInfo"
@@ -25,20 +25,18 @@ const cpnt = ({
     role="button"
     tabIndex="0"
     onClick={(e) => {
-      e.preventDefault()
       e.stopPropagation()
       handleClickClosePublishWindow()
     }}
   >
-    <Header />
+    <HeaderContainer />
     {
       isBookSelectorOpen && (
         <div
           className="book-selector-component"
           role="button"
           tabIndex="0"
-          onClick={(e) => {
-            e.preventDefault()
+          onClick={() => {
             handleClickCloseBookSelector()
           }}
         >
