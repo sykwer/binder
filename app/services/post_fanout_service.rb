@@ -10,7 +10,7 @@ class PostFanoutService
     # Enhancement: batch process for too many target users
     redis.pipelined do
       target_user_ids.each do |user_id|
-        redis.zadd("inbox:#{user_id}", Time.zone.now.to_i, post_uuid)
+        redis.zadd("followings_timeline_inbox:#{user_id}", Time.zone.now.to_i, post_uuid)
       end
     end
   end
