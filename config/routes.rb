@@ -43,7 +43,6 @@ Rails.application.routes.draw do
       resources :followers, controller: "users/followers", only: %i(index)
       resources :followings, controller: "users/followings", only: %i(index)
       resources :bookmarked_posts, controller: "users/bookmarked_posts", only: %i(index)
-      get :timeline, to: "users/timelines#index"
     end
 
     resources :follows, only: %i(create)
