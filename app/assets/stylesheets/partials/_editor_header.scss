@@ -77,7 +77,6 @@
             position: absolute;
             top: 39px;
             left: -106px;
-            height: 325px;
             width: 350px;
             padding: 20px;
             border: 1px solid $gray91;
@@ -101,7 +100,8 @@
             }
 
             .add-tag-box {
-              height: 80px;
+              margin: 20px 0 10px;
+              min-height: 80px;
 
               .tag-token {
                 display: inline-block;
@@ -238,10 +238,11 @@
 
             .publish-button-wrapper {
               position: relative;
+              height: 35px;
 
               .publish-button {
                 position: absolute;
-                top: 20px;
+                top: 13px;
                 right: 0;
                 padding: 5px 10px;
                 color: $fresh_green;
