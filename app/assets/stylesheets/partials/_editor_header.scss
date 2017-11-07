@@ -198,6 +198,7 @@
 
               .share-on-twitter,
               .share-on-facebook {
+                position: relative;
                 font-weight: normal;
                 letter-spacing: 0.5px;
                 color: $post_content_color;
@@ -218,21 +219,24 @@
                 width: 20px;
                 height: 20px;
                 vertical-align: middle;
-                border: 1px solid $gray56;
-                opacity: 0.5;
+                border: 1px solid rgba(143, 143, 143, 0.5); // gray56 0.5
                 border-radius: 3px;
                 outline: 1px solid transparent;
                 cursor: pointer;
-
-                transition-property: background-color, opacity, border;
-                transition-duration: 0.3s;
-                transition-timing-function: ease-in-out;
               }
 
-              .checkbox-button:checked {
-                background-color: $fresh_green;
-                opacity: 1;
-                border: 1px solid transparent;
+              .checkbox-button:checked:after {
+                content: '';
+                position: absolute;
+                width: 14px;
+                height: 7px;
+                background: transparent;
+                top: 5px;
+                left: 3.5px;
+                border: 2.5px solid $fresh_green;
+                border-top: none;
+                border-right: none;
+                transform: rotate(-45deg);
               }
             }
 
