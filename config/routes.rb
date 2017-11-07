@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get "/@:username/followings", to: "users#show"
   get "/@:username/:menu", to: "users#show"
 
+  get "streams/from_followings", to: "streams#from_followings"
+
   resources :posts, only: %i(show create edit destroy), param: :uuid do
     resource :content, controller: "posts/contents", only: %i(update)
   end

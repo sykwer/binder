@@ -1,8 +1,13 @@
 <%= render "shared/green_header" %>
 <div id="top-page-body" class="top-page">
   <div class="from-followings-wrapper">
-    <div class="from-followings-header">
-      <h2 class="from-followings-title">From your followings</h2>
+    <div class="from-followings-header clearfix">
+      <h2 class="from-followings-title">
+        <%= link_to "From your followings", streams_from_followings_path %>
+      </h2>
+      <%= link_to "More >",
+        streams_from_followings_path,
+        class: "more-from-followings"%>
     </div>
     <div class="posts-std-grid">
       <% @posts_in_timeline.each do |post| %>
