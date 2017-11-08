@@ -2,7 +2,6 @@
 <div class="streams-page">
   <div class="main-wrapper">
     <h2 class="stream-title"><%= @stream_name %></h2>
-    <%= render "shared/posts_std_grid", posts: @posts %>
     <%= content_tag :div,
       id: "posts_stream_app" do %>
     <% end %>

@@ -2,10 +2,11 @@ import React from "react"
 import { render } from "react-dom"
 import { createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
-import { createSagaMiddleware } from "redux-saga"
+import createSagaMiddleware from "redux-saga"
 
 import rootReducer from "./store/reducers"
 import rootSaga from "./store/sagas"
+import Root from "./components/Root"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
@@ -23,7 +24,7 @@ const run = () => {
 
     render(
       <Provider store={store}>
-        <p>Boot postsStreamApp</p>
+        <Root />
       </Provider>,
       node,
     )

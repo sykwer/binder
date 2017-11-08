@@ -2,7 +2,7 @@ class Api::StreamsController < Api::ApplicationController
   def from_followings
     t = FollowingsTimeline.new(user: current_user, count_per_page: count_param)
     post_uuids = offset_param.eql?(0) ?
-      t.fetch_head! : t.feach(page: offset_param / count_param) # == page
+      t.fetch_head! : t.fetch(page: offset_param / count_param) # == page
     posts = Post.where(uuid: post_uuids) # orderless
 
     # workaround
