@@ -1,38 +1,33 @@
 import axios from "axios"
 
-export const fetchPostsFromFollowings = (page) => {
-  const url = "http://localhost:3000/api/streams/from_followings"
-  const countPerPage = 10
+import { binderApiEndpoint } from "../../settings/endpoints"
+import { postsCountPerFetchInStream } from "../../settings/constants"
 
-  return axios.get(url, {
+export const fetchPostsFromFollowings = page => (
+  axios.get(`${binderApiEndpoint}/streams/from_followings`, {
     params: {
-      offset: page * countPerPage,
-      count: countPerPage,
+      offset: page * postsCountPerFetchInStream,
+      count: postsCountPerFetchInStream,
     },
   }).then(res => res.data.posts)
-}
+)
 
-export const fetchPostsOfTimeline = (oldestUnixtimeNano) => {
-  const url = "http://localhost:3000/api/streams/world_timeline"
-  const countPerPage = 10
-
-  return axios.get(url, {
+export const fetchPostsOfTimeline = oldestUnixtimeNano => (
+  axios.get(`${binderApiEndpoint}/streams/world_timeline`, {
     params: {
       oldest_unixtime_nano: oldestUnixtimeNano,
-      count: countPerPage,
+      count: postsCountPerFetchInStream,
     },
   }).then(res => ({
     posts: res.data.posts,
     oldestUnixtimeNano: res.data.oldestUnixtimeNano,
   }))
-}
+)
 
-export const requestBookmark = (postUuid) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/bookmarks`
-  return axios.post(url).then(res => res.status === 200)
-}
+export const requestBookmark = postUuid => (
+  axios.post(`${binderApiEndpoint}/posts/${postUuid}/bookmarks`).then(res => res.status === 200)
+)
 
-export const requestUnbookmark = (postUuid) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/bookmarks`
-  return axios.delete(url).then(res => res.status === 200)
-}
+export const requestUnbookmark = postUuid => (
+  axios.delete(`${binderApiEndpoint}/posts/${postUuid}/bookmarks`).then(res => res.status === 200)
+)

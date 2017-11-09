@@ -19,6 +19,8 @@ import {
   finishFetchTags,
 } from "./actions"
 
+import { binderRootUrl } from "../../settings/endpoints"
+
 function* postContentSaveFlow(action) {
   yield call(delay, 1500)
   yield put(startSavingPostContent())
@@ -124,7 +126,7 @@ function* postPublishFlow() {
     )
 
     if (isSuccess) {
-      window.location.assign(`http://localhost:3000/posts/${state.uuid}`)
+      window.location.assign(`${binderRootUrl}/posts/${state.uuid}`)
     } else {
       // handle failure
     }

@@ -1,13 +1,14 @@
 import axios from "axios"
 
-// eslint-disable-next-line
-export const fetchPosts = (userId, postsCount) => {
-  const url = `http://localhost:3000/api/users/${userId}/posts`
+import { binderApiEndpoint } from "../../settings/endpoints"
+import { postsCountPerFetchInBookshelf } from "../../settings/constants"
 
-  return axios.get(url, {
+// eslint-disable-next-line
+export const fetchPosts = (userId, postsCount) => (
+  axios.get(`${binderApiEndpoint}/users/${userId}/posts`, {
     params: {
       offset: postsCount,
-      count: 10,
+      count: postsCountPerFetchInBookshelf,
     },
   }).then(res => res.data.posts)
-}
+)

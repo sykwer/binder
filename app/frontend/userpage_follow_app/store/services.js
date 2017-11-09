@@ -1,47 +1,46 @@
 import axios from "axios"
 
-export const requestFollow = (opponentUserId) => {
-  const url = "http://localhost:3000/api/follows"
-  return axios.post(url, {
+import { usersCountPerFetchInFollows } from "../../settings/constants"
+import { binderApiEndpoint } from "../../settings/endpoints"
+
+export const requestFollow = opponentUserId => (
+  axios.post(`${binderApiEndpoint}/follows`, {
     opponent_user_id: opponentUserId,
   }).then(res => res.status === 200)
-}
+)
 
-export const requestUnfollow = (opponentUserId) => {
-  const url = "http://localhost:3000/api/follows"
-  return axios.delete(url, {
+export const requestUnfollow = opponentUserId => (
+  axios.delete(`${binderApiEndpoint}/follows`, {
     params: {
       opponent_user_id: opponentUserId,
     },
   }).then(res => res.status === 200)
-}
+)
 
 export const fetchFollowers = (
   opponentUserId,
   myUserId,
   page,
-) => {
-  const url = `http://localhost:3000/api/users/${opponentUserId}/followers`
-  return axios.get(url, {
+) => (
+  axios.get(`${binderApiEndpoint}/users/${opponentUserId}/followers`, {
     params: {
       my_user_id: myUserId,
-      counts: 20,
+      counts: usersCountPerFetchInFollows,
       page,
     },
   }).then(res => res.data.followers)
-}
+)
 
 export const fetchFollowings = (
   opponentUserId,
   myUserId,
   page,
-) => {
-  const url = `http://localhost:3000/api/users/${opponentUserId}/followings`
-  return axios.get(url, {
+) => (
+  axios.get(`${binderApiEndpoint}/users/${opponentUserId}/followings`, {
     params: {
       my_user_id: myUserId,
-      counts: 20,
+      counts: usersCountPerFetchInFollows,
       page,
     },
   }).then(res => res.data.followings)
-}
+)

@@ -1,5 +1,6 @@
 import { fork, take, select, call } from "redux-saga/effects"
 
+import { binderRootUrl } from "../../settings/endpoints"
 import { requestDeletePost } from "./services"
 
 function* deletePostFlow() {
@@ -9,7 +10,7 @@ function* deletePostFlow() {
     const isSuccess = yield call(requestDeletePost, action.postUuid)
 
     if (isSuccess) {
-      window.location.assign(`http://localhost:3000/@${state.userName}/drafts`)
+      window.location.assign(`${binderRootUrl}/@${state.userName}/drafts`)
     } else {
       // handle failure
     }
