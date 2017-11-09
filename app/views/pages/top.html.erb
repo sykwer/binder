@@ -1,5 +1,17 @@
 <%= render "shared/green_header" %>
 <div id="top-page-body" class="top-page">
+  <div class="world-timeline-wrapper">
+    <div class="world-timeline-header clearfix">
+      <h2 class="world-timeline-title">
+        <%= link_to "Timeline", streams_timeline_path %>
+      </h2>
+      <%= link_to "More >",
+        streams_timeline_path,
+        class: "more-world-timeline"
+      %>
+  </div>
+  <%= render "shared/posts_std_grid", posts: @posts_from_timeline %>
+  </div>
   <div class="from-followings-wrapper">
     <div class="from-followings-header clearfix">
       <h2 class="from-followings-title">
@@ -9,7 +21,7 @@
         streams_from_followings_path,
         class: "more-from-followings"%>
     </div>
-    <%= render "shared/posts_std_grid", posts: @posts_in_timeline %>
+    <%= render "shared/posts_std_grid", posts: @posts_from_followings %>
   </div>
   <div class="people-you-may-know-wrapper">
     <div class="people-you-may-know-header">

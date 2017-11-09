@@ -2,10 +2,15 @@ export const startFetch = () => ({
   type: "START_FETCH",
 })
 
-export const finishFetch = (posts, page) => ({
+export const finishFetch = (
+  posts,
+  page,
+  oldestUnixtimeNano,
+) => ({
   type: "FINISH_FETCH",
   posts,
   page,
+  oldestUnixtimeNano,
 })
 
 export const clickBookmark = postUuid => ({

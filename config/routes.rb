@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "/@:username/:menu", to: "users#show"
 
   get "streams/from_followings", to: "streams#from_followings"
+  get "streams/timeline", to: "streams#world_timeline"
 
   resources :posts, only: %i(show create edit destroy), param: :uuid do
     resource :content, controller: "posts/contents", only: %i(update)
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
 
   namespace :api, { format: 'json' } do
     get "streams/from_followings", to: "streams#from_followings"
+    get "streams/world_timeline", to: "streams#world_timeline"
 
     resources :posts, only: %i(show destroy), param: :uuid do
       resource :content_draft, controller: 'posts/content_drafts', only: %i(update)

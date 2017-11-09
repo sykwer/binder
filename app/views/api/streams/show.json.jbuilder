@@ -14,3 +14,7 @@ json.posts @posts do |post|
   json.isBookmarked current_user.present? ? post.bookmarked_by?(current_user) : false
   json.bookmarkedCount post.bookmarked_count
 end
+
+if @oldest_unixtime_nano.present?
+  json.oldestUnixtimeNano @oldest_unixtime_nano
+end

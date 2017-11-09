@@ -1,11 +1,13 @@
 class StreamsController < ApplicationController
   def from_followings
-    @stream_name = "From your followings"
+    @stream_title = "From your followings"
+    @stream_id = "followings"
+    render template: "streams/show"
+  end
 
-    t = FollowingsTimeline.new(user: current_user, count_per_page: 10)
-    post_uuids = t.fetch_head!
-    @posts = Post.where(uuid: post_uuids).order(first_published_at: :desc)
-
+  def world_timeline
+    @stream_title = "Timeline"
+    @stream_id = "timeline"
     render template: "streams/show"
   end
 end

@@ -11,12 +11,17 @@ import Root from "./components/Root"
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const node = document.getElementById("posts_stream_app")
+    const data = JSON.parse(node.getAttribute("data"))
+
+    const initialState = {
+      streamId: data.streamId,
+    }
 
     const sagaMiddleware = createSagaMiddleware()
 
     const store = createStore(
       rootReducer,
-      {},
+      initialState,
       applyMiddleware(sagaMiddleware),
     )
 

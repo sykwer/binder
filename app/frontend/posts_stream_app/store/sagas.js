@@ -7,12 +7,13 @@ import {
   succeedUnbookmark,
 } from "./actions"
 import {
-  fetchPosts,
+  fetchPostsFromFollowings,
+  fetchPostsOfTimeline,
   requestBookmark,
   requestUnbookmark,
 } from "./services"
 
-function* fetchPostsFlow() {
+function* fetchPostsFlowOfFollowings() {
   while (true) {
     yield take("START_FETCH")
 
@@ -24,8 +25,27 @@ function* fetchPostsFlow() {
       page = state.page + 1
     }
 
-    const posts = yield call(fetchPosts, page)
-    yield put(finishFetch(posts, page))
+    const posts = yield call(fetchPostsFromFollowings, page)
+    yield put(finishFetch(posts, page, null))
+
+    if (posts.length < 10) {
+      yield put(notifyAllFetched())
+      break
+    }
+  }
+}
+
+function* fetchPostsFlowOfTimeline() {
+  while (true) {
+    yield take("START_FETCH")
+
+    const state = yield select()
+    const { posts, oldestUnixtimeNano } = yield call(
+      fetchPostsOfTimeline,
+      state.oldestUnixtimeNano,
+    )
+
+    yield put(finishFetch(posts, null, oldestUnixtimeNano))
 
     if (posts.length < 10) {
       yield put(notifyAllFetched())
@@ -61,9 +81,19 @@ function* requestUnbookmarkFlow() {
 }
 
 function* rootSaga() {
-  yield fork(fetchPostsFlow)
   yield fork(requestBookmarkFlow)
   yield fork(requestUnbookmarkFlow)
+
+  const state = yield select()
+  switch (state.streamId) {
+    case "followings":
+      yield fork(fetchPostsFlowOfFollowings)
+      break
+    case "timeline":
+      yield fork(fetchPostsFlowOfTimeline)
+      break
+    default:
+  }
 }
 
 export default rootSaga
