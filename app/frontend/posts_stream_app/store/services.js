@@ -1,10 +1,11 @@
 import axios from "axios"
 
+import { binderApiEndpoint } from "../../settings/endpoints"
+
 export const fetchPostsFromFollowings = (page) => {
-  const url = "http://localhost:3000/api/streams/from_followings"
   const countPerPage = 10
 
-  return axios.get(url, {
+  return axios.get(`${binderApiEndpoint}/streams/from_followings`, {
     params: {
       offset: page * countPerPage,
       count: countPerPage,
@@ -13,10 +14,9 @@ export const fetchPostsFromFollowings = (page) => {
 }
 
 export const fetchPostsOfTimeline = (oldestUnixtimeNano) => {
-  const url = "http://localhost:3000/api/streams/world_timeline"
   const countPerPage = 10
 
-  return axios.get(url, {
+  return axios.get(`${binderApiEndpoint}/streams/world_timeline`, {
     params: {
       oldest_unixtime_nano: oldestUnixtimeNano,
       count: countPerPage,
@@ -27,12 +27,10 @@ export const fetchPostsOfTimeline = (oldestUnixtimeNano) => {
   }))
 }
 
-export const requestBookmark = (postUuid) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/bookmarks`
-  return axios.post(url).then(res => res.status === 200)
-}
+export const requestBookmark = postUuid => (
+  axios.post(`${binderApiEndpoint}/posts/${postUuid}/bookmarks`).then(res => res.status === 200)
+)
 
-export const requestUnbookmark = (postUuid) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/bookmarks`
-  return axios.delete(url).then(res => res.status === 200)
-}
+export const requestUnbookmark = postUuid => (
+  axios.delete(`${binderApiEndpoint}/posts/${postUuid}/bookmarks`).then(res => res.status === 200)
+)

@@ -1,17 +1,17 @@
 import axios from "axios"
 
-export const requestFollow = (userId) => {
-  const url = "http://localhost:3000/api/follows"
-  return axios.post(url, {
+import { binderApiEndpoint } from "../../settings/endpoints"
+
+export const requestFollow = userId => (
+  axios.post(`${binderApiEndpoint}/follows`, {
     opponent_user_id: userId,
   }).then(res => res.status === 200)
-}
+)
 
-export const requestUnfollow = (userId) => {
-  const url = "http://localhost:3000/api/follows"
-  return axios.delete(url, {
+export const requestUnfollow = userId => (
+  axios.delete(`${binderApiEndpoint}/follows`, {
     params: {
       opponent_user_id: userId,
     },
   }).then(res => res.status === 200)
-}
+)

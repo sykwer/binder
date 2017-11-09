@@ -1,7 +1,10 @@
 import axios from "axios"
 
+import { binderApiEndpoint } from "../../settings/endpoints"
+
 // eslint-disable-next-line
-export const requestClap = (postUuid) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/claps`
-  return axios.post(url).then(res => res.status === 200)
-}
+export const requestClap = postUuid => (
+  axios.post(
+    `${binderApiEndpoint}/posts/${postUuid}/claps`,
+  ).then(res => res.status === 200)
+)

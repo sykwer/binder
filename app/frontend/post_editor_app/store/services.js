@@ -1,22 +1,24 @@
 import axios from "axios"
 
-export const requestSaveContentDraft = (postUuid, text) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/content_draft`
-  return axios.patch(url, {
+import {
+  binderApiEndpoint,
+  googleBookApiEndpoint,
+} from "../../settings/endpoints"
+
+export const requestSaveContentDraft = (postUuid, text) => (
+  axios.patch(`${binderApiEndpoint}/posts/${postUuid}/content_draft`, {
     content_draft: text,
   }).then(res => res.status === 200)
-}
+)
 
-export const requestSaveTitleDraft = (postUuid, text) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/title_draft`
-  return axios.patch(url, {
+export const requestSaveTitleDraft = (postUuid, text) => (
+  axios.patch(`${binderApiEndpoint}/posts/${postUuid}/title_draft`, {
     title_draft: text,
   }).then(res => res.status === 200)
-}
+)
 
 export const requestBookList = (bookName, author, publisher) => {
   const key = "AIzaSyCUb5azooicumCNsK8NAkRJ9lEZbNeWqLA"
-  const baseURL = "https://www.googleapis.com/books/v1/volumes"
 
   const params = []
   if (bookName) {
@@ -28,9 +30,10 @@ export const requestBookList = (bookName, author, publisher) => {
   if (publisher) {
     params.push(`inpublisher:${publisher}`)
   }
-  const url = `${baseURL}?key=${key}&maxResults=40&q=${params.join("+")}`
 
-  return axios.get(url).then(res => res.data.items)
+  return axios.get(
+    `${googleBookApiEndpoint}?key=${key}&maxResults=40&q=${params.join("+")}`,
+  ).then(res => res.data.items)
 }
 
 export const requestSaveSelectedBook = (
@@ -40,16 +43,15 @@ export const requestSaveSelectedBook = (
   title,
   author,
   publisher,
-) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/book_info`
-  return axios.patch(url, {
+) => (
+  axios.patch(`${binderApiEndpoint}/posts/${postUuid}/book_info`, {
     asin: bookAsin,
     book_image_url: image,
     book_title: title,
     book_author: author,
     book_publisher: publisher,
   }).then(res => res.status === 200)
-}
+)
 
 export const requestPostPublish = (
   postUuid,
@@ -57,8 +59,6 @@ export const requestPostPublish = (
   isSharedOnTwitter,
   isSharedOnFacebook,
 ) => {
-  const url = `http://localhost:3000/api/posts/${postUuid}/content`
-
   const attachedTagIds = []
   const createdTagNames = []
 
@@ -70,7 +70,7 @@ export const requestPostPublish = (
     }
   })
 
-  return axios.patch(url, {
+  return axios.patch(`${binderApiEndpoint}/posts/${postUuid}/content`, {
     created_tag_names: createdTagNames,
     attached_tag_ids: attachedTagIds,
     share_on_twitter: isSharedOnTwitter,
@@ -78,12 +78,11 @@ export const requestPostPublish = (
   }).then(res => res.status === 200)
 }
 
-export const requestTagsList = (q, tagNames) => {
-  const url = "http://localhost:3000/api/tags/search"
-  return axios.get(url, {
+export const requestTagsList = (q, tagNames) => (
+  axios.get(`${binderApiEndpoint}/tags/search`, {
     params: {
       q,
       excluded_names: tagNames,
     },
   }).then(res => res.data.tags)
-}
+)
