@@ -3,12 +3,14 @@ import { fork, take, select, call, put } from "redux-saga/effects"
 import { requestClap } from "./services"
 import { succeedClap } from "./actions"
 
+import { clapsCountLimit } from "../../settings/constants"
+
 function* requestClapFlow() {
   while (true) {
     yield take("CLICK_CLAP")
     const state = yield select()
 
-    if (state.clappedCountByMe >= 50) {
+    if (state.clappedCountByMe >= clapsCountLimit) {
       break
     }
 

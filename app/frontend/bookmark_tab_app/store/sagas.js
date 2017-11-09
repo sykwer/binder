@@ -15,6 +15,8 @@ import {
   notifyAllPostsFetched,
 } from "./actions"
 
+import { postsCountPerFetchInBookmarkTab } from "../../settings/constants"
+
 function* bookmarkFlow() {
   while (true) {
     const action = yield take("CLICK_BOOKMARK")
@@ -67,7 +69,7 @@ function* fetchPostsFlow() {
 
     yield put(finishFetchPosts(posts, oldestUnixTime))
 
-    if (posts.length < 20) {
+    if (posts.length < postsCountPerFetchInBookmarkTab) {
       yield put(notifyAllPostsFetched())
       break
     }

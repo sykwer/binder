@@ -1,5 +1,7 @@
 import { fork, call, take, select, put } from "redux-saga/effects"
 
+import { postsCountPerFetchInBookshelf } from "../../settings/constants"
+
 import {
   fetchPosts,
 } from "./services"
@@ -25,7 +27,7 @@ function* fetchPostsFlow() {
       newPosts,
     ))
 
-    if (newPosts.length < 10) {
+    if (newPosts.length < postsCountPerFetchInBookshelf) {
       yield put(notifyAllFetched())
       break
     }

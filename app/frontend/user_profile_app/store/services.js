@@ -1,6 +1,7 @@
 import axios from "axios"
 
 import { binderApiEndpoint } from "../../settings/endpoints"
+import { usersCountPerFetchInFollows } from "../../settings/constants"
 
 export const requestSaveProfile = (id, name, bio) => (
   axios.patch(`${binderApiEndpoint}/users/${id}/profile`, {
@@ -13,7 +14,7 @@ export const fetchFollowers = (userId, page) => (
   axios.get(`${binderApiEndpoint}/users/${userId}/followers`, {
     params: {
       page,
-      counts: 20,
+      counts: usersCountPerFetchInFollows,
       my_user_id: userId,
     },
   }).then(res => res.data.followers)
@@ -23,7 +24,7 @@ export const fetchFollowings = (userId, page) => (
   axios(`${binderApiEndpoint}/users/${userId}/followings`, {
     params: {
       page,
-      counts: 20,
+      counts: usersCountPerFetchInFollows,
       my_user_id: userId,
     },
   }).then(res => res.data.followings)

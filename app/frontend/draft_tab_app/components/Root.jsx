@@ -8,6 +8,8 @@ import {
   clickCancelDelete,
 } from "../store/actions"
 
+import { binderRootUrl } from "../../settings/endpoints"
+
 const cpnt = ({
   posts,
   toBeDeletedPostUuid,
@@ -52,13 +54,13 @@ const cpnt = ({
             key={post.uuid}
             className="draft-list-item"
           >
-            <a href={`http://localhost:3000/posts/${post.uuid}/edit`}>
+            <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
               <h2 className="post-title">
                 { post.titleDraft ? post.titleDraft : "タイトル未設定" }
               </h2>
             </a>
             <div className="item-footer clearfix">
-              <a href={`http://localhost:3000/posts/${post.uuid}/edit`}>
+              <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
                 <p className="last-edited">
                   {`Last Edited ${post.updatedAt}`}
                 </p>
@@ -78,7 +80,7 @@ const cpnt = ({
                 >
                   <a
                     className="edit-button"
-                    href={`http://localhost:3000/posts/${post.uuid}/edit`}
+                    href={`${binderRootUrl}/posts/${post.uuid}/edit`}
                   >
                     Edit
                   </a>

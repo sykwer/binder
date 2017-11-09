@@ -12,12 +12,15 @@ import {
   succeedFollowFromFollowings,
   succeedUnfollowFromFollowings,
 } from "./actions"
+
 import {
   requestFollow,
   requestUnfollow,
   fetchFollowings,
   fetchFollowers,
 } from "./services"
+
+import { usersCountPerFetchInFollows } from "../../settings/constants"
 
 function* requestFollowFlow() {
   const state = yield select()
@@ -63,7 +66,7 @@ function* fetchFollowersFlow() {
 
     yield put(finishFetchFollowers(followers, page))
 
-    if (followers.length < 20) {
+    if (followers.length < usersCountPerFetchInFollows) {
       put(notifyAllFollowersFetched())
     }
   }
@@ -83,7 +86,7 @@ function* fetchFollowingsFlow() {
 
     yield put(finishFetchFollowings(followings, page))
 
-    if (followings.length < 20) {
+    if (followings.length < usersCountPerFetchInFollows) {
       yield put(notifyAllFollowingsFetched())
     }
   }

@@ -5,6 +5,8 @@ import {
   googleBookApiEndpoint,
 } from "../../settings/endpoints"
 
+import { googleBookApiKey } from "../../settings/constants"
+
 export const requestSaveContentDraft = (postUuid, text) => (
   axios.patch(`${binderApiEndpoint}/posts/${postUuid}/content_draft`, {
     content_draft: text,
@@ -18,8 +20,6 @@ export const requestSaveTitleDraft = (postUuid, text) => (
 )
 
 export const requestBookList = (bookName, author, publisher) => {
-  const key = "AIzaSyCUb5azooicumCNsK8NAkRJ9lEZbNeWqLA"
-
   const params = []
   if (bookName) {
     params.push(`intitle:${bookName}`)
@@ -32,7 +32,7 @@ export const requestBookList = (bookName, author, publisher) => {
   }
 
   return axios.get(
-    `${googleBookApiEndpoint}?key=${key}&maxResults=40&q=${params.join("+")}`,
+    `${googleBookApiEndpoint}?key=${googleBookApiKey}&maxResults=40&q=${params.join("+")}`,
   ).then(res => res.data.items)
 }
 

@@ -2,6 +2,7 @@
 
 export const {
   binderApiEndpoint,
+  binderRootUrl,
 } = require(`./endpoints.${process.env.NODE_ENV === "production" ? "prod" : "dev"}.js`)
 
 export const {
