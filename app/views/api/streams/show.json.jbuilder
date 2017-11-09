@@ -16,5 +16,5 @@ json.posts @posts do |post|
 end
 
 if @oldest_unixtime_nano.present?
-  json.oldest_unixtime_nano @oldest_unixtime_nano
+  json.oldestUnixtimeNano @oldest_unixtime_nano
 end

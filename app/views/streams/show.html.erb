@@ -1,9 +1,12 @@
 <%= render "shared/green_header" %>
 <div class="streams-page">
   <div class="main-wrapper">
-    <h2 class="stream-title"><%= @stream_name %></h2>
+    <h2 class="stream-title"><%= @stream_title %></h2>
     <%= content_tag :div,
-      id: "posts_stream_app" do %>
+      id: "posts_stream_app",
+      data: {
+        streamId: @stream_id,
+      }.to_json do %>
     <% end %>
   </div>
 </div>

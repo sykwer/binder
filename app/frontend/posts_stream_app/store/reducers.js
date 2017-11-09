@@ -42,6 +42,7 @@ const isAllFetched = (state = false, action) => {
   }
 }
 
+// only for stream identified followings
 const page = (state = null, action) => {
   switch (action.type) {
     case "FINISH_FETCH":
@@ -51,10 +52,27 @@ const page = (state = null, action) => {
   }
 }
 
+// only for stream identified timeline
+const oldestUnixtimeNano = (state = null, action) => {
+  switch (action.type) {
+    case "FINISH_FETCH":
+      return action.oldestUnixtimeNano
+    default:
+      return state
+  }
+}
+
+// eslint-disable-next-line
+const streamId = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   posts,
   isAllFetched,
   page,
+  oldestUnixtimeNano,
+  streamId,
 })
 
 export default rootReducer
