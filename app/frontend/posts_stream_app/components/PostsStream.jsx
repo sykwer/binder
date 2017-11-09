@@ -21,17 +21,17 @@ const cpnt = ({
         className="book-image"
       />
       <div className="post-info">
-        <a className="post-title" href={`posts/${post.uuid}`}>{post.title}</a>
-        <a className="post-content" href={`posts/${post.uuid}`}>
+        <a className="post-title" href={`/posts/${post.uuid}`}>{post.title}</a>
+        <a className="post-content" href={`/posts/${post.uuid}`}>
           {renderHTML(post.content.replace(/<(?!br\s*\/?)[^>]+>/g, ""))}
         </a>
       </div>
       <div className="profile-info clearfix">
-        <a href={`@${post.userUserName}`}>
+        <a href={`/@${post.userUserName}`}>
           <img className="profile-image" src={post.userImageUrl} alt={post.userName} />
         </a>
         <div className="profile-right">
-          <a className="profile-name" href={`@${post.userUserName}`}>{post.userName}</a>
+          <a className="profile-name" href={`/@${post.userUserName}`}>{post.userName}</a>
           <p className="post-published-at">{post.publishedAt}</p>
         </div>
       </div>
