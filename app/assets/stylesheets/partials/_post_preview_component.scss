@@ -88,6 +88,7 @@
         font-weight: bold;
         letter-spacing: 1.1px;
         color: $post_title_color;
+        cursor: text;
       }
 
       .post-content {
@@ -97,6 +98,7 @@
         color: $post_content_color;
         opacity: 0.9;
         font-size: 17px;
+        cursor: text;
 
         p {
           margin: 0;
