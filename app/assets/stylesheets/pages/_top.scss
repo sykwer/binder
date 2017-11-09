@@ -3,8 +3,62 @@
   padding: 130px 0;
   background-color: white;
 
-  .from-followings-wrapper {
+  .world-timeline-wrapper {
     margin: 0 auto;
+
+    @media (min-width: 1100px) {
+      width: 1000px;
+    }
+
+    @media (max-width: 1099px) and (min-width: $small_plus_one) {
+      width: 90%;
+    }
+
+    @media (max-width: $small) {
+      width: calc(100% - (20px * 2));
+    }
+
+    .world-timeline-header {
+      position: relative;
+      border-bottom: 1px solid $light_gray;
+
+      @media (min-width: $small_plus_one) {
+        margin-bottom: 25px;  // == grid gap
+      }
+
+      @media (max-width: $small) {
+        margin-bottom: 20px;  // == grid gap
+      }
+
+      .world-timeline-title {
+        padding-bottom: 10px;
+        margin-bottom: 0;
+        width: 100px;
+        border-bottom: 2px solid $gray91;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+
+        a {
+          color: $post_title_color;
+        }
+      }
+
+      .more-world-timeline {
+        position: absolute;
+        bottom: 10px;
+        right: 0;
+        display: inline-block;
+        font-size: 15px;
+        color: $gray56;
+        opacity: 0.7;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  .from-followings-wrapper {
+    margin: 50px auto 0;
 
     @media (min-width: 1100px) {
       width: 1000px;
