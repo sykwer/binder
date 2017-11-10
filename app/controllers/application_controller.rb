@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def badic_auth!
+  def basic_auth!
     authenticate_or_request_with_http_basic do |username, password|
       Devise.secure_compare(username, ENV["BASIC_AUTH_USERNAME"]) &&
         Devise.secure_compare(password, ENV["BASIC_AUTH_PASSWORD"])
