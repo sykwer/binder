@@ -66,5 +66,8 @@
 
   .signup-button {
     color: $fresh_green;
+    padding: 5px 10px;
+    border: solid 1px $fresh_green;
+    border-radius: 5px;
   }
 }
