@@ -16,6 +16,7 @@ const run = () => {
         facebookAuthPath: data.facebookAuthPath,
         twitterAuthPath: data.twitterAuthPath,
         buttonId: data.buttonId,
+        modalMode: data.modalMode,
       }
 
       const store = createStore(

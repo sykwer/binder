@@ -3,13 +3,17 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
 import LoginModal from "./LoginModal"
-import LoginButton from "./LoginButton"
+import SigninButton from "./SigninButton"
+import SignupButton from "./SignupButton"
 
 const cpnt = ({ isModalDisplayed, buttonId }) => {
   let button
   switch (buttonId) {
-    case "login-button":
-      button = <LoginButton />
+    case "signin-button":
+      button = <SigninButton />
+      break
+    case "signup-button":
+      button = <SignupButton />
       break
     default:
   }

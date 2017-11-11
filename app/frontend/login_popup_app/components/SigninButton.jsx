@@ -6,13 +6,13 @@ import { openModal } from "../store/actions"
 
 const cpnt = ({ handleClickOpenModal }) => (
   <button
-    className="login-button"
+    className="signin-button"
     onClick={(e) => {
       e.stopPropagation()
       handleClickOpenModal()
     }}
   >
-    Signin / Signup
+    Sign in
   </button>
 )
 
@@ -26,9 +26,9 @@ const mapDispatchToProps = dispatch => ({
   },
 })
 
-const LoginButton = connect(
+const SigninButton = connect(
   null,
   mapDispatchToProps,
 )(cpnt)
 
-export default LoginButton
+export default SigninButton

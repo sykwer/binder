@@ -11,6 +11,17 @@ const isModalDisplayed = (state = false, action) => {
   }
 }
 
+const modalMode = (state = null, action) => {
+  switch (action.type) {
+    case "CHANGE_TO_SIGNUP_MODE":
+      return "signup"
+    case "CHANGE_TO_SIGNIN_MODE":
+      return "signin"
+    default:
+      return state
+  }
+}
+
 // eslint-disable-next-line
 const facebookAuthPath = (state = null, action) => {
   return state
@@ -23,11 +34,14 @@ const twitterAuthPath = (state = null, action) => {
 
 // eslint-disable-next-line
 const buttonId = (state = null, action) => {
-  return state // login-button
+  return state
 }
+// signin-button
+// signup-button
 
 const rootReducer = combineReducers({
   isModalDisplayed,
+  modalMode,
   facebookAuthPath,
   twitterAuthPath,
   buttonId,

@@ -2,10 +2,17 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { closeModal } from "../store/actions"
+import {
+  closeModal,
+  changeToSignupMode,
+  changeToSigninMode,
+} from "../store/actions"
 
 const cpnt = ({
   handleClickCloseModal,
+  handleClickChangeToSignup,
+  handleClickChangeToSignin,
+  isSignupMode,
   facebookAuthPath,
   twitterAuthPath,
 }) => (
@@ -19,7 +26,7 @@ const cpnt = ({
     }}
   >
     <div
-      className="login-modal"
+      className="login-modal cancel-focus-outline"
       role="button"
       tabIndex="0"
       onClick={(e) => {
@@ -31,33 +38,72 @@ const cpnt = ({
           className="facebook-login-button login-button"
           href={facebookAuthPath}
         >
-          Login with facebook
+          {isSignupMode ? "Facebookで登録する" : "facebookでログインする"}
         </a>
         <a
           className="twitter-login-button login-button"
           href={twitterAuthPath}
         >
-          Login with twitter
+          {isSignupMode ? "Twitterで登録する" : "Twitterでログインする"}
         </a>
       </div>
+      {
+        isSignupMode ? (
+          <a
+            className="modal-mode-changer cancel-focus-outline"
+            role="button"
+            tabIndex="0"
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              handleClickChangeToSignin()
+            }}
+          >
+            ログインする
+          </a>
+        ) : (
+          <a
+            className="modal-mode-changer cancel-focus-outline"
+            role="button"
+            tabIndex="0"
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              handleClickChangeToSignup()
+            }}
+          >
+            新規登録する
+          </a>
+        )
+      }
     </div>
   </div>
 )
 
 cpnt.propTypes = {
   handleClickCloseModal: PropTypes.func.isRequired,
+  handleClickChangeToSignin: PropTypes.func.isRequired,
+  handleClickChangeToSignup: PropTypes.func.isRequired,
   facebookAuthPath: PropTypes.string.isRequired,
   twitterAuthPath: PropTypes.string.isRequired,
+  isSignupMode: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = state => ({
   facebookAuthPath: state.facebookAuthPath,
   twitterAuthPath: state.twitterAuthPath,
+  isSignupMode: state.modalMode === "signup",
 })
 
 const mapDispatchToProps = dispatch => ({
   handleClickCloseModal: () => {
     dispatch(closeModal())
+  },
+  handleClickChangeToSignin: () => {
+    dispatch(changeToSigninMode())
+  },
+  handleClickChangeToSignup: () => {
+    dispatch(changeToSignupMode())
   },
 })
 
