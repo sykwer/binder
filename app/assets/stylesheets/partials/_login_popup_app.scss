@@ -13,16 +13,18 @@
       margin: 150px auto 0;
       background-color: white;
       border: solid 1px $gray91;
+      height: 400px;
 
       @media (min-width: $medium_plus_one) {
-        height: 400px;
         width: 600px;
       }
 
       @media (min-width: $small_plus_one) and (max-width: $medium) {
+        width: 90%;
       }
 
       @media (max-width: $small) {
+        width: 90%;
       }
 
       .buttons-wrapper {
