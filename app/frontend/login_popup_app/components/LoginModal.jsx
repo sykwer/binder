@@ -59,7 +59,7 @@ const cpnt = ({
               handleClickChangeToSignin()
             }}
           >
-            ログインする
+            ログインはこちら
           </a>
         ) : (
           <a
@@ -72,7 +72,7 @@ const cpnt = ({
               handleClickChangeToSignup()
             }}
           >
-            新規登録する
+            新規登録はこちら
           </a>
         )
       }
