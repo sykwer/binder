@@ -12,17 +12,19 @@
   </div>
   <%= render "shared/posts_std_grid", posts: @posts_from_timeline %>
   </div>
-  <div class="from-followings-wrapper">
-    <div class="from-followings-header clearfix">
-      <h2 class="from-followings-title">
-        <%= link_to "From your followings", streams_from_followings_path %>
-      </h2>
-      <%= link_to "More >",
-        streams_from_followings_path,
-        class: "more-from-followings"%>
+  <% if user_signed_in? %>
+    <div class="from-followings-wrapper">
+      <div class="from-followings-header clearfix">
+        <h2 class="from-followings-title">
+          <%= link_to "From your followings", streams_from_followings_path %>
+        </h2>
+        <%= link_to "More >",
+          streams_from_followings_path,
+          class: "more-from-followings"%>
+      </div>
+      <%= render "shared/posts_std_grid", posts: @posts_from_followings %>
     </div>
-    <%= render "shared/posts_std_grid", posts: @posts_from_followings %>
-  </div>
+  <% end %>
   <div class="people-you-may-know-wrapper">
     <div class="people-you-may-know-header">
       <h2 class="people-you-may-know-title">People you may know</h2>
