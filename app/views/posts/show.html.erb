@@ -45,12 +45,24 @@
         }.to_json do %>
       <% end %>
     </div>
-    <%= content_tag :div,
-      class: "bookmark-component-root-div bookmark-button-wrapper",
-      data: {
-        postUuid: @post.uuid,
-        isBookmarked: @post.bookmarked_by?(current_user),
-      }.to_json do %>
+    <% if user_signed_in? %>
+      <%= content_tag :div,
+        class: "bookmark-component-root-div bookmark-button-wrapper",
+        data: {
+          postUuid: @post.uuid,
+          isBookmarked: @post.bookmarked_by?(current_user),
+        }.to_json do %>
+      <% end %>
+    <% else %>
+      <%= content_tag :div,
+        class: "login-popup-app bookmark-button-wrapper",
+        data: {
+          facebookAuthPath: user_facebook_omniauth_authorize_path,
+          twitterAuthPath: user_twitter_omniauth_authorize_path,
+          buttonId: "bookmark-button",
+          modalMode: "signup",
+        }.to_json do %>
+      <% end %>
     <% end %>
     <button class="twitter-button">
       <%= content_tag :i,
