@@ -30,7 +30,12 @@
             </li>
             <li class="menu-item">
               <%= content_tag :div,
-                class: "login-popup-app" do %>
+                class: "login-popup-app",
+                data: {
+                  facebookAuthPath: user_facebook_omniauth_authorize_path,
+                  twitterAuthPath: user_twitter_omniauth_authorize_path,
+                  buttonId: "login-button",
+                }.to_json do %>
               <% end %>
             </li>
           <% end %>
