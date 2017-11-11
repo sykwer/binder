@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import LoginModal from "./LoginModal"
 import SigninButton from "./SigninButton"
 import SignupButton from "./SignupButton"
+import BookmarkButton from "./BookmarkButton"
 
 const cpnt = ({ isModalDisplayed, buttonId }) => {
   let button
@@ -14,6 +15,9 @@ const cpnt = ({ isModalDisplayed, buttonId }) => {
       break
     case "signup-button":
       button = <SignupButton />
+      break
+    case "bookmark-button":
+      button = <BookmarkButton />
       break
     default:
   }
