@@ -23,12 +23,6 @@
             </li>
           <% else %>
             <li class="menu-item">
-              <%= link_to "Facebook", user_facebook_omniauth_authorize_path %>
-            </li>
-            <li class="menu-item">
-              <%= link_to "Twitter", user_twitter_omniauth_authorize_path %>
-            </li>
-            <li class="menu-item">
               <%= content_tag :div,
                 class: "login-popup-app",
                 data: {
