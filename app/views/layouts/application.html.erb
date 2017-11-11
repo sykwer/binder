@@ -17,6 +17,7 @@
     <%= javascript_pack_tag 'follow_button' if request.path.match(/\/posts\/[a-z0-9-]+/) && defined?(@user) && current_user != @user %>
     <%= javascript_pack_tag 'draft_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/drafts/) %>
     <%= javascript_pack_tag 'posts_stream_app' if request.path.match(/\/streams\/.+/) %>
+    <%= javascript_pack_tag 'login_popup_app' %>
   </head>
 
   <body>
