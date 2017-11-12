@@ -7,6 +7,7 @@ import SigninButton from "./SigninButton"
 import SignupButton from "./SignupButton"
 import BookmarkButton from "./BookmarkButton"
 import ClapButton from "./ClapButton"
+import FollowButton from "./FollowButton"
 
 const cpnt = ({ isModalDisplayed, buttonId }) => {
   let button
@@ -22,6 +23,9 @@ const cpnt = ({ isModalDisplayed, buttonId }) => {
       break
     case "clap-button":
       button = <ClapButton />
+      break
+    case "follow-button":
+      button = <FollowButton />
       break
     default:
   }
