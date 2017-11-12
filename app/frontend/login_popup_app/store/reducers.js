@@ -38,6 +38,18 @@ const buttonId = (state = null, action) => {
 }
 // signin-button
 // signup-button
+// bookmark-button
+// clap-button
+
+// eslint-disable-next-line
+const clappedCount = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const clapImage = (state = null, action) => {
+  return state
+}
 
 const rootReducer = combineReducers({
   isModalDisplayed,
@@ -45,6 +57,8 @@ const rootReducer = combineReducers({
   facebookAuthPath,
   twitterAuthPath,
   buttonId,
+  clappedCount,
+  clapImage,
 })
 
 export default rootReducer

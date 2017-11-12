@@ -6,6 +6,7 @@ import LoginModal from "./LoginModal"
 import SigninButton from "./SigninButton"
 import SignupButton from "./SignupButton"
 import BookmarkButton from "./BookmarkButton"
+import ClapButton from "./ClapButton"
 
 const cpnt = ({ isModalDisplayed, buttonId }) => {
   let button
@@ -18,6 +19,9 @@ const cpnt = ({ isModalDisplayed, buttonId }) => {
       break
     case "bookmark-button":
       button = <BookmarkButton />
+      break
+    case "clap-button":
+      button = <ClapButton />
       break
     default:
   }
