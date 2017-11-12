@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    redirect_to post_path(@post) unless current_user == @post.user
   end
 
   def destroy

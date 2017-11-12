@@ -34,23 +34,49 @@
   </div>
   <div class="action-buttons">
     <div class="bottom-clap-button-wrapper">
-      <%= content_tag :div,
-        id: "clap-button-root",
-        data: {
-          postUuid: @post.uuid,
-          clappedCount: @post.claps_count,
-          clappedCountByMe: current_user.present? ? current_user.clap_count_of(@post) : 0,
-          beforeClapImage: image_url("before_clap"),
-          afterClapImage: image_url("after_clap"),
-        }.to_json do %>
+      <% if user_signed_in? %>
+        <%= content_tag :div,
+          id: "clap-button-root",
+          data: {
+            postUuid: @post.uuid,
+            clappedCount: @post.claps_count,
+            clappedCountByMe: current_user.present? ? current_user.clap_count_of(@post) : 0,
+            beforeClapImage: image_url("before_clap"),
+            afterClapImage: image_url("after_clap"),
+          }.to_json do %>
+        <% end %>
+      <% else %>
+        <%= content_tag :div,
+          class: "login-popup-app",
+          data: {
+            facebookAuthPath: user_facebook_omniauth_authorize_path,
+            twitterAuthPath: user_twitter_omniauth_authorize_path,
+            buttonId: "clap-button",
+            modalMode: "signup",
+            clappedCount: @post.claps_count,
+            clapImage: image_url("before_clap"),
+          }.to_json do %>
+        <% end %>
       <% end %>
     </div>
-    <%= content_tag :div,
-      class: "bookmark-component-root-div bookmark-button-wrapper",
-      data: {
-        postUuid: @post.uuid,
-        isBookmarked: @post.bookmarked_by?(current_user),
-      }.to_json do %>
+    <% if user_signed_in? %>
+      <%= content_tag :div,
+        class: "bookmark-component-root-div bookmark-button-wrapper",
+        data: {
+          postUuid: @post.uuid,
+          isBookmarked: @post.bookmarked_by?(current_user),
+        }.to_json do %>
+      <% end %>
+    <% else %>
+      <%= content_tag :div,
+        class: "login-popup-app bookmark-button-wrapper",
+        data: {
+          facebookAuthPath: user_facebook_omniauth_authorize_path,
+          twitterAuthPath: user_twitter_omniauth_authorize_path,
+          buttonId: "bookmark-button",
+          modalMode: "signup",
+        }.to_json do %>
+      <% end %>
     <% end %>
     <button class="twitter-button">
       <%= content_tag :i,
@@ -112,15 +138,25 @@
       <div class="author-profile-right">
         <p class="author-profile-name"><%= @post.user.name %></p>
         <div class="follow-button-wrapper">
-          <% unless current_user == @post.user %>
+          <% if user_signed_in? && current_user != @post.user %>
             <%= content_tag :div,
               id: "follow-button-component-id",
               data: {
                 userId: @post.user.id,
                 isFollowed: current_user.present? ? @post.user.followed_by?(current_user) : false,
               }.to_json do %>
+            <% end %>
+          <% elsif !user_signed_in? %>
+            <%= content_tag :div,
+              class: "login-popup-app",
+              data: {
+                facebookAuthPath: user_facebook_omniauth_authorize_path,
+                twitterAuthPath: user_twitter_omniauth_authorize_path,
+                buttonId: "follow-button",
+                modalMode: "signup",
+              }.to_json do %>
+            <% end %>
           <% end %>
-        <% end %>
         </div>
         <p class="author-profile-bio"><%= @post.user.bio %></p>
       </div>

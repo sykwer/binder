@@ -8,10 +8,43 @@
     <div class="header-upper-right">
       <nav class="header-menu">
         <ul>
-          <li class="menu-item write-record"><%= link_to "Write a Record", posts_path, method: :post %></li>
-          <li class="menu-item icon"><i class="fa fa-cog" aria-hidden="true"></i></li>
-          <li class="menu-item icon"><i class="fa fa-bell-o" aria-hidden="true"></i></li>
-          <li class="menu-item profile-window"><%= link_to image_tag(current_user.image_url), "/@#{current_user.username}" %></li>
+          <% if user_signed_in? %>
+            <li class="menu-item write-record">
+              <%= link_to "Write a Record", posts_path, method: :post %>
+            </li>
+            <li class="menu-item icon">
+              <i class="fa fa-cog" aria-hidden="true"></i>
+            </li>
+            <li class="menu-item icon">
+              <i class="fa fa-bell-o" aria-hidden="true"></i>
+            </li>
+            <li class="menu-item profile-window">
+              <%= link_to image_tag(current_user.image_url), "/@#{current_user.username}" %>
+            </li>
+          <% else %>
+            <li class="menu-item">
+              <%= content_tag :div,
+                class: "login-popup-app",
+                data: {
+                  facebookAuthPath: user_facebook_omniauth_authorize_path,
+                  twitterAuthPath: user_twitter_omniauth_authorize_path,
+                  buttonId: "signin-button",
+                  modelMode: "signin"
+                }.to_json do %>
+              <% end %>
+            </li>
+            <li class="menu-item">
+              <%= content_tag :div,
+                class: "login-popup-app",
+                data: {
+                  facebookAuthPath: user_facebook_omniauth_authorize_path,
+                  twitterAuthPath: user_twitter_omniauth_authorize_path,
+                  buttonId: "signup-button",
+                  modalMode: "signup"
+                }.to_json do %>
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </nav>
     </div>
