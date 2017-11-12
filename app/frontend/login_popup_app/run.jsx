@@ -17,8 +17,8 @@ const run = () => {
         twitterAuthPath: data.twitterAuthPath,
         buttonId: data.buttonId,
         modalMode: data.modalMode,
-        clappedCount: data.clappedCount ? data.clappedCount : null,
-        clapImage: data.clapImage ? data.clapImage : null,
+        clappedCount: data.buttonId === "clap-button" ? data.clappedCount : null,
+        clapImage: data.buttonId === "clap-button" ? data.clapImage : null,
       }
 
       const store = createStore(
