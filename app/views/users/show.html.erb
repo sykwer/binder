@@ -34,11 +34,11 @@
             <%= link_to "Drafts", "/@#{@user.username}/drafts",
             class: @menu.eql?("drafts") ? "active menu-item" : "menu-item" %>
           </li>
+        <% end %>
           <li>
             <%= link_to "Bookmarks", "/@#{@user.username}/bookmarks",
               class: @menu.eql?("bookmarks") ? "active menu-item" : "menu-item" %>
           </li>
-        <% end %>
       </ul>
     </div>
   </div>
