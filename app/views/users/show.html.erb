@@ -34,46 +34,58 @@
             <%= link_to "Drafts", "/@#{@user.username}/drafts",
             class: @menu.eql?("drafts") ? "active menu-item" : "menu-item" %>
           </li>
+        <% end %>
           <li>
             <%= link_to "Bookmarks", "/@#{@user.username}/bookmarks",
               class: @menu.eql?("bookmarks") ? "active menu-item" : "menu-item" %>
           </li>
-        <% end %>
       </ul>
     </div>
   </div>
   <div class="mypage-lower">
     <% if @menu == "bookshelf" || @menu.blank? %>
-      <%= content_tag :div,
-        id: "bookshelf-app",
-        data: {
-          userId: @user.id
-        }.to_json do %>
+      <% if @user.has_published_post? %>
+        <%= content_tag :div,
+          id: "bookshelf-app",
+          data: {
+            userId: @user.id
+          }.to_json do %>
+        <% end %>
+      <% else %>
+        <p class="no-contents-comment">Bookshelf is empty</p>
       <% end %>
     <% end %>
     <% if @menu == "bookmarks" %>
-      <%= content_tag :div,
-        id: "bookmark-tab-app",
-        data: {
-          userId: @user.id,
-          beforeClapImage: image_url("before_clap"),
-          afterClapImage: image_url("after_clap"),
-        }.to_json do %>
+      <% if @user.has_bookmarked_post? %>
+        <%= content_tag :div,
+          id: "bookmark-tab-app",
+          data: {
+            userId: @user.id,
+            beforeClapImage: image_url("before_clap"),
+            afterClapImage: image_url("after_clap"),
+          }.to_json do %>
+        <% end %>
+      <% else %>
+        <p class="no-contents-comment">No bookmarks</p>
       <% end %>
     <% end %>
     <% if @menu == "drafts" && @user == current_user %>
-      <%= content_tag :div,
-        id: "draft-tab-app",
-        data: {
-          userName: current_user.username,
-          posts: @draft_posts.map do |post|
-            {
-              uuid: post.uuid,
-              titleDraft: post.title_draft,
-              updatedAt: format_date(post.updated_at),
-            }
-          end,
-        }.to_json do %>
+      <% if @draft_posts.present? %>
+        <%= content_tag :div,
+          id: "draft-tab-app",
+          data: {
+            userName: current_user.username,
+            posts: @draft_posts.map do |post|
+              {
+                uuid: post.uuid,
+                titleDraft: post.title_draft,
+                updatedAt: format_date(post.updated_at),
+              }
+            end,
+          }.to_json do %>
+        <% end %>
+      <% else %>
+        <p class="no-contents-comment">No drafts</p>
       <% end %>
     <% end %>
   </div>
