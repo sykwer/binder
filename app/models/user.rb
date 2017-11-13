@@ -35,6 +35,14 @@ class User < ApplicationRecord
     facebook_uid.present?
   end
 
+  def has_bookmarked_post?
+    Post.bookmarked_by(self).last.present?
+  end
+
+  def has_published_post?
+    Post.published.where(user_id: id).last.present?
+  end
+
   def follower_ids
     Follow.where(destination_id: id).pluck(:source_id)
   end
