@@ -23,16 +23,39 @@
 
     .title {
       text-align: center;
+
+      @media (min-width: $medium_plus_one) {
+        font-size: 30px;
+      }
+
+      @media (min-width: $small_plus_one) and (max-width: $medium) {
+        font-size: 25px;
+      }
+
+      @media (max-width: $small) {
+        font-size: 20px;
+      }
     }
   }
 
   .followers-follows-list {
-    width: 610px;
     margin: 50px auto 0;
+
+    @media (min-width: $medium_plus_one) {
+      width: 610px;
+    }
+
+    @media (min-width: $small_plus_one) and (max-width: $medium) {
+      width: 500px;
+    }
+
+    @media (max-width: $small) {
+      width: 90%;
+    }
 
     .followers-follows-item {
       margin-top: 20px;
-      width: 610px;
+      width: 100%;
 
       .item-left {
         width: 50px;
@@ -50,13 +73,24 @@
       }
 
       .item-center {
-        width: 440px;
+        width: calc((100% - 50px) * 0.77);
         float: left;
 
         .item-center-upper {
 
           .profile-name {
-            font-size: 16px;
+
+            @media (min-width: $medium_plus_one) {
+              font-size: 16px;
+            }
+
+            @media (min-width: $small_plus_one) and (max-width: $medium) {
+              font-size: 15px;
+            }
+
+            @media (max-width: $small) {
+              font-size: 14px;
+            }
           }
 
           .profile-name:hover {
@@ -68,8 +102,21 @@
 
           .profile-bio {
             color: $gray56;
-            font-size: 14px;
-            letter-spacing: 0.5px;
+
+            @media (min-width: $medium_plus_one) {
+              font-size: 14px;
+              letter-spacing: 0.5px;
+            }
+
+            @media (min-width: $small_plus_one) and (max-width: $medium) {
+              font-size: 13px;
+              letter-spacing: 0.5px;
+            }
+
+            @media (max-width: $small) {
+              font-size: 12px;
+              letter-spacing: 0.3px;
+            }
           }
 
           .profile-bio:hover {
@@ -79,15 +126,32 @@
       }
 
       .item-right {
-        width: 120px;
+        width: calc((100% - 50px) * 0.23);
         float: left;
 
         .follow-button-in-list {
           border: 1.2px solid $fresh_green;
           color: $fresh_green;
           opacity: 0.7;
-          border-radius: 15px;
-          padding: 6px 20px;
+          letter-spacing: 0.8px;
+
+          @media (min-width: $medium_plus_one) {
+            font-size: 14px;
+            padding: 6px 29px;
+            border-radius: 15px;
+          }
+
+          @media (min-width: $small_plus_one) and (max-width: $medium) {
+            font-size: 12px;
+            padding: 5px 22px;
+            border-radius: 10px;
+          }
+
+          @media (max-width: $small) {
+            font-size: 11px;
+            padding: 5px 17px;
+            border-radius: 10px;
+          }
         }
 
         .following-button-in-list {
@@ -95,8 +159,25 @@
           color: white;
           opacity: 0.9;
           border-radius: 15px;
-          padding: 6px 20px;
           letter-spacing: 0.5px;
+
+          @media (min-width: $medium_plus_one) {
+            font-size: 14px;
+            padding: 6px 20px;
+            border-radius: 15px;
+          }
+
+          @media (min-width: $small_plus_one) and (max-width: $medium) {
+            font-size: 12px;
+            padding: 5px 13px;
+            border-radius: 10px;
+          }
+
+          @media (max-width: $small) {
+            font-size: 11px;
+            padding: 5px 10px;
+            border-radius: 10px;
+          }
         }
       }
     }
