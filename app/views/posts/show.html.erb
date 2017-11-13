@@ -41,8 +41,8 @@
             postUuid: @post.uuid,
             clappedCount: @post.claps_count,
             clappedCountByMe: current_user.present? ? current_user.clap_count_of(@post) : 0,
-            beforeClapImage: image_url("before_clap"),
-            afterClapImage: image_url("after_clap"),
+            beforeClapImage: image_url("before_clap.png"),
+            afterClapImage: image_url("after_clap.png"),
           }.to_json do %>
         <% end %>
       <% else %>
