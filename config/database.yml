@@ -49,6 +49,14 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+
+staging:
+  <<: *default
+  database: dailybook_stg
+  username: sykwer
+  password: <%= ENV['DAILYBOOK_STG_DB_PASSWORD'] %>
+  host: dailybook-stg-db.cbr33z07eabr.ap-northeast-1.rds.amazonaws.com
+
 production:
   <<: *default
   database: dailybook_prod

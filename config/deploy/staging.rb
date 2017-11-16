@@ -7,7 +7,7 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
-
+server "13.115.26.164", user: "ec2-user", roles: %w(app web db)
 
 # role-based syntax
 # ==================
@@ -31,7 +31,7 @@
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
-
+set :rails_env, :staging
 
 # Custom SSH Options
 # ==================
