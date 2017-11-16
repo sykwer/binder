@@ -44,7 +44,7 @@
     }
 
     @media (max-width: $small) {
-      height: 100px;
+      height: 110px;
     }
 
 
@@ -80,7 +80,7 @@
       }
 
       @media (max-width: $small) {
-        width: calc(90% - 50px - 70px);
+        width: calc(90% - 50px - 50px);
       }
 
       .profile-name {
@@ -95,7 +95,7 @@
         }
 
         @media (max-width: $small) {
-          font-size: 12px;
+          font-size: 15px;
         }
       }
 
@@ -113,7 +113,7 @@
         }
 
         @media (max-width: $small) {
-          font-size: 9px;
+          font-size: 12px;
         }
       }
 
@@ -132,7 +132,7 @@
         }
 
         @media (max-width: $small) {
-          font-size: 9px;
+          font-size: 11px;
           margin-top: 3px;
         }
       }
@@ -155,11 +155,13 @@
         }
 
         @media (max-width: $small) {
-          height: 100px;
+          height: 110px;
+          width: calc(110px * 2/3);
         }
 
         img {
           height: 100%;
+          width: 100%;
         }
       }
     }
@@ -167,6 +169,7 @@
     .post-tags {
       position: absolute;
       left: 0;
+      bottom: 0;
 
       @media (min-width: $medium_plus_one) {
         top: 85px;
@@ -179,7 +182,6 @@
       }
 
       @media (max-width: $small) {
-        top: 65px;
         width: calc(90% - 40px);
       }
 
@@ -193,32 +195,28 @@
           padding: 5px;
           font-size: 14px;
           margin-right: 5px;
-          margin-bottom: 5px;
         }
 
         @media (min-width: $small-plus-one) and (max-width: $medium) {
           padding: 5px;
           font-size: 12px;
           margin-right: 4px;
-          margin-bottom: 6px;
         }
 
         @media (max-width: $small) {
           padding: 3px;
-          font-size: 6px;
+          font-size: 10px;
           margin-right: 2px;
-          margin-bottom: 4px;
         }
       }
     }
   }
 
   .post-content {
-    margin-top: 50px;
+    margin-top: 40px;
     letter-spacing: 1px;
     line-height: 2;
     color: $post_content_color;
-    opacity: 0.9;
 
     @media (min-width: $medium-plus-one) {
       font-size: 17px;
@@ -264,7 +262,7 @@
 
   .action-buttons {
     position: relative;
-    margin-top: 100px;
+    margin-top: 40px;
     height: 135px;
     border-bottom: 1px solid $gray91;
 
@@ -318,6 +316,7 @@
         display: block;
         float: left;
         height: 120px;
+        width: calc(120px * 2/3);
         box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
       }
 
@@ -325,14 +324,14 @@
         float: left;
         margin-left: 20px;
         color: $post_content_color;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
 
         @media (min-width: $medium-plus-one) {
           width: calc(700px - 120px);
         }
 
         @media (max-width: $medium) {
-          width: calc(90% - 120px);
+          width: calc(90% - (120px * 2/3) + 14px); // 14px is extra
         }
 
         .book-title {
@@ -455,7 +454,6 @@
       right: 0;
       top: 0;
       color: $gray56;
-      opacity: 0.7;
       letter-spacing: 0.5px;
       z-index: 100;
     }
@@ -507,17 +505,23 @@
         .author-profile-name {
           display: inline-block;
           color: $post_title_color;
+          margin: 0;
+
+          @media (max-width: $small) {
+            font-size: 15px;
+          }
         }
 
         .follow-button-wrapper {
           display: inline-block;
-          margin-left: 10px;
+          margin-left: 15px;
+          vertical-align: 3px;
         }
 
         .author-profile-bio {
           color: $gray56;
-          line-height: 1.8;
-          letter-spacing: 0.5px;
+          letter-spacing: 0.3px;
+          margin-top: 7px;
         }
       }
     }
