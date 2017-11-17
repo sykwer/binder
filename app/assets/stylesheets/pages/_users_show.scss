@@ -1,5 +1,12 @@
 .mypage {
-  margin-top: 80px;
+
+  @media (min-width: $small_plus_one) {
+    margin-top: 100px;
+  }
+
+  @media (max-width: $small) {
+    margin-top: 90px;
+  }
 
   .mypage-upper {
     width: 100%;
@@ -114,7 +121,7 @@
 
             .sns-buttons {
               float: left;
-              margin-left: 30px;
+              margin-left: 40px;
               font-size: 18px;
 
               .twitter-button-wrapper {
@@ -165,22 +172,32 @@
           }
         }
 
+
+        .follow-button,
+        .following-button {
+          margin-top: 20px;
+
+          @media (min-width: $small_plus_one) {
+            padding: 10px 20px;
+            border-radius: 15px;
+          }
+
+          @media (max-width: $small) {
+            padding: 8px 18px;
+            border-radius: 12px;
+          }
+        }
+
         .follow-button {
-          margin-top: 30px;
           border: 1.2px solid $fresh_green;
           color: $fresh_green;
           opacity: 0.7;
-          border-radius: 15px;
-          padding: 10px 20px;
         }
 
         .following-button {
-          margin-top: 30px;
           background-color: $fresh_green;
           color: white;
           opacity: 0.9;
-          border-radius: 15px;
-          padding: 10px 20px;
           letter-spacing: 0.5px;
         }
 
@@ -200,9 +217,9 @@
             }
 
             @media (max-width: $small) {
-              width: 80px;
-              height: 80px;
-              border-radius: 40px;
+              width: 70px;
+              height: 70px;
+              border-radius: 35px;
             }
           }
         }
@@ -250,7 +267,7 @@
     }
 
     @media (max-width: $small) {
-      margin: 45px auto 10px;
+      margin: 30px auto 10px;
       width: 90%;
     }
 
