@@ -351,6 +351,35 @@
     }
   }
 
+  .published-posts-header {
+    position: relative;
+    margin: 0 auto;
+    height: 30px;
+
+    @media (min-width: $medium_plus_one) {
+      width: 800px;
+    }
+
+    @media (max-width: $medium) {
+      width: 90%;
+    }
+
+    .new-post-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: inline-block;
+      color: $gray56;
+      background-color: white;
+      padding: 5px 15px;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+      border: solid 1px $gray56;
+      border-radius: 10px;
+      opacity: 0.8;
+    }
+  }
+
   .no-contents-comment {
     margin: 30px auto 0;
     width: 100%;

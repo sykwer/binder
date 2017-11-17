@@ -62,7 +62,13 @@
       <% end %>
     <% end %>
     <% if @menu == "posts" %>
-      <p class="no-contents-comment">No posts</p>
+      <% if @user.has_published_post? %>
+        <div class="published-posts-header">
+          <%= link_to "New post", posts_path, method: :post, class: "new-post-button" %>
+        </div>
+      <% else %>
+        <p class="no-contents-comment">No posts</p>
+      <% end %>
     <% end %>
     <% if @menu == "bookmarks" %>
       <% if @user.has_bookmarked_post? %>
