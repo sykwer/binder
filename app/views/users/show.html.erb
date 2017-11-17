@@ -31,6 +31,12 @@
         </li>
         <% if current_user == @user %>
           <li>
+            <%= link_to "Posts", "/@#{@user.username}/posts",
+            class: @menu.eql?("posts") ? "active menu-item" : "menu-item" %>
+          </li>
+        <% end %>
+        <% if current_user == @user %>
+          <li>
             <%= link_to "Drafts", "/@#{@user.username}/drafts",
             class: @menu.eql?("drafts") ? "active menu-item" : "menu-item" %>
           </li>
@@ -54,6 +60,9 @@
       <% else %>
         <p class="no-contents-comment">Bookshelf is empty</p>
       <% end %>
+    <% end %>
+    <% if @menu == "posts" %>
+      <p class="no-contents-comment">No posts</p>
     <% end %>
     <% if @menu == "bookmarks" %>
       <% if @user.has_bookmarked_post? %>
