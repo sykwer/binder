@@ -18,6 +18,7 @@
     <%= javascript_pack_tag 'draft_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/drafts/) %>
     <%= javascript_pack_tag 'posts_stream_app' if request.path.match(/\/streams\/.+/) %>
     <%= javascript_pack_tag 'login_popup_app' %>
+    <%= javascript_pack_tag 'post_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/posts/) %>
   </head>
 
   <body>

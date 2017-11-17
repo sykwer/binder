@@ -66,6 +66,12 @@
         <div class="published-posts-header">
           <%= link_to "New post", posts_path, method: :post, class: "new-post-button" %>
         </div>
+        <%= content_tag :div,
+            id: "post-tab-app",
+            data: {
+              userId: @user.id,
+            }.to_json do %>
+        <% end %>
       <% else %>
         <p class="no-contents-comment">No posts</p>
       <% end %>
