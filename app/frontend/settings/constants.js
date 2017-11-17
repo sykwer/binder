@@ -1,6 +1,9 @@
 // bookshelf_app
 export const postsCountPerFetchInBookshelf = 10
 
+// post_tab_app
+export const postsCountPerFetchInPostTab = 10
+
 // posts_stream_app
 export const postsCountPerFetchInStream = 10
 
