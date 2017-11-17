@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 
 const cpnt = ({ facebookLink, twitterLink }) => (
   <div className="sns-buttons">
-    <span className="twitter-button">
+    <span className="twitter-button-wrapper">
       {
         twitterLink ? (
           <a href={twitterLink} target="_blank">
@@ -15,7 +15,7 @@ const cpnt = ({ facebookLink, twitterLink }) => (
         )
       }
     </span>
-    <span className="facebook-button">
+    <span className="facebook-button-wrapper">
       {
         facebookLink ? (
           <a href={facebookLink} target="_blank">

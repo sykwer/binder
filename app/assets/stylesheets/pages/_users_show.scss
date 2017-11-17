@@ -1,11 +1,18 @@
 .mypage {
-  margin-top: 100px;
+
+  @media (min-width: $small_plus_one) {
+    margin-top: 100px;
+  }
+
+  @media (max-width: $small) {
+    margin-top: 90px;
+  }
 
   .mypage-upper {
     width: 100%;
 
     .profile {
-      margin: 30px auto;
+      margin: 0 auto;
 
       @media (min-width: $small_plus_one) {
         width: 580px;
@@ -25,12 +32,12 @@
           }
 
           @media (max-width: $small) {
-            width: calc(100% - 80px - 15px); // 15px is buffer
+            width: calc(100% - 80px);
           }
 
           .name {
-            color: $black_gray;
-            margin-top: 15px;
+            color: $post_title_color;
+            margin-top: 10px;
             word-wrap: break-word;
 
             @media (min-width: $small_plus_one) {
@@ -52,8 +59,7 @@
           .bio {
             margin-top: 8px;
             color: $gray56;
-            font-size: 15px;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             word-wrap: break-word;
 
             @media (min-width: $small_plus_one) {
@@ -115,7 +121,7 @@
 
             .sns-buttons {
               float: left;
-              margin-left: 30px;
+              margin-left: 40px;
               font-size: 18px;
 
               .twitter-button-wrapper {
@@ -166,22 +172,32 @@
           }
         }
 
+
+        .follow-button,
+        .following-button {
+          margin-top: 20px;
+
+          @media (min-width: $small_plus_one) {
+            padding: 10px 20px;
+            border-radius: 15px;
+          }
+
+          @media (max-width: $small) {
+            padding: 8px 18px;
+            border-radius: 12px;
+          }
+        }
+
         .follow-button {
-          margin-top: 30px;
           border: 1.2px solid $fresh_green;
           color: $fresh_green;
           opacity: 0.7;
-          border-radius: 15px;
-          padding: 10px 20px;
         }
 
         .following-button {
-          margin-top: 30px;
           background-color: $fresh_green;
           color: white;
           opacity: 0.9;
-          border-radius: 15px;
-          padding: 10px 20px;
           letter-spacing: 0.5px;
         }
 
@@ -201,9 +217,9 @@
             }
 
             @media (max-width: $small) {
-              width: 80px;
-              height: 80px;
-              border-radius: 40px;
+              width: 70px;
+              height: 70px;
+              border-radius: 35px;
             }
           }
         }
@@ -251,7 +267,7 @@
     }
 
     @media (max-width: $small) {
-      margin: 45px auto 10px;
+      margin: 30px auto 10px;
       width: 90%;
     }
 
