@@ -366,7 +366,7 @@
 
     .new-post-button {
       position: absolute;
-      top: 0;
+      top: -13px;
       right: 0;
       display: inline-block;
       color: $gray56;
@@ -377,6 +377,11 @@
       border: solid 1px $gray56;
       border-radius: 10px;
       opacity: 0.8;
+
+
+      @media (min-width: $medium_plus_one) {
+        display: none;
+      }
     }
   }
 

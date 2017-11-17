@@ -1,9 +1,9 @@
-export const startFetch = () => ({
-  type: "START_FETCH",
+export const startFetchPosts = () => ({
+  type: "START_FETCH_POSTS",
 })
 
-export const finishFetch = (posts, postsCount) => ({
-  type: "FINISH_FETCH",
+export const finishFetchPosts = (posts, postsCount) => ({
+  type: "FINISH_FETCH_POSTS",
   posts,
   postsCount,
 })

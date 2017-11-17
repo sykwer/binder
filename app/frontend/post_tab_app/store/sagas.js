@@ -1,7 +1,7 @@
 import { fork, take, select, call, put } from "redux-saga/effects"
 
 import {
-  finishFetch,
+  finishFetchPosts,
   notifyAllFetched,
 } from "./actions"
 
@@ -10,7 +10,7 @@ import { postsCountPerFetchInPostTab } from "../../settings/constants"
 
 function* postsFetchFlow() {
   while (true) {
-    yield take("START_FETCH")
+    yield take("START_FETCH_POSTS")
 
     const state = yield select()
     const posts = yield call(
@@ -19,7 +19,7 @@ function* postsFetchFlow() {
       state.postsCount,
     )
 
-    yield put(finishFetch(posts, posts.length))
+    yield put(finishFetchPosts(posts, posts.length))
 
     if (posts.length < postsCountPerFetchInPostTab) {
       yield put(notifyAllFetched())

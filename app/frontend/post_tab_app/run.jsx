@@ -6,6 +6,7 @@ import createSagaMiddleware from "redux-saga"
 
 import rootReducer from "./store/reducers"
 import rootSaga from "./store/sagas"
+import Root from "./components/Root"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
@@ -28,7 +29,7 @@ const run = () => {
 
     render(
       <Provider store={store}>
-        <p>Boot post tab app from here</p>
+        <Root />
       </Provider>,
       node,
     )
