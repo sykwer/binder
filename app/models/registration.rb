@@ -43,7 +43,7 @@ class Registration
 
     if fb_data["uid"].present? && fb_data["info"]["email"].present? &&
         fb_data["info"]["name"].present? && fb_data["info"]["image"].present? &&
-        fb_data["extra"]["raw_info"]["link"].present? && fb_data["credentials"]["token"]
+        fb_data["extra"]["raw_info"]["link"].present? && fb_data["credentials"]["token"].present?
       return
     end
     errors.add(:registration, "must be made from valid facebook auth hash")
