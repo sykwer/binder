@@ -5,8 +5,14 @@ import {
   notifyAllFetched,
 } from "./actions"
 
-import { fetchPosts } from "./services"
+import {
+  fetchPosts,
+  requestDeletePosts,
+  requestUnpublishPosts,
+} from "./services"
+
 import { postsCountPerFetchInPostTab } from "../../settings/constants"
+import { binderRootUrl } from "../../settings/endpoints"
 
 function* postsFetchFlow() {
   while (true) {
@@ -28,8 +34,38 @@ function* postsFetchFlow() {
   }
 }
 
+function* deletePostsFlow() {
+  while (true) {
+    yield take("CONFIRM_DELETE")
+    const state = yield select()
+    const isSuccess = yield call(requestDeletePosts, state.selectedPostUuids)
+
+    if (isSuccess) {
+      window.location.assign(`${binderRootUrl}/@${state.username}/posts`)
+    } else {
+      // handle failure
+    }
+  }
+}
+
+function* unpublishPostsFlow() {
+  while (true) {
+    yield take("CONFIRM_UNPUBLISH")
+    const state = yield select()
+    const isSuccess = yield call(requestUnpublishPosts, state.selectedPostUuids)
+
+    if (isSuccess) {
+      window.location.assign(`${binderRootUrl}/@${state.username}/posts`)
+    } else {
+      // handle failure
+    }
+  }
+}
+
 function* rootSaga() {
   yield fork(postsFetchFlow)
+  yield fork(deletePostsFlow)
+  yield fork(unpublishPostsFlow)
 }
 
 export default rootSaga

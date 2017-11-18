@@ -59,7 +59,7 @@ class Post < ApplicationRecord
   end
 
   def unpublish!
-    self.ispublished = false
+    self.is_published = false
     save!
   end
 

@@ -2,10 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { cancelDelete } from "../store/actions"
+import { cancelDelete, confirmDelete } from "../store/actions"
 
 const cpnt = ({
   handleClickCancelDelete,
+  handleClickConfirmDelete,
   selectedPostsCount,
 }) => (
   <div className="confirmation-window">
@@ -15,6 +16,10 @@ const cpnt = ({
     <div className="buttons-wrapper">
       <button
         className="delete-button"
+        onClick={(e) => {
+          e.stopPropagation()
+          handleClickConfirmDelete()
+        }}
       >
         Delete
       </button>
@@ -34,6 +39,7 @@ const cpnt = ({
 cpnt.propTypes = {
   selectedPostsCount: PropTypes.number.isRequired,
   handleClickCancelDelete: PropTypes.func.isRequired,
+  handleClickConfirmDelete: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -43,6 +49,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleClickCancelDelete: () => {
     dispatch(cancelDelete())
+  },
+  handleClickConfirmDelete: () => {
+    dispatch(confirmDelete())
   },
 })
 

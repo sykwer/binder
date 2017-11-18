@@ -26,6 +26,14 @@ export const resetSelectedPosts = () => ({
   type: "RESET_SELECTED_POSTS",
 })
 
+export const confirmDelete = () => ({
+  type: "CONFIRM_DELETE",
+})
+
+export const confirmUnpublish = () => ({
+  type: "CONFIRM_UNPUBLISH",
+})
+
 export const cancelDelete = () => ({
   type: "CANCEL_DELETE",
 })

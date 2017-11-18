@@ -2,10 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { cancelUnpublish } from "../store/actions"
+import { cancelUnpublish, confirmUnpublish } from "../store/actions"
 
 const cpnt = ({
   handleClickCancelUnpublish,
+  handleClickConfirmUnpublish,
   selectedPostsCount,
 }) => (
   <div className="confirmation-window">
@@ -15,6 +16,10 @@ const cpnt = ({
     <div className="buttons-wrapper">
       <button
         className="unpublish-button"
+        onClick={(e) => {
+          e.stopPropagation()
+          handleClickConfirmUnpublish()
+        }}
       >
         Unpublish
       </button>
@@ -34,6 +39,7 @@ const cpnt = ({
 cpnt.propTypes = {
   selectedPostsCount: PropTypes.number.isRequired,
   handleClickCancelUnpublish: PropTypes.func.isRequired,
+  handleClickConfirmUnpublish: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -43,6 +49,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleClickCancelUnpublish: () => {
     dispatch(cancelUnpublish())
+  },
+  handleClickConfirmUnpublish: () => {
+    dispatch(confirmUnpublish())
   },
 })
 

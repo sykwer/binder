@@ -5,6 +5,11 @@ const userId = (state = null, action) => {
   return state
 }
 
+// eslint-disable-next-line
+const username = (state = null, action) => {
+  return state
+}
+
 const posts = (state = [], action) => {
   switch (action.type) {
     case "FINISH_FETCH_POSTS":
@@ -62,6 +67,7 @@ const screenMode = (state = "LIST", action) => {
 
 const rootReducer = combineReducers({
   userId,
+  username,
   posts,
   postsCount,
   isAllFetched,
