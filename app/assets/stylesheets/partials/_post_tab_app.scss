@@ -123,3 +123,71 @@
     }
   }
 }
+
+.published-posts-bottom-window {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border-top: solid 1px $gray91;
+
+  .content-wrapper {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 30px;
+
+    .close-button {
+      position: absolute;
+      top: 0;
+      left: 15px;
+      font-size: 20px;
+      color: $gray56;
+      opacity: 0.5;
+    }
+
+    .selected-posts-count {
+      position: absolute;
+      top: 2px;
+      left: 50px;
+      padding: 2px 10px;
+      border-radius: 5px;
+      background-color: $fresh_green;
+      color: white;
+      opacity: 0.7;
+      font-size: 10px;
+    }
+
+    .count-suffix {
+      position: absolute;
+      top: 2px;
+      left: 87px;
+      color: $post_content_color;
+      font-weight: bold;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      font-size: 12px;
+    }
+
+    .delete-button {
+      position: absolute;
+      top: 0;
+      right: 60px;
+      color: red;
+      opacity: 0.7;
+      font-size: 20px;
+    }
+
+    .unpublish-button {
+      position: absolute;
+      top: 0;
+      right: 23px;
+      color: $gray56;
+      opacity: 0.7;
+      font-size: 20px;
+    }
+  }
+}
