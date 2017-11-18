@@ -31,6 +31,12 @@ const cpnt = ({
               () => { handleUnselectPost(post.id) } :
               () => { handleSelectPost(post.id) }}
           />
+          <a
+            className="edit-button"
+            href={`${binderRootUrl}/posts/${post.id}/edit`}
+          >
+            Edit
+          </a>
           <a href={`${binderRootUrl}/posts/${post.id}/edit`}>
             <h2 className="post-title">
               {post.title}
