@@ -16,9 +16,9 @@ class Post < ApplicationRecord
 
   self.primary_key = "uuid"
 
-  scope :published, lambda { where.not(first_published_at: nil) }
+  scope :published, lambda { where.not(first_published_at: nil).where(is_published: true) }
   scope :bookmarked_by, lambda { |user| joins(:bookmarks).where("bookmarks.user_id = ?", user.id) }
-  scope :not_published, lambda { where(first_published_at: nil) }
+  scope :not_published, lambda { where(is_published: false) }
 
   def self.created_posterior_to(post)
     Post.published
@@ -43,13 +43,24 @@ class Post < ApplicationRecord
   end
 
   def published?
-    first_published_at.present?
+    first_published_at.present? && is_published == true
+  end
+
+  def never_published?
+    first_published_at.blank?
   end
 
   def publish_or_update_content!
-    update!(first_published_at: Time.zone.now) unless published?
-    update!(content: content_draft)
-    update!(title: title_draft)
+    self.first_published_at = Time.zone.now if never_published?
+    self.is_published = true
+    self.content = content_draft
+    self.title = title_draft
+    save!
+  end
+
+  def unpublish!
+    self.is_published = false
+    save!
   end
 
   def bookmarked_by?(user)

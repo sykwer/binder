@@ -31,6 +31,12 @@
         </li>
         <% if current_user == @user %>
           <li>
+            <%= link_to "Posts", "/@#{@user.username}/posts",
+            class: @menu.eql?("posts") ? "active menu-item" : "menu-item" %>
+          </li>
+        <% end %>
+        <% if current_user == @user %>
+          <li>
             <%= link_to "Drafts", "/@#{@user.username}/drafts",
             class: @menu.eql?("drafts") ? "active menu-item" : "menu-item" %>
           </li>
@@ -53,6 +59,22 @@
         <% end %>
       <% else %>
         <p class="no-contents-comment">Bookshelf is empty</p>
+      <% end %>
+    <% end %>
+    <% if @menu == "posts" %>
+      <% if @user.has_published_post? %>
+        <div class="published-posts-header">
+          <%= link_to "New post", posts_path, method: :post, class: "new-post-button" %>
+        </div>
+        <%= content_tag :div,
+            id: "post-tab-app",
+            data: {
+              userId: @user.id,
+              username: @user.username,
+            }.to_json do %>
+        <% end %>
+      <% else %>
+        <p class="no-contents-comment">No posts</p>
       <% end %>
     <% end %>
     <% if @menu == "bookmarks" %>

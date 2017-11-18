@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     get "streams/from_followings", to: "streams#from_followings"
     get "streams/world_timeline", to: "streams#world_timeline"
 
+    delete "multiple_posts", to: "multiple_posts#destroy"
+    patch "multiple_posts/unpublish", to: "multiple_posts#unpublish"
+
     resources :posts, only: %i(show destroy), param: :uuid do
       resource :content_draft, controller: 'posts/content_drafts', only: %i(update)
       resource :title_draft, controller: "posts/title_drafts", only: %i(update)
