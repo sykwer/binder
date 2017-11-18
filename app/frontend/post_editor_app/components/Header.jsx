@@ -218,7 +218,7 @@ const Header = ({
                     <div className="social-share">
                       <label className="share-on-twitter" htmlFor="twitter-checkbox">
                         <input
-                          className="checkbox-button"
+                          className="checkbox-button common-checkbox-appearance"
                           type="checkbox"
                           id="twitter-checkbox"
                           checked={isTwitterChecked}
@@ -228,7 +228,7 @@ const Header = ({
                       </label>
                       <label className="share-on-facebook" htmlFor="facebook-checkbox">
                         <input
-                          className="checkbox-button"
+                          className="checkbox-button common-checkbox-appearance"
                           type="checkbox"
                           id="facebook-checkbox"
                           checked={isFacebookChecked}

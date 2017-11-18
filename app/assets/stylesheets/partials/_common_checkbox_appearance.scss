@@ -1,0 +1,25 @@
+.common-checkbox-appearance {
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  border: 1px solid rgba(143, 143, 143, 0.5); // gray56 0.5
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.common-checkbox-appearance:checked:after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 7px;
+  background: transparent;
+  top: 4px;
+  left: 2.5px;
+  border: 2.5px solid $fresh_green;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+}
