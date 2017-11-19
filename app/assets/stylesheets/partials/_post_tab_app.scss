@@ -61,6 +61,7 @@
       }
 
       @media (min-width: $small_plus_one) and (max-width: $medium) {
+        display: none; // FIXME: Delete after mobile editor created
         top: 30px;
         right: 15px;
         padding: 5px 15px;
@@ -69,6 +70,7 @@
       }
 
       @media (max-width: $small) {
+        display: none; // FIXME: Delete after mobile editor created
         top: 20px;
         right: 13px;
         padding: 3px 8px;

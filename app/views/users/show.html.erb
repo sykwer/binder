@@ -63,9 +63,6 @@
     <% end %>
     <% if @menu == "posts" %>
       <% if @user.has_published_post? %>
-        <div class="published-posts-header">
-          <%= link_to "New post", posts_path, method: :post, class: "new-post-button" %>
-        </div>
         <%= content_tag :div,
             id: "post-tab-app",
             data: {
