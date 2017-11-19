@@ -33,11 +33,11 @@ const cpnt = ({
           />
           <a
             className="edit-button"
-            href={`${binderRootUrl}/posts/${post.id}/edit`}
+            href={`${binderRootUrl}/posts/${post.id}`}
           >
             Edit
           </a>
-          <a href={`${binderRootUrl}/posts/${post.id}/edit`}>
+          <a href={`${binderRootUrl}/posts/${post.id}`}>
             <h2 className="post-title">
               {post.title}
             </h2>
