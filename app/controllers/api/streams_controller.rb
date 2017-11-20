@@ -8,7 +8,8 @@ class Api::StreamsController < Api::ApplicationController
     # workaround
     @posts = []
     post_uuids.each do |uuid|
-      @posts << posts.select { |p| p.uuid == uuid }[0]
+      post = posts.select { |p| p.uuid == uuid }[0]
+      @posts << post if post.present? # post of the uuid may not be present
     end
 
     render template: "api/streams/show"
@@ -23,7 +24,8 @@ class Api::StreamsController < Api::ApplicationController
     # workaround
     @posts = []
     post_uuids.each do |uuid|
-      @posts << posts.select { |p| p.uuid == uuid }[0]
+      post = posts.select { |p| p.uuid == uuid }[0]
+      @posts << post if post.present? # post of the uuid may not be present
     end
 
     @oldest_unixtime_nano = t.oldest_unixtime_nano
