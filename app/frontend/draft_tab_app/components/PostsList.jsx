@@ -30,7 +30,7 @@ const cpnt = ({
         <div className="list-item-main">
           <a
             className="edit-button"
-            href={`${binderRootUrl}/posts/${post.uuid}`}
+            href={`${binderRootUrl}/posts/${post.uuid}/edit`}
           >
             Edit
           </a>
