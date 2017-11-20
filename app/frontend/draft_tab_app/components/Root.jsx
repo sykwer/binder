@@ -2,169 +2,48 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import {
-  clickDeleteMenu,
-  clickDelete,
-  clickCancelDelete,
-} from "../store/actions"
-
-import { binderRootUrl } from "../../settings/endpoints"
+import PostsList from "./PostsList"
+import BottomFixedWindow from "./BottomFixedWindow"
+import DeleteScreen from "./DeleteScreen"
 
 const cpnt = ({
-  posts,
-  toBeDeletedPostUuid,
-  handleClickDeleteMenu,
-  handleClickDelete,
-  handleClickCancelDelete,
-}) => {
-  const items = posts.map(post => (
-    <div
-      key={post.uuid}
-      className="draft-list-item"
-    >
-      <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
-        <h2 className="post-title">
-          { post.titleDraft ? post.titleDraft : "タイトル未設定" }
-        </h2>
-      </a>
-      <div className="item-footer clearfix">
-        <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
-          <p className="last-edited">
-            {`Last Edited ${post.updatedAt}`}
-          </p>
-        </a>
-        <div className="menu-wrapper">
-          <i
-            className="fa fa-chevron-down draft-menu-down"
-            aria-hidden="true"
-          />
-          <div
-            role="button"
-            tabIndex="0"
-            onClick={(e) => {
-              e.stopPropagation()
-            }}
-            className="draft-menu"
-          >
-            <a
-              className="edit-button"
-              href={`${binderRootUrl}/posts/${post.uuid}/edit`}
-            >
-              Edit
-            </a>
-            <a
-              className="delete-button"
-              role="button"
-              tabIndex="0"
-              onClick={(e) => {
-                e.stopPropagation()
-                handleClickDeleteMenu(post.uuid)
-              }}
-            >
-              Delete
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  ))
-
-  return (
-    <div>
-      {
-        toBeDeletedPostUuid && (
-          <div className="delete-confirmation-window">
-            <p className="delete-confirm-msg">
-              本当にこの下書きを削除しますか?
-            </p>
-            <div className="delete-buttons-wrapper">
-              <button
-                className="delete-button"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  handleClickDelete(toBeDeletedPostUuid)
-                }}
-              >
-                Delete
-              </button>
-              <button
-                className="cancel-button"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  handleClickCancelDelete()
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        )
-      }
-      {
-        posts.length > 0 && (
-          <div className="draft-list">
-            {items}
-          </div>
-        )
-      }
-    </div>
-  )
-}
+  isListMode,
+  isDeleteMode,
+  isAnyPostSelected,
+}) => (
+  <div>
+    {
+      isListMode && (
+        <PostsList />
+      )
+    }
+    {
+      isAnyPostSelected && (
+        <BottomFixedWindow />
+      )
+    }
+    {
+      isDeleteMode && (
+        <DeleteScreen />
+      )
+    }
+  </div>
+)
 
 cpnt.propTypes = {
-  posts: PropTypes.array, // eslint-disable-line
-  toBeDeletedPostUuid: PropTypes.string,
-  handleClickDeleteMenu: PropTypes.func.isRequired,
-  handleClickDelete: PropTypes.func.isRequired,
-  handleClickCancelDelete: PropTypes.func.isRequired,
+  isListMode: PropTypes.bool.isRequired,
+  isDeleteMode: PropTypes.bool.isRequired,
+  isAnyPostSelected: PropTypes.bool.isRequired,
 }
-
-cpnt.defaultProps = {
-  posts: [],
-  toBeDeletedPostUuid: null,
-}
-
-window.addEventListener("load", () => {
-  const draftMenuDowns = document.getElementsByClassName("draft-menu-down")
-  const draftMenus = document.getElementsByClassName("draft-menu")
-
-  for (let i = 0; i < draftMenuDowns.length; i += 1) {
-    const node = draftMenuDowns[i]
-    node.addEventListener("click", (e) => {
-      e.stopPropagation()
-      const menu = e.target.nextElementSibling
-      menu.setAttribute("style", "display: block;")
-    }, false)
-  }
-
-  document.body.addEventListener("click", () => {
-    for (let i = 0; i < draftMenus.length; i += 1) {
-      const node = draftMenus[i]
-      node.setAttribute("style", "display: none;")
-    }
-  }, false)
-})
 
 const mapStateToProps = state => ({
-  posts: state.posts,
-  toBeDeletedPostUuid: state.toBeDeletedPostUuid,
-})
-
-const mapDispatchToProps = dispatch => ({
-  handleClickDeleteMenu: (postUuid) => {
-    dispatch(clickDeleteMenu(postUuid))
-  },
-  handleClickDelete: (postUuid) => {
-    dispatch(clickDelete(postUuid))
-  },
-  handleClickCancelDelete: () => {
-    dispatch(clickCancelDelete())
-  },
+  isListMode: state.screenMode === "LIST",
+  isDeleteMode: state.screenMode === "DELETE",
+  isAnyPostSelected: state.selectedPostUuids.length > 0,
 })
 
 const Root = connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(cpnt)
 
 export default Root

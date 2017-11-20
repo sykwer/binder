@@ -1,13 +1,25 @@
-export const clickDeleteMenu = postUuid => ({
-  type: "CLICK_DELETE_MENU",
+export const selectPost = postUuid => ({
+  type: "SELECT_POST",
   postUuid,
 })
 
-export const clickDelete = postUuid => ({
-  type: "CLICK_DELETE",
+export const unselectPost = postUuid => ({
+  type: "UNSELECT_POST",
   postUuid,
 })
 
-export const clickCancelDelete = () => ({
-  type: "CLICK_CANCEL_DELETE",
+export const resetSelectedPosts = () => ({
+  type: "RESET_SELECTED_POSTS",
+})
+
+export const confirmDelete = () => ({
+  type: "CONFIRM_DELETE",
+})
+
+export const cancelDelete = () => ({
+  type: "CANCEL_DELETE",
+})
+
+export const openDeleteScreen = () => ({
+  type: "OPEN_DELETE_SCREEN",
 })

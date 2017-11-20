@@ -14,7 +14,7 @@ const run = () => {
     const data = JSON.parse(node.getAttribute("data"))
 
     const initialState = {
-      userName: data.userName,
+      username: data.userName,
       posts: data.posts,
     }
 

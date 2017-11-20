@@ -2,11 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
+import { selectPost, unselectPost } from "../store/actions"
 import { binderRootUrl } from "../../settings/endpoints"
-import {
-  selectPost,
-  unselectPost,
-} from "../store/actions"
 
 const cpnt = ({
   posts,
@@ -15,36 +12,36 @@ const cpnt = ({
   handleUnselectPost,
 }) => {
   const items = posts.map((post) => {
-    const isChecked = selectedPostUuids.includes(post.id)
+    const isChecked = selectedPostUuids.includes(post.uuid)
 
     return (
       <div
+        key={post.uuid}
         className="list-item"
-        key={post.id}
       >
         <input
           type="checkbox"
           className="post-select-checkbox common-checkbox-appearance"
           checked={isChecked}
           onChange={isChecked ?
-            () => { handleUnselectPost(post.id) } :
-            () => { handleSelectPost(post.id) }}
+            () => { handleUnselectPost(post.uuid) } :
+            () => { handleSelectPost(post.uuid) }}
         />
         <div className="list-item-main">
           <a
             className="edit-button"
-            href={`${binderRootUrl}/posts/${post.id}`}
+            href={`${binderRootUrl}/posts/${post.uuid}`}
           >
             Edit
           </a>
-          <a href={`${binderRootUrl}/posts/${post.id}`}>
+          <a href={`${binderRootUrl}/posts/${post.uuid}`}>
             <h2 className="post-title">
-              {post.title}
+              { post.titleDraft ? post.titleDraft : "タイトル未設定" }
             </h2>
           </a>
-          <a href={`${binderRootUrl}/posts/${post.id}/edit`}>
-            <p className="published-at">
-              {`Published at ${post.publishedAt}`}
+          <a href={`${binderRootUrl}/posts/${post.uuid}`}>
+            <p className="last-edited">
+              {`Last Edited ${post.updatedAt}`}
             </p>
           </a>
         </div>
@@ -52,23 +49,21 @@ const cpnt = ({
     )
   })
 
-  if (posts.length === 0) {
-    return <div />
-  }
-
   return (
-    <div className="posts-list-in-tab">
-      {items}
+    <div>
+      {
+        posts.length > 0 && (
+          <div className="posts-list-in-tab">
+            {items}
+          </div>
+        )
+      }
     </div>
   )
 }
 
 cpnt.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    publishedAt: PropTypes.string.isRequired,
-  })).isRequired,
+  posts: PropTypes.array.isRequired, // eslint-disable-line
   selectedPostUuids: PropTypes.arrayOf(PropTypes.string).isRequired,
   handleSelectPost: PropTypes.func.isRequired,
   handleUnselectPost: PropTypes.func.isRequired,
