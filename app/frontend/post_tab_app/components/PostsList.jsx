@@ -52,6 +52,10 @@ const cpnt = ({
     )
   })
 
+  if (posts.length === 0) {
+    return <div />
+  }
+
   return (
     <div className="published-posts-list">
       {items}
