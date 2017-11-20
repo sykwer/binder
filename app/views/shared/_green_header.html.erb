@@ -13,7 +13,11 @@
               <%= link_to "Write a Record", posts_path, method: :post %>
             </li>
             <li class="menu-item">
-              <i class="fa fa-cog icon-in-item" aria-hidden="true"></i>
+              <%= content_tag :div,
+                id: "action-bar-config-app",
+                data: {
+                }.to_json do %>
+              <% end %>
             </li>
             <li class="menu-item">
               <i class="fa fa-bell-o icon-in-item" aria-hidden="true"></i>
