@@ -12,11 +12,11 @@
             <li class="menu-item write-record">
               <%= link_to "Write a Record", posts_path, method: :post %>
             </li>
-            <li class="menu-item icon">
-              <i class="fa fa-cog" aria-hidden="true"></i>
+            <li class="menu-item">
+              <i class="fa fa-cog icon-in-item" aria-hidden="true"></i>
             </li>
-            <li class="menu-item icon">
-              <i class="fa fa-bell-o" aria-hidden="true"></i>
+            <li class="menu-item">
+              <i class="fa fa-bell-o icon-in-item" aria-hidden="true"></i>
             </li>
             <li class="menu-item profile-window">
               <%= link_to image_tag(current_user.image_url), "/@#{current_user.username}" %>
