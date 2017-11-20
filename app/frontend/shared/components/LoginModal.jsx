@@ -1,14 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { connect } from "react-redux"
 
-import {
-  closeModal,
-  changeToSignupMode,
-  changeToSigninMode,
-} from "../store/actions"
-
-const cpnt = ({
+const LoginModal = ({
   handleClickCloseModal,
   handleClickChangeToSignup,
   handleClickChangeToSignin,
@@ -80,7 +73,7 @@ const cpnt = ({
   </div>
 )
 
-cpnt.propTypes = {
+LoginModal.propTypes = {
   handleClickCloseModal: PropTypes.func.isRequired,
   handleClickChangeToSignin: PropTypes.func.isRequired,
   handleClickChangeToSignup: PropTypes.func.isRequired,
@@ -88,28 +81,5 @@ cpnt.propTypes = {
   twitterAuthPath: PropTypes.string.isRequired,
   isSignupMode: PropTypes.bool.isRequired,
 }
-
-const mapStateToProps = state => ({
-  facebookAuthPath: state.facebookAuthPath,
-  twitterAuthPath: state.twitterAuthPath,
-  isSignupMode: state.modalMode === "signup",
-})
-
-const mapDispatchToProps = dispatch => ({
-  handleClickCloseModal: () => {
-    dispatch(closeModal())
-  },
-  handleClickChangeToSignin: () => {
-    dispatch(changeToSigninMode())
-  },
-  handleClickChangeToSignup: () => {
-    dispatch(changeToSignupMode())
-  },
-})
-
-const LoginModal = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(cpnt)
 
 export default LoginModal
