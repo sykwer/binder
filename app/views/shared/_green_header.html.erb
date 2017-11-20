@@ -16,6 +16,9 @@
               <%= content_tag :div,
                 id: "action-bar-config-app",
                 data: {
+                  name: current_user.name,
+                  username: current_user.username,
+                  destroySessionPath: destroy_user_session_path,
                 }.to_json do %>
               <% end %>
             </li>
