@@ -8,5 +8,5 @@ export const requestDeletePosts = postUuids => (
     params: {
       post_uuids: postUuids,
     },
-  }).then(res => res.data.posts)
+  }).then(res => res.status === 200)
 )

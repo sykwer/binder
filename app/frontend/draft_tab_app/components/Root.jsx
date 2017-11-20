@@ -2,50 +2,44 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { binderRootUrl } from "../../settings/endpoints"
+import PostsList from "./PostsList"
+import BottomFixedWindow from "./BottomFixedWindow"
+import DeleteScreen from "./DeleteScreen"
 
 const cpnt = ({
-  posts,
-}) => {
-  const items = posts.map(post => (
-    <div
-      key={post.uuid}
-      className="list-item"
-    >
-      <div className="list-item-main">
-        <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
-          <h2 className="post-title">
-            { post.titleDraft ? post.titleDraft : "タイトル未設定" }
-          </h2>
-        </a>
-        <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
-          <p className="last-edited">
-            {`Last Edited ${post.updatedAt}`}
-          </p>
-        </a>
-      </div>
-    </div>
-  ))
-
-  return (
-    <div>
-      {
-        posts.length > 0 && (
-          <div className="posts-list-in-tab">
-            {items}
-          </div>
-        )
-      }
-    </div>
-  )
-}
+  isListMode,
+  isDeleteMode,
+  isAnyPostSelected,
+}) => (
+  <div>
+    {
+      isListMode && (
+        <PostsList />
+      )
+    }
+    {
+      isAnyPostSelected && (
+        <BottomFixedWindow />
+      )
+    }
+    {
+      isDeleteMode && (
+        <DeleteScreen />
+      )
+    }
+  </div>
+)
 
 cpnt.propTypes = {
-  posts: PropTypes.array.isRequired, // eslint-disable-line
+  isListMode: PropTypes.bool.isRequired,
+  isDeleteMode: PropTypes.bool.isRequired,
+  isAnyPostSelected: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = state => ({
-  posts: state.posts,
+  isListMode: state.screenMode === "LIST",
+  isDeleteMode: state.screenMode === "DELETE",
+  isAnyPostSelected: state.selectedPostUuids.length > 0,
 })
 
 const Root = connect(
