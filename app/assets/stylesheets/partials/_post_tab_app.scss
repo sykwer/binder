@@ -1,4 +1,4 @@
-.published-posts-list {
+.posts-list-in-tab {
   margin: 0 auto;
   border: 1px solid $gray91;
 
@@ -101,7 +101,8 @@
         }
       }
 
-      .published-at {
+      .published-at,
+      .last-edited {
         margin: 0;
         color: $gray56;
         opacity: 0.7;

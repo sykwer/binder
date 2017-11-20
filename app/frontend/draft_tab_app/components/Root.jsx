@@ -10,14 +10,14 @@ const cpnt = ({
   const items = posts.map(post => (
     <div
       key={post.uuid}
-      className="draft-list-item"
+      className="list-item"
     >
-      <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
-        <h2 className="post-title">
-          { post.titleDraft ? post.titleDraft : "タイトル未設定" }
-        </h2>
-      </a>
-      <div className="item-footer clearfix">
+      <div className="list-item-main">
+        <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
+          <h2 className="post-title">
+            { post.titleDraft ? post.titleDraft : "タイトル未設定" }
+          </h2>
+        </a>
         <a href={`${binderRootUrl}/posts/${post.uuid}/edit`}>
           <p className="last-edited">
             {`Last Edited ${post.updatedAt}`}
@@ -31,7 +31,7 @@ const cpnt = ({
     <div>
       {
         posts.length > 0 && (
-          <div className="draft-list">
+          <div className="posts-list-in-tab">
             {items}
           </div>
         )

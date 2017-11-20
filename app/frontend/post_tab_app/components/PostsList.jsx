@@ -57,7 +57,7 @@ const cpnt = ({
   }
 
   return (
-    <div className="published-posts-list">
+    <div className="posts-list-in-tab">
       {items}
     </div>
   )
