@@ -91,3 +91,21 @@ export const succeedUnfollowFromFollowings = destinationId => ({
 export const closeFollowingsList = () => ({
   type: "CLOSE_FOLLOWINGS_LIST",
 })
+
+// loginModal
+
+export const openLoginModal = () => ({
+  type: "OPEN_LOGIN_MODAL",
+})
+
+export const closeLoginModal = () => ({
+  type: "CLOSE_LOGIN_MODAL",
+})
+
+export const changeToSignupMode = () => ({
+  type: "CHANGE_TO_SIGNUP_MODE",
+})
+
+export const changeToSigninMode = () => ({
+  type: "CHANGE_TO_SIGNIN_MODE",
+})
