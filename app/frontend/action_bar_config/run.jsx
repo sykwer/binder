@@ -11,7 +11,6 @@ const run = () => {
     const node = document.getElementById("action-bar-config-app")
     const data = JSON.parse(node.getAttribute("data"))
 
-
     const initialState = {
       name: data.name,
       username: data.username,
