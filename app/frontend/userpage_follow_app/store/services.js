@@ -24,7 +24,6 @@ export const fetchFollowers = (
 ) => (
   axios.get(`${binderApiEndpoint}/users/${opponentUserId}/followers`, {
     params: {
-      my_user_id: myUserId,
       counts: usersCountPerFetchInFollows,
       page,
     },
@@ -38,7 +37,6 @@ export const fetchFollowings = (
 ) => (
   axios.get(`${binderApiEndpoint}/users/${opponentUserId}/followings`, {
     params: {
-      my_user_id: myUserId,
       counts: usersCountPerFetchInFollows,
       page,
     },

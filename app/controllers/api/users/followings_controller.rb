@@ -1,6 +1,5 @@
 class Api::Users::FollowingsController < Api::ApplicationController
   before_action :set_user
-  before_action :set_observer
 
   def index
     @followings = @user.followings.offset(counts * page).limit(counts)
@@ -18,9 +17,5 @@ class Api::Users::FollowingsController < Api::ApplicationController
 
   def page
     params[:page].to_i || 0
-  end
-
-  def set_observer
-    @observer = User.find(params[:my_user_id])
   end
 end
