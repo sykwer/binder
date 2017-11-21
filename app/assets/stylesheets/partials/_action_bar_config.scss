@@ -8,13 +8,23 @@
   }
 
   .config-window {
-    position: fixed;
-    top: 60px;
-    right: 0;
-    width: 100vw;
-    height: 100vh;
     background-color: white;
     border: 1px solid $gray91;
+
+    @media (max-width: $medium) {
+      position: fixed;
+      right: 0;
+      top: 60px;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    @media (min-width: $medium_plus_one) {
+      position: absolute;
+      top: 36px;
+      right: -111px;
+      width: 230px;
+    }
 
     .head-box {
       position: relative;
@@ -48,6 +58,10 @@
         color: $gray56;
         font-size: 23px;
         opacity: 0.7;
+
+        @media (min-width: $medium_plus_one) {
+          display: none;
+        }
       }
     }
 
@@ -60,6 +74,7 @@
         padding: 10px;
         padding-left: 16px;
         color: $post_content_color;
+        font-size: 13px;
         letter-spacing: 1px;
       }
 
@@ -69,7 +84,13 @@
     }
 
     .foot-box {
-      height: calc(100% - 275px); // FIXME: bad implementation
+      @media (max-width: $medium) {
+        height: calc(100% - 275px); // FIXME: bad implementation
+      }
+
+      @media (min-width: $medium_plus_one) {
+        height: 0;
+      }
     }
   }
 
