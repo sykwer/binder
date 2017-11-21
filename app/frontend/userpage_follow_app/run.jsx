@@ -24,6 +24,8 @@ const run = () => {
       username: data.username,
       facebookLink: data.facebookLink,
       twitterLink: data.twitterLink,
+      facebookAuthPath: data.facebookAuthPath,
+      twitterAuthPath: data.twitterAuthPath,
     }
 
     const sagaMiddleware = createSagaMiddleware()
