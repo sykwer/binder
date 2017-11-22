@@ -13,7 +13,6 @@
     <%= javascript_pack_tag 'bookshelf_app' if request.path.match(/\/@[a-zA-Z0-9_]+$|\/@[a-zA-Z0-9_]+\/bookshelf/) %>
     <%= javascript_pack_tag 'userpage_follow_app' if request.path.match(/\/@.+/) && defined?(@user) && current_user != @user %>
     <%= javascript_pack_tag 'bookmark_button' if request.path.match(/\//) || request.path.match(/\/posts\/[a-z0-9-]+/) %>
-    <%= javascript_pack_tag 'bookmark_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/bookmarks/) %>
     <%= javascript_pack_tag 'follow_button' if request.path.match(/\/posts\/[a-z0-9-]+/) && defined?(@post) && current_user != @post.user %>
     <%= javascript_pack_tag 'draft_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/drafts/) %>
     <%= javascript_pack_tag 'posts_stream_app' if request.path.match(/\/streams\/.+/) %>
@@ -25,5 +24,6 @@
   <body>
     <%= yield %>
     <%= javascript_pack_tag 'clap_button' if request.path.match(/\/posts\/[a-z0-9-]+$/) %> <!-- See mojs #110 issue -->
+    <%= javascript_pack_tag 'bookmark_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/bookmarks/) %> <!-- See mojs #110 issue -->
   </body>
 </html>
