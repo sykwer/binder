@@ -23,13 +23,10 @@ const BookList = ({
     const book = bookList[rowIndex][columnIndex]
 
     // Workaround: Research how should we do when the number of books is odd number
-    // FIXME: do not user placeholder.com
     if (typeof book === "undefined") {
       Object.assign(style, { opacity: 0 })
       return (
-        <div key={key} style={style}>
-          <img src="http://via.placeholder.com/130x208" alt="blank" />
-        </div>
+        <div key={key} style={style} />
       )
     }
 
