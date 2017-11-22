@@ -1,14 +1,23 @@
 import React from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
 import { Route } from "react-router-dom"
+import { withRouter } from "react-router"
 
 import FollowsCount from "./FollowsCount"
 import SnsButtons from "./SnsButtons"
 import FollowButton from "./FollowButton"
 import Followers from "./Followers"
 import Followings from "./Followings"
+import LoginModalContainer from "./LoginModalContainer"
 
-const Root = () => (
+const cpnt = ({ isLoginModalDisplayed }) => (
   <div>
+    {
+      isLoginModalDisplayed && (
+        <LoginModalContainer />
+      )
+    }
     <div className="profile-sub-wrapper clearfix">
       <FollowsCount />
       <SnsButtons />
@@ -25,4 +34,16 @@ const Root = () => (
   </div>
 )
 
-export default Root
+cpnt.propTypes = {
+  isLoginModalDisplayed: PropTypes.bool.isRequired,
+}
+
+const mapStateToProps = state => ({
+  isLoginModalDisplayed: state.isLoginModalDisplayed,
+})
+
+const Root = connect(
+  mapStateToProps,
+)(cpnt)
+
+export default withRouter(Root)
