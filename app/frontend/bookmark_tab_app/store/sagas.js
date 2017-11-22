@@ -15,7 +15,10 @@ import {
   notifyAllPostsFetched,
 } from "./actions"
 
-import { postsCountPerFetchInBookmarkTab } from "../../settings/constants"
+import {
+  postsCountPerFetchInBookmarkTab,
+  clapsCountLimit,
+} from "../../settings/constants"
 
 function* bookmarkFlow() {
   while (true) {
@@ -46,10 +49,15 @@ function* unbookmarkFlow() {
 function* clapFlow() {
   while (true) {
     const action = yield take("CLICK_CLAP")
-    const isSuccess = yield call(requestClap, action.postUuid)
+
+    if (action.post.clappedCountByMe >= clapsCountLimit) {
+      break
+    }
+
+    const isSuccess = yield call(requestClap, action.post.uuid)
 
     if (isSuccess) {
-      yield put(succeedClap(action.postUuid))
+      yield put(succeedClap(action.post.uuid))
     } else {
       // handle failure
     }
