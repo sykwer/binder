@@ -5,8 +5,9 @@ module DatetimeHelper
   ]
 
   def format_date(datetime)
+    year = datetime.year
     month = MONTHS[datetime.month - 1]
     date  = datetime.day
-    "#{month} #{date}"
+    "#{month} #{date}, #{year}"
   end
 end
