@@ -86,7 +86,7 @@ const cpnt = ({
         {
           post.clappedCountByMe > 0 && (
             <button
-              className="clap-button"
+              className="clap-button-in-bookmark-tab"
               onClick={(e) => {
                 e.preventDefault()
                 e.stopPropagation()
@@ -105,7 +105,7 @@ const cpnt = ({
         {
           isLoggedIn && post.clappedCountByMe === 0 && (
             <button
-              className="clap-button"
+              className="clap-button-in-bookmark-tab"
               onClick={(e) => {
                 e.preventDefault()
                 e.stopPropagation()
@@ -124,7 +124,7 @@ const cpnt = ({
         {
           !isLoggedIn && (
             <button
-              className="clap-button"
+              className="clap-button-in-bookmark-tab"
               onClick={(e) => {
                 e.stopPropagation()
                 handleOpenLoginModal()
