@@ -80,6 +80,7 @@
           id: "bookmark-tab-app",
           data: {
             userId: @user.id,
+            isLoggedIn: user_signed_in?,
             beforeClapImage: image_url("before_clap.png"),
             afterClapImage: image_url("after_clap.png"),
           }.to_json do %>

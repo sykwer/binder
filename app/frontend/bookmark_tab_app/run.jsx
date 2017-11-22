@@ -15,8 +15,11 @@ const run = () => {
 
     const initialState = {
       userId: data.userId,
+      isLoggedIn: data.isLoggedIn,
       beforeClapImage: data.beforeClapImage,
       afterClapImage: data.afterClapImage,
+      facebookAuthPath: data.facebookAuthPath,
+      twitterAuthPath: data.twitterAuthPath,
     }
 
     const sagaMiddleware = createSagaMiddleware()

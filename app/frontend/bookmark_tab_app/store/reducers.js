@@ -6,6 +6,11 @@ const userId = (state = null, action) => {
 }
 
 // eslint-disable-next-line
+const isLoggedIn = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
 const beforeClapImage = (state = null, action) => {
   return state
 }
@@ -70,13 +75,52 @@ const isAllPostsFetched = (state = false, action) => {
   }
 }
 
+// loginModal
+
+const isLoginModalDisplayed = (state = false, action) => {
+  switch (action.type) {
+    case "OPEN_LOGIN_MODAL":
+      return true
+    case "CLOSE_LOGIN_MODAL":
+      return false
+    default:
+      return state
+  }
+}
+
+const modalMode = (state = "signup", action) => {
+  switch (action.type) {
+    case "CHANGE_TO_SIGNUP_MODE":
+      return "signup"
+    case "CHANGE_TO_SIGNIN_MODE":
+      return "signin"
+    default:
+      return state
+  }
+}
+
+// eslint-disable-next-line
+const facebookAuthPath = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const twitterAuthPath = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   userId,
+  isLoggedIn,
   beforeClapImage,
   afterClapImage,
   posts,
   oldestUnixTime,
   isAllPostsFetched,
+  isLoginModalDisplayed,
+  modalMode,
+  facebookAuthPath,
+  twitterAuthPath,
 })
 
 export default rootReducer
