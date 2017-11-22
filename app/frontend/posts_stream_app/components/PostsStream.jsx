@@ -3,12 +3,18 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import renderHTML from "react-render-html"
 
-import { clickBookmark, clickUnbookmark } from "../store/actions"
+import {
+  clickBookmark,
+  clickUnbookmark,
+  openLoginModal,
+} from "../store/actions"
 
 const cpnt = ({
   posts,
+  isLoggedIn,
   handleClickBookmark,
   handleClickUnbookmark,
+  handleOpenLoginModal,
 }) => {
   const items = posts.map(post => (
     <div
@@ -37,7 +43,7 @@ const cpnt = ({
       </div>
       <div className="bookmark-button-wrapper">
         {
-          post.isBookmarked ? (
+          post.isBookmarked && (
             <i
               className="fa fa-bookmark unbookmark-button"
               aria-hidden="true"
@@ -46,13 +52,28 @@ const cpnt = ({
                 handleClickUnbookmark(post.uuid)
               }}
             />
-          ) : (
+          )
+        }
+        {
+          isLoggedIn && !post.isBookmarked && (
             <i
               className="fa fa-bookmark-o bookmark-button"
               aria-hidden="true"
               onClick={(e) => {
                 e.stopPropagation()
                 handleClickBookmark(post.uuid)
+              }}
+            />
+          )
+        }
+        {
+          !isLoggedIn && (
+            <i
+              className="fa fa-bookmark-o bookmark-button"
+              aria-hidden="true"
+              onClick={(e) => {
+                e.stopPropagation()
+                handleOpenLoginModal()
               }}
             />
           )
@@ -83,12 +104,15 @@ cpnt.propTypes = {
     isBookmarked: PropTypes.bool.isRequired,
     bookmarkedCount: PropTypes.number.isRequired,
   })).isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
   handleClickBookmark: PropTypes.func.isRequired,
   handleClickUnbookmark: PropTypes.func.isRequired,
+  handleOpenLoginModal: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   posts: state.posts,
+  isLoggedIn: state.isLoggedIn,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -97,6 +121,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleClickUnbookmark: (postUuid) => {
     dispatch(clickUnbookmark(postUuid))
+  },
+  handleOpenLoginModal: () => {
+    dispatch(openLoginModal())
   },
 })
 

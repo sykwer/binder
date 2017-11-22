@@ -24,7 +24,7 @@ class Api::Posts::BookmarksController < Api::ApplicationController
     if bookmark.present? && bookmark.destroy
       head 200
     else
-      :bad_request
+      head :bad_request
     end
   end
 

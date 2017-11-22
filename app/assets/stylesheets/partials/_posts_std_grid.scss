@@ -160,6 +160,16 @@
         bottom: 15px;
         right: 20px;
       }
+
+      .unbookmark-button,
+      .bookmark-button {
+        font-size: 20px;
+        color: $gray56;
+      }
+
+      .bookmark-button {
+        opacity: 0.7;
+      }
     }
   }
 }

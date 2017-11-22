@@ -15,6 +15,9 @@ const run = () => {
 
     const initialState = {
       streamId: data.streamId,
+      isLoggedIn: data.isLoggedIn,
+      facebookAuthPath: data.facebookAuthPath,
+      twitterAuthPath: data.twitterAuthPath,
     }
 
     const sagaMiddleware = createSagaMiddleware()
