@@ -15,6 +15,7 @@ export const usersCountPerFetchInFollows = 20
 export const postsCountPerFetchInBookmarkTab = 20
 
 // clap_button
+// bookmark_tab_app
 export const clapsCountLimit = 50
 
 // post_editor_app

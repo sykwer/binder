@@ -32,9 +32,9 @@ export const succeedUnbookmark = postUuid => ({
   postUuid,
 })
 
-export const clickClap = postUuid => ({
+export const clickClap = post => ({
   type: "CLICK_CLAP",
-  postUuid,
+  post,
 })
 
 export const succeedClap = postUuid => ({

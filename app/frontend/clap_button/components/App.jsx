@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import mojs from "mo-js"
 
 import { clickClap } from "../store/actions"
+import clapAnimation from "../../shared/utils/clap_animation"
 
 const cpnt = ({
   beforeClapImage,
@@ -25,52 +25,7 @@ const cpnt = ({
         e.stopPropagation()
         handleClickClap()
 
-        const duration = 400
-
-        const burst = new mojs.Burst({
-          parent: btn,
-          radius: { 40: 95 },
-        })
-
-        const countAnimation = new mojs.Html({
-          el: countAnime,
-          isShowStart: false,
-          isShowEnd: true,
-          y: { 0: -30 },
-          opacity: { 0: 0.8 },
-          duration,
-        }).then({
-          opacity: { 0.8: 0 },
-          y: -80,
-          delay: duration / 2,
-        })
-
-        const countTotalAnimation = new mojs.Html({
-          el: totalCountAnime,
-          isShowStart: false,
-          isShowEnd: true,
-          opacity: { 0: 1 },
-          delay: 3 * (duration / 2),
-          duration,
-          y: { 0: -3 },
-        })
-
-        const scaleButton = new mojs.Html({
-          el: btn,
-          duration,
-          scale: { 1.3: 1 },
-          easing: mojs.easing.out,
-        })
-
-        const timeline = new mojs.Timeline()
-        timeline.add([
-          burst,
-          countAnimation,
-          countTotalAnimation,
-          scaleButton,
-        ])
-
-        timeline.replay()
+        clapAnimation(btn, countAnime, totalCountAnime).replay()
       }}
     >
       <span className="clap-count-by-me" ref={(node) => { countAnime = node }}>
