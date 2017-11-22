@@ -6,6 +6,9 @@
       id: "posts_stream_app",
       data: {
         streamId: @stream_id,
+        isLoggedIn: user_signed_in?,
+        facebookAuthPath: user_facebook_omniauth_authorize_path,
+        twitterAuthPath: user_twitter_omniauth_authorize_path,
       }.to_json do %>
     <% end %>
   </div>

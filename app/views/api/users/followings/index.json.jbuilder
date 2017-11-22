@@ -4,5 +4,5 @@ json.followings @followings do |following|
   json.name following.name
   json.username following.username
   json.bio following.bio
-  json.isFollowing following.followed_by?(@observer)
+  json.isFollowing user_signed_in? ? following.followed_by?(current_user) : false
 end

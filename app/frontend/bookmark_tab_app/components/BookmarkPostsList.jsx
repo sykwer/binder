@@ -7,15 +7,18 @@ import {
   clickBookmark,
   clickUnbookmark,
   clickClap,
+  openLoginModal,
 } from "../store/actions"
 
 const cpnt = ({
   posts,
+  isLoggedIn,
   beforeClapImage,
   afterClapImage,
   handleClickBookmark,
   handleClickUnbookmark,
   handleClickClap,
+  handleOpenLoginModal,
 }) => {
   const bookmarkedPosts = posts.map(post => (
     <div
@@ -81,7 +84,7 @@ const cpnt = ({
       </div>
       <div className="item-footer clearfix">
         {
-          post.clappedCountByMe > 0 ? (
+          post.clappedCountByMe > 0 && (
             <button
               className="clap-button"
               onClick={(e) => {
@@ -97,7 +100,10 @@ const cpnt = ({
               />
               <span className="clap-count">{post.clappedCount}</span>
             </button>
-          ) : (
+          )
+        }
+        {
+          isLoggedIn && post.clappedCountByMe === 0 && (
             <button
               className="clap-button"
               onClick={(e) => {
@@ -116,7 +122,25 @@ const cpnt = ({
           )
         }
         {
-          post.isBookmarked ? (
+          !isLoggedIn && (
+            <button
+              className="clap-button"
+              onClick={(e) => {
+                e.stopPropagation()
+                handleOpenLoginModal()
+              }}
+            >
+              <img
+                className="clap-image"
+                src={beforeClapImage}
+                alt="clap"
+              />
+              <span className="clap-count">{post.clappedCount}</span>
+            </button>
+          )
+        }
+        {
+          post.isBookmarked && (
             <button
               className="bookmark-button"
               onClick={(e) => {
@@ -127,13 +151,29 @@ const cpnt = ({
             >
               <i className="fa fa-bookmark" aria-hidden="true" />
             </button>
-          ) : (
+          )
+        }
+        {
+          isLoggedIn && !post.isBookmarked && (
             <button
               className="bookmark-button"
               onClick={(e) => {
                 e.preventDefault()
                 e.stopPropagation()
                 handleClickBookmark(post.uuid)
+              }}
+            >
+              <i className="fa fa-bookmark-o" aria-hidden="true" />
+            </button>
+          )
+        }
+        {
+          !isLoggedIn && (
+            <button
+              className="bookmark-button"
+              onClick={(e) => {
+                e.stopPropagation()
+                handleOpenLoginModal()
               }}
             >
               <i className="fa fa-bookmark-o" aria-hidden="true" />
@@ -171,15 +211,18 @@ cpnt.propTypes = {
     clappedCount: PropTypes.number.isRequired,
     clappedCountByMe: PropTypes.number.isRequired,
   })).isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
   beforeClapImage: PropTypes.string.isRequired,
   afterClapImage: PropTypes.string.isRequired,
   handleClickBookmark: PropTypes.func.isRequired,
   handleClickUnbookmark: PropTypes.func.isRequired,
   handleClickClap: PropTypes.func.isRequired,
+  handleOpenLoginModal: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
   posts: state.posts,
+  isLoggedIn: state.isLoggedIn,
   beforeClapImage: state.beforeClapImage,
   afterClapImage: state.afterClapImage,
 })
@@ -193,6 +236,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleClickClap: (postUuid) => {
     dispatch(clickClap(postUuid))
+  },
+  handleOpenLoginModal: () => {
+    dispatch(openLoginModal())
   },
 })
 

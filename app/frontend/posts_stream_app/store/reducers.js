@@ -21,7 +21,7 @@ const posts = (state = [], action) => {
         if (post.uuid === action.postUuid) {
           return {
             ...post,
-            isoBookmarked: false,
+            isBookmarked: false,
             bookmarkedCount: post.bookmarkedCount - 1,
           }
         }
@@ -67,12 +67,56 @@ const streamId = (state = null, action) => {
   return state
 }
 
+// loginModal
+
+const isLoginModalDisplayed = (state = false, action) => {
+  switch (action.type) {
+    case "OPEN_LOGIN_MODAL":
+      return true
+    case "CLOSE_LOGIN_MODAL":
+      return false
+    default:
+      return state
+  }
+}
+
+const modalMode = (state = "signup", action) => {
+  switch (action.type) {
+    case "CHANGE_TO_SIGNUP_MODE":
+      return "signup"
+    case "CHANGE_TO_SIGNIN_MODE":
+      return "signin"
+    default:
+      return state
+  }
+}
+
+// eslint-disable-next-line
+const isLoggedIn = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const facebookAuthPath = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const twitterAuthPath = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   posts,
   isAllFetched,
   page,
   oldestUnixtimeNano,
   streamId,
+  isLoginModalDisplayed,
+  modalMode,
+  isLoggedIn,
+  facebookAuthPath,
+  twitterAuthPath,
 })
 
 export default rootReducer

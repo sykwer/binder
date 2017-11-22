@@ -176,6 +176,40 @@ const isButtonsDisabled = (state = false, action) => {
   }
 }
 
+// loginModal
+
+const isLoginModalDisplayed = (state = false, action) => {
+  switch (action.type) {
+    case "OPEN_LOGIN_MODAL":
+      return true
+    case "CLOSE_LOGIN_MODAL":
+      return false
+    default:
+      return state
+  }
+}
+
+const modalMode = (state = "signup", action) => {
+  switch (action.type) {
+    case "CHANGE_TO_SIGNUP_MODE":
+      return "signup"
+    case "CHANGE_TO_SIGNIN_MODE":
+      return "signin"
+    default:
+      return state
+  }
+}
+
+// eslint-disable-next-line
+const facebookAuthPath = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const twitterAuthPath = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   followingsCount,
   followersCount,
@@ -193,6 +227,10 @@ const rootReducer = combineReducers({
   isAllFollowersFetched,
   isAllFollowingsFetched,
   isButtonsDisabled,
+  isLoginModalDisplayed,
+  modalMode,
+  facebookAuthPath,
+  twitterAuthPath,
 })
 
 export default rootReducer

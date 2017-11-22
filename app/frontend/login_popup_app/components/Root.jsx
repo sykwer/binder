@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import LoginModal from "./LoginModal"
+import LoginModalContainer from "./LoginModalContainer"
 import SigninButton from "./SigninButton"
 import SignupButton from "./SignupButton"
 import BookmarkButton from "./BookmarkButton"
@@ -34,7 +34,7 @@ const cpnt = ({ isModalDisplayed, buttonId }) => {
     <div>
       {
         isModalDisplayed && (
-          <LoginModal />
+          <LoginModalContainer />
         )
       }
       {

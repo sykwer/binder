@@ -7,6 +7,7 @@ import {
   clickFollowFromFollowers,
   clickUnfollowFromFollowers,
   closeFollowersList,
+  openLoginModal,
 } from "../store/actions"
 import ListItem from "../../shared/components/ListItem"
 import FollowersBottomObserver from "./FollowersBottomObserver"
@@ -17,9 +18,11 @@ const cpnt = ({
   username,
   followers,
   isButtonsDisabled,
+  isLoggedIn,
   handleOnClickFollow,
   handleOnClickUnfollow,
   handleCloseFollowersList,
+  handleOpenLoginModal,
 }) => (
   <div
     className="followers-follows-component"
@@ -46,15 +49,17 @@ const cpnt = ({
           <ListItem
             key={follower.id}
             userId={follower.id}
-            myUserId={myUserId}
             image={follower.image}
             name={follower.name}
             username={follower.username}
             bio={follower.bio}
             isFollowing={follower.isFollowing}
             isButtonsDisabled={isButtonsDisabled}
+            isLoggedIn={isLoggedIn}
+            isMyself={myUserId === follower.id}
             handleOnClickFollow={handleOnClickFollow}
             handleOnClickUnfollow={handleOnClickUnfollow}
+            handleOpenLoginModal={handleOpenLoginModal}
           />
         ))
       }
@@ -64,7 +69,7 @@ const cpnt = ({
 )
 
 cpnt.propTypes = {
-  myUserId: PropTypes.number.isRequired,
+  myUserId: PropTypes.number,
   name: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   followers: PropTypes.arrayOf(PropTypes.shape({
@@ -74,10 +79,16 @@ cpnt.propTypes = {
     bio: PropTypes.string.isRequired,
     isFollowing: PropTypes.bool.isRequired,
   })).isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
   isButtonsDisabled: PropTypes.bool.isRequired,
   handleOnClickFollow: PropTypes.func.isRequired,
   handleOnClickUnfollow: PropTypes.func.isRequired,
   handleCloseFollowersList: PropTypes.func.isRequired,
+  handleOpenLoginModal: PropTypes.func.isRequired,
+}
+
+cpnt.defaultProps = {
+  myUserId: null,
 }
 
 const mapStateToProps = state => ({
@@ -86,6 +97,7 @@ const mapStateToProps = state => ({
   username: state.username,
   followers: state.followers,
   isButtonsDisabled: state.isButtonsDisabled,
+  isLoggedIn: !!state.myUserId,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -97,6 +109,9 @@ const mapDispatchToProps = dispatch => ({
   },
   handleCloseFollowersList: () => {
     dispatch(closeFollowersList())
+  },
+  handleOpenLoginModal: () => {
+    dispatch(openLoginModal())
   },
 })
 

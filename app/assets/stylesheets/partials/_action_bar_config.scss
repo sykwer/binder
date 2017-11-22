@@ -1,0 +1,121 @@
+.config-icon-wrapper {
+  position: relative;
+
+  .config-icon {
+    font-size: 20px;
+    color: $gray56;
+    opacity: 0.7;
+  }
+
+  .config-window {
+    background-color: white;
+    border: 1px solid $gray91;
+
+    @media (max-width: $medium) {
+      position: fixed;
+      right: 0;
+      top: 60px;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    @media (min-width: $medium_plus_one) {
+      position: absolute;
+      top: 36px;
+      right: -111px;
+      width: 230px;
+    }
+
+    .head-box {
+      position: relative;
+      width: 100%;
+      padding: 16px;
+      border-bottom: 1px solid $gray91;
+
+      .login-name {
+        display: inline-block;
+        margin-bottom: 5px;
+        color: $post_content_color;
+        font-weight: bold;
+        font-size: 13px;
+      }
+
+      .login-name-comment {
+        width: 100px;
+        margin: 0;
+        color: $gray56;
+        opacity: 0.7;
+        font-size: 10px;
+      }
+
+      .close-window-button {
+        position: absolute;
+        display: block;
+        padding: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        color: $gray56;
+        font-size: 23px;
+        opacity: 0.7;
+
+        @media (min-width: $medium_plus_one) {
+          display: none;
+        }
+      }
+    }
+
+    .config-list {
+      width: 100%;
+      padding: 10px 0;
+      border-bottom: 1px solid $gray91;
+
+      .config-list-item {
+        padding: 10px;
+        padding-left: 16px;
+        color: $post_content_color;
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+
+      .bold-item {
+        font-weight: bold;
+      }
+    }
+
+    .foot-box {
+      @media (max-width: $medium) {
+        height: calc(100% - 275px); // FIXME: bad implementation
+      }
+
+      @media (min-width: $medium_plus_one) {
+        height: 0;
+      }
+    }
+  }
+
+  .config-window-before {
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    margin-left: -13px;
+    width: 0;
+    height: 0;
+    border-bottom: 13px solid $gray56;
+    opacity: 0.4;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+  }
+
+  .config-window-after {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    margin-left: -13px;
+    width: 0;
+    height: 0;
+    border-bottom: 13px solid white;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+  }
+}

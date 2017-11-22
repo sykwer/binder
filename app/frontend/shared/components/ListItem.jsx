@@ -2,7 +2,6 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const ListItem = ({
-  myUserId,
   userId,
   image,
   name,
@@ -10,11 +9,26 @@ const ListItem = ({
   bio,
   isFollowing,
   isButtonsDisabled,
+  isLoggedIn,
+  isMyself,
   handleOnClickFollow,
   handleOnClickUnfollow,
+  handleOpenLoginModal,
 }) => {
   let button
-  if (myUserId === userId) {
+  if (!isLoggedIn) {
+    button = (
+      <button
+        className="follow-button-in-list"
+        onClick={(e) => {
+          e.stopPropagation()
+          handleOpenLoginModal()
+        }}
+      >
+        Follow
+      </button>
+    )
+  } else if (isMyself) {
     button = <div />
   } else if (isFollowing) {
     button = (
@@ -101,7 +115,6 @@ const ListItem = ({
 }
 
 ListItem.propTypes = {
-  myUserId: PropTypes.number.isRequired,
   userId: PropTypes.number.isRequired,
   image: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
@@ -109,8 +122,11 @@ ListItem.propTypes = {
   bio: PropTypes.string.isRequired,
   isFollowing: PropTypes.bool.isRequired,
   isButtonsDisabled: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  isMyself: PropTypes.bool.isRequired,
   handleOnClickFollow: PropTypes.func.isRequired,
   handleOnClickUnfollow: PropTypes.func.isRequired,
+  handleOpenLoginModal: PropTypes.func.isRequired,
 }
 
 export default ListItem
