@@ -48,7 +48,7 @@ const cpnt = ({
             />
           ) : (
             <i
-              className="fa fa-boomark-o bookmark-button"
+              className="fa fa-bookmark-o bookmark-button"
               aria-hidden="true"
               onClick={(e) => {
                 e.stopPropagation()
