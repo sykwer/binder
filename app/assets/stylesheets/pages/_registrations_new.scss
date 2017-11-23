@@ -1,0 +1,47 @@
+.username-register-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $background_gray;
+
+  .username-register-window {
+    margin: 150px auto 0;
+    background-color: white;
+    border: solid 1px $gray91;
+    height: 400px;
+
+    @media (min-width: $medium_plus_one) {
+      width: 600px;
+    }
+
+    @media (min-width: $small_plus_one) and (max-width: $medium) {
+      width: 90%;
+    }
+
+    @media (max-width: $small) {
+      width: 90%;
+    }
+
+    .username-register-header {
+      width: 100%;
+      margin: 40px auto 0;
+      font-weight: bold;
+      font-size: 25px;
+      color: $post_title_color;
+      text-align: center;
+    }
+
+    .username-register-explanation {
+      width: 80%;
+      margin: 30px auto 0;
+      font-size: 15px;
+      color: $post_content_color;
+      text-align: center;
+      letter-spacing: 1px;
+      line-height: 1.8;
+      opacity: 0.8;
+    }
+  }
+}
