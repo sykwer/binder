@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="post-content">
-    <%= @post.content.html_safe %>
+    <%= @post.content.html_safe if @post.content.present? %>
   </div>
   <div class="action-buttons">
     <div class="bottom-clap-button-wrapper">

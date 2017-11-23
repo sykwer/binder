@@ -30,15 +30,14 @@ const BookList = ({
       )
     }
 
-    const imageURL = book.volumeInfo.imageLinks.thumbnail
-    const bookId = book.id
-    const bookTitle = book.volumeInfo.title
-    // FIXME: deal with multiple authors
-    const author = book.volumeInfo.authors ? book.volumeInfo.authors[0] : ""
-    const publisher = book.volumeInfo.publisher ? book.volumeInfo.publisher : ""
-
     const onClick = () => {
-      handleOnClickBook(bookId, bookTitle, author, publisher, imageURL)
+      handleOnClickBook(
+        book.asin,
+        book.title,
+        book.author,
+        book.publisher,
+        book.imageUrl,
+      )
 
       // focus caret on last of post content
       const node = document.getElementById("post-content-div")
@@ -59,8 +58,8 @@ const BookList = ({
         tabIndex={(rowIndex * 2) + columnIndex}
       >
         <img
-          src={imageURL}
-          alt={bookTitle}
+          src={book.imageUrl}
+          alt={book.title}
           style={{ width: 170, height: 170 * 1.6 }}
         />
       </div>
