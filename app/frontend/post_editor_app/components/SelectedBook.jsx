@@ -13,11 +13,8 @@ const cpnt = ({ imageURL, title, author, handleClickOpenBookSelector }) => {
       </div>
     )
   } else {
-    // FIXME: do not use placeholder.com
     mainBook = (
-      <div className="main-book-placeholded">
-        <img src="http://via.placeholder.com/142x212" alt="placeholder" />
-      </div>
+      <div className="main-book-placeholded" />
     )
   }
 

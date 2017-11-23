@@ -4,9 +4,8 @@ import { selectBook } from "../store/actions"
 import BookList from "./BookList"
 
 const mapStateToProps = (state) => {
-  const bookList = state.bookList.filter(book => (
-    typeof book.volumeInfo.imageLinks !== "undefined"
-  ))
+  const bookList = state.bookList
+
   const gridArr = []
   while (bookList.length) {
     gridArr.push(bookList.splice(0, 2))

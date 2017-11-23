@@ -33,7 +33,15 @@ export const requestBookList = (bookName, author, publisher) => {
 
   return axios.get(
     `${googleBookApiEndpoint}?key=${googleBookApiKey}&maxResults=40&q=${params.join("+")}`,
-  ).then(res => res.data.items)
+  ).then(res => res.data.items).then(books => books.filter(book => (
+    !!book.volumeInfo.imageLinks
+  ))).then(books => books.map(book => ({
+    asin: book.id,
+    title: book.volumeInfo.title,
+    author: book.volumeInfo.authors ? book.volumeInfo.authors[0] : "", // FIXME* Deal with multiple authors
+    publisher: book.volumeInfo.publisher ? book.volumeInfo.publisher : "",
+    imageUrl: book.volumeInfo.imageLinks.thumbnail.replace(/http/, "https"),
+  })))
 }
 
 export const requestSaveSelectedBook = (
