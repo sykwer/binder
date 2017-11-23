@@ -89,7 +89,7 @@ const PostsListItem = ({
               onClick={(e) => {
                 e.preventDefault()
                 e.stopPropagation()
-                handleClickClap(post.uuid)
+                handleClickClap(post)
 
                 clapAnimation(clapButton, clapCount, totalClapCount).replay()
               }}

@@ -82,8 +82,8 @@ const mapDispatchToProps = dispatch => ({
   handleClickUnbookmark: (postUuid) => {
     dispatch(clickUnbookmark(postUuid))
   },
-  handleClickClap: (postUuid) => {
-    dispatch(clickClap(postUuid))
+  handleClickClap: (post) => {
+    dispatch(clickClap(post))
   },
   handleOpenLoginModal: () => {
     dispatch(openLoginModal())
