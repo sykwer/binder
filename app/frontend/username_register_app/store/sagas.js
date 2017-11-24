@@ -5,13 +5,14 @@ import {
   confirmRegrexInvalid,
   confirmUsernameUnique,
   confirmUsernameNotUnique,
+  notifyInputEmpty,
 } from "./actions"
 
 import { requestUsernameUniqueness } from "./services"
 import { usernameRegrex } from "../../settings/constants"
 
 function* uniquenessCheckFlow() {
-  yield call(delay, 1000)
+  yield call(delay, 1500)
   const state = yield select()
 
   const isUnique = yield call(requestUsernameUniqueness, state.usernameInput)
@@ -26,9 +27,12 @@ function* uniquenessCheckFlow() {
 function* regrexCheckFlow() {
   const state = yield select()
 
-  if (usernameRegrex.test(state.usernameInput)) {
+  if (state.usernameInput.length < 1) {
+    yield put(notifyInputEmpty())
+  } else if (usernameRegrex.test(state.usernameInput)) {
     yield fork(uniquenessCheckFlow)
   } else {
+    yield call(delay, 1500)
     yield put(confirmRegrexInvalid())
   }
 }

@@ -6,6 +6,7 @@ import createSagaMiddleware from "redux-saga"
 
 import rootSaga from "./store/sagas"
 import rootReducer from "./store/reducers"
+import App from "./components/App"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
@@ -21,7 +22,7 @@ const run = () => {
 
     render(
       <Provider store={store}>
-        <p>Boot usernameRegisterApp</p>
+        <App />
       </Provider>,
       node,
     )

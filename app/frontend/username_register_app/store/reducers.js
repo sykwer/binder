@@ -17,6 +17,8 @@ const usernameInput = (state = "", action) => {
 
 const usernameState = (state = "EMPTY", action) => {
   switch (action.type) {
+    case "NOTIFY_INPUT_EMPTY":
+      return "EMPTY"
     case "CHANGE_USERNAME_INPUT":
       return "CHECKING"
     case "CONFIRM_REGREX_INVALID":

@@ -1,5 +1,6 @@
-export const changeUsernameInput = () => ({
+export const changeUsernameInput = text => ({
   type: "CHANGE_USERNAME_INPUT",
+  text,
 })
 
 export const confirmRegrexInvalid = () => ({
@@ -12,4 +13,8 @@ export const confirmUsernameUnique = () => ({
 
 export const confirmUsernameNotUnique = () => ({
   type: "CONFIRM_USERNAME_NOT_UNIQUE",
+})
+
+export const notifyInputEmpty = () => ({
+  type: "NOTIFY_INPUT_EMPTY",
 })
