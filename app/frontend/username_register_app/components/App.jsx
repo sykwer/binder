@@ -11,53 +11,75 @@ const cpnt = ({
   isNotUnique,
   isUsernameAvailable,
   usernameInput,
+  registrationPath,
+  formAuthenticityToken,
   handleChangeUsernameInput,
 }) => (
   <div className="username-register-app-wrapper">
-    <div className="username-input-wrapper">
+    <form action={registrationPath} method="post">
+      <div className="username-input-wrapper">
+        <input
+          id="username-input-box-id"
+          className="username-input cancel-focus-outline"
+          type="text"
+          name="registration[username]"
+          onChange={(e) => {
+            handleChangeUsernameInput(e.target.value)
+          }}
+          value={usernameInput}
+        />
+        {
+          isEmpty && (
+            <span />
+          )
+        }
+        {
+          isChecking && (
+            <span className="is-checking">
+              Checking
+            </span>
+          )
+        }
+        {
+          isRegrexInvalid && (
+            <span className="is-regrex-invalid">
+              Invalid Characters
+            </span>
+          )
+        }
+        {
+          isNotUnique && (
+            <span className="is-not-unique">
+              Already used
+            </span>
+          )
+        }
+        {
+          isUsernameAvailable && (
+            <span className="is-username-available">
+              Available
+            </span>
+          )
+        }
+        {
+          isUsernameAvailable ? (
+            <button className="submit-button">Register</button>
+          ) : (
+            <button
+              className="disabled-button"
+              onClick={(e) => { e.preventDefault() }}
+            >
+              Register
+            </button>
+          )
+        }
+      </div>
       <input
-        id="username-input-box-id"
-        className="username-input cancel-focus-outline"
-        type="text"
-        onChange={(e) => {
-          handleChangeUsernameInput(e.target.value)
-        }}
-        value={usernameInput}
+        type="hidden"
+        name="authenticity_token"
+        value={formAuthenticityToken}
       />
-      {
-        isEmpty && (
-          <span />
-        )
-      }
-      {
-        isChecking && (
-          <span className="is-checking">
-            Checking
-          </span>
-        )
-      }
-      {
-        isRegrexInvalid && (
-          <span className="is-regrex-invalid">
-            Invalid Characters
-          </span>
-        )
-      }
-      {
-        isNotUnique && (
-          <span className="is-not-unique">
-            Already used
-          </span>
-        )
-      }
-      {
-        isUsernameAvailable && (
-          <span className="is-username-available">
-            Available
-          </span>
-        )
-      }
-    </div>
+    </form>
   </div>
 )
 
@@ -73,6 +95,8 @@ cpnt.propTypes = {
   isNotUnique: PropTypes.bool.isRequired,
   isUsernameAvailable: PropTypes.bool.isRequired,
   usernameInput: PropTypes.string.isRequired,
+  registrationPath: PropTypes.string.isRequired,
+  formAuthenticityToken: PropTypes.string.isRequired,
   handleChangeUsernameInput: PropTypes.func.isRequired,
 }
 
@@ -82,6 +106,8 @@ const mapStateToProps = state => ({
   isRegrexInvalid: state.usernameState === "REGREX_INVALID",
   isNotUnique: state.usernameState === "UNIQUENESS_INVALID",
   isUsernameAvailable: state.usernameState === "UNIQUENESS_VALID",
+  registrationPath: state.registrationPath,
+  formAuthenticityToken: state.formAuthenticityToken,
   usernameInput: state.usernameInput,
 })
 

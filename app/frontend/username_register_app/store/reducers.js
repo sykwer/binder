@@ -32,9 +32,21 @@ const usernameState = (state = "EMPTY", action) => {
   }
 }
 
+// eslint-disable-next-line
+const registrationPath = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
+const formAuthenticityToken = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   usernameInput,
   usernameState,
+  registrationPath,
+  formAuthenticityToken,
 })
 
 export default rootReducer

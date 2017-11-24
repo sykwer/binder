@@ -11,10 +11,18 @@ import App from "./components/App"
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const node = document.getElementById("username-register-app")
+    const data = JSON.parse(node.getAttribute("data"))
+
+    const initialState = {
+      registrationPath: data.registrationPath,
+      formAuthenticityToken: data.formAuthenticityToken,
+    }
+
     const sagaMiddleware = createSagaMiddleware()
+
     const store = createStore(
       rootReducer,
-      {},
+      initialState,
       applyMiddleware(sagaMiddleware),
     )
 
