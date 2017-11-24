@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     delete "multiple_posts", to: "multiple_posts#destroy"
     patch "multiple_posts/unpublish", to: "multiple_posts#unpublish"
 
+    get "username_uniquenesses/:username", to: "username_uniquenesses#show"
+
     resources :posts, only: %i(show destroy), param: :uuid do
       resource :content_draft, controller: 'posts/content_drafts', only: %i(update)
       resource :title_draft, controller: "posts/title_drafts", only: %i(update)

@@ -19,6 +19,7 @@
     <%= javascript_pack_tag 'login_popup_app' %>
     <%= javascript_pack_tag 'post_tab_app' if request.path.match(/\/@[a-zA-Z0-9_]+\/posts/) %>
     <%= javascript_pack_tag 'action_bar_config' if !request.path.match(/\/posts\/[a-z0-9-]+\/edit/) && user_signed_in? %>
+    <%= javascript_pack_tag 'username_register_app' if request.path.match(/\/users\/sign_up/) %>
   </head>
 
   <body>

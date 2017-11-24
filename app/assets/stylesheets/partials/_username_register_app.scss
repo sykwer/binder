@@ -1,0 +1,70 @@
+.username-register-app-wrapper {
+  width: 100%;
+
+  .username-input-wrapper {
+    position: relative;
+    margin: 50px auto 0;
+    width: 100%;
+
+    .username-input {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-block;
+      width: 250px;
+      color: $post_title_color;
+      font-weight: bold;
+      opacity: 0.8;
+      letter-spacing: 1px;
+    }
+
+    .is-checking,
+    .is-regrex-invalid,
+    .is-not-unique,
+    .is-username-available {
+      position: absolute;
+      top: 8px;
+      left: calc(50% + (250px / 2) + 10px);
+      font-size: 11px;
+    }
+
+    .is-checking {
+      color: $gray56;
+    }
+
+    .is-regrex-invalid,
+    .is-not-unique {
+      color: red;
+      opacity: 0.5;
+    }
+
+    .is-username-available {
+      color: $fresh_green;
+      opacity: 0.8;
+      letter-spacing: 0.5;
+    }
+
+    .submit-button,
+    .disabled-button {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 7px 20px;
+      border-radius: 10px;
+    }
+
+    .submit-button {
+      color: $fresh_green;
+      border: 1px solid $fresh_green;
+      opacity: 0.8;
+    }
+
+    .disabled-button {
+      color: $gray56;
+      border: 1px solid $gray56;
+      opacity: 0.4;
+    }
+  }
+}
