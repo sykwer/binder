@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   validates :name, length: { maximum: 50 }
   validates :bio, length: { maximum: 160 }
+  validates :username, length: { in: 1..15 }, format: { with: /(\w){1,15}/ }
 
   def follows?(user)
     followings.where(id: user.id).exists?
