@@ -15,24 +15,16 @@ const usernameInput = (state = "", action) => {
   }
 }
 
-const isUsernamePermitted = (state = false, action) => {
+const usernameState = (state = "EMPTY", action) => {
   switch (action.type) {
-    case "CHANGE_USERNAME_INPUT":
-      return false
-    case "CONFIRM_USERNAME_UNIQUE":
-      return true
-    default:
-      return state
-  }
-}
-
-const isChecking = (state = "CHECKED", action) => {
-  switch (action.type) {
-    case "CONFIRM_USERNAME_UNIQUE":
-    case "CONFIRM_USERNAME_NOT_UNIQUE":
-      return "CHECKED"
     case "CHANGE_USERNAME_INPUT":
       return "CHECKING"
+    case "CONFIRM_REGREX_INVALID":
+      return "REGREX_INVALID"
+    case "CONFIRM_USERNAME_NOT_UNIQUE":
+      return "UNIQUENESS_INVALID"
+    case "CONFIRM_USERNAME_UNIQUE":
+      return "UNIQUENESS_VALID"
     default:
       return state
   }
@@ -40,8 +32,7 @@ const isChecking = (state = "CHECKED", action) => {
 
 const rootReducer = combineReducers({
   usernameInput,
-  isUsernamePermitted,
-  isChecking,
+  usernameState,
 })
 
 export default rootReducer
