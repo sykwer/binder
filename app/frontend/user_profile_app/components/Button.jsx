@@ -55,12 +55,23 @@ const cpnt = ({
   if (isEditting) {
     return (
       <div className="finish-buttons">
-        <button
-          className="save-button"
-          onClick={onClickSave}
-        >
-          Save
-        </button>
+        {
+          displayedName.length > 0 ? (
+            <button
+              className="save-button"
+              onClick={onClickSave}
+            >
+              Save
+            </button>
+          ) : (
+            <button
+              className="disabled-button"
+              onClick={(e) => { e.stopPropagation() }}
+            >
+              Save
+            </button>
+          )
+        }
         <button
           className="cancel-button"
           onClick={onClickCancel}
