@@ -16,8 +16,9 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Follow", foreign_key: "destination_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :source
 
-  validates :name, length: { maximum: 50 }
+  validates :name, length: { in: 1..50 }
   validates :bio, length: { maximum: 160 }
+  validates :username, length: { in: 1..15 }, format: { with: /(\w){1,15}/ }
 
   def follows?(user)
     followings.where(id: user.id).exists?

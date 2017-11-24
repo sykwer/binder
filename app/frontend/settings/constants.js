@@ -23,4 +23,4 @@ export const googleBookApiKey = "AIzaSyCUb5azooicumCNsK8NAkRJ9lEZbNeWqLA"
 
 // username_register_app
 export const usernameMaxLength = 15
-export const usernameRegrex = /(\w){1,15}$/
+export const usernameRegrex = /(\w){1,15}/
