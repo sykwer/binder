@@ -13,16 +13,17 @@ const cpnt = ({
   usernameInput,
   handleChangeUsernameInput,
 }) => (
-  <div className="username-register-app">
-    <input
-      className="username-input"
-      type="text"
-      onChange={(e) => {
-        handleChangeUsernameInput(e.target.value)
-      }}
-      value={usernameInput}
-    />
-    <div className="username-status-wrapper">
+  <div className="username-register-app-wrapper">
+    <div className="username-input-wrapper">
+      <input
+        id="username-input-box-id"
+        className="username-input cancel-focus-outline"
+        type="text"
+        onChange={(e) => {
+          handleChangeUsernameInput(e.target.value)
+        }}
+        value={usernameInput}
+      />
       {
         isEmpty && (
           <span />
@@ -31,34 +32,39 @@ const cpnt = ({
       {
         isChecking && (
           <span className="is-checking">
-            使用できるユーザネームか調べています.
+            Checking
           </span>
         )
       }
       {
         isRegrexInvalid && (
           <span className="is-regrex-invalid">
-            ユーザネームに使用できない文字が含まれています.
+            Invalid Characters
           </span>
         )
       }
       {
         isNotUnique && (
           <span className="is-not-unique">
-            すでに使用されているユーザネームです.
+            Already used
           </span>
         )
       }
       {
         isUsernameAvailable && (
           <span className="is-username-available">
-            使用できるユーザネームです.
+            Available
           </span>
         )
       }
     </div>
   </div>
 )
+
+window.addEventListener("load", () => {
+  const input = document.getElementById("username-input-box-id")
+  input.focus()
+})
 
 cpnt.propTypes = {
   isEmpty: PropTypes.bool.isRequired,
