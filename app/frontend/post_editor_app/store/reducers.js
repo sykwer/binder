@@ -89,6 +89,15 @@ const selectedBookImage = (state = "", action) => {
   }
 }
 
+const isBookChanged = (state = false, action) => {
+  switch (action.type) {
+    case "SELECT_BOOK":
+      return true
+    default:
+      return state
+  }
+}
+
 const postContent = (state = "", action) => {
   switch (action.type) {
     case "UPDATE_POST_CONTENT":
@@ -291,6 +300,7 @@ const rootReducer = combineReducers({
   selectedBookAuthor,
   selectedBookPublisher,
   selectedBookImage,
+  isBookChanged,
   postContent,
   postTitle,
   contentSaveState,

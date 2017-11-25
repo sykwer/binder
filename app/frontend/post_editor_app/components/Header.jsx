@@ -18,6 +18,7 @@ const Header = ({
   isTitleEmpty,
   isContentEmpty,
   hasNoChange,
+  isBookSelected,
   handleClickOpenPublishWindow,
   handleToggleSharedOnTwitter,
   handleToggleSharedOnFacebook,
@@ -242,7 +243,7 @@ const Header = ({
                     </div>
                     <div className="publish-button-wrapper">
                       {
-                        isTitleEmpty || isContentEmpty || hasNoChange ? (
+                        !isBookSelected || isTitleEmpty || isContentEmpty || hasNoChange ? (
                           <button
                             className="disabled-button"
                             onClick={(e) => { e.stopPropagation() }}
@@ -306,6 +307,7 @@ Header.propTypes = {
   isTitleEmpty: PropTypes.bool.isRequired,
   isContentEmpty: PropTypes.bool.isRequired,
   hasNoChange: PropTypes.bool.isRequired,
+  isBookSelected: PropTypes.bool.isRequired,
   handleClickOpenPublishWindow: PropTypes.func.isRequired,
   handleToggleSharedOnTwitter: PropTypes.func.isRequired,
   handleToggleSharedOnFacebook: PropTypes.func.isRequired,
