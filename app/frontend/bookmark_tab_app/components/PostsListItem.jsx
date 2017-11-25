@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import renderHTML from "react-render-html"
 
 import clapAnimation from "../../shared/utils/clap_animation"
+import dummyClapAnimation from "../../shared/utils/dummy_clap_animation"
 
 const PostsListItem = ({
   post,
@@ -18,11 +19,10 @@ const PostsListItem = ({
   let clapCount
   let totalClapCount
 
+  let dummyButton
+
   return (
-    <div
-      key={post.uuid}
-      className="bookmarked-posts-list-item"
-    >
+    <div className="bookmarked-posts-list-item">
       <div className="item-header clearfix">
         <a href={`/@${post.userUserName}`}>
           <img
@@ -82,7 +82,26 @@ const PostsListItem = ({
       </div>
       <div className="item-footer clearfix">
         {
-          isLoggedIn && (
+          isLoggedIn && post.isMyPost && (
+            <button
+              className="clap-button-in-bookmark-tab"
+              ref={(node) => { dummyButton = node }}
+              onClick={(e) => {
+                e.stopPropagation()
+                dummyClapAnimation(dummyButton).replay()
+              }}
+            >
+              <img
+                className="clap-image"
+                src={beforeClapImage}
+                alt="clap"
+              />
+              <span className="clap-count">{post.clappedCount}</span>
+            </button>
+          )
+        }
+        {
+          isLoggedIn && !post.isMyPost && (
             <button
               className="clap-button-in-bookmark-tab"
               ref={(node) => { clapButton = node }}
@@ -197,6 +216,7 @@ PostsListItem.propTypes = {
     bookmarkedCount: PropTypes.number.isRequired,
     clappedCount: PropTypes.number.isRequired,
     clappedCountByMe: PropTypes.number.isRequired,
+    isMyPost: PropTypes.bool.isRequired,
   }).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   beforeClapImage: PropTypes.string.isRequired,
