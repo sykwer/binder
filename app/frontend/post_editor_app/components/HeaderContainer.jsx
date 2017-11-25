@@ -58,8 +58,9 @@ const mapStateToProps = state => ({
   tagSearchState: state.tagSearchState,
   isTitleEmpty: state.postTitle.length < 1,
   isContentEmpty: !state.postContent || state.postContent.length < 1,
-  hasNoChange: state.contentSaveState === "INITIAL" && state.titleSaveState === "INITIAL" && !state.isBookChanged,
   isBookSelected: !!state.selectedBookAsin,
+  isPublished: state.isPublished,
+  isChangesUnpublished: state.isChangesUnpublished,
 })
 
 const mapDispatchToProps = dispatch => ({

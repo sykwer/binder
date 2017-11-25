@@ -17,8 +17,9 @@ const Header = ({
   tagSearchState,
   isTitleEmpty,
   isContentEmpty,
-  hasNoChange,
   isBookSelected,
+  isPublished,
+  isChangesUnpublished,
   handleClickOpenPublishWindow,
   handleToggleSharedOnTwitter,
   handleToggleSharedOnFacebook,
@@ -73,7 +74,7 @@ const Header = ({
                     }, 100)
                   }}
                 >
-                  {"Publish "}
+                  {isPublished ? "Update " : "Publish "}
                   <i
                     className="fa fa-angle-down"
                     aria-hidden="true"
@@ -243,14 +244,42 @@ const Header = ({
                     </div>
                     <div className="publish-button-wrapper">
                       {
-                        !isBookSelected || isTitleEmpty || isContentEmpty || hasNoChange ? (
+                        isPublished &&
+                          (isTitleEmpty || isContentEmpty || !isChangesUnpublished) && (
+                          <button
+                            className="disabled-button"
+                            onClick={(e) => { e.stopPropagation() }}
+                          >
+                            Update
+                          </button>
+                        )
+                      }
+                      {
+                        isPublished &&
+                          !(isTitleEmpty || isContentEmpty || !isChangesUnpublished) && (
+                          <button
+                            className="publish-button"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleClickPublish()
+                            }}
+                          >
+                            Update
+                          </button>
+                        )
+                      }
+                      {
+                        !isPublished && (isTitleEmpty || isContentEmpty || !isBookSelected) && (
                           <button
                             className="disabled-button"
                             onClick={(e) => { e.stopPropagation() }}
                           >
                             Publish
                           </button>
-                        ) : (
+                        )
+                      }
+                      {
+                        !isPublished && !(isTitleEmpty || isContentEmpty || !isBookSelected) && (
                           <button
                             className="publish-button"
                             onClick={(e) => {
@@ -306,8 +335,9 @@ Header.propTypes = {
   tagSearchState: PropTypes.string.isRequired,
   isTitleEmpty: PropTypes.bool.isRequired,
   isContentEmpty: PropTypes.bool.isRequired,
-  hasNoChange: PropTypes.bool.isRequired,
   isBookSelected: PropTypes.bool.isRequired,
+  isPublished: PropTypes.bool.isRequired,
+  isChangesUnpublished: PropTypes.isRequired,
   handleClickOpenPublishWindow: PropTypes.func.isRequired,
   handleToggleSharedOnTwitter: PropTypes.func.isRequired,
   handleToggleSharedOnFacebook: PropTypes.func.isRequired,
