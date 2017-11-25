@@ -15,11 +15,9 @@ const Header = ({
   selectedTags,
   tagNameInput,
   tagSearchState,
-  isTitleEmpty,
-  isContentEmpty,
-  isBookSelected,
   isPublished,
-  isChangesUnpublished,
+  isUpdateDisabled,
+  isPublishDisabled,
   handleClickOpenPublishWindow,
   handleToggleSharedOnTwitter,
   handleToggleSharedOnFacebook,
@@ -244,8 +242,7 @@ const Header = ({
                     </div>
                     <div className="publish-button-wrapper">
                       {
-                        isPublished &&
-                          (isTitleEmpty || isContentEmpty || !isChangesUnpublished) && (
+                        isPublished && isUpdateDisabled && (
                           <button
                             className="disabled-button"
                             onClick={(e) => { e.stopPropagation() }}
@@ -255,8 +252,7 @@ const Header = ({
                         )
                       }
                       {
-                        isPublished &&
-                          !(isTitleEmpty || isContentEmpty || !isChangesUnpublished) && (
+                        isPublished && !isUpdateDisabled && (
                           <button
                             className="publish-button"
                             onClick={(e) => {
@@ -269,7 +265,7 @@ const Header = ({
                         )
                       }
                       {
-                        !isPublished && (isTitleEmpty || isContentEmpty || !isBookSelected) && (
+                        !isPublished && isPublishDisabled && (
                           <button
                             className="disabled-button"
                             onClick={(e) => { e.stopPropagation() }}
@@ -279,7 +275,7 @@ const Header = ({
                         )
                       }
                       {
-                        !isPublished && !(isTitleEmpty || isContentEmpty || !isBookSelected) && (
+                        !isPublished && !isPublishDisabled && (
                           <button
                             className="publish-button"
                             onClick={(e) => {
@@ -333,11 +329,9 @@ Header.propTypes = {
   })).isRequired,
   tagNameInput: PropTypes.string.isRequired,
   tagSearchState: PropTypes.string.isRequired,
-  isTitleEmpty: PropTypes.bool.isRequired,
-  isContentEmpty: PropTypes.bool.isRequired,
-  isBookSelected: PropTypes.bool.isRequired,
   isPublished: PropTypes.bool.isRequired,
-  isChangesUnpublished: PropTypes.isRequired,
+  isUpdateDisabled: PropTypes.bool.isRequired,
+  isPublishDisabled: PropTypes.bool.isRequired,
   handleClickOpenPublishWindow: PropTypes.func.isRequired,
   handleToggleSharedOnTwitter: PropTypes.func.isRequired,
   handleToggleSharedOnFacebook: PropTypes.func.isRequired,

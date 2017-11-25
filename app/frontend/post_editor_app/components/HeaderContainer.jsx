@@ -42,6 +42,23 @@ const stateToPublicationStatus = (state) => {
   return "Open to public"
 }
 
+const stateToIsUpdateDisabled = (state) => {
+  const isTitleEmpty = !state.postTitle
+  const isContentEmpty = !state.postContent
+  const noChanged = !state.isChangesUnpublished
+  const noTagsChanged = !state.isTagsChanged
+
+  return isTitleEmpty || isContentEmpty || (noChanged && noTagsChanged)
+}
+
+const stateToIsPublishDisabled = (state) => {
+  const isTitleEmpty = !state.postTitle
+  const isContentEmpty = !state.postContent
+  const noBookSelected = !state.selectedBookAsin
+
+  return isTitleEmpty || isContentEmpty || noBookSelected
+}
+
 const mapStateToProps = state => ({
   name: state.user.name,
   username: state.user.username,
@@ -56,11 +73,9 @@ const mapStateToProps = state => ({
   selectedTags: state.selectedTags,
   tagNameInput: state.tagNameInput,
   tagSearchState: state.tagSearchState,
-  isTitleEmpty: state.postTitle.length < 1,
-  isContentEmpty: !state.postContent || state.postContent.length < 1,
-  isBookSelected: !!state.selectedBookAsin,
   isPublished: state.isPublished,
-  isChangesUnpublished: state.isChangesUnpublished,
+  isUpdateDisabled: stateToIsUpdateDisabled(state),
+  isPublishDisabled: stateToIsPublishDisabled(state),
 })
 
 const mapDispatchToProps = dispatch => ({
