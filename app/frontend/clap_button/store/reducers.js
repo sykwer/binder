@@ -6,6 +6,11 @@ const postUuid = (state = null, action) => {
 }
 
 // eslint-disable-next-line
+const isMyPost = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
 const afterClapImage = (state = null, action) => {
   return state
 }
@@ -35,6 +40,7 @@ const clappedCountByMe = (state = null, action) => {
 
 const rootReducer = combineReducers({
   postUuid,
+  isMyPost,
   afterClapImage,
   beforeClapImage,
   clappedCount,

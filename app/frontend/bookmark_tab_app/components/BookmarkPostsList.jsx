@@ -25,6 +25,7 @@ const cpnt = ({
     {
       posts.map(post => (
         <PostsListItem
+          key={post.uuid}
           post={post}
           isLoggedIn={isLoggedIn}
           beforeClapImage={beforeClapImage}
@@ -58,6 +59,7 @@ cpnt.propTypes = {
     bookmarkedCount: PropTypes.number.isRequired,
     clappedCount: PropTypes.number.isRequired,
     clappedCountByMe: PropTypes.number.isRequired,
+    isMyPost: PropTypes.bool.isRequired,
   })).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   beforeClapImage: PropTypes.string.isRequired,

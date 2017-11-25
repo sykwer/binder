@@ -16,6 +16,7 @@ json.posts @posts do |post|
   json.bookmarkedCount post.bookmarked_count
   json.clappedCount post.claps_count
   json.clappedCountByMe current_user.present? ? current_user.clap_count_of(post) : 0
+  json.isMyPost current_user == post.user
 end
 
 json.oldestUnixTime @oldest_unixtime
