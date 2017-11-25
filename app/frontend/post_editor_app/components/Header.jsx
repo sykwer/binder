@@ -15,6 +15,9 @@ const Header = ({
   selectedTags,
   tagNameInput,
   tagSearchState,
+  isTitleEmpty,
+  isContentEmpty,
+  hasNoChange,
   handleClickOpenPublishWindow,
   handleToggleSharedOnTwitter,
   handleToggleSharedOnFacebook,
@@ -238,15 +241,26 @@ const Header = ({
                       </label>
                     </div>
                     <div className="publish-button-wrapper">
-                      <button
-                        className="publish-button"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          handleClickPublish()
-                        }}
-                      >
-                        Publish
-                      </button>
+                      {
+                        isTitleEmpty || isContentEmpty || hasNoChange ? (
+                          <button
+                            className="disabled-button"
+                            onClick={(e) => { e.stopPropagation() }}
+                          >
+                            Publish
+                          </button>
+                        ) : (
+                          <button
+                            className="publish-button"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleClickPublish()
+                            }}
+                          >
+                            Publish
+                          </button>
+                        )
+                      }
                     </div>
                   </div>
                 }
@@ -289,6 +303,9 @@ Header.propTypes = {
   })).isRequired,
   tagNameInput: PropTypes.string.isRequired,
   tagSearchState: PropTypes.string.isRequired,
+  isTitleEmpty: PropTypes.bool.isRequired,
+  isContentEmpty: PropTypes.bool.isRequired,
+  hasNoChange: PropTypes.bool.isRequired,
   handleClickOpenPublishWindow: PropTypes.func.isRequired,
   handleToggleSharedOnTwitter: PropTypes.func.isRequired,
   handleToggleSharedOnFacebook: PropTypes.func.isRequired,

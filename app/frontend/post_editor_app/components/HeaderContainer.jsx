@@ -56,6 +56,9 @@ const mapStateToProps = state => ({
   selectedTags: state.selectedTags,
   tagNameInput: state.tagNameInput,
   tagSearchState: state.tagSearchState,
+  isTitleEmpty: state.postTitle.length < 1,
+  isContentEmpty: !state.postContent || state.postContent.length < 1,
+  hasNoChange: state.contentSaveState === "INITIAL" && state.titleSaveState === "INITIAL",
 })
 
 const mapDispatchToProps = dispatch => ({
