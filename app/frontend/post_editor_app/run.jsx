@@ -22,6 +22,7 @@ const run = () => {
       selectedBookAuthor: data.bookAuthor,
       selectedBookPublisher: data.bookPublisher,
       selectedBookImage: data.image,
+      postTitle: data.title,
       postContent: data.content,
       date: data.date,
       isPublished: data.isPublished,

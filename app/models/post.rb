@@ -10,6 +10,8 @@ class Post < ApplicationRecord
   has_many :post_tags, foreign_key: :post_uuid
   has_many :tags, through: :post_tags, source: :tag
 
+  validate :published_post_must_have_book_image
+
   before_create do
     self.uuid = SecureRandom.uuid
   end
@@ -77,5 +79,13 @@ class Post < ApplicationRecord
     tags.each do |tag|
       PostTag.where(post_uuid: uuid, tag_id: tag.id).take.delete
     end
+  end
+
+  private
+
+  def published_post_must_have_book_image
+    return unless published?
+    return if book_image_url.present?
+    errors.add(:post, "published must have book image")
   end
 end

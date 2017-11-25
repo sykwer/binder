@@ -42,6 +42,27 @@ const stateToPublicationStatus = (state) => {
   return "Open to public"
 }
 
+const stateToIsUpdateDisabled = (state) => {
+  const isTitleEmpty = !state.postTitle
+  const isContentEmpty = !state.postContent
+  const noChanged = !state.isChangesUnpublished
+  const noTagsChanged = !state.isTagsChanged
+  const isSavingStable = ["INITIAL", "IS_SAVED"].includes(state.titleSaveState) &&
+    ["INITIAL", "IS_SAVED"].includes(state.contentSaveState)
+
+  return isTitleEmpty || isContentEmpty || (noChanged && noTagsChanged) || !isSavingStable
+}
+
+const stateToIsPublishDisabled = (state) => {
+  const isTitleEmpty = !state.postTitle
+  const isContentEmpty = !state.postContent
+  const noBookSelected = !state.selectedBookAsin
+  const isSavingStable = ["INITIAL", "IS_SAVED"].includes(state.titleSaveState) &&
+    ["INITIAL", "IS_SAVED"].includes(state.contentSaveState)
+
+  return isTitleEmpty || isContentEmpty || noBookSelected || !isSavingStable
+}
+
 const mapStateToProps = state => ({
   name: state.user.name,
   username: state.user.username,
@@ -56,6 +77,9 @@ const mapStateToProps = state => ({
   selectedTags: state.selectedTags,
   tagNameInput: state.tagNameInput,
   tagSearchState: state.tagSearchState,
+  isPublished: state.isPublished,
+  isUpdateDisabled: stateToIsUpdateDisabled(state),
+  isPublishDisabled: stateToIsPublishDisabled(state),
 })
 
 const mapDispatchToProps = dispatch => ({

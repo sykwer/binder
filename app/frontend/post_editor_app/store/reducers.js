@@ -281,6 +281,16 @@ const searchedTagsList = (state = [], action) => {
   }
 }
 
+const isTagsChanged = (state = false, action) => {
+  switch (action.type) {
+    case "SELECT_TAG":
+    case "DELETE_TAG":
+      return true
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   bookNameInput,
   authorInput,
@@ -310,6 +320,7 @@ const rootReducer = combineReducers({
   tagNameInput,
   tagSearchState,
   searchedTagsList,
+  isTagsChanged,
 })
 
 export default rootReducer

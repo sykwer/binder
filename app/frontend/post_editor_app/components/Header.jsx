@@ -15,6 +15,9 @@ const Header = ({
   selectedTags,
   tagNameInput,
   tagSearchState,
+  isPublished,
+  isUpdateDisabled,
+  isPublishDisabled,
   handleClickOpenPublishWindow,
   handleToggleSharedOnTwitter,
   handleToggleSharedOnFacebook,
@@ -69,7 +72,7 @@ const Header = ({
                     }, 100)
                   }}
                 >
-                  {"Publish "}
+                  {isPublished ? "Update " : "Publish "}
                   <i
                     className="fa fa-angle-down"
                     aria-hidden="true"
@@ -238,15 +241,52 @@ const Header = ({
                       </label>
                     </div>
                     <div className="publish-button-wrapper">
-                      <button
-                        className="publish-button"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          handleClickPublish()
-                        }}
-                      >
-                        Publish
-                      </button>
+                      {
+                        isPublished && isUpdateDisabled && (
+                          <button
+                            className="disabled-button"
+                            onClick={(e) => { e.stopPropagation() }}
+                          >
+                            Update
+                          </button>
+                        )
+                      }
+                      {
+                        isPublished && !isUpdateDisabled && (
+                          <button
+                            className="publish-button"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleClickPublish()
+                            }}
+                          >
+                            Update
+                          </button>
+                        )
+                      }
+                      {
+                        !isPublished && isPublishDisabled && (
+                          <button
+                            className="disabled-button"
+                            onClick={(e) => { e.stopPropagation() }}
+                          >
+                            Publish
+                          </button>
+                        )
+                      }
+                      {
+                        !isPublished && !isPublishDisabled && (
+                          <button
+                            className="publish-button"
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              handleClickPublish()
+                            }}
+                          >
+                            Publish
+                          </button>
+                        )
+                      }
                     </div>
                   </div>
                 }
@@ -289,6 +329,9 @@ Header.propTypes = {
   })).isRequired,
   tagNameInput: PropTypes.string.isRequired,
   tagSearchState: PropTypes.string.isRequired,
+  isPublished: PropTypes.bool.isRequired,
+  isUpdateDisabled: PropTypes.bool.isRequired,
+  isPublishDisabled: PropTypes.bool.isRequired,
   handleClickOpenPublishWindow: PropTypes.func.isRequired,
   handleToggleSharedOnTwitter: PropTypes.func.isRequired,
   handleToggleSharedOnFacebook: PropTypes.func.isRequired,
