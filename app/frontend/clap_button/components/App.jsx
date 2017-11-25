@@ -4,28 +4,54 @@ import { connect } from "react-redux"
 
 import { clickClap } from "../store/actions"
 import clapAnimation from "../../shared/utils/clap_animation"
+import dummyClapAnimation from "../../shared/utils/dummy_clap_animation"
 
 const cpnt = ({
   beforeClapImage,
   afterClapImage,
   clappedCount,
   clappedCountByMe,
+  isMyPost,
   handleClickClap,
 }) => {
-  let btn
+  let clapButton
   let countAnime
   let totalCountAnime
+
+  let dummyButton
+
+  if (isMyPost) {
+    return (
+      <button
+        className="clap-button-component"
+        ref={(node) => { dummyButton = node }}
+        onClick={(e) => {
+          e.stopPropagation()
+          dummyClapAnimation(dummyButton).replay()
+        }}
+      >
+        <img
+          className="clap-image"
+          src={beforeClapImage}
+          alt="clap"
+        />
+        <p className="claps-count-right">
+          {clappedCount}
+        </p>
+      </button>
+    )
+  }
 
   return (
     <button
       className="clap-button-component"
-      ref={(node) => { btn = node }}
+      ref={(node) => { clapButton = node }}
       onClick={(e) => {
         e.preventDefault()
         e.stopPropagation()
         handleClickClap()
 
-        clapAnimation(btn, countAnime, totalCountAnime).replay()
+        clapAnimation(clapButton, countAnime, totalCountAnime).replay()
       }}
     >
       <span className="clap-count-by-me" ref={(node) => { countAnime = node }}>
@@ -51,6 +77,7 @@ cpnt.propTypes = {
   afterClapImage: PropTypes.string.isRequired,
   clappedCount: PropTypes.number.isRequired,
   clappedCountByMe: PropTypes.number.isRequired,
+  isMyPost: PropTypes.bool.isRequired,
   handleClickClap: PropTypes.func.isRequired,
 }
 
@@ -59,6 +86,7 @@ const mapStateToProps = state => ({
   afterClapImage: state.afterClapImage,
   clappedCount: state.clappedCount,
   clappedCountByMe: state.clappedCountByMe,
+  isMyPost: state.isMyPost,
 })
 
 const mapDispatchToProps = dispatch => ({

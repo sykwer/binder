@@ -17,6 +17,7 @@ const run = () => {
       postUuid: data.postUuid,
       clappedCount: data.clappedCount,
       clappedCountByMe: data.clappedCountByMe,
+      isMyPost: data.isMyPost,
       beforeClapImage: data.beforeClapImage,
       afterClapImage: data.afterClapImage,
     }
