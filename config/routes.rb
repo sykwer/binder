@@ -26,6 +26,9 @@ Rails.application.routes.draw do
     resource :content, controller: "posts/contents", only: %i(update)
   end
 
+  resources :contacts, only: %i(new create)
+  get "contacts/done", to: "contacts#done"
+
   namespace :api, { format: 'json' } do
     get "streams/from_followings", to: "streams#from_followings"
     get "streams/world_timeline", to: "streams#world_timeline"
