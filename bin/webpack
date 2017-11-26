@@ -21,7 +21,8 @@ unless File.exist?(WEBPACK_CONFIG)
 end
 
 newenv  = { "NODE_PATH" => NODE_MODULES_PATH.shellescape }
-cmdline = ["yarn", "run", "webpack", "--", "--config", WEBPACK_CONFIG] + ARGV
+# cmdline = ["yarn", "run", "webpack", "--", "--config", WEBPACK_CONFIG] + ARGV
+cmdline = ["node", "--max_old_space_size=4096", "node_modules/webpack/bin/webpack.js", "--config", WEBPACK_CONFIG] + ARGV
 
 Dir.chdir(APP_PATH) do
   exec newenv, *cmdline
