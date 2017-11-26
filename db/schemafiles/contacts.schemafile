@@ -1,0 +1,7 @@
+create_table "contacts", force: :cascade, options: default_options do |t|
+  t.string :name,    null: false, default: ""
+  t.string :email,   null: false, default: ""
+  t.string :content, null: false, default: ""
+
+  t.timestamps null: false
+end
