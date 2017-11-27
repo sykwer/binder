@@ -25,6 +25,7 @@ class Post < ApplicationRecord
 
   def self.created_posterior_to(post)
     Post.published
+      .not_deleted
       .where(user_id: post.user_id)
       .where("created_at > ?", post.created_at)
       .order(created_at: :asc)
@@ -34,6 +35,7 @@ class Post < ApplicationRecord
 
   def self.created_prior_to(post)
     Post.published
+      .not_deleted
       .where(user_id: post.user_id)
       .where("created_at < ?", post.created_at)
       .order(created_at: :desc)
