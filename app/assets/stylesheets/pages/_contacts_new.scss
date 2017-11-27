@@ -1,9 +1,20 @@
 .contacts-new {
   width: 100%;
-  margin: 100px auto 0;
+  margin: 63px auto 0;
+
+  .success-message {
+    width: 100%;
+    padding: 5px;
+    color: white;
+    background-color: $fresh_green;
+    opacity: 0.7;
+    font-size: 17px;
+    text-align: center;
+  }
 
   .contact-form-wrapper {
     margin: 0 auto;
+    padding-top: 15px;
 
     @media (min-width: $medium_plus_one) {
       width: 700px;

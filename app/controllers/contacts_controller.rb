@@ -4,16 +4,17 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @contact = Contact.new(contact_params)
+    contact = Contact.new(contact_params)
 
-    if @contact.save
-      redirect_to contacts_done_path
+    if contact.save
+      @contact = Contact.new
+      @success = true
     else
-      render :new
+      @contact = contact
+      @success = false
     end
-  end
 
-  def done
+    render :new
   end
 
   private
