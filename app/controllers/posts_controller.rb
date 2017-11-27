@@ -6,6 +6,10 @@ class PostsController < ApplicationController
       render :show_deleted and return
     end
 
+    if !@post.published? && current_user != @post.user
+      render :show_unpublished and return
+    end
+
     @prior_post = Post.created_prior_to(@post)
     @posterior_post = Post.created_posterior_to(@post)
   end
