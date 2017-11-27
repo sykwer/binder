@@ -72,9 +72,12 @@ class cpnt extends Component {
                   />
                 </div>
                 <ul className="config-list">
+                  {/*
                   <li className="config-list-item">
                     アカウント設定
                   </li>
+                  */
+                  }
                   <a href="/contacts/new">
                     <li className="config-list-item">
                       お問い合わせ
