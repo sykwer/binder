@@ -2,6 +2,14 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i(show edit destroy)
 
   def show
+    if @post.deleted?
+      render :show_deleted and return
+    end
+
+    if !@post.published? && current_user != @post.user
+      render :show_unpublished and return
+    end
+
     @prior_post = Post.created_prior_to(@post)
     @posterior_post = Post.created_posterior_to(@post)
   end
@@ -16,7 +24,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy!
+    @post.delete_logically!
     redirect_to "/@#{current_user.username}/drafts"
   end
 

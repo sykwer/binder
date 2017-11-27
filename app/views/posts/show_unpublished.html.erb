@@ -1,0 +1,15 @@
+<%= render "shared/green_header" %>
+<div class="posts-show-unpublished">
+  <p class="unpublished-comment">この投稿は現在公開されていません</p>
+  <button class="back-button" id="back-button-in-post-unpublished">戻る</button>
+</div>
+<%= render "shared/footer" %>
+
+<script tyoe="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  var button = document.getElementById("back-button-in-post-unpublished");
+  button.addEventListener("click", function() {
+    window.history.back();
+  });
+});
+</script>

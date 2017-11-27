@@ -1,4 +1,7 @@
 <%= render "shared/green_header" %>
+<% if !@post.published? %>
+  <p class="unpublished-message">この記事はまだ公開されていません</p>
+<% end %>
 <div class="posts-show">
   <h2 class="post-title">
     <%= @post.title %>
@@ -60,7 +63,7 @@
         <% end %>
       <% end %>
     </div>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @post.published? %>
       <%= content_tag :div,
         class: "bookmark-component-root-div bookmark-button-wrapper",
         data: {
@@ -68,6 +71,10 @@
           isBookmarked: @post.bookmarked_by?(current_user),
         }.to_json do %>
       <% end %>
+    <% elsif user_signed_in? && !@post.published? %>
+      <div class="bookmark-button-wrapper">
+        <i class="fa fa-bookmark-o bookmark-button" aria-hidden="true"></i>
+      </div>
     <% else %>
       <%= content_tag :div,
         class: "login-popup-app bookmark-button-wrapper",
@@ -79,16 +86,23 @@
         }.to_json do %>
       <% end %>
     <% end %>
-    <button class="twitter-button">
-      <%= content_tag :i,
-        id: "twitter-share-button",
-        class: "fa fa-twitter",
-        "aria-hidden": true,
-        data: {
-          postUrl: post_url(@post),
-        }.to_json do %>
-      <% end %>
-    </button>
+    <% if @post.published? %>
+      <button class="twitter-button">
+        <%= content_tag :i,
+          id: "twitter-share-button",
+          class: "fa fa-twitter",
+          "aria-hidden": true,
+          data: {
+            postUrl: post_url(@post),
+          }.to_json do %>
+        <% end %>
+      </button>
+    <% else %>
+      <button class="twitter-button">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </button>
+    <% end %>
+    <% if @post.published? %>
     <button class="facebook-button">
       <%= content_tag :i,
         id: "facebook-share-button",
@@ -99,6 +113,11 @@
         }.to_json do %>
       <% end %>
     </button>
+    <% else %>
+      <button class="facebook-button">
+        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+      </button>
+    <% end %>
   </div>
   <div class="book-introduction">
     <h2 class="book-intro-header">この記事の本</h2>

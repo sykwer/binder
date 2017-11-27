@@ -1,0 +1,15 @@
+<%= render "shared/green_header" %>
+<div class="posts-show-deleted">
+  <p class="delete-comment">この投稿は削除されました</p>
+  <button class="back-button" id="back-button-in-post-show">戻る</button>
+</div>
+<%= render "shared/footer" %>
+
+<script tyoe="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  var button = document.getElementById("back-button-in-post-show");
+  button.addEventListener("click", function() {
+    window.history.back();
+  });
+});
+</script>
