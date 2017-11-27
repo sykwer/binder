@@ -5,7 +5,7 @@ class Api::PostsController < Api::ApplicationController
   end
 
   def destroy
-    @post.destroy!
+    @post.delete_logically!
     head 200
   end
 

@@ -1,8 +1,8 @@
 class Api::MultiplePostsController < Api::ApplicationController
-  before_action :set_posts, only: %i(unpublish)
+  before_action :set_posts
 
   def destroy
-    Post.delete(params[:post_uuids])
+    @posts.each { |p| p.delete_logically! }
     head 200
   end
 

@@ -21,6 +21,7 @@ class Post < ApplicationRecord
   scope :published, lambda { where.not(first_published_at: nil).where(is_published: true) }
   scope :bookmarked_by, lambda { |user| joins(:bookmarks).where("bookmarks.user_id = ?", user.id) }
   scope :not_published, lambda { where(is_published: false) }
+  scope :not_deleted, lambda { where(is_deleted: false) }
 
   def self.created_posterior_to(post)
     Post.published
@@ -65,8 +66,17 @@ class Post < ApplicationRecord
     save!
   end
 
+  def delete_logically!
+    self.is_deleted = true
+    save!
+  end
+
   def bookmarked_by?(user)
     bookmarks.where(user: user).exists?
+  end
+
+  def deleted?
+    is_deleted
   end
 
   def attatch_tags!(tags)

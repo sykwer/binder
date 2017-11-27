@@ -3,7 +3,7 @@ class Api::StreamsController < Api::ApplicationController
     t = FollowingsTimeline.new(user: current_user, count_per_page: count_param)
     post_uuids = offset_param.eql?(0) ?
       t.fetch_head! : t.fetch(page: offset_param / count_param) # == page
-    posts = Post.where(uuid: post_uuids) # orderless
+    posts = Post.where(uuid: post_uuids).not_deleted # orderless
 
     # workaround
     @posts = []
@@ -19,7 +19,7 @@ class Api::StreamsController < Api::ApplicationController
     t = WorldTimeline.new(count_per_page: count_param)
     post_uuids = params[:oldest_unixtime_nano].present? ?
       t.fetch(oldest_unixtime_nano: params[:oldest_unixtime_nano].to_i) : t.fetch
-    posts = Post.where(uuid: post_uuids) # orderless
+    posts = Post.where(uuid: post_uuids).not_deleted # orderless
 
     # workaround
     @posts = []

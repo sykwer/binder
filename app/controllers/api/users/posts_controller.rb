@@ -3,6 +3,7 @@ class Api::Users::PostsController < Api::ApplicationController
 
   def index
     @posts = Post.published
+                 .not_deleted
                  .where(user_id: @user.id)
                  .order(created_at: :desc)
                  .offset(offset_param)
