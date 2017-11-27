@@ -1,0 +1,32 @@
+<%= render "shared/green_header" %>
+<div class="demands-new">
+  <% if @success %>
+    <p class="success-message">送信しました. 貴重なご意見ありがとうございます!</p>
+  <% end %>
+  <div class="demand-form-wrapper">
+    <h2 class="form-title">Binder目安箱</h2>
+    <div class="form-desc-wrapper">
+      <p class="form-desc">Binderユーザーの皆さまから、要望や改善してほしい点を募集しています.</p>
+      <p class="form-desc-list">
+      ・Binderを使っていて困っていることがある<br/>
+      ・機能のこんなところが使いにくい<br/>
+      ・この機能は必要ないと思う<br/>
+      ・こんな機能があったら嬉しい
+      </p>
+      <p class="form-desc">など気軽に投函してください! 必ずBinderの開発者に届きます.</p>
+    </div>
+    <%= form_with model: @demand, local: true do |f| %>
+
+      <%= f.text_area :content,
+        id: :contact_content,
+        class: "form-input" %>
+      <% if @demand.errors.details[:content].present? %>
+        <p class="error-message">何も入力されていません</p>
+      <% end %>
+
+      <%= f.submit value: "送信",
+        class: "reset-input-submit form-submit",
+        "data-disable-with": "送信" %>
+    <% end %>
+  </div>
+</div>

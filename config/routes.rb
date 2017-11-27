@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :contacts, only: %i(new create)
+  resources :demands, only: %i(new create)
 
   namespace :api, { format: 'json' } do
     get "streams/from_followings", to: "streams#from_followings"
