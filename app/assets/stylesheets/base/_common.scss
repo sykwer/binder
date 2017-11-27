@@ -36,6 +36,14 @@ button {
   appearance: none;
 }
 
+.reset-input-submit {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
 // Reset list mark
 * {
   list-style-type: none;

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#top'
   get 'about', to: 'pages#about'
+  get 'terms', to: 'pages#terms'
+  get 'terms/privacy', to: 'pages#privacy'
 
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
@@ -23,6 +25,9 @@ Rails.application.routes.draw do
   resources :posts, only: %i(show create edit destroy), param: :uuid do
     resource :content, controller: "posts/contents", only: %i(update)
   end
+
+  resources :contacts, only: %i(new create)
+  resources :demands, only: %i(new create)
 
   namespace :api, { format: 'json' } do
     get "streams/from_followings", to: "streams#from_followings"

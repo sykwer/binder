@@ -1,0 +1,5 @@
+create_table "demands", force: :cascade, options: default_options do |t|
+  t.string :content, null: false, default: ""
+
+  t.timestamps null: false
+end
