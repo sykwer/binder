@@ -1,1 +1,37 @@
 <%= render "shared/green_header" %>
+<div class="contacts-new">
+  <div class="contact-form-wrapper">
+    <h2 class="form-title">お問合わせフォーム</h2>
+    <p class="form-description">運営で内容を確認したのち、指定されたメールアドレスに回答を送信いたします</p>
+    <%= form_with model: @contact, local: true do |f| %>
+
+      <%= f.label :name, "名前", class: "form-label" %>
+      <%= f.text_field :name,
+        id: :contact_name,
+        class: "form-input form-contact-name" %>
+      <% if @contact.errors.details[:name].present? %>
+        <p class="error-message">名前を入力してください</p>
+      <% end %>
+
+      <%= f.label :email, "メールアドレス", class: "form-label" %>
+      <%= f.text_field :email,
+        id: :contact_email,
+        class: "form-input form-contact-email" %>
+      <% if @contact.errors.details[:email].present? %>
+        <p class="error-message">適切なメールアドレスを入力してください</p>
+      <% end %>
+
+      <%= f.label :content, "本文", class: "form-label" %>
+      <%= f.text_area :content,
+        id: :contact_content,
+        class: "form-input form-contact-content" %>
+      <% if @contact.errors.details[:content].present? %>
+        <p class="error-message">本文に何も入力されていません</p>
+      <% end %>
+
+      <%= f.submit value: "送信",
+        class: "reset-input-submit form-submit",
+        "data-disable-with": "送信" %>
+    <% end %>
+  </div>
+</div>

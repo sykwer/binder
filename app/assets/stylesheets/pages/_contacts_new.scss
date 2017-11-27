@@ -1,0 +1,71 @@
+.contacts-new {
+  width: 100%;
+  margin: 100px auto 0;
+
+  .contact-form-wrapper {
+    margin: 0 auto;
+
+    @media (min-width: $medium_plus_one) {
+      width: 700px;
+    }
+
+    @media (max-width: $medium) {
+      width: 90%;
+    }
+
+    .form-title {
+      color: $post_title_color;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .form-description {
+      color: $post_content_color;
+      opacity: 0.8;
+      font-size: 15px;
+      letter-spacing: 0.5;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-label {
+      display: block;
+      margin-top: 10px;
+      color: $post_title_color;
+    }
+
+    .form-input {
+      display: block;
+      width: 100%;
+      color: $post_content_color;
+    }
+
+    .form-contact-name,
+    .form-contact-email {
+      height: 30px;
+    }
+
+    .form-contact-content {
+      height: 200px;
+    }
+
+    .form-submit {
+      margin-top: 20px;
+      border: 1.2px solid $gray56;
+      color: $gray56;
+      border-radius: 5px;
+      padding: 5px 15px;
+    }
+
+    .form-input:focus {
+      outline: 1px solid $fresh_green;
+    }
+
+    .error-message {
+      color: red;
+      opacity: 0.6;
+    }
+  }
+}
