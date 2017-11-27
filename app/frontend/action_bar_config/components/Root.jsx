@@ -54,10 +54,10 @@ class cpnt extends Component {
                 onClick={(e) => { e.stopPropagation() }}
               >
                 <div className="head-box">
-                  <a href={`@${username}`}>
+                  <a href={`/@${username}`}>
                     <p className="login-name">{name}</p>
                   </a>
-                  <a href={`@${username}`}>
+                  <a href={`/@${username}`}>
                     <p className="login-name-comment">マイページを表示</p>
                   </a>
                   <i
@@ -75,9 +75,11 @@ class cpnt extends Component {
                   <li className="config-list-item">
                     アカウント設定
                   </li>
-                  <li className="config-list-item">
-                    お問い合わせ
-                  </li>
+                  <a href="/contacts/new">
+                    <li className="config-list-item">
+                      お問い合わせ
+                    </li>
+                  </a>
                   <a
                     href={destroySessionPath}
                     data-method="delete"
@@ -87,11 +89,13 @@ class cpnt extends Component {
                     </li>
                   </a>
                 </ul>
-                <ul className="config-list">
-                  <li className="config-list-item bold-item">
-                    Binder目安箱
-                  </li>
-                </ul>
+                <a href="/demands/new">
+                  <ul className="config-list">
+                    <li className="config-list-item bold-item">
+                      Binder目安箱
+                    </li>
+                  </ul>
+                </a>
                 <div
                   className="foot-box calcel-focus-outline"
                   role="button"
