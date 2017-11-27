@@ -28,5 +28,15 @@
     border: 1px solid $gray56;
     color: $gray56;
     opacity: 0.8;
+
+    transition-property: color, background-color opacity;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+  }
+
+  .back-button:hover {
+    color: white;
+    background-color: $gray56;
+    opacity: 0.5;
   }
 }
