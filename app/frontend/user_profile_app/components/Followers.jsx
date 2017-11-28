@@ -12,7 +12,6 @@ import ListItem from "../../shared/components/ListItem"
 import FollowersBottomObserver from "./FollowersBottomObserver"
 
 const cpnt = ({
-  myUserId,
   name,
   username,
   followers,
@@ -46,15 +45,17 @@ const cpnt = ({
           <ListItem
             key={follower.id}
             userId={follower.id}
-            myUserId={myUserId}
             image={follower.image}
             name={follower.name}
             username={follower.username}
             bio={follower.bio}
             isFollowing={follower.isFollowing}
             isButtonsDisabled={isButtonsDisabled}
+            isLoggedIn
+            isMyself={false}
             handleOnClickFollow={handleOnClickFollow}
             handleOnClickUnfollow={handleOnClickUnfollow}
+            handleOpenLoginModal={() => {}}
           />
         ))
       }
@@ -64,7 +65,6 @@ const cpnt = ({
 )
 
 cpnt.propTypes = {
-  myUserId: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   followers: PropTypes.arrayOf(PropTypes.shape({
@@ -81,7 +81,6 @@ cpnt.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  myUserId: state.id,
   name: state.name,
   username: state.username,
   followers: state.followers,
