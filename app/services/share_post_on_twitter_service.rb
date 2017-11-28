@@ -19,8 +19,8 @@ class SharePostOnTwitterService
     @twitter_client ||= Twitter::REST::Client.new do |config|
       config.consumer_key = Rails.application.secrets.twitter_app_key
       config.consumer_secret = Rails.application.secrets.twitter_secret_key
-      config.access_token = @user.twitter_access_token
-      config.access_token_secret = @user.twitter_access_token_secret
+      config.access_token = @user.social_profile(:twitter).access_token
+      config.access_token_secret = @user.social_profile(:facebook).access_secret
     end
   end
 end
