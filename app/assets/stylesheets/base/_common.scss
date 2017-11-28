@@ -62,7 +62,7 @@ button {
 // Support for contenteditable placeholder
 [contenteditable]:empty:before {
   content: attr(placeholder);
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 // Cancel focus outline

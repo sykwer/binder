@@ -16,6 +16,7 @@ const cpnt = ({ onChangeBio, isEditable }) => {
       contentEditable={isEditable}
       ref={(node) => { editable = node }}
       bio-max-lengther=""
+      placeholder="Enter short bio"
       onInput={(e) => {
         e.preventDefault()
         onChangeBio(editable.innerText)
