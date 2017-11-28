@@ -12,17 +12,8 @@ create_table "users", force: :cascade, options: default_options do |t|
   t.datetime :last_sign_in_at
   t.string   :current_sign_in_ip
   t.string   :last_sign_in_ip
-  t.string   :facebook_uid
-  t.string   :facebook_link
-  t.string   :facebook_access_token
-  t.string   :twitter_uid
-  t.string   :twitter_link
-  t.string   :twitter_access_token
-  t.string   :twitter_access_token_secret
 
   t.timestamps null: false
 
   t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
-  t.index ["facebook_uid"], name: "index_users_on_facebook_uid", unique: true, using: :btree
-  t.index ["twitter_uid"], name: "index_users_on_twitter_uid", unique: true, using: :btree
 end

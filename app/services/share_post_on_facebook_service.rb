@@ -15,6 +15,6 @@ class SharePostOnFacebookService
   private
 
   def facebook_client
-    @facebook_client ||= Koala::Facebook::API.new(@user.facebook_access_token)
+    @facebook_client ||= Koala::Facebook::API.new(@user.social_profile(:facebook).access_token)
   end
 end

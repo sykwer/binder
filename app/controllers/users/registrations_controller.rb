@@ -4,13 +4,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    @omniauth = session["devise.omniauth"]
+
     registration = Registration.new(
       username: params[:registration][:username],
-      fb_data: session["devise.facebook_data"],
-      tw_data: session["devise.twitter_data"],
+      omniauth: @omniauth,
     )
 
-    if user = registration.save
+    if user = registration.save!
       sign_in_and_redirect user, event: :authentication
     else
       render :new
