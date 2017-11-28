@@ -9,8 +9,8 @@
       <nav class="header-menu">
         <ul>
           <% if user_signed_in? %>
-            <li class="menu-item write-record">
-              <%= link_to "Write a Record", posts_path, method: :post %>
+            <li class="menu-item new-post-button-wrapper">
+              <%= link_to "New post", posts_path, method: :post, class: "new-post-button" %>
             </li>
             <li class="menu-item">
               <%= content_tag :div,
