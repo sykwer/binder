@@ -16,6 +16,4 @@ create_table "users", force: :cascade, options: default_options do |t|
   t.timestamps null: false
 
   t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
-  t.index ["facebook_uid"], name: "index_users_on_facebook_uid", unique: true, using: :btree
-  t.index ["twitter_uid"], name: "index_users_on_twitter_uid", unique: true, using: :btree
 end

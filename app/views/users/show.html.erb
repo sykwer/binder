@@ -13,8 +13,8 @@
           image: @user.image_url,
           followings: @user.followings_count,
           followers: @user.followers_count,
-          facebookLink: @user.facebook_link,
-          twitterLink: @user.twitter_link,
+          facebookLink: @user.social_profile(:facebook).try(:url),
+          twitterLink: @user.social_profile(:twitter).try(:url),
           facebookOmniauthPath: user_facebook_omniauth_authorize_path,
           twitterOmniauthPath: user_twitter_omniauth_authorize_path,
         }.to_json do %>

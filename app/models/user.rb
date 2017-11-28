@@ -16,9 +16,15 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Follow", foreign_key: "destination_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :source
 
+  has_many :social_profiles
+
   validates :name, length: { in: 1..50 }
   validates :bio, length: { maximum: 160 }
   validates :username, length: { in: 1..15 }, format: { with: /(\w){1,15}/ }
+
+  def social_profile(provider)
+    social_profiles.select { |sp| sp.provider == provider.to_s }.first
+  end
 
   def follows?(user)
     followings.where(id: user.id).exists?
@@ -29,11 +35,11 @@ class User < ApplicationRecord
   end
 
   def twitter_connected?
-    twitter_uid.present?
+    social_profile(:twitter).present?
   end
 
   def facebook_connected?
-    facebook_uid.present?
+    social_profile(:facebook).present?
   end
 
   def has_bookmarked_post?
@@ -51,33 +57,5 @@ class User < ApplicationRecord
   def clap_count_of(post)
     claps = Clap.where(post: post, user: self).take
     claps.present? ? claps.count : 0
-  end
-
-  def link_to_sns_of!(auth_param)
-    case auth_param["provider"]
-    when "facebook"
-      self.facebook_uid = auth_param["uid"]
-      self.facebook_link = auth_param["extra"]["raw_info"]["link"]
-      self.facebook_access_token = auth_param["credentials"]["token"]
-      self.email = auth_param["info"]["email"]
-    when "twitter"
-      self.twitter_uid = auth_param["uid"]
-      self.twitter_link = auth_param["info"]["urls"]["Twitter"]
-      self.twitter_access_token = auth_param["credentials"]["token"]
-      self.twitter_access_token_secret = auth_param["credentials"]["secret"]
-    end
-
-    save!
-  end
-
-  def update_twitter_access_token!(auth_param)
-    self.twitter_access_token = auth_param["credentials"]["token"]
-    self.twitter_access_token_secret = auth_param["credentials"]["secret"]
-    save!
-  end
-
-  def update_facebook_access_token!(auth_param)
-    self.facebook_access_token = auth_param["credentials"]["token"]
-    save!
   end
 end

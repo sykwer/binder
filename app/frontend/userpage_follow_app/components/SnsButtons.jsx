@@ -11,7 +11,7 @@ const cpnt = ({ facebookLink, twitterLink }) => (
             <i className="fa fa-twitter active-button" aria-hidden="true" />
           </a>
         ) : (
-          <i className="fa fa-twiter inactive-button" aria-hidden="true" />
+          <i className="fa fa-twitter inactive-button" aria-hidden="true" />
         )
       }
     </span>

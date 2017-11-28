@@ -1,39 +1,47 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def facebook
-    auth_param = request.env["omniauth.auth"]
-    user = User.find_by(facebook_uid: auth_param.uid)
 
-    if user.blank? && user_signed_in?
-      current_user.link_to_sns_of!(auth_param)
+  def facebook; basic_action; end
+  def twitter; basic_action; end
+
+  private
+
+  def basic_action
+    @omniauth = request.env["omniauth.auth"]
+
+    @profile = SocialProfile.find_by(
+      provider: @omniauth["provider"],
+      uid: @omniauth["uid"],
+    )
+
+    # connect
+    if @profile.blank? && user_signed_in?
+      @profile = SocialProfile.new(
+        user: current_user,
+        provider: @omniauth["provider"],
+        uid: @omniauth["uid"],
+      )
+
+      @profile.set_values_and_save!(@omniauth)
+
       redirect_to mypage_url(current_user.username) and return
     end
 
-    if user.present?
-      user.update_facebook_access_token!(auth_param)
-      sign_in_and_redirect user, event: :authentication
-    else
-      session["devise.facebook_data"] = auth_param
-      redirect_to new_user_registration_url
-    end
-  end
-
-  def twitter
-    auth_param = request.env["omniauth.auth"]
-    user = User.find_by(twitter_uid: auth_param.uid)
-
-    if user.blank? && user_signed_in?
-      current_user.link_to_sns_of!(auth_param)
-      redirect_to mypage_url(current_user.username) and return
+    # signup
+    if @profile.blank? && !user_signed_in?
+      if @omniauth["provider"] == "twitter"
+        # Too large data, need to except extra data from twitter auth hash.
+        # Then we can avoid ActionDispatch::Cookies::CookieOverflow.
+        session["devise.omniauth"] = @omniauth.except("extra")
+      else
+        session["devise.omniauth"] = @omniauth
+      end
+      redirect_to new_user_registration_url and return
     end
 
-    if user.present?
-      user.update_twitter_access_token!(auth_param)
-      sign_in_and_redirect user, event: :authentication
-    else
-      # Too large data, need to except extra data from twitter auth hash.
-      # Then we can avoid ActionDispatch::Cookies::CookieOverflow.
-      session["devise.twitter_data"] = auth_param.except("extra")
-      redirect_to new_user_registration_url
+    # signin
+    if @profile.present?
+      @profile.set_values_and_save!(@omniauth)
+      sign_in_and_redirect @profile.user, event: :authentication
     end
   end
 
