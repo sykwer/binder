@@ -33,6 +33,11 @@ const twitterAuthPath = (state = null, action) => {
 }
 
 // eslint-disable-next-line
+const logoImage = (state = null, action) => {
+  return state
+}
+
+// eslint-disable-next-line
 const buttonId = (state = null, action) => {
   return state
 }
@@ -56,6 +61,7 @@ const rootReducer = combineReducers({
   modalMode,
   facebookAuthPath,
   twitterAuthPath,
+  logoImage,
   buttonId,
   clappedCount,
   clapImage,

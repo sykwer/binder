@@ -121,16 +121,23 @@
 
             .sns-buttons {
               float: left;
-              margin-left: 40px;
               font-size: 18px;
 
-              .twitter-button-wrapper {
-                display: inline-block;
+              @media (min-width: $small_plus_one) {
+                margin-left: 40px;
+              }
+
+              @media (max-width: $small) {
+                margin-left: 20px;
               }
 
               .facebook-button-wrapper {
-                display: inline-block;
                 margin-left: 10px;
+              }
+
+              .twitter-button-wrapper,
+              .facebook-button-wrapper {
+                display: inline-block;
               }
 
               .twitter-connect-button,
@@ -173,12 +180,12 @@
         }
 
 
-        .follow-button,
-        .following-button {
+        .follow-button-in-userpage,
+        .following-button-in-userpage {
           margin-top: 20px;
 
           @media (min-width: $small_plus_one) {
-            padding: 10px 20px;
+            padding: 8px 20px;
             border-radius: 15px;
           }
 
@@ -188,17 +195,17 @@
           }
         }
 
-        .follow-button {
+        .follow-button-in-userpage {
           border: 1.2px solid $fresh_green;
           color: $fresh_green;
           opacity: 0.7;
+          letter-spacing: 0.5px;
         }
 
-        .following-button {
+        .following-button-in-userpage {
           background-color: $fresh_green;
           color: white;
           opacity: 0.9;
-          letter-spacing: 0.5px;
         }
 
         .following-button:hover {
@@ -291,7 +298,7 @@
 
     .menu-item {
       display: inline-block;
-      letter-spacing: 1px;
+      letter-spacing: 0.3px;
       color: $gray56;
       opacity: 0.4;
       transition: opacity 0.3s;
@@ -316,7 +323,7 @@
   .mypage-lower {
     width: 100%;
     padding: 30px 0;
-    min-height: 370px;
+    min-height: 400px;
     background: $background_gray;
     border-top: 1px solid $gray91;
 

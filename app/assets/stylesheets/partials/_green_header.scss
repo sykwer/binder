@@ -51,6 +51,10 @@
       .header-menu {
         padding-top: 10px;
 
+        ul {
+          padding: 0;
+        }
+
         .menu-item {
           display: inline-block;
           margin-left: 23px;

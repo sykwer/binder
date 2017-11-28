@@ -8,22 +8,41 @@
   background-color: $background_gray;
   opacity: 0.98;
 
+  .logo-image {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (min-width: $small) {
+      width: 150px;
+    }
+
+    @media (max-width: $small) {
+      width: 120px;
+    }
+  }
+
   .login-modal {
-    margin: 150px auto 0;
     background-color: white;
     border: solid 1px $gray91;
-    height: 400px;
     cursor: default;
 
     @media (min-width: $medium_plus_one) {
+      margin: 150px auto 0;
+      height: 400px;
       width: 600px;
     }
 
     @media (min-width: $small_plus_one) and (max-width: $medium) {
+      margin: 150px auto 0;
+      height: 400px;
       width: 90%;
     }
 
     @media (max-width: $small) {
+      margin: 130px auto 0;
+      height: 320px;
       width: 90%;
     }
 

@@ -1,6 +1,6 @@
 .streams-page {
   width: 100%;
-  padding: 100px 0;
+  padding: 80px 0;
   background-color: white;
 
   .main-wrapper {
@@ -25,6 +25,14 @@
       color: $post_title_color;
       padding-bottom: 15px;
       border-bottom: solid 1px $gray91;
+
+      @media (min-width: $small_plus_one) {
+        font-size: 30px;
+      }
+
+      @media (max-width: $small) {
+        font-size: 25px;
+      }
     }
   }
 }

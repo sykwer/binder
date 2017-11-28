@@ -11,6 +11,7 @@ import LoginModal from "../../shared/components/LoginModal"
 const mapStateToProps = state => ({
   facebookAuthPath: state.facebookAuthPath,
   twitterAuthPath: state.twitterAuthPath,
+  logoImage: state.logoImage,
   isSignupMode: state.modalMode === "signup",
 })
 

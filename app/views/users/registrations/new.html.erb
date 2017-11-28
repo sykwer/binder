@@ -1,9 +1,12 @@
 <div class="username-register-wrapper">
+  <%= link_to root_url do %>
+    <%= image_tag "binder_only_text.png", class: "logo-image" %>
+  <% end %>
   <div class="username-register-window">
     <h2 class="username-register-header">
       ユーザ名を登録する
     </h2>
-    <p class="username-register-explanation">マイページのURLが<strong>binder.sh/@[ユーザ名]</strong>になります.<br/>ユーザー名には<strong>半角英数字</strong>(文字a~z/A~Z、数字0~9)と<strong><br/>アンダースコア</strong>(_)を使用することができます.</p>
+    <p class="username-register-explanation">マイページのURLが<strong>binder.sh/@[ユーザ名]</strong>になります. ユーザー名には<strong>半角英数字</strong>(文字a~z/A~Z、数字0~9)と<strong>アンダースコア</strong>(_)を使用することができます.</p>
     <%= content_tag :div,
       id: "username-register-app",
       data: {

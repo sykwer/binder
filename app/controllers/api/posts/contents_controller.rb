@@ -13,7 +13,7 @@ class Api::Posts::ContentsController < Api::ApplicationController
     @post.publish_or_update_content!
 
     PostFanoutService.new(
-      target_user_ids: [current_user.id] + current_user.follower_ids,
+      target_user_ids: current_user.follower_ids,
       post_uuid: @post.uuid,
     ).fanout
 

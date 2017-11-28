@@ -3,8 +3,15 @@
 
   .username-input-wrapper {
     position: relative;
-    margin: 50px auto 0;
     width: 100%;
+
+    @media (min-width: $small) {
+      margin: 50px auto 0;
+    }
+
+    @media (max-width: $small) {
+      margin: 30px auto 0;
+    }
 
     .username-input {
       position: absolute;
@@ -12,11 +19,18 @@
       left: 50%;
       transform: translateX(-50%);
       display: inline-block;
-      width: 250px;
       color: $post_title_color;
       font-weight: bold;
       opacity: 0.8;
       letter-spacing: 1px;
+
+      @media (min-width: $small) {
+        width: 250px;
+      }
+
+      @media (max-width: $small) {
+        width: 180px;
+      }
     }
 
     .is-checking,
@@ -25,8 +39,15 @@
     .is-username-available {
       position: absolute;
       top: 8px;
-      left: calc(50% + (250px / 2) + 10px);
       font-size: 11px;
+
+      @media (min-width: $small) {
+        left: calc(50% + (250px / 2) + 10px);
+      }
+
+      @media (max-width: $small) {
+        left: calc(50% + (180px / 2) + 10px);
+      }
     }
 
     .is-checking {
@@ -48,11 +69,18 @@
     .submit-button,
     .disabled-button {
       position: absolute;
-      top: 80px;
       left: 50%;
       transform: translateX(-50%);
       padding: 7px 20px;
       border-radius: 10px;
+
+      @media (min-width: $small) {
+        top: 80px;
+      }
+
+      @media (max-width: $small) {
+        top: 60px;
+      }
     }
 
     .submit-button {

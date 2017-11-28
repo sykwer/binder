@@ -12,7 +12,7 @@
 .posts-show {
   margin: 100px auto 0;
 
-  @media (min-width: $medium-plus-one) {
+  @media (min-width: $medium_plus_one) {
     width: 700px;
   }
 
@@ -28,11 +28,11 @@
     letter-spacing: 1.1px;
     color: $post_title_color;
 
-    @media (min-width: $medium-plus-one) {
+    @media (min-width: $medium_plus_one) {
       font-size: 35px;
     }
 
-    @media (max-width: $medium) and (min-width: $small-plus-one) {
+    @media (max-width: $medium) and (min-width: $small_plus_one) {
       font-size: 30px;
     }
 
@@ -45,16 +45,12 @@
     position: relative;
     margin-top: 40px;
 
-    @media (min-width: $medium-plus-one) {
-      height: 120px;
-    }
-
-    @media (max-width: $medium) and (min-width: $small-plus-one) {
-      height: 110px;
+    @media (min-width: $small_plus_one) {
+      height: 130px;
     }
 
     @media (max-width: $small) {
-      height: 110px;
+      height: 120px;
     }
 
 
@@ -63,7 +59,7 @@
 
       img {
 
-        @media (min-width: $medium-plus-one) {
+        @media (min-width: $medium_plus_one) {
           width: calc(35px * 2);
           height: calc(35px * 2);
           border-radius: 35px;
@@ -81,11 +77,11 @@
       float: left;
       margin-left: 12px;
 
-      @media (min-width: $medium-plus-one) {
+      @media (min-width: $medium_plus_one) {
         width: calc(90% - 70px - 85px);
       }
 
-      @media (max-width: $medium) and (min-width: $small-plus-one) {
+      @media (max-width: $medium) and (min-width: $small_plus_one) {
         width: calc(90% - 70px - 75px);
       }
 
@@ -96,11 +92,11 @@
       .profile-name {
         color: $post_title_color;
 
-        @media (min-width: $medium-plus-one) {
+        @media (min-width: $medium_plus_one) {
           font-size: 15px;
         }
 
-        @media (max-width: $medium) and (min-width: $small-plus-one) {
+        @media (max-width: $medium) and (min-width: $small_plus_one) {
           font-size: 14px;
         }
 
@@ -114,11 +110,11 @@
         color: $gray56;
         opacity: 0.8;
 
-        @media (min-width: $medium-plus-one) {
+        @media (min-width: $medium_plus_one) {
           font-size: 12px;
         }
 
-        @media (max-width: $medium) and (min-width: $small-plus-one) {
+        @media (max-width: $medium) and (min-width: $small_plus_one) {
           font-size: 11px;
         }
 
@@ -131,12 +127,12 @@
         color: $gray56;
         opacity: 0.7;
 
-        @media (min-width: $medium-plus-one) {
+        @media (min-width: $medium_plus_one) {
           font-size: 12px;
           margin-top: 5px;
         }
 
-        @media (max-width: $medium) and (min-width: $small-plus-one) {
+        @media (max-width: $medium) and (min-width: $small_plus_one) {
           font-size: 11px;
           margin-top: 4px;
         }
@@ -156,17 +152,14 @@
       .book-image {
         box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.1);
 
-        @media (min-width: $medium-plus-one) {
-          height: 120px;
-        }
-
-        @media (max-width: $medium) and (min-width: $small-plus-one) {
-          height: 110px;
+        @media (min-width: $small_plus_one) {
+          height: 130px;
+          width: calc(130px * 2/3);
         }
 
         @media (max-width: $small) {
-          height: 110px;
-          width: calc(110px * 2/3);
+          height: 120px;
+          width: calc(120px * 2/3);
         }
 
         img {
@@ -196,27 +189,29 @@
       }
 
       .tag-item-button {
-        display: inline-block;
         border: 1px solid $gray91;
         color: $gray56;
         border-radius: 7px;
 
-        @media (min-width: $medium-plus-one) {
+        @media (min-width: $medium_plus_one) {
+          display: inline-block;
           padding: 5px;
           font-size: 14px;
           margin-right: 5px;
         }
 
-        @media (min-width: $small-plus-one) and (max-width: $medium) {
-          padding: 5px;
-          font-size: 12px;
-          margin-right: 4px;
+        @media (min-width: $small_plus_one) and (max-width: $medium) {
+          display: block;
+          padding: 4px;
+          font-size: 11px;
+          margin-top: 4px;
         }
 
         @media (max-width: $small) {
-          padding: 3px;
+          display: block;
+          padding: 2px;
           font-size: 10px;
-          margin-right: 2px;
+          margin-top: 5px;
         }
       }
     }
@@ -228,11 +223,11 @@
     line-height: 2;
     color: $post_content_color;
 
-    @media (min-width: $medium-plus-one) {
+    @media (min-width: $medium_plus_one) {
       font-size: 17px;
     }
 
-    @media (min-width: $small-plus-one) and (max-width: $medium) {
+    @media (min-width: $small_plus_one) and (max-width: $medium) {
       font-size: 16px;
     }
 
@@ -253,12 +248,12 @@
       line-height: 1.8;
       color: $post_title_color;
 
-      @media (min-width: $medium-plus-one) {
+      @media (min-width: $medium_plus_one) {
         font-size: 25px;
         margin-bottom: 25px;
       }
 
-      @media (min-width: $small-plus-one) and (max-width: $medium) {
+      @media (min-width: $small_plus_one) and (max-width: $medium) {
         font-size: 22px;
         margin-bottom: 22px;
       }
@@ -336,7 +331,7 @@
         color: $post_content_color;
         letter-spacing: 0.5px;
 
-        @media (min-width: $medium-plus-one) {
+        @media (min-width: $medium_plus_one) {
           width: calc(700px - 120px);
         }
 
@@ -388,7 +383,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
 
-        @media (min-width: $small-plus-one) {
+        @media (min-width: $small_plus_one) {
           font-size: 14px;
           max-height: calc(14px * 1.5 * 3);
         }
@@ -433,7 +428,7 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
 
-        @media (min-width: $small-plus-one) {
+        @media (min-width: $small_plus_one) {
           font-size: 14px;
           max-height: calc(14px * 1.5 * 3);
         }
@@ -483,7 +478,7 @@
         display: block;
         float: left;
 
-        @media (min-width: $small-plus-one) {
+        @media (min-width: $small_plus_one) {
           width: 35px * 2;
           height: 35px * 2;
           border-radius: 35px;
@@ -500,11 +495,11 @@
         float: left;
         margin-left: 20px;
 
-        @media (min-width: $medium-plus-one) {
+        @media (min-width: $medium_plus_one) {
           width: calc(700px - 90px);
         }
 
-        @media (min-width: $small-plus-one) and (max-width: $medium) {
+        @media (min-width: $small_plus_one) and (max-width: $medium) {
           width: calc(90% - 55px);
         }
 

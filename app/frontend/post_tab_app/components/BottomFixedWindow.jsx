@@ -33,7 +33,7 @@ const cpnt = ({
         記事を選択中
       </span>
       <i
-        className="fa fa-trash-o delete-button"
+        className="fa fa-trash-o post-delete-button"
         aria-hidden="true"
         role="button"
         tabIndex="0"
