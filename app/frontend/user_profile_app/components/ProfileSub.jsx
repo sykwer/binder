@@ -27,19 +27,19 @@ const cpnt = ({
         {
           twitterLink && (
             <a href={twitterLink} target="_blank">
-              <i className="fa fa-twitter active-button" aria-hidden="true" />
+              <i className="fa fa-twitter active-button button-icon" aria-hidden="true" />
             </a>
           )
         }
         {
           !twitterLink && !isEditMode && (
-            <i className="fa fa-twitter inactive-button" aria-hidden="true" />
+            <i className="fa fa-twitter inactive-button button-icon" aria-hidden="true" />
           )
         }
         {
           !twitterLink && isEditMode && (
             <a
-              className="twitter-connect-button"
+              className="twitter-connect-button button-icon"
               href={twitterOmniauthPath}
             >
               Connect <i className="fa fa-twitter" />
@@ -51,20 +51,20 @@ const cpnt = ({
         {
           facebookLink && (
             <a href={facebookLink} target="_blank">
-              <i className="fa fa-facebook active-button" aria-hidden="true" />
+              <i className="fa fa-facebook active-button button-icon" aria-hidden="true" />
             </a>
           )
         }
         {
           !facebookLink && !isEditMode && (
-            <i className="fa fa-facebook inactive-button" aria-hidden="true" />
+            <i className="fa fa-facebook inactive-button button-icon" aria-hidden="true" />
           )
         }
         {
           !facebookLink && isEditMode && (
             <a
               href={facebookOmniauthPath}
-              className="facebook-connect-button"
+              className="facebook-connect-button button-icon"
             >
               Connect <i className="fa fa-facebook" />
             </a>

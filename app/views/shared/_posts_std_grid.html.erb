@@ -11,7 +11,7 @@
           <%= image_tag post.user.image_url, class: "profile-image" %>
         <% end %>
         <div class="profile-right">
-          <%= link_to post.user.name, "/@#{post.user.username}", class: "profile-name" %>
+          <%= link_to post.user.name, "/@#{post.user.username}", class: "profile-name overflow-ellipsis" %>
           <p class="post-published-at"><%= format_date(post.first_published_at) %></p>
         </div>
       </div>

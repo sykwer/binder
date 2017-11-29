@@ -23,17 +23,9 @@
       }
 
       .profile-main {
+        position: relative;
 
         .profile-main-left {
-          float: left;
-
-          @media (min-width: $small_plus_one) {
-            width: calc(580px - 120px - 15px); // 15px is buffer
-          }
-
-          @media (max-width: $small) {
-            width: calc(100% - 80px);
-          }
 
           .name {
             color: $post_title_color;
@@ -42,10 +34,12 @@
 
             @media (min-width: $small_plus_one) {
               font-size: 30px;
+              width: calc(580px - 120px - 10px);
             }
 
             @media (max-width: $small) {
               font-size: 23px;
+              width: calc(100% - 70px - 10px);
             }
           }
 
@@ -64,10 +58,12 @@
 
             @media (min-width: $small_plus_one) {
               font-size: 15px;
+              width: calc(580px - 120px - 10px);
             }
 
             @media (max-width: $small) {
               font-size: 12px;
+              width: calc(100% - 70px - 10px);
             }
           }
 
@@ -175,6 +171,12 @@
               .active-button:hover {
                 opacity: 1;
               }
+
+              .button-icon {
+                @media (max-width: $small) {
+                  vertical-align: 3px;
+                }
+              }
             }
           }
         }
@@ -213,7 +215,9 @@
         }
 
         .profile-main-right {
-          float: right;
+          position: absolute;
+          top: 0;
+          right: 0;
 
           img {
 

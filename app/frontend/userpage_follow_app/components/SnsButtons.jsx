@@ -8,10 +8,10 @@ const cpnt = ({ facebookLink, twitterLink }) => (
       {
         twitterLink ? (
           <a href={twitterLink} target="_blank">
-            <i className="fa fa-twitter active-button" aria-hidden="true" />
+            <i className="fa fa-twitter active-button button-icon" aria-hidden="true" />
           </a>
         ) : (
-          <i className="fa fa-twitter inactive-button" aria-hidden="true" />
+          <i className="fa fa-twitter inactive-button button-icon" aria-hidden="true" />
         )
       }
     </span>
@@ -19,10 +19,10 @@ const cpnt = ({ facebookLink, twitterLink }) => (
       {
         facebookLink ? (
           <a href={facebookLink} target="_blank">
-            <i className="fa fa-facebook active-button" aria-hidden="true" />
+            <i className="fa fa-facebook active-button button-icon" aria-hidden="true" />
           </a>
         ) : (
-          <i className="fa fa-facebook inactive-button" aria-hidden="true" />
+          <i className="fa fa-facebook inactive-button button-icon" aria-hidden="true" />
         )
       }
     </span>

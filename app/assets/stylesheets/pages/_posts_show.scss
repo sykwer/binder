@@ -21,12 +21,14 @@
   }
 
   .post-title {
+    width: 100%;
     margin-top: 30px;
     font-size: 35px;
     line-height: 1.4;
     font-weight: bold;
     letter-spacing: 1.1px;
     color: $post_title_color;
+    word-wrap: break-word;
 
     @media (min-width: $medium_plus_one) {
       font-size: 35px;
@@ -89,37 +91,36 @@
         width: calc(90% - 50px - 50px);
       }
 
-      .profile-name {
+      .profile-name-wrapper {
+        width: 90%;
         color: $post_title_color;
 
-        @media (min-width: $medium_plus_one) {
-          font-size: 15px;
-        }
-
-        @media (max-width: $medium) and (min-width: $small_plus_one) {
-          font-size: 14px;
-        }
-
-        @media (max-width: $small) {
+        .profile-name {
+          color: $post_title_color;
           font-size: 15px;
         }
       }
 
-      .profile-bio {
-        margin-top: 3px;
+      .profile-bio-wrapper {
+        width: 90%;
         color: $gray56;
-        opacity: 0.8;
 
-        @media (min-width: $medium_plus_one) {
-          font-size: 12px;
-        }
+        .profile-bio {
+          margin-top: 3px;
+          color: $gray56;
+          opacity: 0.8;
 
-        @media (max-width: $medium) and (min-width: $small_plus_one) {
-          font-size: 11px;
-        }
+          @media (min-width: $medium_plus_one) {
+            font-size: 12px;
+          }
 
-        @media (max-width: $small) {
-          font-size: 12px;
+          @media (max-width: $medium) and (min-width: $small_plus_one) {
+            font-size: 12px;
+          }
+
+          @media (max-width: $small) {
+            font-size: 11px;
+          }
         }
       }
 
@@ -138,7 +139,7 @@
         }
 
         @media (max-width: $small) {
-          font-size: 11px;
+          font-size: 10px;
           margin-top: 3px;
         }
       }
@@ -191,20 +192,24 @@
       .tag-item-button {
         border: 1px solid $gray91;
         color: $gray56;
+        opacity: 0.8;
         border-radius: 7px;
+        letter-spacing: 0.5px;
 
         @media (min-width: $medium_plus_one) {
           display: inline-block;
-          padding: 5px;
+          padding: 4px;
           font-size: 14px;
           margin-right: 5px;
+          margin-top: 16px; // workaround
         }
 
         @media (min-width: $small_plus_one) and (max-width: $medium) {
-          display: block;
+          display: inline-block;
           padding: 4px;
           font-size: 11px;
-          margin-top: 4px;
+          margin-right: 5px;
+          margin-top: 35px; // workaround
         }
 
         @media (max-width: $small) {
@@ -212,6 +217,26 @@
           padding: 2px;
           font-size: 10px;
           margin-top: 5px;
+        }
+      }
+
+      .tag-item-button-long {
+        @media (min-width: $small_plus_one) {
+          max-width: calc(100% * 0.6 - 10px);
+        }
+
+        @media (max-width: $small) {
+          max-width: calc(100% - 20px);
+        }
+      }
+
+      .tag-item-button-short {
+        @media (min-width: $small_plus_one) {
+          max-width: calc(100% * 0.4 - 10px);
+        }
+
+        @media (max-width: $small) {
+          max-width: calc(100% - 20px);
         }
       }
     }
@@ -507,13 +532,23 @@
           width: calc(90% - 45px);
         }
 
-        .author-profile-name {
+        .author-profile-name-wrapper {
           display: inline-block;
-          color: $post_title_color;
           margin: 0;
+          color: $post_title_color;
+
+          @media (min-width: $small_plus_one) {
+            width: calc(100% - (35px * 2));
+          }
 
           @media (max-width: $small) {
+            width: calc(100% - (25px * 2));
+          }
+
+          .author-profile-name {
+            color: $post_title_color;
             font-size: 15px;
+            word-wrap: break-word;
           }
         }
 
@@ -523,10 +558,22 @@
           vertical-align: 3px;
         }
 
-        .author-profile-bio {
+        .author-profile-bio-wrapper {
           color: $gray56;
-          letter-spacing: 0.3px;
-          margin-top: 7px;
+
+          @media (min-width: $small_plus_one) {
+            width: calc(100% - (35px * 2));
+          }
+
+          @media (max-width: $small) {
+            width: 100%;
+          }
+
+          .author-profile-bio {
+            color: $gray56;
+            letter-spacing: 0.3px;
+            word-wrap: break-word;
+          }
         }
       }
     }

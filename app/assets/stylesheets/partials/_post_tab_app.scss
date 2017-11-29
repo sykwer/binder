@@ -82,11 +82,21 @@
     .list-item-main {
       margin-left: 30px;
 
+      @media (min-width: $medium_plus_one) {
+        width: 80%;
+      }
+
+      @media (max-width: $medium) {
+        width: 93%;
+      }
+
       .post-title {
         margin: 0;
         font-weight: bold;
         color: $post_title_color;
         line-height: 1.3;
+        width: 100%;
+        word-wrap: break-word;
 
         @media (min-width: $medium_plus_one) {
           font-size: 25px;

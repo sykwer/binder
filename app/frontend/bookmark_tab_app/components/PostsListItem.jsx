@@ -32,7 +32,7 @@ const PostsListItem = ({
           />
         </a>
         <div className="item-header-right">
-          <p className="profile-name">
+          <p className="profile-name overflow-ellipsis">
             <a
               className="profile-name-link"
               href={`/@${post.userUserName}`}
@@ -40,7 +40,7 @@ const PostsListItem = ({
               {post.userName}
             </a>
           </p>
-          <p className="profile-bio">
+          <p className="profile-bio overflow-ellipsis">
             <a
               className="profile-bio-link"
               href={`/@${post.userUserName}`}
@@ -53,12 +53,12 @@ const PostsListItem = ({
       </div>
       <div className="tags-wrapper">
         <button
-          className="tag-button"
+          className="tag-button tag-button-long overflow-ellipsis"
         >
           {post.bookTitle}
         </button>
         <button
-          className="tag-button"
+          className="tag-button tag-button-short overflow-ellipsis"
         >
           {post.bookAuthor}
         </button>

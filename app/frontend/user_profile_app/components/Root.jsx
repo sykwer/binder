@@ -11,7 +11,7 @@ import Followings from "./Followings"
 
 const Root = () => (
   <div className="profile">
-    <div className="profile-main clearfix">
+    <div className="profile-main">
       <div className="profile-main-left">
         <Name />
         <Bio />
