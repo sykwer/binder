@@ -288,6 +288,11 @@
         margin-bottom: 18px;
       }
     }
+
+    a {
+      color: $post_content_color;
+      text-decoration: underline;
+    }
   }
 
   .action-buttons {

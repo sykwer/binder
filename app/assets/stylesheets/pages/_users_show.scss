@@ -57,12 +57,13 @@
             word-wrap: break-word;
 
             @media (min-width: $small_plus_one) {
-              font-size: 15px;
+              font-size: 16px;
               width: calc(580px - 120px - 10px);
             }
 
             @media (max-width: $small) {
-              font-size: 12px;
+              font-size: 16px;
+              transform: scale(0.8) translateX(-35px);
               width: calc(100% - 70px - 10px);
             }
           }

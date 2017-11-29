@@ -43,7 +43,7 @@ window.addEventListener("load", () => {
   selection.addRange(range)
 
   // eslint-disable-next-line
-  new MediumEditor(".medium-editable", {
+  const editor = new MediumEditor(".medium-editable", {
     targetBlank: true,
     autoLink: true,
     imageDragging: false,

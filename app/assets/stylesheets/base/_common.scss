@@ -10,6 +10,14 @@ body {
   font-family: 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Arial, Helvetica, sans-serif;
 }
 
+blockquote {
+  border: none;
+  padding: 10px 15px;
+  background-color: $quote_color;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
 a:link, a:visited, a:hover, a:active {
   text-decoration: none;
 }
