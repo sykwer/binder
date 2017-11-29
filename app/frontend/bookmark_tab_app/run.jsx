@@ -20,6 +20,7 @@ const run = () => {
       afterClapImage: data.afterClapImage,
       facebookAuthPath: data.facebookAuthPath,
       twitterAuthPath: data.twitterAuthPath,
+      logoImage: data.logoImage,
     }
 
     const sagaMiddleware = createSagaMiddleware()

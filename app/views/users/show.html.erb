@@ -83,6 +83,9 @@
             isLoggedIn: user_signed_in?,
             beforeClapImage: image_url("before_clap.png"),
             afterClapImage: image_url("after_clap.png"),
+            facebookAuthPath: user_facebook_omniauth_authorize_path,
+            twitterAuthPath: user_twitter_omniauth_authorize_path,
+            logoImage: image_url("binder_only_text.png"),
           }.to_json do %>
         <% end %>
       <% else %>

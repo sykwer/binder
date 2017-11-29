@@ -129,5 +129,8 @@
   border-radius: 5px;
   padding: 2px 10px;
   font-size: 11px;
-  vertical-align: 4px;
+
+  @media (min-width: $medium_plus_one) {
+    vertical-align: 4px;
+  }
 }

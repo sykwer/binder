@@ -45,7 +45,7 @@
 
   .meta-data-wrapper {
     position: relative;
-    margin-top: 40px;
+    margin-top: 20px;
 
     @media (min-width: $small_plus_one) {
       height: 130px;
@@ -366,7 +366,7 @@
         }
 
         @media (max-width: $medium) {
-          width: calc(90% - (120px * 2/3) + 14px); // 14px is extra
+          width: calc(90% - (120px * 2/3) + 5px); // 5px is extra
         }
 
         .book-title {
