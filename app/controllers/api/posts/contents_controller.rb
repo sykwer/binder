@@ -10,12 +10,13 @@ class Api::Posts::ContentsController < Api::ApplicationController
     @post.detach_tags(@post.tags - attached_tags)
     @post.attatch_tags!(new_tags.concat(attached_tags))
 
-    @post.publish_or_update_content!
-
+    # Fanout only when first publish
     PostFanoutService.new(
-      target_user_ids: [current_user.id] + current_user.follower_ids,
+      target_user_ids: current_user.follower_ids,
       post_uuid: @post.uuid,
-    ).fanout
+    ).fanout if @post.never_published?
+
+    @post.publish_or_update_content!
 
     SharePostOnTwitterService.new(
       user: current_user,

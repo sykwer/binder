@@ -33,7 +33,7 @@ const cpnt = ({
         <div className="list-item-main">
           <a
             className="edit-button"
-            href={`${binderRootUrl}/posts/${post.id}`}
+            href={`${binderRootUrl}/posts/${post.id}/edit`}
           >
             Edit
           </a>
@@ -42,7 +42,7 @@ const cpnt = ({
               {post.title}
             </h2>
           </a>
-          <a href={`${binderRootUrl}/posts/${post.id}/edit`}>
+          <a href={`${binderRootUrl}/posts/${post.id}`}>
             <p className="published-at">
               {`Published at ${post.publishedAt}`}
             </p>

@@ -25,6 +25,17 @@
     }
 
     .item-header {
+      @media (min-width: $medium_plus_one) {
+        width: calc(100% - (130px * 2/3));
+      }
+
+      @media (min-width: $small_plus_one) and (max-width: $medium) {
+        width: calc(100% - (120px * 2/3));
+      }
+
+      @media (max-width: $small) {
+        width: calc(100% - (85px * 2/3));
+      }
 
       .profile-image {
         float: left;
@@ -38,21 +49,12 @@
       .item-header-right {
         float: left;
         margin-left: 12px;
-
-        @media (max-width: $small) {
-          width: calc(95% - 50px - (15px * 2) - (85px * 2/3) + 25px); // 25px is extra
-        }
-
-        @media (min-width: $small_plus_one) and (max-width: $medium) {
-          width: calc(550px - 50px - (25px * 2) - (120px * 2/3));
-        }
-
-        @media (min-width: $medium_plus_one) {
-          width: calc(700px - 50px - (30px * 2) - (130px * 2/3));
-        }
+        width: calc(100% - (25px * 2) - 20px);
 
         .profile-name {
           margin: 0;
+          width: 95%;
+          color: $fresh_green;
 
           @media (max-width: $small) {
             font-size: 12px;
@@ -73,6 +75,9 @@
 
         .profile-bio {
           margin: 0;
+          width: 95%;
+          color: $gray56;
+          opacity: 0.8;
 
           @media (max-width: $small) {
             margin-top: 3px;
@@ -110,13 +115,19 @@
     }
 
     .tags-wrapper {
-
-      @media (max-width: $small) {
-        margin-top: 10px;
+      @media (min-width: $medium_plus_one) {
+        width: calc(100% - (130px * 2/3));
+        margin-top: 30px;
       }
 
-      @media (min-width: $small_plus_one) {
-        margin-top: 23px;
+      @media (min-width: $small_plus_one) and (max-width: $medium) {
+        width: calc(100% - (120px * 2/3));
+        margin-top: 27px;
+      }
+
+      @media (max-width: $small) {
+        width: calc(100% - (85px * 2/3));
+        margin-top: 10px;
       }
 
       .tag-button {
@@ -124,22 +135,26 @@
         border: 1px solid $gray91;
         color: $gray56;
         border-radius: 7px;
-        margin-right: 4px;
-        margin-bottom: 4px;
 
         @media (min-width: $medium_plus_one) {
           padding: 5px;
           font-size: 12px;
           margin-right: 6px;
-          margin-bottom: 6px;
         }
 
         @media (max-width: $medium) {
           padding: 3px;
           font-size: 10px;
           margin-right: 4px;
-          margin-bottom: 4px;
         }
+      }
+
+      .tag-button-long {
+        max-width: calc(70% - 20px);
+      }
+
+      .tag-button-short {
+        max-width: calc(30% - 20px);
       }
     }
 
@@ -176,6 +191,7 @@
 
       .post-title {
         margin: 0;
+        margin-top: 5px;
         color: $post_title_color;
         font-weight: bold;
         font-size: 20px;

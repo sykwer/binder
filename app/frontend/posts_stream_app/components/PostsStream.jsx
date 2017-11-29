@@ -37,7 +37,7 @@ const cpnt = ({
           <img className="profile-image" src={post.userImageUrl} alt={post.userName} />
         </a>
         <div className="profile-right">
-          <a className="profile-name" href={`/@${post.userUserName}`}>{post.userName}</a>
+          <a className="profile-name overflow-ellipsis" href={`/@${post.userUserName}`}>{post.userName}</a>
           <p className="post-published-at">{post.publishedAt}</p>
         </div>
       </div>

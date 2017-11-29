@@ -3,11 +3,11 @@
   grid-gap: 20px;
 
   @media (min-width: $small_plus_one) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: calc((100% / 2) - 20px) repeat(2, 1fr);
   }
 
   @media (max-width: $small) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 100% 1fr;
   }
 
   .posts-std-grid-item {
@@ -52,13 +52,16 @@
 
       @media (min-width: $medium_plus_one) {
         margin-left: calc((250px * 2/3) + 20px);
+        width: calc(100% - ((250px * 2/3) + 20px));
       }
 
       @media (max-width: $medium) {
         margin-left: calc((140px * 2/3) + 15px);
+        width: calc(100% - ((140px * 2/3) + 15px));
       }
 
       .post-title {
+        width: 100%;
         line-height: 1.5;
         font-weight: bold;
         color: $post_title_color;
@@ -112,11 +115,13 @@
       @media (min-width: $medium_plus_one) {
         bottom: 13px;
         left: calc((250px * 2/3) + 20px);
+        width: calc(100% - (250px * 2/3) - 70px);
       }
 
       @media (max-width: $medium) {
         top: calc(140px + 15px);
         left: 10px;
+        width: calc(100% - 70px);
       }
 
       .profile-image {
@@ -130,8 +135,11 @@
       .profile-right {
         float: left;
         margin-left: 10px;
+        width: calc(100% - 40px);
 
         .profile-name {
+          display: inline-block;
+          width: 100%;
           font-size: 12px;
           margin: 0;
           color: $fresh_green;

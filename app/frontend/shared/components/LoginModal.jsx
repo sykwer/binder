@@ -6,6 +6,7 @@ const LoginModal = ({
   handleClickChangeToSignup,
   handleClickChangeToSignin,
   isSignupMode,
+  logoImage,
   facebookAuthPath,
   twitterAuthPath,
 }) => (
@@ -18,6 +19,13 @@ const LoginModal = ({
       handleClickCloseModal()
     }}
   >
+    <a href="/" onClick={(e) => { e.stopPropagation() }}>
+      <img
+        className="logo-image"
+        src={logoImage}
+        alt="binder"
+      />
+    </a>
     <div
       className="login-modal cancel-focus-outline"
       role="button"
@@ -79,6 +87,7 @@ LoginModal.propTypes = {
   handleClickChangeToSignup: PropTypes.func.isRequired,
   facebookAuthPath: PropTypes.string.isRequired,
   twitterAuthPath: PropTypes.string.isRequired,
+  logoImage: PropTypes.string.isRequired,
   isSignupMode: PropTypes.bool.isRequired,
 }
 

@@ -14,6 +14,10 @@ class Post < ApplicationRecord
 
   before_create do
     self.uuid = SecureRandom.uuid
+
+    # workaround:
+    # In medium editor, when you start typing in japanese hiragana (say, あ), multiple charactors appear(say, ああ).
+    self.content_draft = "<p></p>"
   end
 
   self.primary_key = "uuid"

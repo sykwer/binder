@@ -20,6 +20,7 @@ export const clapsCountLimit = 50
 
 // post_editor_app
 export const googleBookApiKey = "AIzaSyCUb5azooicumCNsK8NAkRJ9lEZbNeWqLA"
+export const tagNameMaxLength = 25
 
 // username_register_app
 export const usernameMaxLength = 15

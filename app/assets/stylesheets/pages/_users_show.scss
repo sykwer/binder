@@ -23,17 +23,9 @@
       }
 
       .profile-main {
+        position: relative;
 
         .profile-main-left {
-          float: left;
-
-          @media (min-width: $small_plus_one) {
-            width: calc(580px - 120px - 15px); // 15px is buffer
-          }
-
-          @media (max-width: $small) {
-            width: calc(100% - 80px);
-          }
 
           .name {
             color: $post_title_color;
@@ -42,10 +34,12 @@
 
             @media (min-width: $small_plus_one) {
               font-size: 30px;
+              width: calc(580px - 120px - 10px);
             }
 
             @media (max-width: $small) {
               font-size: 23px;
+              width: calc(100% - 70px - 10px);
             }
           }
 
@@ -63,11 +57,14 @@
             word-wrap: break-word;
 
             @media (min-width: $small_plus_one) {
-              font-size: 15px;
+              font-size: 16px;
+              width: calc(580px - 120px - 10px);
             }
 
             @media (max-width: $small) {
-              font-size: 12px;
+              font-size: 16px;
+              transform: scale(0.8) translateX(-40px);
+              width: calc(100% - 20px);
             }
           }
 
@@ -121,16 +118,23 @@
 
             .sns-buttons {
               float: left;
-              margin-left: 40px;
               font-size: 18px;
 
-              .twitter-button-wrapper {
-                display: inline-block;
+              @media (min-width: $small_plus_one) {
+                margin-left: 40px;
+              }
+
+              @media (max-width: $small) {
+                margin-left: 20px;
               }
 
               .facebook-button-wrapper {
-                display: inline-block;
                 margin-left: 10px;
+              }
+
+              .twitter-button-wrapper,
+              .facebook-button-wrapper {
+                display: inline-block;
               }
 
               .twitter-connect-button,
@@ -168,17 +172,23 @@
               .active-button:hover {
                 opacity: 1;
               }
+
+              .button-icon {
+                @media (max-width: $small) {
+                  vertical-align: 3px;
+                }
+              }
             }
           }
         }
 
 
-        .follow-button,
-        .following-button {
+        .follow-button-in-userpage,
+        .following-button-in-userpage {
           margin-top: 20px;
 
           @media (min-width: $small_plus_one) {
-            padding: 10px 20px;
+            padding: 8px 20px;
             border-radius: 15px;
           }
 
@@ -188,17 +198,17 @@
           }
         }
 
-        .follow-button {
+        .follow-button-in-userpage {
           border: 1.2px solid $fresh_green;
           color: $fresh_green;
           opacity: 0.7;
+          letter-spacing: 0.5px;
         }
 
-        .following-button {
+        .following-button-in-userpage {
           background-color: $fresh_green;
           color: white;
           opacity: 0.9;
-          letter-spacing: 0.5px;
         }
 
         .following-button:hover {
@@ -206,7 +216,9 @@
         }
 
         .profile-main-right {
-          float: right;
+          position: absolute;
+          top: 0;
+          right: 0;
 
           img {
 
@@ -291,7 +303,7 @@
 
     .menu-item {
       display: inline-block;
-      letter-spacing: 1px;
+      letter-spacing: 0.3px;
       color: $gray56;
       opacity: 0.4;
       transition: opacity 0.3s;
@@ -316,7 +328,7 @@
   .mypage-lower {
     width: 100%;
     padding: 30px 0;
-    min-height: 370px;
+    min-height: 400px;
     background: $background_gray;
     border-top: 1px solid $gray91;
 

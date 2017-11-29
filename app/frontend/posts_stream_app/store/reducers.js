@@ -106,6 +106,11 @@ const twitterAuthPath = (state = null, action) => {
   return state
 }
 
+// eslint-disable-next-line
+const logoImage = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   posts,
   isAllFetched,
@@ -117,6 +122,7 @@ const rootReducer = combineReducers({
   isLoggedIn,
   facebookAuthPath,
   twitterAuthPath,
+  logoImage,
 })
 
 export default rootReducer
