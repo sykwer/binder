@@ -10,11 +10,21 @@ const PostContent = ({ onChangeContent }) => {
       <div
         id="post-content-div"
         className="medium-editable"
+        placeholder="本文"
         contentEditable
         ref={(node) => { editable = node }}
         onInput={(e) => {
           e.preventDefault()
           onChangeContent(editable.innerHTML)
+
+          console.log(editable.innerText)
+          console.log(editable.innerText.length)
+          // placeholder
+          if (editable.innerText.length <= 1) {
+            editable.classList.add("placeholded")
+          } else {
+            editable.classList.remove("placeholded")
+          }
         }}
       />
     </div>
@@ -58,6 +68,11 @@ window.addEventListener("load", () => {
   const rootNode = document.getElementById("post-editor-app")
   const data = JSON.parse(rootNode.getAttribute("data"))
   node.innerHTML = data.content
+
+  // placeholder
+  if (node.innerText.length <= 1) {
+    node.classList.add("placeholded")
+  }
 
   // For first position of caret
   const range = document.createRange()

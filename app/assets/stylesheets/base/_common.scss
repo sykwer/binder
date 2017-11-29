@@ -74,6 +74,12 @@ button {
   opacity: 0.4;
 }
 
+.placeholded:before {
+  content: attr(placeholder);
+  opacity: 0.4;
+  position: absolute;
+}
+
 // Cancel focus outline
 .cancel-focus-outline:focus {
   outline: 0px solid transparent;
