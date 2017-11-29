@@ -73,6 +73,7 @@
       color: $post_content_color;
       font-size: 16px;
       border: 1px solid $gray91;
+      -webkit-appearance:none;
     }
 
     .form-submit {

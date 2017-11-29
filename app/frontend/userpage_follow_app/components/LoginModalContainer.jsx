@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
   isSignupMode: state.modalMode === "signup",
   facebookAuthPath: state.facebookAuthPath,
   twitterAuthPath: state.twitterAuthPath,
+  logoImage: state.logoImage,
 })
 
 const mapDispatchToProps = dispatch => ({

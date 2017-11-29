@@ -210,6 +210,11 @@ const twitterAuthPath = (state = null, action) => {
   return state
 }
 
+// eslint-disable-next-line
+const logoImage = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   followingsCount,
   followersCount,
@@ -231,6 +236,7 @@ const rootReducer = combineReducers({
   modalMode,
   facebookAuthPath,
   twitterAuthPath,
+  logoImage,
 })
 
 export default rootReducer

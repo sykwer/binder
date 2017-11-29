@@ -26,6 +26,7 @@ const run = () => {
       twitterLink: data.twitterLink,
       facebookAuthPath: data.facebookAuthPath,
       twitterAuthPath: data.twitterAuthPath,
+      logoImage: data.logoImage,
     }
 
     const sagaMiddleware = createSagaMiddleware()

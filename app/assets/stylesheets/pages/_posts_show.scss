@@ -541,14 +541,7 @@
           display: inline-block;
           margin: 0;
           color: $post_title_color;
-
-          @media (min-width: $small_plus_one) {
-            width: calc(100% - (35px * 2));
-          }
-
-          @media (max-width: $small) {
-            width: calc(100% - (25px * 2));
-          }
+          max-width: calc(100% - 110px);
 
           .author-profile-name {
             color: $post_title_color;
