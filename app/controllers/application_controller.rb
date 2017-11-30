@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  http_basic_authenticate_with name: ENV["BASIC_AUTH_USERNAME"], password: ENV["BASIC_AUTH_PASSWORD"] if Rails.env.production? || Rails.env.staging?
+  http_basic_authenticate_with name: ENV["BASIC_AUTH_USERNAME"], password: ENV["BASIC_AUTH_PASSWORD"] if Rails.env.staging?
 
   # We are not using :database_authenticatable, we have to define the helper method new_session_path(scope)
   # so it can correctly redirect in case of failure.
