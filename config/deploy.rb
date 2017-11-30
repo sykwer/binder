@@ -6,7 +6,7 @@ set :repo_url, "git@github.com:sykwer/dailybook.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-
+set :branch, "twitter-card"
 # Default deploy_to directory is /var/www/#{fetch(:application)}
 # set :deploy_to, "/var/www/my_app_name"
 

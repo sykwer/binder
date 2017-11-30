@@ -7,7 +7,7 @@
     <%= favicon_link_tag %>
 
     <!-- Twitter card -->
-    <%= if request.path.match(/\/posts\/[a-z0-9-]+$/) && defined?(@post) && @post.present? %>
+    <% if request.path.match(/\/posts\/[a-z0-9-]+$/) && defined?(@post) && @post.present? %>
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content=<%= @post.title %> />
       <meta name="twitter:description" content<%= @post.content %> />
