@@ -3,11 +3,13 @@
   grid-gap: 20px;
 
   @media (min-width: $small_plus_one) {
-    grid-template-columns: calc((100% / 2) - 20px) repeat(2, 1fr);
+    // grid-template-columns: calc((100% / 2) - 20px) repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); // FIXME: style bug when content is short
   }
 
   @media (max-width: $small) {
-    grid-template-columns: 100% 1fr;
+    // grid-template-columns: 100% 1fr;
+    grid-template-columns: 1fr; // FIXME: style bug when content is short
   }
 
   .posts-std-grid-item {
