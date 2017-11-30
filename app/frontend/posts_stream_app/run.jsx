@@ -18,6 +18,7 @@ const run = () => {
       isLoggedIn: data.isLoggedIn,
       facebookAuthPath: data.facebookAuthPath,
       twitterAuthPath: data.twitterAuthPath,
+      logoImage: data.logoImage,
     }
 
     const sagaMiddleware = createSagaMiddleware()

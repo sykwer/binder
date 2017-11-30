@@ -46,6 +46,9 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'koala'
 
+# Integrate medium stylesheet with asset pipeline
+gem "medium-editor-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

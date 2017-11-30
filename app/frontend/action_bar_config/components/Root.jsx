@@ -92,13 +92,13 @@ class cpnt extends Component {
                     </li>
                   </a>
                 </ul>
-                <a href="/demands/new">
-                  <ul className="config-list">
+                <ul className="config-list">
+                  <a href="/demands/new">
                     <li className="config-list-item bold-item">
                       Binder目安箱
                     </li>
-                  </ul>
-                </a>
+                  </a>
+                </ul>
                 <div
                   className="foot-box calcel-focus-outline"
                   role="button"

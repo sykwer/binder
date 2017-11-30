@@ -1,5 +1,7 @@
 import { combineReducers } from "redux"
 
+import { tagNameMaxLength } from "../../settings/constants"
+
 const bookNameInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_BOOK_NAME_INPUT":
@@ -248,6 +250,10 @@ const selectedTags = (state = [], action) => {
 const tagNameInput = (state = "", action) => {
   switch (action.type) {
     case "CHANGE_TAG_INPUT":
+      if (action.text.length > tagNameMaxLength) {
+        return state
+      }
+
       return action.text
     case "SELECT_TAG":
       return ""

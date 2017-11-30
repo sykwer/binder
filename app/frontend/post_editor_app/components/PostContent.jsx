@@ -16,6 +16,15 @@ const PostContent = ({ onChangeContent }) => {
         onInput={(e) => {
           e.preventDefault()
           onChangeContent(editable.innerHTML)
+
+          console.log(editable.innerText)
+          console.log(editable.innerText.length)
+          // placeholder
+          if (editable.innerText.length <= 1) {
+            editable.classList.add("placeholded")
+          } else {
+            editable.classList.remove("placeholded")
+          }
         }}
       />
     </div>
@@ -27,23 +36,8 @@ PostContent.propTypes = {
 }
 
 window.addEventListener("load", () => {
-  const node = document.getElementById("post-content-div")
-
-  // workaround
-  const rootNode = document.getElementById("post-editor-app")
-  const data = JSON.parse(rootNode.getAttribute("data"))
-  node.innerHTML = data.content
-
-  // For first position of caret
-  const range = document.createRange()
-  const selection = window.getSelection()
-  range.selectNodeContents(node)
-  range.collapse(false)
-  selection.removeAllRanges()
-  selection.addRange(range)
-
   // eslint-disable-next-line
-  new MediumEditor(".medium-editable", {
+  const editor = new MediumEditor(".medium-editable", {
     targetBlank: true,
     autoLink: true,
     imageDragging: false,
@@ -67,6 +61,26 @@ window.addEventListener("load", () => {
       ],
     },
   })
+
+  const node = document.getElementById("post-content-div")
+
+  // workaround
+  const rootNode = document.getElementById("post-editor-app")
+  const data = JSON.parse(rootNode.getAttribute("data"))
+  node.innerHTML = data.content
+
+  // placeholder
+  if (node.innerText.length <= 1) {
+    node.classList.add("placeholded")
+  }
+
+  // For first position of caret
+  const range = document.createRange()
+  const selection = window.getSelection()
+  range.selectNodeContents(node)
+  range.collapse(false)
+  selection.removeAllRanges()
+  selection.addRange(range)
 })
 
 export default PostContent

@@ -6,42 +6,76 @@
   height: 100%;
   background-color: $background_gray;
 
+  .logo-image {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media (min-width: $small) {
+      width: 150px;
+    }
+
+    @media (max-width: $small) {
+      width: 120px;
+    }
+  }
   .username-register-window {
-    margin: 150px auto 0;
     background-color: white;
     border: solid 1px $gray91;
-    height: 400px;
 
     @media (min-width: $medium_plus_one) {
+      margin: 150px auto 0;
+      height: 400px;
       width: 600px;
     }
 
     @media (min-width: $small_plus_one) and (max-width: $medium) {
+      margin: 150px auto 0;
+      height: 400px;
       width: 90%;
     }
 
     @media (max-width: $small) {
+      margin: 130px auto 0;
+      height: 320px;
       width: 90%;
     }
 
     .username-register-header {
       width: 100%;
-      margin: 40px auto 0;
       font-weight: bold;
-      font-size: 25px;
       color: $post_title_color;
       text-align: center;
+
+      @media (min-width: $small_plus_one) {
+        margin: 40px auto 0;
+        font-size: 25px;
+      }
+
+      @media (max-width: $small) {
+        margin: 25px auto 0;
+        font-size: 20px;
+      }
     }
 
     .username-register-explanation {
       width: 80%;
-      margin: 30px auto 0;
-      font-size: 15px;
       color: $post_content_color;
       text-align: center;
       letter-spacing: 1px;
       line-height: 1.8;
       opacity: 0.8;
+
+      @media (min-width: $small_plus_one) {
+        margin: 30px auto 0;
+        font-size: 15px;
+      }
+
+      @media (max-width: $small) {
+        margin: 20px auto 0;
+        font-size: 12px;
+      }
     }
   }
 }

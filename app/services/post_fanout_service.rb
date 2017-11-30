@@ -12,9 +12,9 @@ class PostFanoutService
       target_user_ids.each do |user_id|
         # seconds
         redis.zadd("followings_timeline_inbox:#{user_id}", Time.zone.now.to_i, post_uuid)
-        # nano seconds
-        redis.zadd("world_timeline", Time.zone.now.to_r.numerator, post_uuid)
       end
+      # nano seconds
+      redis.zadd("world_timeline", Time.zone.now.to_r.numerator, post_uuid)
     end
   end
 

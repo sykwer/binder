@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     end
 
     if current_user == @user
-      @draft_posts = current_user.posts.not_published.order(created_at: :desc)
+      @draft_posts = current_user.posts.not_published.not_deleted.order(created_at: :desc)
     end
 
     if !["bookshelf", "posts", "bookmarks", "drafts"].include?(@menu) &&

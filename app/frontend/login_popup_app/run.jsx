@@ -15,6 +15,7 @@ const run = () => {
       const initialState = {
         facebookAuthPath: data.facebookAuthPath,
         twitterAuthPath: data.twitterAuthPath,
+        logoImage: data.logoImage,
         buttonId: data.buttonId,
         modalMode: data.modalMode,
         clappedCount: data.buttonId === "clap-button" ? data.clappedCount : null,

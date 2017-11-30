@@ -15,7 +15,7 @@ const cpnt = ({
   if (isFollowing) {
     return (
       <button
-        className="following-button"
+        className="following-button-in-userpage"
         disabled={isDisabled}
         onClick={(e) => {
           e.preventDefault()
@@ -30,7 +30,7 @@ const cpnt = ({
   if (!isLoggedIn) {
     return (
       <button
-        className="follow-button"
+        className="follow-button-in-userpage"
         onClick={(e) => {
           e.stopPropagation()
           handleOpenLoginModal()
@@ -43,7 +43,7 @@ const cpnt = ({
 
   return (
     <button
-      className="follow-button"
+      className="follow-button-in-userpage"
       disabled={isDisabled}
       onClick={(e) => {
         e.preventDefault()

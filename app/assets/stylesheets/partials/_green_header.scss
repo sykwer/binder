@@ -51,9 +51,13 @@
       .header-menu {
         padding-top: 10px;
 
+        ul {
+          padding: 0;
+        }
+
         .menu-item {
           display: inline-block;
-          margin-left: 20px;
+          margin-left: 23px;
           vertical-align: middle;
 
           .icon-in-item {
@@ -63,15 +67,20 @@
           }
         }
 
-        .write-record {
+        .new-post-button-wrapper {
           @media (max-width: $medium) {
             display: none;
           }
         }
 
-        .write-record a {
+        .new-post-button {
+          padding: 8px 15px;
+          border: 1px solid $fresh_green;
           color: $fresh_green;
           opacity: 0.7;
+          border-radius: 8px;
+          font-size: 12px;
+          vertical-align: 3px;
         }
 
         .profile-window img {
