@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width">
     <%= favicon_link_tag %>
 
+    <!-- Twitter card -->
+    <%= if request.path.match(/\/posts\/[a-z0-9-]+$/) && defined?(@post) && @post.present? %>
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content=<%= @post.title %> />
+      <meta name="twitter:description" content<%= @post.content %> />
+      <meta name="twitter:image" content=<%= @post.book_image_url %> />
+    <% end %>
+
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
