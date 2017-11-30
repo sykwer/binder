@@ -158,13 +158,10 @@
 
         @media (min-width: $medium-plus-one) {
           height: 120px;
+          width: calc(120px * 2/3);
         }
 
-        @media (max-width: $medium) and (min-width: $small-plus-one) {
-          height: 110px;
-        }
-
-        @media (max-width: $small) {
+        @media (max-width: $medium) {
           height: 110px;
           width: calc(110px * 2/3);
         }
