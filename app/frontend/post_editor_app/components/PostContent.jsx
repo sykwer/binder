@@ -17,8 +17,6 @@ const PostContent = ({ onChangeContent }) => {
           e.preventDefault()
           onChangeContent(editable.innerHTML)
 
-          console.log(editable.innerText)
-          console.log(editable.innerText.length)
           // placeholder
           if (editable.innerText.length <= 1) {
             editable.classList.add("placeholded")
