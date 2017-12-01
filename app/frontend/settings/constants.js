@@ -24,4 +24,4 @@ export const tagNameMaxLength = 25
 
 // username_register_app
 export const usernameMaxLength = 15
-export const usernameRegrex = /(\w){1,15}/
+export const usernameRegrex = /^[A-Za-z0-9_]+$/

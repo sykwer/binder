@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   validates :name, length: { in: 1..50 }
   validates :bio, length: { maximum: 160 }
-  validates :username, length: { in: 1..15 }, format: { with: /(\w){1,15}/ }
+  validates :username, length: { in: 1..15 }, format: { with: /\A[A-Za-z0-9_]+\z/ }
 
   def social_profile(provider)
     social_profiles.select { |sp| sp.provider == provider.to_s }.first
