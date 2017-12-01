@@ -16,19 +16,19 @@ class Api::StreamsController < Api::ApplicationController
   end
 
   def world_timeline
-    t = WorldTimeline.new(count_per_page: count_param)
-    post_uuids = params[:oldest_unixtime_nano].present? ?
-      t.fetch(oldest_unixtime_nano: params[:oldest_unixtime_nano].to_i) : t.fetch
-    posts = Post.where(uuid: post_uuids).not_deleted # orderless
 
-    # workaround
-    @posts = []
-    post_uuids.each do |uuid|
-      post = posts.select { |p| p.uuid == uuid }[0]
-      @posts << post if post.present? # post of the uuid may not be present
+    posts = Post.not_deleted
+                .published
+                .order(first_published_at: :desc)
+                .limit(count_param)
+
+    if params[:oldest_unixtime].present?
+      @posts = posts.where("first_published_at < ?", Time.zone.at(params[:oldest_unixtime].to_i))
+    else
+      @posts = posts
     end
 
-    @oldest_unixtime_nano = t.oldest_unixtime_nano
+    @oldest_unixtime = @posts.present? ? @posts.last.first_published_at.to_i  : nil
 
     render template: "api/streams/show"
   end
@@ -36,10 +36,10 @@ class Api::StreamsController < Api::ApplicationController
   private
 
   def offset_param
-    params[:offset].to_i || 0
+    params[:offset].present? ? params[:offset].to_i : 0
   end
 
   def count_param
-    params[:count].to_i || 5
+    params[:count].present? ? params[:count].to_i : 5
   end
 end

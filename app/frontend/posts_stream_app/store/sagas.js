@@ -13,6 +13,8 @@ import {
   requestUnbookmark,
 } from "./services"
 
+import { postsCountPerFetchInStream } from "../../settings/constants"
+
 function* fetchPostsFlowOfFollowings() {
   while (true) {
     yield take("START_FETCH")
@@ -28,7 +30,7 @@ function* fetchPostsFlowOfFollowings() {
     const posts = yield call(fetchPostsFromFollowings, page)
     yield put(finishFetch(posts, page, null))
 
-    if (posts.length < 10) {
+    if (posts.length < postsCountPerFetchInStream) {
       yield put(notifyAllFetched())
       break
     }
@@ -40,14 +42,14 @@ function* fetchPostsFlowOfTimeline() {
     yield take("START_FETCH")
 
     const state = yield select()
-    const { posts, oldestUnixtimeNano } = yield call(
+    const { posts, oldestUnixtime } = yield call(
       fetchPostsOfTimeline,
-      state.oldestUnixtimeNano,
+      state.oldestUnixtime,
     )
 
-    yield put(finishFetch(posts, null, oldestUnixtimeNano))
+    yield put(finishFetch(posts, null, oldestUnixtime))
 
-    if (posts.length < 10) {
+    if (posts.length < postsCountPerFetchInStream) {
       yield put(notifyAllFetched())
       break
     }

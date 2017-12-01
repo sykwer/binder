@@ -53,10 +53,10 @@ const page = (state = null, action) => {
 }
 
 // only for stream identified timeline
-const oldestUnixtimeNano = (state = null, action) => {
+const oldestUnixtime = (state = null, action) => {
   switch (action.type) {
     case "FINISH_FETCH":
-      return action.oldestUnixtimeNano
+      return action.oldestUnixtime
     default:
       return state
   }
@@ -115,7 +115,7 @@ const rootReducer = combineReducers({
   posts,
   isAllFetched,
   page,
-  oldestUnixtimeNano,
+  oldestUnixtime,
   streamId,
   isLoginModalDisplayed,
   modalMode,

@@ -15,6 +15,4 @@ json.posts @posts do |post|
   json.bookmarkedCount post.bookmarked_count
 end
 
-if @oldest_unixtime_nano.present?
-  json.oldestUnixtimeNano @oldest_unixtime_nano
-end
+json.oldestUnixtime @oldest_unixtime
