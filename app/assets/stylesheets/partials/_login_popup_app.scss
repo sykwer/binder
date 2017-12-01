@@ -46,11 +46,50 @@
       width: 90%;
     }
 
+    .login-modal-header {
+      width: 100%;
+      font-size: 20px;
+      color: $post_title_color;
+      font-weight: bold;
+      text-align: center;
+
+      @media (min-width: $small_plus_one) {
+        margin: 40px auto 0;
+      }
+
+      @media (max-width: $small) {
+        margin: 20px auto 0;
+      }
+    }
+
+    .login-modal-desc {
+      width: 80%;
+      color: $gray56;
+      text-align: center;
+      margin: 20px auto 0;
+
+      a {
+        color: $gray56;
+        text-decoration: underline;
+      }
+    }
+
     .buttons-wrapper {
       margin: 0 auto;
-      padding-top: 100px;
       width: 60%;
       opacity: 1;
+
+      @media (min-width: $medium_plus_one) {
+        padding: 30px;
+      }
+
+      @media (min-width: $small_plus_one) and (max-width: $medium) {
+        padding: 30px;
+      }
+
+      @media (max-width: $small) {
+        padding: 20px;
+      }
 
       .login-button {
         display: block;
@@ -71,12 +110,23 @@
     }
 
     .modal-mode-changer {
-      margin: 50px auto 0;
       width: 120px;
       display: block;
       text-align: center;
       color: $post_content_color;
       text-decoration: underline;
+
+      @media (min-width: $medium_plus_one) {
+        margin: 50px auto 0;
+      }
+
+      @media (max-width: $medium) and (min-width: $small_plus_one) {
+        margin: 30px auto 0;
+      }
+
+      @media (max-width: $small) {
+        margin: 15px auto 0;
+      }
     }
   }
 }
