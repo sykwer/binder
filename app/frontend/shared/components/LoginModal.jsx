@@ -34,6 +34,24 @@ const LoginModal = ({
         e.stopPropagation()
       }}
     >
+      {
+        isSignupMode ? (
+          <h2 className="login-modal-header">Binderに登録する</h2>
+        ) : (
+          <h2 className="login-modal-header">ログイン</h2>
+        )
+      }
+      {
+        isSignupMode ? (
+          <p className="login-modal-desc">
+            <a href="terms">利用規約</a>と<a href="terms/privacy">プライバシーポリシー</a>に同意した上で
+          </p>
+        ) : (
+          <p className="login-modal-desc">
+            Binderのアカウントをお持ちの方は、このページからログインできます
+          </p>
+        )
+      }
       <div className="buttons-wrapper">
         <a
           className="facebook-login-button login-button"
