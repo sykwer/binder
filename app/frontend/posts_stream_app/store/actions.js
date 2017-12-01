@@ -5,12 +5,12 @@ export const startFetch = () => ({
 export const finishFetch = (
   posts,
   page,
-  oldestUnixtimeNano,
+  oldestUnixtime,
 ) => ({
   type: "FINISH_FETCH",
   posts,
   page,
-  oldestUnixtimeNano,
+  oldestUnixtime,
 })
 
 export const clickBookmark = postUuid => ({

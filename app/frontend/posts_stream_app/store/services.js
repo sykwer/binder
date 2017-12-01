@@ -12,15 +12,15 @@ export const fetchPostsFromFollowings = page => (
   }).then(res => res.data.posts)
 )
 
-export const fetchPostsOfTimeline = oldestUnixtimeNano => (
+export const fetchPostsOfTimeline = oldestUnixtime => (
   axios.get(`${binderApiEndpoint}/streams/world_timeline`, {
     params: {
-      oldest_unixtime_nano: oldestUnixtimeNano,
+      oldest_unixtime: oldestUnixtime,
       count: postsCountPerFetchInStream,
     },
   }).then(res => ({
     posts: res.data.posts,
-    oldestUnixtimeNano: res.data.oldestUnixtimeNano,
+    oldestUnixtime: res.data.oldestUnixtime,
   }))
 )
 

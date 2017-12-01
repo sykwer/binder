@@ -7,10 +7,10 @@ class PagesController < ApplicationController
                                    .order(first_published_at: :desc)
     end
 
-    wt = WorldTimeline.new(count_per_page: 4)
-    @posts_from_timeline = Post.where(uuid: wt.fetch)
-                               .not_deleted
+    @posts_from_timeline = Post.not_deleted
+                               .published
                                .order(first_published_at: :desc)
+                               .limit(4)
   end
 
   def about
