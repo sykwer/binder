@@ -108,5 +108,25 @@
         letter-spacing: 1px;
       }
     }
+
+    .blank-message {
+      padding: 50px 0;
+      text-align: center;
+      color: $gray56;
+      opacity: 0.8;
+      font-weight: bold;
+
+      @media (min-width: $medium_plus_one) {
+        font-size: 20px;
+      }
+
+      @media (min-width: $small_plus_one) and (max-width: $medium) {
+        font-size: 17px;
+      }
+
+      @media (max-width: $small) {
+        font-size: 15px;
+      }
+    }
   }
 }

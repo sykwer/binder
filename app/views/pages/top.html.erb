@@ -10,7 +10,11 @@
           streams_from_followings_path,
           class: "more-from-followings"%>
       </div>
-      <%= render "shared/posts_std_grid", posts: @posts_from_followings %>
+      <% if @posts_from_followings.present? %>
+        <%= render "shared/posts_std_grid", posts: @posts_from_followings %>
+      <% else %>
+        <p class="blank-message">フォローしたユーザーの投稿が表示されます</p>
+      <% end %>
     </div>
   <% end %>
   <div class="world-timeline-wrapper">
