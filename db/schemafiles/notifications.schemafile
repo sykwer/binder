@@ -1,11 +1,11 @@
 create_table "notifications", force: :cascade, options: default_options do |t|
-  t.string  :resource_type,       null: false
-  t.integer :resource_id,         null: false
+  t.string  :notificatable_type,       null: false
+  t.integer :notificatable_id,         null: false
   t.integer :destination_user_id, null: false
   t.boolean :is_read,             null: false, default: false
 
   t.timestamps null: false
 
-  t.index ["resource_type", "resource_id"], name: "index_notifications_on_resource_type_and_resource_id", unique: true, using: :btree
+  t.index ["notificatable_type", "notificatable_id"], name: "index_notifications_on_resource_type_and_resource_id", unique: true, using: :btree
   t.index "destination_user_id", name: "index_notifications_on_destination_user_id", using: :btree
 end
