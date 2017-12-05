@@ -4,8 +4,10 @@ class Bookmark < ApplicationRecord
   has_one :notification, as: :notificatable, dependent: :destroy
 
   after_create do
-    n = build_notification
-    n.user = post.user
-    n.save!
+    unless user == post.user
+      n = build_notification
+      n.user = post.user
+      n.save!
+    end
   end
 end

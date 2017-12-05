@@ -60,5 +60,9 @@ Rails.application.routes.draw do
     delete 'follows', to: "follows#destroy"
 
     get "tags/search", to: "tags#search"
+
+    resources :notifications, only: %i(index) do
+      resource :read, controller: "notifications/reads", only: %i(update)
+    end
   end
 end
