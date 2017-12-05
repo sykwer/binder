@@ -23,7 +23,11 @@
               <% end %>
             </li>
             <li class="menu-item">
-              <i class="fa fa-bell-o icon-in-item" aria-hidden="true"></i>
+              <%= content_tag :div,
+                id: "action-bar-notification-app",
+                data: {
+                }.to_json do %>
+              <% end %>
             </li>
             <li class="menu-item profile-window">
               <%= link_to image_tag(current_user.image_url), "/@#{current_user.username}" %>
