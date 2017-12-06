@@ -26,3 +26,5 @@ json.notifications @notifications do |n|
     json.updatedAt format_date(n.updated_at)
   end
 end
+
+json.oldestUnixtime @oldest_unixtime
