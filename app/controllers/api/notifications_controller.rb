@@ -5,7 +5,11 @@ class Api::NotificationsController < Api::ApplicationController
       @notifications = @notifications.where("updated_at < ?", Time.zone.at(params[:oldest_unixtime].to_i))
     end
 
-    @oldest_unixtime = @notifications.last.updated_at.to_i
+    if @notifications.present?
+      @oldest_unixtime = @notifications.last.updated_at.to_i
+    else
+      @oldest_unixtime = params[:oldest_unixtime].to_i
+    end
   end
 
   private

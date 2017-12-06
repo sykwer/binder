@@ -3,7 +3,7 @@ import { combineReducers } from "redux"
 const notifications = (state = [], action) => {
   switch (action.type) {
     case "SUCCEED_FETCH":
-      return [...state, action.notifications]
+      return [...state, ...action.notifications]
     default:
       return state
   }

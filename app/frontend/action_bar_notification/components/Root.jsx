@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import onClickOutside from "react-onclickoutside"
 
 import { openWindow, closeWindow } from "../store/actions"
+import NotificationsList from "./NotificationsList"
 
 class cpnt extends Component {
   handleClickOutside() {
@@ -19,7 +20,6 @@ class cpnt extends Component {
         <i
           className="fa fa-bell-o notification-icon cancel-focus-outline"
           aria-hidden="true"
-          tagIndex="0"
           onClick={(e) => {
             e.stopPropagation()
             handleOpenWindow()
@@ -39,7 +39,9 @@ class cpnt extends Component {
                 role="button"
                 tabIndex="0"
                 onClick={(e) => { e.stopPropagation() }}
-              />
+              >
+                <NotificationsList />
+              </div>
               <div
                 className="notification-window-after cancel-focus-outline"
                 role="button"
