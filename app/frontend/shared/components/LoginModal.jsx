@@ -44,7 +44,7 @@ const LoginModal = ({
       {
         isSignupMode ? (
           <p className="login-modal-desc">
-            <a href="terms">利用規約</a>と<a href="terms/privacy">プライバシーポリシー</a>に同意した上で
+            <a href="/terms">利用規約</a>と<a href="/terms/privacy">プライバシーポリシー</a>に同意した上で
           </p>
         ) : (
           <p className="login-modal-desc">
