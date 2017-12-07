@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { List, AutoSizer } from "react-virtualized"
 
+import NotificationsListItem from "./NotificationsListItem"
 import { startFetch } from "../store/actions"
 
 class cpnt extends React.Component {
@@ -17,12 +18,11 @@ class cpnt extends React.Component {
       const notification = notifications[index]
 
       return (
-        <p
-          key={index}
-          style={style}
-        >
-          {notification.id}
-        </p>
+        <div key={index} style={style}>
+          <NotificationsListItem
+            notification={notification}
+          />
+        </div>
       )
     }
 
@@ -36,12 +36,12 @@ class cpnt extends React.Component {
         {
           ({ height, width }) => (
             <List
-              className="notifications-list"
+              className="notifications-list cancel-focus-outline"
               width={width}
               height={height}
               rowRenderer={rowRenderer}
               rowCount={notifications.length}
-              rowHeight={75}
+              rowHeight={85}
               onRowsRendered={({ stopIndex }) => {
                 if (stopIndex === notifications.length - 1) {
                   handleBottomReached()
@@ -59,6 +59,12 @@ class cpnt extends React.Component {
 cpnt.propTypes = {
   notifications: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    sourceUserName: PropTypes.string.isRequired,
+    sourceUserUsername: PropTypes.string.isRequired,
+    sourceUserImageUrl: PropTypes.string.isRequired,
+    destinationPostUuid: PropTypes.string,
+    clapsCount: PropTypes.number,
   })).isRequired,
   handleBottomReached: PropTypes.func.isRequired,
 }
