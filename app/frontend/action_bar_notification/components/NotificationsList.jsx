@@ -15,6 +15,14 @@ class cpnt extends React.Component {
     const { notifications, handleBottomReached } = this.props
     const { isAllFetched } = this.props // eslint-disable-line
 
+    if (notifications.length < 1) {
+      return (
+        <p className="no-notifications-msg">
+          <span>No Notifications</span>
+        </p>
+      )
+    }
+
     const rowRenderer = ({ index, style }) => {
       const notification = notifications[index]
 
