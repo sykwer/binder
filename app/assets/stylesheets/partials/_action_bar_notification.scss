@@ -1,0 +1,115 @@
+.notification-icon-wrapper {
+  position: relative;
+
+  .notification-icon {
+    font-size: 20px;
+    color: $gray56;
+    opacity: 0.7;
+  }
+
+  .notification-lamp {
+    position: absolute;
+    top: 2px;
+    left: 11px;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: $fresh_green;
+  }
+
+  .notification-window {
+    background-color: white;
+
+    @media (max-width: $medium) {
+      position: fixed;
+      right: 0;
+      top: 60px;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    @media (min-width: $medium_plus_one) {
+      position: absolute;
+      top: 36px;
+      right: -111px;
+      width: 350px;
+      height: 300px;
+    }
+  }
+
+  .notification-window-before {
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    margin-left: -13px;
+    width: 0;
+    height: 0;
+    border-bottom: 13px solid $gray56;
+    opacity: 0.4;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+  }
+
+  .notification-window-after {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    margin-left: -13px;
+    width: 0;
+    height: 0;
+    border-bottom: 13px solid white;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+  }
+}
+
+.notifications-list {
+  border: 1px solid $gray91;
+}
+
+.notifications-list-item {
+  position: relative;
+  border-bottom: 1px solid $gray91;
+  height: 85px;
+  padding: 15px;
+
+  .source-user-image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    display: block;
+    width: calc(15px * 2);
+    height: calc(15px * 2);
+    border-radius: 15px;
+  }
+
+  .list-item-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(15px + (15px * 2) + 15px);
+    width: calc(100% - (15px * 2) - (15px * 2) - 15px);
+
+    .list-item-msg {
+      margin: 0;
+      font-size: 12px;
+      color: $post_content_color;
+
+      a {
+        color: $post_content_color;
+      }
+    }
+
+    .list-item-datetime {
+      margin: 0;
+      margin-top: 2px;
+      font-size: 10px;
+      color: $gray56;
+    }
+  }
+}
+
+.notifications-list-item.not-read {
+  background-color: $background_gray;
+}

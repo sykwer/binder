@@ -25,3 +25,6 @@ export const tagNameMaxLength = 25
 // username_register_app
 export const usernameMaxLength = 15
 export const usernameRegrex = /^[A-Za-z0-9_]+$/
+
+// action_bar_notifications
+export const notificationsCountPerFetch = 10

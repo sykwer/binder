@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   has_many :social_profiles
 
+  has_many :notifications, foreign_key: "destination_user_id"
+
   validates :name, length: { in: 1..50 }
   validates :bio, length: { maximum: 160 }
   validates :username, length: { in: 1..15 }, format: { with: /\A[A-Za-z0-9_]+\z/ }
@@ -48,6 +50,11 @@ class User < ApplicationRecord
 
   def has_published_post?
     Post.published.where(user_id: id).last.present?
+  end
+
+  def check_notifications!
+    self.has_unchecked_notifications = false
+    save!
   end
 
   def follower_ids

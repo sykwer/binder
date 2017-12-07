@@ -54,11 +54,16 @@ Rails.application.routes.draw do
       resources :followers, controller: "users/followers", only: %i(index)
       resources :followings, controller: "users/followings", only: %i(index)
       resources :bookmarked_posts, controller: "users/bookmarked_posts", only: %i(index)
+      resource :notifications_checked, controller: "users/notifications_checked", only: %i(update)
     end
 
     resources :follows, only: %i(create)
     delete 'follows', to: "follows#destroy"
 
     get "tags/search", to: "tags#search"
+
+    resources :notifications, only: %i(index) do
+      resource :read, controller: "notifications/reads", only: %i(update)
+    end
   end
 end
