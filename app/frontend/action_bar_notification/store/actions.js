@@ -19,3 +19,15 @@ export const closeWindow = () => ({
 export const notifyAllFetched = () => ({
   type: "NOFITY_ALL_FETCHED",
 })
+
+export const clickProfileLink = (notificationId, username) => ({
+  type: "CLICK_PROFILE_LINK",
+  notificationId,
+  username,
+})
+
+export const clickPostLink = (notificationId, postUuid) => ({
+  type: "CLICK_POST_LINK",
+  notificationId,
+  postUuid,
+})

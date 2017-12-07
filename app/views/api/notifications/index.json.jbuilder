@@ -2,7 +2,7 @@ json.notifications @notifications do |n|
   json.id n.id
   json.type n.notificatable_type
   json.isRead n.is_read
-  json.updatedAt format_date(n.updated_at)
+  json.createdAt format_date(n.created_at)
 
   case n.notificatable_type
   when "Follow"

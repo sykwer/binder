@@ -62,7 +62,7 @@ cpnt.propTypes = {
     id: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
     isRead: PropTypes.bool.isRequired,
-    updatedAt: PropTypes.string.isRequired,
+    createdAt: PropTypes.string.isRequired,
     sourceUserName: PropTypes.string.isRequired,
     sourceUserUsername: PropTypes.string.isRequired,
     sourceUserImageUrl: PropTypes.string.isRequired,
