@@ -52,6 +52,11 @@ class User < ApplicationRecord
     Post.published.where(user_id: id).last.present?
   end
 
+  def check_notifications!
+    self.has_unchecked_notifications = false
+    save!
+  end
+
   def follower_ids
     Follow.where(destination_id: id).pluck(:source_id)
   end

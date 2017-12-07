@@ -5,6 +5,7 @@ import { succeedFetch, notifyAllFetched } from "./actions"
 import {
   fetchNotifications,
   requestReadNotification,
+  requestCheckNotifications,
 } from "./services"
 
 import { notificationsCountPerFetch } from "../../settings/constants"
@@ -58,10 +59,23 @@ function* clickPostLinkFlow() {
   }
 }
 
+function* checkNotificationsFlow() {
+  while (true) {
+    yield take("OPEN_WINDOW")
+    const state = yield select()
+    const isSuccess = yield call(requestCheckNotifications, state.userId)
+
+    if (!isSuccess) {
+      // handle failure
+    }
+  }
+}
+
 function* rootSaga() {
   yield fork(fetchNotificationsFlow)
   yield fork(clickProfileLinkFlow)
   yield fork(clickPostLinkFlow)
+  yield fork(checkNotificationsFlow)
 }
 
 export default rootSaga

@@ -13,7 +13,7 @@ class cpnt extends Component {
 
   render() {
     const { handleOpenWindow } = this.props
-    const { isWindowOpen } = this.props
+    const { isWindowOpen, hasUncheckedNotifications } = this.props
 
     return (
       <div className="notification-icon-wrapper">
@@ -25,6 +25,11 @@ class cpnt extends Component {
             handleOpenWindow()
           }}
         />
+        {
+          hasUncheckedNotifications && (
+            <div className="notification-lamp" />
+          )
+        }
         {
           isWindowOpen && (
             <div>
@@ -58,6 +63,7 @@ class cpnt extends Component {
 
 cpnt.propTypes = {
   isWindowOpen: PropTypes.bool.isRequired,
+  hasUncheckedNotifications: PropTypes.bool.isRequired,
   handleCloseWindow: PropTypes.func.isRequired,
   handleOpenWindow: PropTypes.func.isRequired,
 }
@@ -66,6 +72,7 @@ const wrappedCpnt = onClickOutside(cpnt)
 
 const mapStateToProps = state => ({
   isWindowOpen: state.isWindowOpen,
+  hasUncheckedNotifications: state.hasUncheckedNotifications,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -26,6 +26,8 @@
               <%= content_tag :div,
                 id: "action-bar-notification-app",
                 data: {
+                  userId: current_user.id,
+                  hasUncheckedNotifications: current_user.has_unchecked_notifications,
                 }.to_json do %>
               <% end %>
             </li>

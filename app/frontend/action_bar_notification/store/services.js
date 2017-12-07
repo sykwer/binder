@@ -16,3 +16,9 @@ export const requestReadNotification = notificationId => (
     .patch(`${binderApiEndpoint}/notifications/${notificationId}/read`)
     .then(res => res.status === 200)
 )
+
+export const requestCheckNotifications = userId => (
+  axios
+    .patch(`${binderApiEndpoint}/users/${userId}/notifications_checked`)
+    .then(res => res.status === 200)
+)

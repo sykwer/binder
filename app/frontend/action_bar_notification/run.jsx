@@ -11,12 +11,18 @@ import rootSaga from "./store/sagas"
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
     const node = document.getElementById("action-bar-notification-app")
+    const data = JSON.parse(node.getAttribute("data"))
+
+    const initialState = {
+      userId: data.userId,
+      hasUncheckedNotifications: data.hasUncheckedNotifications,
+    }
 
     const sagaMiddleware = createSagaMiddleware()
 
     const store = createStore(
       rootReducer,
-      {},
+      initialState,
       applyMiddleware(sagaMiddleware),
     )
 

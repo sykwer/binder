@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       resources :followers, controller: "users/followers", only: %i(index)
       resources :followings, controller: "users/followings", only: %i(index)
       resources :bookmarked_posts, controller: "users/bookmarked_posts", only: %i(index)
+      resource :notifications_checked, controller: "users/notifications_checked", only: %i(update)
     end
 
     resources :follows, only: %i(create)

@@ -38,11 +38,27 @@ const isAllFetched = (state = false, action) => {
   }
 }
 
+const hasUncheckedNotifications = (state = null, action) => {
+  switch (action.type) {
+    case "OPEN_WINDOW":
+      return false
+    default:
+      return state
+  }
+}
+
+// eslint-disable-next-line
+const userId = (state = null, action) => {
+  return state
+}
+
 const rootReducer = combineReducers({
   notifications,
   oldestUnixtime,
   isWindowOpen,
   isAllFetched,
+  hasUncheckedNotifications,
+  userId,
 })
 
 export default rootReducer
