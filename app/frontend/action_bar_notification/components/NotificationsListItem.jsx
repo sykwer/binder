@@ -4,7 +4,9 @@ import PropTypes from "prop-types"
 import { binderRootUrl } from "../../settings/endpoints"
 
 const NotificationsListItem = ({ notification }) => (
-  <div className="notifications-list-item">
+  <div
+    className={`notifications-list-item${notification.isRead ? "" : " not-read"}`}
+  >
     {
       notification.type === "Follow" && (
         <div>
@@ -73,6 +75,8 @@ NotificationsListItem.propTypes = {
   notification: PropTypes.shape({
     id: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
+    isRead: PropTypes.bool.isRequired,
+    updatedAt: PropTypes.string.isRequired,
     sourceUserName: PropTypes.string.isRequired,
     sourceUserUsername: PropTypes.string.isRequired,
     sourceUserImageUrl: PropTypes.string.isRequired,

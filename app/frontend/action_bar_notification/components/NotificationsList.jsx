@@ -13,6 +13,7 @@ class cpnt extends React.Component {
 
   render() {
     const { notifications, handleBottomReached } = this.props
+    const { isAllFetched } = this.props // eslint-disable-line
 
     const rowRenderer = ({ index, style }) => {
       const notification = notifications[index]
@@ -60,6 +61,8 @@ cpnt.propTypes = {
   notifications: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     type: PropTypes.string.isRequired,
+    isRead: PropTypes.bool.isRequired,
+    updatedAt: PropTypes.string.isRequired,
     sourceUserName: PropTypes.string.isRequired,
     sourceUserUsername: PropTypes.string.isRequired,
     sourceUserImageUrl: PropTypes.string.isRequired,
@@ -67,10 +70,12 @@ cpnt.propTypes = {
     clapsCount: PropTypes.number,
   })).isRequired,
   handleBottomReached: PropTypes.func.isRequired,
+  isAllFetched: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = state => ({
   notifications: state.notifications,
+  isAllFetched: state.isAllFetched,
 })
 
 const mapDispatchToProps = dispatch => ({

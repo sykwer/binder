@@ -9,7 +9,6 @@
 
   .notification-window {
     background-color: white;
-    border: 1px solid $gray91;
 
     @media (max-width: $medium) {
       position: fixed;
@@ -54,6 +53,10 @@
   }
 }
 
+.notifications-list {
+  border: 1px solid $gray91;
+}
+
 .notifications-list-item {
   position: relative;
   border-bottom: 1px solid $gray91;
@@ -95,4 +98,8 @@
       color: $gray56;
     }
   }
+}
+
+.notifications-list-item.not-read {
+  background-color: $background_gray;
 }
