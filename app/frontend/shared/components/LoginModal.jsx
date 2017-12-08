@@ -38,17 +38,21 @@ const LoginModal = ({
         isSignupMode ? (
           <h2 className="login-modal-header">Binderに登録する</h2>
         ) : (
-          <h2 className="login-modal-header">ログイン</h2>
+          <h2 className="login-modal-header">Binderにログイン</h2>
         )
       }
       {
         isSignupMode ? (
           <p className="login-modal-desc">
-            <a href="terms">利用規約</a>と<a href="terms/privacy">プライバシーポリシー</a>に同意した上で
+            Binderは読んだ本を通した自己表現ができる、読書ブログSNSです.<br />
+            <a href="/terms">利用規約</a>
+            と
+            <a href="/terms/privacy">プライバシーポリシー</a>
+            に同意した上で
           </p>
         ) : (
           <p className="login-modal-desc">
-            Binderのアカウントをお持ちの方は、このページからログインできます
+            Binderのアカウントをお持ちの方は、<br />このページからログインできます
           </p>
         )
       }
@@ -57,7 +61,7 @@ const LoginModal = ({
           className="facebook-login-button login-button"
           href={facebookAuthPath}
         >
-          {isSignupMode ? "Facebookで登録する" : "facebookでログインする"}
+          {isSignupMode ? "Facebookで登録する" : "Facebookでログインする"}
         </a>
         <a
           className="twitter-login-button login-button"
