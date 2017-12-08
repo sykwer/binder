@@ -3,9 +3,9 @@ import axios from "axios"
 import {
   binderApiEndpoint,
   googleBookApiEndpoint,
-} from "../../settings/endpoints"
+} from "../../../settings/endpoints"
 
-import { googleBookApiKey } from "../../settings/constants"
+import { googleBookApiKey } from "../../../settings/constants"
 
 export const requestSaveContentDraft = (postUuid, text) => (
   axios.patch(`${binderApiEndpoint}/posts/${postUuid}/content_draft`, {

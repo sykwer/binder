@@ -4,8 +4,8 @@ import { Provider } from "react-redux"
 import createSagaMiddleware from "redux-saga"
 import { render } from "react-dom"
 
-import rootReducer from "./store/reducers"
-import rootSaga from "./store/sagas"
+import rootReducer from "../shared/store/editor/reducers"
+import rootSaga from "../shared/store/editor/sagas"
 import Root from "./components/Root"
 
 const run = () => {

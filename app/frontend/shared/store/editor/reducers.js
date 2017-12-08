@@ -1,6 +1,6 @@
 import { combineReducers } from "redux"
 
-import { tagNameMaxLength } from "../../settings/constants"
+import { tagNameMaxLength } from "../../../settings/constants"
 
 const bookNameInput = (state = "", action) => {
   switch (action.type) {

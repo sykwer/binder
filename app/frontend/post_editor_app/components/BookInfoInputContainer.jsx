@@ -4,7 +4,8 @@ import {
   changeBookNameInput,
   changeAuthorInput,
   changePublisherInput,
-} from "../store/actions"
+} from "../../shared/store/editor/actions"
+
 import BookInfoInput from "./BookInfoInput"
 
 const mapStateToProps = state => ({

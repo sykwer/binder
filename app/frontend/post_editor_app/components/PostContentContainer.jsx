@@ -1,6 +1,6 @@
 import { connect } from "react-redux"
 
-import { updatePostContent } from "../store/actions"
+import { updatePostContent } from "../../shared/store/editor/actions"
 import PostContent from "./PostContent"
 
 const mapDispatchToProps = dispatch => ({
