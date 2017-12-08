@@ -67,17 +67,28 @@
       color: $gray56;
       text-align: center;
       margin: 20px auto 0;
+      letter-spacing:1px;
+      line-height: 1.5;
 
       a {
         color: $gray56;
         text-decoration: underline;
       }
+
+      @media (min-width: $small_plus_one) {
+        font-size: 14px;
+      }
+
+      @media (max-width: $small) {
+        font-size: 13px;
+      }
     }
+
 
     .buttons-wrapper {
       margin: 0 auto;
-      width: 60%;
       opacity: 1;
+      width: 60%;
 
       @media (min-width: $medium_plus_one) {
         padding: 30px;
@@ -88,16 +99,25 @@
       }
 
       @media (max-width: $small) {
-        padding: 20px;
+        padding: 0;
       }
 
       .login-button {
         display: block;
         margin-top: 20px;
-        padding: 10px;
         color: white;
         text-align: center;
         border-radius: 5px;
+        letter-spacing: 0.5px;
+
+        @media (min-width: $small_plus_one) {
+          padding: 10px;
+        }
+
+        @media (max-width: $small) {
+          font-size: 12px;
+          padding: 6px;
+        }
       }
 
       .facebook-login-button {
@@ -117,7 +137,7 @@
       text-decoration: underline;
 
       @media (min-width: $medium_plus_one) {
-        margin: 50px auto 0;
+        margin: 35px auto 0;
       }
 
       @media (max-width: $medium) and (min-width: $small_plus_one) {
@@ -125,7 +145,7 @@
       }
 
       @media (max-width: $small) {
-        margin: 15px auto 0;
+        margin: 35px auto 0;
       }
     }
   }
