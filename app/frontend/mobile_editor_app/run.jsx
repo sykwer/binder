@@ -6,6 +6,7 @@ import createSagaMiddleware from "redux-saga"
 
 import rootReducer from "../shared/store/editor/reducers"
 import rootSaga from "../shared/store/editor/sagas"
+import Root from "./components/Root"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
@@ -23,7 +24,7 @@ const run = () => {
 
     render(
       <Provider store={store}>
-        <p>Boot mobileEditorApp from here</p>
+        <Root />
       </Provider>,
       node,
     )
