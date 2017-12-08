@@ -1,3 +1,4 @@
+<% if request.from_pc? %>
   <%= content_tag :div,
     id: "post-editor-app",
     data: {
@@ -27,4 +28,10 @@
       logoImage: image_url("binder_logo.png")
     }.to_json do %>
   <% end %>
-</div>
+<% else %>
+  <%= content_tag :div,
+    id: "mobile-editor-app",
+    data: {
+    }.to_json do %>
+  <% end %>
+<% end %>

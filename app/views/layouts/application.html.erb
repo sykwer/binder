@@ -17,7 +17,8 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-    <%= javascript_pack_tag 'post_editor_app' if request.path.match(/\/posts\/[a-z0-9-]+\/edit/) %>
+    <%= javascript_pack_tag 'post_editor_app' if request.path.match(/\/posts\/[a-z0-9-]+\/edit/) && request.from_pc? %>
+    <%= javascript_pack_tag 'mobile_editor_app' if request.path.match(/\/posts\/[a-z0-9-]+\/edit/) && !request.from_pc? %>
     <%= javascript_pack_tag 'user_profile_app' if request.path.match(/\/@.+/) %>
     <%= javascript_pack_tag 'bookshelf_app' if request.path.match(/\/@[a-zA-Z0-9_]+$|\/@[a-zA-Z0-9_]+\/bookshelf/) %>
     <%= javascript_pack_tag 'userpage_follow_app' if request.path.match(/\/@.+/) && defined?(@user) && current_user != @user %>

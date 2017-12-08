@@ -49,6 +49,9 @@ gem 'koala'
 # Integrate medium stylesheet with asset pipeline
 gem "medium-editor-rails"
 
+# Distinguish from_mobile and from_pc
+gem 'rack-user_agent'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
