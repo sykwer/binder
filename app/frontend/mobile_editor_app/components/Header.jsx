@@ -47,7 +47,7 @@ const stateToIsSaving = (state) => {
   }
 
   let isTitleSaving
-  switch (state.contentSaveState) {
+  switch (state.titleSaveState) {
     case "INITIAL":
     case "IS_SAVED":
       isTitleSaving = false
@@ -77,7 +77,7 @@ const stateToPublicationStatus = (state) => {
 
 cpnt.propTypes = {
   isSaving: PropTypes.bool.isRequired,
-  publicationStatus: PropTypes.bool.isRequired,
+  publicationStatus: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({
