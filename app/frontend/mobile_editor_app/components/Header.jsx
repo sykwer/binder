@@ -7,10 +7,8 @@ const cpnt = ({
   publicationStatus,
 }) => (
   <div className="mobile-editor-header">
-    <a
+    <button
       className="close-button cancel-focus-outline"
-      role="button"
-      tabIndex="0"
       onClick={(e) => {
         e.stopPropagation()
         e.preventDefault()
@@ -18,7 +16,7 @@ const cpnt = ({
       }}
     >
       Close
-    </a>
+    </button>
     <p className="save-status">
       {isSaving ? "Saving..." : "Saved"}
     </p>

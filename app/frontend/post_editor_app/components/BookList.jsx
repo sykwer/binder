@@ -16,7 +16,12 @@ const BookList = ({
     )
   }
 
-  const cellRenderer = ({ rowIndex, columnIndex, key, style }) => {
+  const cellRenderer = ({
+    rowIndex,
+    columnIndex,
+    key,
+    style,
+  }) => {
     // Workaround: Custom style in valid place
     Object.assign(style, { margin: 15 })
 
@@ -76,7 +81,7 @@ const BookList = ({
 
   return (
     <Grid
-      className={"booklist-window"}
+      className="booklist-window"
       cellRenderer={cellRenderer}
       rowCount={bookList.length}
       columnCount={2}

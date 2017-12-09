@@ -25,11 +25,11 @@ const Root = () => (
       <Button />
     </div>
     <Route
-      path={"/@:username/followers"}
+      path="/@:username/followers"
       component={Followers}
     />
     <Route
-      path={"/@:username/followings"}
+      path="/@:username/followings"
       component={Followings}
     />
   </div>
