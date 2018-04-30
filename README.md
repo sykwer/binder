@@ -7,10 +7,10 @@
 ### mobile
 <img src="https://user-images.githubusercontent.com/18254663/39428005-d77fa7aa-4cc0-11e8-85e9-d71b7c0640ed.png" alt="Drawing" height="400"/> <img src="https://user-images.githubusercontent.com/18254663/39427372-736ea600-4cbe-11e8-9071-7f63f4442d79.png" alt="Drawing" height="400"/> <img src="https://user-images.githubusercontent.com/18254663/39427312-49651e0c-4cbe-11e8-8a78-f3d119a8629d.png" alt="Drawing" height="400"/>
 
-## desktop (profile page)
+### desktop (profile page)
 <img src="https://user-images.githubusercontent.com/18254663/39427351-66972a60-4cbe-11e8-9c52-b6a4b928711d.png" alt="Drawing" height="400"/>
 
-## desktop (Medium-like editor)
+### desktop (Medium-like editor)
 <img src="https://user-images.githubusercontent.com/18254663/39427333-5c65fb2a-4cbe-11e8-9924-efa5f74d6a96.png" alt="Drawing" height="400"/>
 
 
