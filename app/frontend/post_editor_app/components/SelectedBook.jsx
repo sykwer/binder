@@ -2,9 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { openBookSelector } from "../store/actions"
+import { openBookSelector } from "../../shared/store/editor/actions"
 
-const cpnt = ({ imageURL, title, author, handleClickOpenBookSelector }) => {
+const cpnt = ({
+  imageURL,
+  title,
+  author,
+  handleClickOpenBookSelector,
+}) => {
   let mainBook
   if (imageURL) {
     mainBook = (

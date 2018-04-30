@@ -11,8 +11,17 @@ class cpnt extends Component {
   }
 
   render() {
-    const { handleCloseWindow, handleOpenWindow } = this.props
-    const { isWindowOpen, name, username, destroySessionPath } = this.props
+    const {
+      handleCloseWindow,
+      handleOpenWindow,
+    } = this.props
+
+    const {
+      isWindowOpen,
+      name,
+      username,
+      destroySessionPath,
+    } = this.props
 
     return (
       <div

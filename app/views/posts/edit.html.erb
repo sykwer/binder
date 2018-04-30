@@ -1,3 +1,4 @@
+<% if request.from_pc? %>
   <%= content_tag :div,
     id: "post-editor-app",
     data: {
@@ -27,4 +28,34 @@
       logoImage: image_url("binder_logo.png")
     }.to_json do %>
   <% end %>
-</div>
+<% else %>
+  <%= content_tag :div,
+    id: "mobile-editor-app",
+    data: {
+      uuid: @post.uuid,
+      bookAsin: @post.asin,
+      bookTitle: @post.book_title,
+      bookAuthor: @post.book_author,
+      bookPublisher: @post.book_publisher,
+      image: @post.book_image_url,
+      content: @post.content_draft,
+      title: @post.title_draft,
+      date: @post.published? ? format_date(@post.first_published_at) : format_date(Time.zone.now),
+      isPublished: @post.published?,
+      isChangesUnpublished: @post.content != @post.content_draft || @post.title != @post.title_draft,
+      user: {
+        name: current_user.name,
+        username: current_user.username,
+        image: current_user.image_url,
+      },
+      tags: @post.tags.map { |tag|
+        {
+          id: tag.id,
+          name: tag.name,
+          attachedCount: tag.attached_count
+        }
+      },
+      logoImage: image_url("binder_logo.png")
+    }.to_json do %>
+  <% end %>
+<% end %>

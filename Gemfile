@@ -24,7 +24,7 @@ gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker'
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Use jquery
@@ -48,6 +48,9 @@ gem 'koala'
 
 # Integrate medium stylesheet with asset pipeline
 gem "medium-editor-rails"
+
+# Distinguish from_mobile and from_pc
+gem 'rack-user_agent'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

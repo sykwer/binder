@@ -1,8 +1,8 @@
 import React from "react"
-import { createStore, applyMiddleware } from "redux"
-import { Provider } from "react-redux"
-import createSagaMiddleware from "redux-saga"
 import { render } from "react-dom"
+import { Provider } from "react-redux"
+import { createStore, applyMiddleware } from "redux"
+import createSagaMiddleware from "redux-saga"
 
 import rootReducer from "../shared/store/editor/reducers"
 import rootSaga from "../shared/store/editor/sagas"
@@ -10,10 +10,8 @@ import Root from "./components/Root"
 
 const run = () => {
   document.addEventListener("DOMContentLoaded", () => {
-    const node = document.getElementById("post-editor-app")
+    const node = document.getElementById("mobile-editor-app")
     const data = JSON.parse(node.getAttribute("data"))
-
-    const sagaMiddleware = createSagaMiddleware()
 
     const initialState = {
       uuid: data.uuid,
@@ -35,6 +33,9 @@ const run = () => {
       selectedTags: data.tags,
       logoImage: data.logoImage,
     }
+
+    const sagaMiddleware = createSagaMiddleware()
+
     const store = createStore(
       rootReducer,
       initialState,

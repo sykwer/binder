@@ -19,7 +19,7 @@ import {
   finishFetchTags,
 } from "./actions"
 
-import { binderRootUrl } from "../../settings/endpoints"
+import { binderRootUrl } from "../../../settings/endpoints"
 
 function* postContentSaveFlow(action) {
   yield call(delay, 1500)

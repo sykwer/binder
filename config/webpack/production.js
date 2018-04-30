@@ -1,38 +1,28 @@
-// Note: You must restart bin/webpack-dev-server for changes to take effect
-
-/* eslint global-require: 0 */
-
 const webpack = require('webpack')
-const merge = require('webpack-merge')
-const CompressionPlugin = require('compression-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
-const sharedConfig = require('./shared.js')
+const environment = require('./environment').toWebpackConfig()
 
-module.exports = merge(sharedConfig, {
-  output: { filename: '[name]-[chunkhash].js' },
-  devtool: 'source-map',
-  stats: 'normal',
-
-  plugins: [
-    /*
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      sourceMap: true,
-
+// https://qiita.com/mizchi/items/a329ab567ba2d3cb7d60
+environment.plugins = environment.plugins.map((plug) => {
+  if (plug instanceof webpack.optimize.UglifyJsPlugin) {
+    return new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
+      parallel: true,
+      mangle: false,
+      uglifyOptions: {
+        mangle: false
+      },
       compress: {
         warnings: false
       },
-
       output: {
         comments: false
       }
-    }),
-    */
-    new UglifyJSPlugin(),
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.(js|css|html|json|ico|svg|eot|otf|ttf)$/
     })
-  ]
+  }
+
+  return plug
 })
+
+environment.devtool = 'eval'
+
+module.exports = environment

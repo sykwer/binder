@@ -6,7 +6,7 @@ class StreamsController < ApplicationController
   end
 
   def world_timeline
-    @stream_title = "Timeline"
+    @stream_title = "All posts"
     @stream_id = "timeline"
     render template: "streams/show"
   end

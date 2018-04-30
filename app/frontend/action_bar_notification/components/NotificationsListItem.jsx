@@ -62,9 +62,7 @@ const cpnt = ({
               </strong>
               さんがあなたの
               <strong>
-                <a
-                  role="button"
-                  tabIndex="0"
+                <button
                   onClick={(e) => {
                     e.stopPropagation()
                     e.preventDefault()
@@ -72,7 +70,7 @@ const cpnt = ({
                   }}
                 >
                   投稿
-                </a>
+                </button>
               </strong>
               に{notification.clapsCount}拍手を送りました
             </p>
@@ -106,9 +104,7 @@ const cpnt = ({
               </strong>
               さんがあなたの
               <strong>
-                <a
-                  role="button"
-                  tabIndex="0"
+                <button
                   onClick={(e) => {
                     e.stopPropagation()
                     e.preventDefault()
@@ -116,7 +112,7 @@ const cpnt = ({
                   }}
                 >
                   投稿
-                </a>
+                </button>
               </strong>
               をブックマークしました
             </p>

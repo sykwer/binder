@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
-import { updatePostTitle } from "../store/actions"
+import { updatePostTitle } from "../../shared/store/editor/actions"
 
 const cpnt = ({ handleChangeTitle }) => {
   let editable

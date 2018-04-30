@@ -92,7 +92,9 @@ const ListItem = ({
               e.stopPropagation()
               window.location.assign(`/@${username}`)
             }}
-          >{name}</span>
+          >
+            {name}
+          </span>
         </div>
         <div className="item-center-lower">
           <span
@@ -104,7 +106,9 @@ const ListItem = ({
               e.stopPropagation()
               window.location.assign(`/@${username}`)
             }}
-          >{bio}</span>
+          >
+            {bio}
+          </span>
         </div>
       </div>
       <div className="item-right">

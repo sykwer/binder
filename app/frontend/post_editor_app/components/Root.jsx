@@ -13,7 +13,7 @@ import PostTitle from "./PostTitle"
 import {
   closeBookSelector,
   closePublishWindow,
-} from "../store/actions"
+} from "../../shared/store/editor/actions"
 
 const cpnt = ({
   isBookSelectorOpen,

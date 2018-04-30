@@ -1,10 +1,10 @@
 import { connect } from "react-redux"
 
-import { selectBook } from "../store/actions"
+import { selectBook } from "../../shared/store/editor/actions"
 import BookList from "./BookList"
 
 const mapStateToProps = (state) => {
-  const bookList = state.bookList
+  const { bookList } = state
 
   const gridArr = []
   while (bookList.length) {

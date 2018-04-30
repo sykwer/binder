@@ -9,7 +9,7 @@ import {
   emptyTagInput,
   selectTag,
   deleteTag,
-} from "../store/actions"
+} from "../../shared/store/editor/actions"
 
 import Header from "./Header"
 

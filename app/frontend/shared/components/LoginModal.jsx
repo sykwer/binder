@@ -72,10 +72,8 @@ const LoginModal = ({
       </div>
       {
         isSignupMode ? (
-          <a
+          <button
             className="modal-mode-changer cancel-focus-outline"
-            role="button"
-            tabIndex="0"
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()
@@ -83,12 +81,10 @@ const LoginModal = ({
             }}
           >
             ログインはこちら
-          </a>
+          </button>
         ) : (
-          <a
+          <button
             className="modal-mode-changer cancel-focus-outline"
-            role="button"
-            tabIndex="0"
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()
@@ -96,7 +92,7 @@ const LoginModal = ({
             }}
           >
             新規登録はこちら
-          </a>
+          </button>
         )
       }
     </div>
